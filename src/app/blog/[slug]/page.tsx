@@ -102,9 +102,9 @@ export default async function BlogPage(props: BlogPageProps) {
 
   return (
     <div className="max-w-5xl mx-auto py-10 px-4 pt-24">
-      {post.featuredImage?.node?.sourceUrl && (
-        // 
-      )}
+      {/* {post.featuredImage?.node?.sourceUrl && (
+        
+      )} */}
       <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
       <p className="text-sm text-gray-500 mb-6">
         {post.author?.node?.name} • {new Date(post.date).toLocaleDateString()}
