@@ -22,15 +22,15 @@ export async function generateMetadata() {
       "best hearing aids in India",
     ],
     openGraph: {
-      title: `Best Hearing Aids | ${siteName}`,
+      title: `Best Digital Hearing Aids | ${siteName}`,
       description: `Compare and buy ${heroKeyword} at ${siteName}.`,
-      url: "https://mediumslateblue-seahorse-306408.hostingersite.com",
+      url: "https://insonohearing.com",
       siteName,
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
-      title: `Best Hearing Aids in India | ${siteName}`,
+      title: `Best Digital Hearing Aids in India | ${siteName}`,
       description: `Discover ${heroKeyword} and choose the best fit for your hearing needs.`,
     },
   };
@@ -44,7 +44,6 @@ export default function HomePage() {
         <HeroSection />
         <ProductSection />
       </section>
-
       <HearingaidType />
       <Whychoose />
       <Testomonial />
