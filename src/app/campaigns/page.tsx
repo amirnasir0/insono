@@ -11,7 +11,7 @@ export default function HomePage() {
   return (
     <>
       <section className="relative min-h-[90vh] bg-gradient-to-b from-[#eaf5ff] to-white flex flex-col items-center justify-center text-center">
-        <Hero />123
+        <Hero />
       </section>
       <section className="relative min-h-[90vh] bg-gradient-to-b from-[#fff] to-white flex flex-col items-center justify-center text-center -mt-10">
         <ProductSection />
