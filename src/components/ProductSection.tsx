@@ -230,10 +230,22 @@ export default function ProductSection() {
           .slice(0, 4);
 
   return (
-    <section className="max-w-7xl mx-auto px-6 md:px-20 sm:-mt-16">
-      <h2 className="text-2xl font-bold mb-6 text-center">
-        Explore Our Products
-      </h2>
+    <section className="max-w-7xl mx-auto px-6 py-6 md:px-20 mt-6">
+      <div className="text-center mb-10">
+  <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold leading-snug mb-3">
+    <span className="bg-gradient-to-r from-[#E83D6D] via-[#184A99] to-[#7C7C7C] bg-clip-text text-transparent">
+      Explore Our Range of Digital Hearing Aids
+    </span>
+  </h2>
+
+  <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
+    Discover the latest <strong>hearing aid models</strong> designed for every need —
+    from powerful <strong>behind-the-ear (BTE)</strong> devices to discreet{" "}
+    <strong>completely-in-canal (CIC)</strong> options.  
+   
+  </p>
+</div>
+
 
       {/* Category buttons */}
       <div className="flex gap-3 justify-center mb-10 flex-wrap">

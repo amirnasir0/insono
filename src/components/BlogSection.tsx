@@ -55,9 +55,20 @@ export default function BlogSection() {
 
   return (
     <section className="py-10 max-w-7xl mx-auto px-6 md:px-20">
-      <h2 className="text-2xl font-bold mb-6 text-center">
-        Latest Articles from our blog
-      </h2>
+      <div className="text-center mb-10">
+  <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold leading-snug mb-3">
+    <span className="bg-gradient-to-r from-[#E83D6D] via-[#184A99] to-[#7C7C7C] bg-clip-text text-transparent">
+      Latest Articles on Hearing Aids & Hearing Health
+    </span>
+  </h2>
+
+  <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
+    Stay informed with expert tips, guides, and the newest updates on{" "}
+    <strong>digital hearing aids</strong>, <strong>hearing health care</strong>, 
+    and <strong>technology trends</strong> that help you hear better every day.
+  </p>
+</div>
+
 
       <div className="flex gap-6 overflow-x-auto scrollbar-hide">
         {blogs.map((blog) => (

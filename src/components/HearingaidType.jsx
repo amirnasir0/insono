@@ -4,12 +4,12 @@ import { Dialog } from "@headlessui/react";
 import Image from "next/image";
 
 const items = [
-  { id: 1, name: "Receiver In Canal", image: "/ric-signia.png", video: "https://www.youtube.com/embed/VIDEO_ID1" },
-  { id: 2, name: "Behind The Ear", image: "/bte.png", video: "https://www.youtube.com/embed/VIDEO_ID2" },
-  { id: 3, name: "Inside The Canal", image: "/itc.png", video: "https://www.youtube.com/embed/VIDEO_ID3" },
-  { id: 4, name: "Completely In Canal", image: "/cic.png", video: "https://www.youtube.com/embed/VIDEO_ID4" },
-  { id: 5, name: "Invisible In Canal", image: "/iic-starkey.png", video: "https://www.youtube.com/embed/VIDEO_ID5" },
-  { id: 6, name: "Inside The Ear", image: "/ite.png", video: "https://www.youtube.com/embed/VIDEO_ID6" },
+  { id: 1, name: "Receiver In Canal", image: "/ric-signia.png", video: "https://www.youtube.com/watch?v=zSaQ25BGjsc" },
+  { id: 2, name: "Behind The Ear", image: "/bte.png", video: "https://www.youtube.com/watch?v=zSaQ25BGjsc" },
+  { id: 3, name: "Inside The Canal", image: "/itc.png", video: "https://www.youtube.com/watch?v=zSaQ25BGjsc" },
+  { id: 4, name: "Completely In Canal", image: "/cic.png", video: "https://www.youtube.com/watch?v=zSaQ25BGjsc" },
+  { id: 5, name: "Invisible In Canal", image: "/iic-starkey.png", video: "https://www.youtube.com/watch?v=zSaQ25BGjsc" },
+  { id: 6, name: "Inside The Ear", image: "/ite.png", video: "https://www.youtube.com/watch?v=zSaQ25BGjsc" },
 ];
 
 export default function HearingAidTypes() {
@@ -19,9 +19,17 @@ export default function HearingAidTypes() {
   return (
     <section className="py-12 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-2xl font-bold text-center text-gray-800 mb-8">
-          Types of Hearing Aids
-        </h2>
+        <div className="text-center mb-10">
+  <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold leading-snug">
+    <span className="bg-gradient-to-r from-[#E83D6D] via-[#184A99] to-[#7C7C7C] bg-clip-text text-transparent">
+      Discover the Different Types of Hearing Aids for Better Hearing
+    </span>
+  </h2>
+  <p className="mt-3 text-sm sm:text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
+    Learn about the latest <strong>digital hearing aids</strong>, from behind-the-ear (BTE) to completely-in-canal (CIC) devices.  
+    Find the right style, features, and comfort level that suit your lifestyle.
+  </p>
+</div>
 
         <div className="flex flex-wrap justify-center gap-8">
           {items.map((item) => (

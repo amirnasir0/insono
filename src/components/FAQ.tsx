@@ -86,7 +86,7 @@ export default function FAQ() {
             today.
           </p>
           <a
-            href="/form"
+            href="/appointment"
             className="inline-block bg-white text-[#023784] font-semibold px-6 py-3 rounded-lg shadow hover:bg-gray-100 transition"
           >
             Book a Free Consultation
