@@ -47,7 +47,7 @@ export default function BlogPage() {
           {posts.map((post) => (
             <Link href={`/blog/${post.slug}`} key={post.id}>
               <div className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden cursor-pointer">
-                {/* <div className="relative w-full h-48">
+                <div className="relative w-full h-48">
                   {post.featuredImage?.node?.sourceUrl && (
                     <Image
                       src={post.featuredImage.node.sourceUrl}
@@ -56,7 +56,7 @@ export default function BlogPage() {
                       className="object-cover"
                     />
                   )}
-                </div> */}
+                </div>
 
                 <div className="p-5">
                   <h2 className="text-lg font-semibold text-gray-800 mb-2">

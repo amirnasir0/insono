@@ -103,15 +103,7 @@ export default async function BlogPage(props: BlogPageProps) {
   return (
     <div className="max-w-5xl mx-auto py-10 px-4 pt-24">
       {post.featuredImage?.node?.sourceUrl && (
-        <div className="relative w-full h-80 mb-6">
-          <Image
-            src={post.featuredImage.node.sourceUrl}
-            alt={post.title}
-            fill
-            sizes="(max-width: 768px) 100vw, 800px"
-            className="object-cover rounded-md"
-          />
-        </div>
+        // 
       )}
       <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
       <p className="text-sm text-gray-500 mb-6">
