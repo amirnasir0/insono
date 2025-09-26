@@ -4,12 +4,12 @@ import { Dialog } from "@headlessui/react";
 import Image from "next/image";
 
 const items = [
-  { id: 1, name: "Receiver In Canal", image: "/ric-signia.png", video: "https://www.youtube.com/watch?v=zSaQ25BGjsc" },
-  { id: 2, name: "Behind The Ear", image: "/bte.png", video: "https://www.youtube.com/watch?v=zSaQ25BGjsc" },
-  { id: 3, name: "Inside The Canal", image: "/itc.png", video: "https://www.youtube.com/watch?v=zSaQ25BGjsc" },
-  { id: 4, name: "Completely In Canal", image: "/cic.png", video: "https://www.youtube.com/watch?v=zSaQ25BGjsc" },
-  { id: 5, name: "Invisible In Canal", image: "/iic-starkey.png", video: "https://www.youtube.com/watch?v=zSaQ25BGjsc" },
-  { id: 6, name: "Inside The Ear", image: "/ite.png", video: "https://www.youtube.com/watch?v=zSaQ25BGjsc" },
+  { id: 1, name: "Receiver In Canal", image: "/ric-signia.png", video: "https://www.youtube.com/embed/zSaQ25BGjsc" },
+  { id: 2, name: "Behind The Ear", image: "/bte.png", video: "https://www.youtube.com/embed/zSaQ25BGjsc" },
+  { id: 3, name: "Inside The Canal", image: "/itc.png", video: "https://www.youtube.com/embed/zSaQ25BGjsc" },
+  { id: 4, name: "Completely In Canal", image: "/cic.png", video: "https://www.youtube.com/embed/zSaQ25BGjsc" },
+  { id: 5, name: "Invisible In Canal", image: "/iic-starkey.png", video: "https://www.youtube.com/embed/zSaQ25BGjsc" },
+  { id: 6, name: "Inside The Ear", image: "/ite.png", video: "https://www.youtube.com/embed/zSaQ25BGjsc" },
 ];
 
 export default function HearingAidTypes() {
