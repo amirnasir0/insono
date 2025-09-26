@@ -92,7 +92,7 @@ export default function HeroSection() {
         {/* Logos */}
         <div className="mt-8">
           <p className="text-sm md:text-base lg:text-lg text-gray-500 mb-4 text-center">
-  We're an <span className="font-semibold text-gray-700">official partner</span> of leading hearing aid brands.
+  We are an <span className="font-semibold text-gray-700">official partner</span> of leading hearing aid brands.
 </p>
           <div className="relative overflow-hidden w-full h-16 sm:h-20">
             <div
@@ -245,7 +245,7 @@ export default function HeroSection() {
           {/* Logos */}
           <div className="mt-8">
             <p className="text-sm md:text-base text-gray-500 mb-4">
-  We're an <span className="font-semibold text-gray-700">official partner</span> of leading hearing aid brands.
+  We are an <span className="font-semibold text-gray-700">official partner</span> of leading hearing aid brands.
 </p>
             <div className="relative overflow-hidden w-full h-20">
               <div
