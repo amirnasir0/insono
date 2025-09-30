@@ -250,7 +250,7 @@ export default function Navigation() {
               )}
             </div>
 
-            <Link href="/clinics" className="px-2 py-1 hover:text-[#023784]">
+            <Link href="/our-clinic" className="px-2 py-1 hover:text-[#023784]">
               Our Clinics
             </Link>
             <Link

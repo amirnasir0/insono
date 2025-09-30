@@ -20,8 +20,8 @@ interface Clinic {
 const clinics: Clinic[] = [
   {
     id: "vinod-nagar",
-    name: "Insono Hearing Cänic - Vinod Nagar",
-    locationLine: "VütOd Nagar — Dehi",
+    name: "Insono Hearing Clinic - Vinod Nagar",
+    locationLine: "Vinod Nagar — Dehi",
     address:
       "0-251 Ground Floor, O Block. West Vinod Nagar, New Delhi - 110092",
     hours: "Open by pm",
@@ -29,7 +29,7 @@ const clinics: Clinic[] = [
   },
   {
     id: "banka",
-    name: "Insono Hearing Cünic",
+    name: "Insono Hearing Clinic",
     locationLine: "Banka — Bihar",
     address:
       "Enjoy Better Hearing In, Navjy0ti Nursing Horne, near Indian Petrol Pump, Jagatpur. Banka. Bihar • 813102 India",
@@ -54,7 +54,7 @@ const clinics: Clinic[] = [
   },
   {
     id: "noida",
-    name: "Insono Hearing Cünic - Noida",
+    name: "Insono Hearing Clinic - Noida",
     locationLine: "Noida — Uttar Pridesh",
     address:
       "E -142 Ground Floor, Sec 20. Noida Kerala Ayurveda Uttar Pradesh - 201301",
@@ -71,8 +71,8 @@ const clinics: Clinic[] = [
   },
   {
     id: "dehradun",
-    name: "Insono Hearing Cänic",
-    locationLine: "Dehradun — Uttrühand",
+    name: "Insono Hearing Clinic",
+    locationLine: "Dehradun — Uttarakhand",
     address: "Dehradun",
     hours: "Open by 7 pm",
     tag: "- Dehradun",
@@ -80,7 +80,7 @@ const clinics: Clinic[] = [
   {
     id: "gurgaon",
     name: "Insono Hearing Clinic - Gurgaon",
-    locationLine: "Gurgson — H&yana",
+    locationLine: "Gurgson — Haryana",
     address:
       "Shop No-232, First Floor. Central Arcade. Mehrauli Gurgaon Rd Opposite Sahara Mall. A Bbck. DLF Phase 2, Sector 25. Gurugram Sarho,L Haryana 122008",
     hours: "Open Closes by pm",
@@ -125,14 +125,14 @@ const clinics: Clinic[] = [
   },
   {
     id: "jalandhar",
-    name: "Insono Hearing Cänic - Jalandhar",
+    name: "Insono Hearing Clinic - Jalandhar",
     locationLine: "Service",
     address: "Jalandhar",
     hours: "Open Closes by 7 pm",
   },
   {
     id: "jammu",
-    name: "Insono Hearing Cänic - Jammu",
+    name: "Insono Hearing Clinic - Jammu",
     locationLine: "Jammu — Jammu & Kashmir",
     address: "Jammu",
     hours: "Service Open Closes by 7 pm",

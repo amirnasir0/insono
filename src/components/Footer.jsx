@@ -20,16 +20,16 @@ export default function Footer() {
             />
             <p className="text-sm mb-4">
               To connect with a hearing expert today,{" "}
-              <a href="mailto:info@insono.com" className="underline text-white">
+              <a href="mailto:insonohearing@gmail.com" className="underline text-white">
                 email us
               </a>{" "}
               or call{" "}
-              <a href="tel:+916206372640" className="underline text-white">
-                +91 62063 72640
+              <a href="tel:+916204260510" className="underline text-white">
+                +91 6204260510
               </a>
             </p>
             <a
-              href="/contactUs"
+              href="/contact-us"
               className="inline-block border border-white text-white px-4 py-2 rounded-md hover:bg-white hover:text-gray-900 transition"
             >
               Contact us
@@ -41,8 +41,8 @@ export default function Footer() {
             <h4 className="text-white font-semibold mb-3">Company</h4>
             <ul className="space-y-2 text-sm">
               <li><a href="/about" className="hover:text-white">About Us</a></li>
-              <li><a href="/clinics" className="hover:text-white">Our Clinics</a></li>
-              <li><a href="/contactUs" className="hover:text-white">Awards & Certifications</a></li>
+              <li><a href="/our-clinic" className="hover:text-white">Our Clinics</a></li>
+              <li><a href="/contact-us" className="hover:text-white">Awards & Certifications</a></li>
               <li><a href="/testomonial" className="hover:text-white">Customer Reviews</a></li>
               <li><a href="/blog" className="hover:text-white">Official Blog</a></li>
 
@@ -66,9 +66,9 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-semibold mb-3">Help & Support</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="/contactUs" className="hover:text-white">Free Appointment</a></li>
+              <li><a href="/contact-us" className="hover:text-white">Free Appointment</a></li>
               <li><a href="/guide" className="hover:text-white">Hearing Aid Guide</a></li>
-              <li><a href="/contactUs" className="hover:text-white">Contact Us</a></li>
+              <li><a href="/contact-us" className="hover:text-white">Contact Us</a></li>
               <li><a href="/faq" className="hover:text-white">Warranty & Repairs</a></li>
               <li><a href="/faq" className="hover:text-white">Financing Options</a></li>
             </ul>
