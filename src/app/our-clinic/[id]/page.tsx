@@ -1,13 +1,14 @@
 import { notFound } from "next/navigation";
 import { clinics, defaultFaqs } from "../clinics-data";
 import HearingAidTypes from "@/components/HearingaidType";
+import type { Metadata } from "next";
 
-interface Props {
+type PageProps = {
   params: { id: string };
-}
+};
 
 // ✅ Dynamic SEO metadata
-export function generateMetadata({ params }: Props) {
+export function generateMetadata({ params }: PageProps): Metadata {
   const clinic = clinics.find((c) => c.id === params.id);
   if (!clinic) return {};
 
@@ -17,18 +18,18 @@ export function generateMetadata({ params }: Props) {
   };
 }
 
-export default function ClinicDetailPage({ params }: Props) {
+export default function ClinicDetailPage({ params }: PageProps) {
   const clinic = clinics.find((c) => c.id === params.id);
 
   if (!clinic) return notFound();
 
-  // ✅ Build FAQs for this clinic dynamically
+  // ✅ Build FAQs dynamically
   const faqs = defaultFaqs.map((f) => {
-  const q = f.question(clinic.name, clinic.address);
-  const a =
-    typeof f.answer === "function" ? f.answer(clinic.address) : f.answer;
-  return { question: q, answer: a };
-});
+    const q = f.question(clinic.name, clinic.address);
+    const a =
+      typeof f.answer === "function" ? f.answer(clinic.address) : f.answer;
+    return { question: q, answer: a };
+  });
 
   // ✅ FAQ Schema for Google
   const faqSchema = {
@@ -63,7 +64,6 @@ export default function ClinicDetailPage({ params }: Props) {
 
   return (
     <main className="max-w-5xl mx-auto py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 text-gray-900">
-
       {/* ✅ Structured data (Clinic + FAQ) */}
       <script
         type="application/ld+json"
@@ -84,8 +84,6 @@ export default function ClinicDetailPage({ params }: Props) {
         <span className="text-gray-500">{clinic.hours}</span>
       </div>
 
-     
-
       <div className="mt-8">
         <a
           href={`/appointment?cat=${encodeURIComponent(
@@ -93,12 +91,14 @@ export default function ClinicDetailPage({ params }: Props) {
           )}&slug=${encodeURIComponent(clinic.id)}`}
           className="px-6 py-3 bg-[#023784] text-white rounded-md font-semibold hover:bg-[#012a5a]"
         >
-          Book Appointment at {clinic.id}
+          Book Appointment at {clinic.name}
         </a>
       </div>
-<section className="mt-12">
-    <HearingAidTypes/>
-</section>
+
+      {/* Hearing Aid Types Component */}
+      <section className="mt-12">
+        <HearingAidTypes />
+      </section>
 
       {/* ✅ FAQ Section */}
       <section className="mt-12">
