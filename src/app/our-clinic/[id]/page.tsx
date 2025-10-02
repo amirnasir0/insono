@@ -89,7 +89,7 @@ export default async function ClinicDetailPage({ params }: ClinicPageParams) {
           )}&slug=${encodeURIComponent(clinic.id)}`}
           className="px-6 py-3 bg-[#023784] text-white rounded-md font-semibold hover:bg-[#012a5a]"
         >
-          Book Appointment at {clinic.name}
+          Book Appointment at {clinic.id}
         </a>
       </div>
 
