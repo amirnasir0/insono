@@ -288,7 +288,7 @@ export default function Navigation() {
 
         {/* Mobile Menu */}
         <div className="flex md:hidden items-center gap-6 text-sm text-gray-700 mr-4">
-          <Link href="/clinics" className="flex flex-col items-center">
+          <Link href="/our-clinic" className="flex flex-col items-center">
             <MapPin size={20} className="text-[#023784]" />
             <span className="text-xs">Clinics</span>
           </Link>
