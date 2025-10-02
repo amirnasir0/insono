@@ -3,12 +3,12 @@ import { clinics, defaultFaqs } from "../clinics-data";
 import HearingAidTypes from "@/components/HearingaidType";
 import type { Metadata } from "next";
 
-type PageProps = {
-  params: { id: string };
-};
-
 // ✅ Dynamic SEO metadata
-export function generateMetadata({ params }: PageProps): Metadata {
+export function generateMetadata({
+  params,
+}: {
+  params: { id: string };
+}): Metadata {
   const clinic = clinics.find((c) => c.id === params.id);
   if (!clinic) return {};
 
@@ -18,7 +18,11 @@ export function generateMetadata({ params }: PageProps): Metadata {
   };
 }
 
-export default function ClinicDetailPage({ params }: PageProps) {
+export default function ClinicDetailPage({
+  params,
+}: {
+  params: { id: string };
+}) {
   const clinic = clinics.find((c) => c.id === params.id);
 
   if (!clinic) return notFound();
@@ -73,7 +77,9 @@ export default function ClinicDetailPage({ params }: PageProps) {
       />
 
       {/* Clinic Info */}
-      <h1 className="text-3xl font-bold text-[#112f70]">{clinic.name}</h1>
+      <h1 className="text-3xl sm:text-4xl font-bold text-[#112f70]">
+        {clinic.name}
+      </h1>
       <p className="mt-2 text-gray-600">{clinic.locationLine}</p>
       <p className="mt-4 text-lg">{clinic.address}</p>
 
@@ -84,6 +90,7 @@ export default function ClinicDetailPage({ params }: PageProps) {
         <span className="text-gray-500">{clinic.hours}</span>
       </div>
 
+      {/* CTA */}
       <div className="mt-8">
         <a
           href={`/appointment?cat=${encodeURIComponent(
@@ -95,7 +102,7 @@ export default function ClinicDetailPage({ params }: PageProps) {
         </a>
       </div>
 
-      {/* Hearing Aid Types Component */}
+      {/* Hearing Aid Types */}
       <section className="mt-12">
         <HearingAidTypes />
       </section>
