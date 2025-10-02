@@ -3,8 +3,13 @@ import { clinics, defaultFaqs } from "../clinics-data";
 import HearingAidTypes from "@/components/HearingaidType";
 import type { Metadata } from "next";
 
-// ✅ Let Next.js infer param types
-export function generateMetadata({ params }: any): Metadata {
+// ✅ Define the param type
+type ClinicPageParams = {
+  params: { id: string };
+};
+
+// ✅ Metadata with strong typing
+export function generateMetadata({ params }: ClinicPageParams): Metadata {
   const clinic = clinics.find((c) => c.id === params.id);
   if (!clinic) return {};
 
@@ -14,7 +19,8 @@ export function generateMetadata({ params }: any): Metadata {
   };
 }
 
-export default function ClinicDetailPage({ params }: any) {
+// ✅ Page component with strong typing
+export default function ClinicDetailPage({ params }: ClinicPageParams) {
   const clinic = clinics.find((c) => c.id === params.id);
 
   if (!clinic) return notFound();
@@ -79,7 +85,8 @@ export default function ClinicDetailPage({ params }: any) {
           href={`/appointment?cat=${encodeURIComponent(
             clinic.catSlug || clinic.id
           )}&slug=${encodeURIComponent(clinic.id)}`}
-          className="px-6 py-3 bg-[#023784] text-white rounded-md font-semibold hover:bg-[#012a5a]">
+          className="px-6 py-3 bg-[#023784] text-white rounded-md font-semibold hover:bg-[#012a5a]"
+        >
           Book Appointment at {clinic.name}
         </a>
       </div>
