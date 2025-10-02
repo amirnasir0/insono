@@ -12,17 +12,23 @@ const nextConfig: NextConfig = {
 
   async redirects() {
     return [
-      // {
-      //   // Match ONLY when something comes after /our-clinic/
-      //   source: "/our-clinic/:path+",
-      //   destination: "/our-clinic",
-      //   permanent: true,
-      // },
+      {
+        // Match ONLY when something comes after /our-clinic/
+        source: "/digital-hearing-aid/:path+",
+        destination: "/our-clinic",
+        permanent: true,
+      },
       {
         source: "/our-clinic/insono-hearing-clinic-deoghar",
         destination: "/our-clinic/deoghar",
         permanent: true, // 301 redirect (SEO-friendly)
       },
+      {
+        source: "/hearing-aid-clinic-deoghar",
+        destination: "/our-clinic/deoghar",
+        permanent: true, // 301 redirect (SEO-friendly)
+      },
+      
 
 
        {
