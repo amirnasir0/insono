@@ -3,12 +3,8 @@ import { clinics, defaultFaqs } from "../clinics-data";
 import HearingAidTypes from "@/components/HearingaidType";
 import type { Metadata } from "next";
 
-// ✅ Dynamic SEO metadata
-export function generateMetadata({
-  params,
-}: {
-  params: { id: string };
-}): Metadata {
+// ✅ Let Next.js infer param types
+export function generateMetadata({ params }: any): Metadata {
   const clinic = clinics.find((c) => c.id === params.id);
   if (!clinic) return {};
 
@@ -18,16 +14,11 @@ export function generateMetadata({
   };
 }
 
-export default function ClinicDetailPage({
-  params,
-}: {
-  params: { id: string };
-}) {
+export default function ClinicDetailPage({ params }: any) {
   const clinic = clinics.find((c) => c.id === params.id);
 
   if (!clinic) return notFound();
 
-  // ✅ Build FAQs dynamically
   const faqs = defaultFaqs.map((f) => {
     const q = f.question(clinic.name, clinic.address);
     const a =
@@ -35,21 +26,16 @@ export default function ClinicDetailPage({
     return { question: q, answer: a };
   });
 
-  // ✅ FAQ Schema for Google
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     mainEntity: faqs.map((faq) => ({
       "@type": "Question",
       name: faq.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.answer,
-      },
+      acceptedAnswer: { "@type": "Answer", text: faq.answer },
     })),
   };
 
-  // ✅ Clinic Schema
   const clinicSchema = {
     "@context": "https://schema.org",
     "@type": "MedicalClinic",
@@ -68,7 +54,6 @@ export default function ClinicDetailPage({
 
   return (
     <main className="max-w-5xl mx-auto py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 text-gray-900">
-      {/* ✅ Structured data (Clinic + FAQ) */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -76,7 +61,6 @@ export default function ClinicDetailPage({
         }}
       />
 
-      {/* Clinic Info */}
       <h1 className="text-3xl sm:text-4xl font-bold text-[#112f70]">
         {clinic.name}
       </h1>
@@ -90,24 +74,20 @@ export default function ClinicDetailPage({
         <span className="text-gray-500">{clinic.hours}</span>
       </div>
 
-      {/* CTA */}
       <div className="mt-8">
         <a
           href={`/appointment?cat=${encodeURIComponent(
             clinic.catSlug || clinic.id
           )}&slug=${encodeURIComponent(clinic.id)}`}
-          className="px-6 py-3 bg-[#023784] text-white rounded-md font-semibold hover:bg-[#012a5a]"
-        >
+          className="px-6 py-3 bg-[#023784] text-white rounded-md font-semibold hover:bg-[#012a5a]">
           Book Appointment at {clinic.name}
         </a>
       </div>
 
-      {/* Hearing Aid Types */}
       <section className="mt-12">
         <HearingAidTypes />
       </section>
 
-      {/* ✅ FAQ Section */}
       <section className="mt-12">
         <h2 className="text-2xl font-bold text-[#112f70] mb-4">
           Frequently Asked Questions
