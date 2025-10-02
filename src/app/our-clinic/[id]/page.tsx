@@ -3,14 +3,15 @@ import { clinics, defaultFaqs } from "../clinics-data";
 import HearingAidTypes from "@/components/HearingaidType";
 import type { Metadata } from "next";
 
-// ✅ Define the param type
+// ✅ Updated: Define params as a Promise for Next.js 15
 type ClinicPageParams = {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 };
 
-// ✅ Metadata with strong typing
-export function generateMetadata({ params }: ClinicPageParams): Metadata {
-  const clinic = clinics.find((c) => c.id === params.id);
+// ✅ Updated: Make function async and await params
+export async function generateMetadata({ params }: ClinicPageParams): Promise<Metadata> {
+  const { id } = await params; // Await the params promise
+  const clinic = clinics.find((c) => c.id === id);
   if (!clinic) return {};
 
   return {
@@ -19,9 +20,10 @@ export function generateMetadata({ params }: ClinicPageParams): Metadata {
   };
 }
 
-// ✅ Page component with strong typing
-export default function ClinicDetailPage({ params }: ClinicPageParams) {
-  const clinic = clinics.find((c) => c.id === params.id);
+// ✅ Updated: Page component is now async and awaits params
+export default async function ClinicDetailPage({ params }: ClinicPageParams) {
+  const { id } = await params; // Await the params promise
+  const clinic = clinics.find((c) => c.id === id);
 
   if (!clinic) return notFound();
 
