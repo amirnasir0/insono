@@ -116,7 +116,7 @@ export default function HearingAidPricesPage() {
       <section className="mb-16">
         <div className="grid md:grid-cols-3 gap-6 text-center">
           <div className="p-6 border rounded-lg bg-green-50">
-            <p className="font-semibold">Up to 50% Discount</p>
+            <p className="font-semibold">Home Visit Options</p>
           </div>
           <div className="p-6 border rounded-lg bg-blue-50">
             <p className="font-semibold">Price Match Guarantee</p>

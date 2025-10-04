@@ -42,7 +42,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm">
               <li><a href="/about-us" className="hover:text-white">About Us</a></li>
               <li><a href="/our-clinic" className="hover:text-white">Our Clinics</a></li>
-              <li><a href="/contact-us" className="hover:text-white">Awards & Certifications</a></li>
+              <li><a href="/awards" className="hover:text-white">Awards & Certifications</a></li>
               <li><a href="/testimonial" className="hover:text-white">Customer Reviews</a></li>
               <li><a href="/blog" className="hover:text-white">Official Blog</a></li>
 
@@ -53,11 +53,11 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-semibold mb-3">Hearing Solutions</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="/digital-hearing-aids" className="hover:text-white">Digital Hearing Aids</a></li>
-              <li><a href="/invisible-hearing-aids" className="hover:text-white">Invisible Hearing Aids</a></li>
-              <li><a href="/ric-hearing-aids" className="hover:text-white">Receiver In Canal</a></li>
-              <li><a href="/bte-hearing-aids" className="hover:text-white">Behind The Ear</a></li>
-              <li><a href="/bte-hearing-aids" className="hover:text-white">Rechargeable Hearing Aids</a></li>
+              <li><a href="/hearing-aid-price" className="hover:text-white">Digital Hearing Aids</a></li>
+              <li><a href="/hearing-aid-price" className="hover:text-white">Invisible Hearing Aids</a></li>
+              <li><a href="/hearing-aid-price" className="hover:text-white">Receiver In Canal</a></li>
+              <li><a href="/hearing-aid-price" className="hover:text-white">Behind The Ear</a></li>
+              <li><a href="/hearing-aid-price" className="hover:text-white">Rechargeable Hearing Aids</a></li>
 
             </ul>
           </div>
