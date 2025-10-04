@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title:
     "Work with Insono Hearing | Jobs for Audiologist, SEO Executive & Telecaller Jobs in India",
   description:
-    "Join Insono Hearing. India’s trusted hearing care network. Explore Audiologist & Telecaller jobs. Work with purpose and grow your career.",
+    "Join Insono Hearing. India&apos;s trusted hearing care network. Explore Audiologist & Telecaller jobs. Work with purpose and grow your career.",
   alternates: { canonical: "https://www.insonohearing.com/careers" },
   openGraph: {
     title: "Careers at Insono Hearing",
@@ -62,7 +62,7 @@ const faqJsonLd = {
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Yes, we periodically hire interns and fresh graduates for telecalling, clinic support, and digital roles. Send your resume with the subject 'General Application – Internship/Fresher'.",
+          "Yes, we periodically hire interns and fresh graduates for telecalling, clinic support, and digital roles. Send your resume with the subject General Application – Internship/Fresher.",
       },
     },
     {
@@ -304,7 +304,7 @@ export default function CareersPage() {
             </h2>
             <p className="text-center text-gray-600 max-w-3xl mx-auto mt-3">
   At Insono Hearing, we believe work should feel meaningful, collaborative, and inspiring.
-  Every day, our team comes together to improve lives through better hearing — whether it's
+  Every day, our team comes together to improve lives through better hearing — whether it&apos;s
   helping a patient rediscover sound, building new digital solutions, or supporting each other’s
   growth. We celebrate small wins, encourage ideas from everyone, and foster a culture where
   learning and empathy are just as important as performance.
