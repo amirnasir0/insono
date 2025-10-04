@@ -30,22 +30,22 @@ export default function HearingAidPricesPage() {
         </h2>
         <div className="grid md:grid-cols-3 gap-6">
           <div className="p-6 border rounded-lg shadow-sm hover:shadow-md transition text-center">
-            <h3 className="text-xl font-bold mb-2">Economy</h3>
-            <p className="text-gray-500 mb-4">₹15,000 – ₹30,000</p>
+            <h3 className="text-xl font-bold mb-2">Basic</h3>
+            <p className="text-gray-500 mb-4">₹15,000 – ₹50,000</p>
             <p className="text-sm text-gray-600">
               Basic amplification and everyday support.
             </p>
           </div>
           <div className="p-6 border rounded-lg shadow-sm hover:shadow-md transition text-center">
-            <h3 className="text-xl font-bold mb-2">Mid-Range</h3>
-            <p className="text-gray-500 mb-4">₹30,000 – ₹70,000</p>
+            <h3 className="text-xl font-bold mb-2">Advance</h3>
+            <p className="text-gray-500 mb-4">₹50,000 – ₹150,000</p>
             <p className="text-sm text-gray-600">
               Rechargeable, Bluetooth connectivity, better clarity.
             </p>
           </div>
           <div className="p-6 border rounded-lg shadow-sm hover:shadow-md transition text-center">
             <h3 className="text-xl font-bold mb-2">Premium</h3>
-            <p className="text-gray-500 mb-4">₹70,000 – ₹1,50,000</p>
+            <p className="text-gray-500 mb-4">₹1,50,00 – ₹8,00,000</p>
             <p className="text-sm text-gray-600">
               AI-powered noise cancellation, sleek design, maximum comfort.
             </p>
@@ -82,8 +82,8 @@ export default function HearingAidPricesPage() {
               onChange={(e) => setBudget(e.target.value)}
             >
               <option value="">-- Choose --</option>
-              <option value="economy">Economy</option>
-              <option value="mid">Mid-Range</option>
+              <option value="economy">Basic</option>
+              <option value="mid">Advance</option>
               <option value="premium">Premium</option>
             </select>
           </div>
