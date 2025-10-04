@@ -32,11 +32,11 @@ export default function ContactFormPage() {
               value="https://prices.insonohearing.com/landing/pd-thank-you"
             />
             <input type="hidden" id="zc_gad" name="zc_gad" value="" />
-            <input type="hidden" name="utm_source" value="" />
+            <input type="hidden" name="utm_source" value="Google Organic" />
             <input type="hidden" name="utm_medium" value="" />
             <input type="hidden" name="utm_campaign" value="" />
             <input type="hidden" name="utm_term" value="" />
-            <input type="hidden" name="utm_content" value="" />
+            <input type="hidden" name="utm_content" value="price download" />
 
             {/* Form Fields */}
             <input

@@ -61,21 +61,21 @@ export default function HeroSection() {
   {/* Experts */}
   <div className="flex flex-col items-center">
     <Users className="w-5 h-5 text-black mb-1" />
-    <p className="text-xl font-bold text-black">5000+</p>
+    <p className="text-xl font-bold text-black">2 Lakh+</p>
     <p className="text-xs text-gray-600">Happy Customers</p>
   </div>
 
   {/* Clinics */}
   <div className="flex flex-col items-center">
     <MapPin className="w-5 h-5 text-black mb-1" />
-    <p className="text-xl font-bold text-black">22</p>
+    <p className="text-xl font-bold text-black">15+</p>
     <p className="text-xs text-gray-600">Clinics Across India</p>
   </div>
 
   {/* Specialties */}
   <div className="flex flex-col items-center">
     <Stethoscope className="w-5 h-5 text-black mb-1" />
-    <p className="text-xl font-bold text-black">30+</p>
+    <p className="text-xl font-bold text-black">100+</p>
     <p className="text-xs text-gray-600">Audiologists</p>
   </div>
 </div>
@@ -213,21 +213,21 @@ export default function HeroSection() {
   {/* Experts */}
   <div className="flex flex-col items-center">
     <Users className="w-5 h-5 text-black mb-1" />
-    <p className="text-xl font-bold text-black">5000+</p>
+    <p className="text-xl font-bold text-black">2 Lakh+</p>
     <p className="text-xs text-gray-600">Happy Customers</p>
   </div>
 
   {/* Clinics */}
   <div className="flex flex-col items-center">
     <MapPin className="w-5 h-5 text-black mb-1" />
-    <p className="text-xl font-bold text-black">22</p>
+    <p className="text-xl font-bold text-black">15+</p>
     <p className="text-xs text-gray-600">Clinics Across India</p>
   </div>
 
   {/* Specialties */}
   <div className="flex flex-col items-center">
     <Stethoscope className="w-5 h-5 text-black mb-1" />
-    <p className="text-xl font-bold text-black">30+</p>
+    <p className="text-xl font-bold text-black">100+</p>
     <p className="text-xs text-gray-600">Audiologists</p>
   </div>
 </div>
