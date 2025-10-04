@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title:
     "Work with Insono Hearing | Jobs for Audiologist, SEO Executive & Telecaller Jobs in India",
   description:
-    "Join Insono Hearing. India’s trusted hearing care network. Explore Audiologist, SEO Executive & Telecaller jobs. Work with purpose and grow your career.",
+    "Join Insono Hearing. India’s trusted hearing care network. Explore Audiologist & Telecaller jobs. Work with purpose and grow your career.",
   alternates: { canonical: "https://www.insonohearing.com/careers" },
   openGraph: {
     title: "Careers at Insono Hearing",
