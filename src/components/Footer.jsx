@@ -43,7 +43,7 @@ export default function Footer() {
               <li><a href="/about" className="hover:text-white">About Us</a></li>
               <li><a href="/our-clinic" className="hover:text-white">Our Clinics</a></li>
               <li><a href="/contact-us" className="hover:text-white">Awards & Certifications</a></li>
-              <li><a href="/testomonial" className="hover:text-white">Customer Reviews</a></li>
+              <li><a href="/testimonial" className="hover:text-white">Customer Reviews</a></li>
               <li><a href="/blog" className="hover:text-white">Official Blog</a></li>
 
             </ul>
