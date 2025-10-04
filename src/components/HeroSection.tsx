@@ -144,7 +144,7 @@ export default function HeroSection() {
           >
             {/* Hidden Fields */}
             <input type="hidden" name="zf_referrer_name" value="" />
-            <input type="hidden" name="zf_redirect_url" value="#" />
+            <input type="hidden" name="zf_redirect_url" value="https://prices.insonohearing.com/landing/apt-thank-you" />
             <input type="hidden" name="zc_gad" value="" />
             <input type="hidden" name="utm_source" value="Google Organic" />
             <input type="hidden" name="utm_medium" value="" />
