@@ -14,7 +14,7 @@ export default function HeroSection() {
     "/brands/resound.svg",
   ];
 
-  const heroImages = ["/hero1.png", "/hero2.png", "/hero3.png"];
+  const heroImages = ["/signia_bct2.png","/hero1.png", "/hero2.png", "/hero3.png"];
 
   const sliderSettings = {
     dots: false,

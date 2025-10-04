@@ -77,7 +77,7 @@ const clinics: Clinic[] = [
     id: "gurgaon",
     name: "Hearing Aid Clinic in Gurgaon",
     locationLine: "Gurgaon — Haryana",
-    address: "Shop No.232, First Floor, Central Arcade, Mehrauli Gurgaon Rd, Opposite Sahara Mall, A Block, DLF Phase 2, Sector 25, Gurugram, Haryana 122008",
+    address: "Shop No 232, First Floor, Central Arcade, Mehrauli Gurgaon Rd, Opposite Sahara Mall, A Block, DLF Phase 2, Sector 25, Gurugram, Haryana 122008",
     hours: "Open, Closes by 7 pm",
     tag: "Clinic",
   },

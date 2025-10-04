@@ -1,261 +1,177 @@
-"use client";
-
 import Image from "next/image";
-import Head from "next/head";
-import dynamic from "next/dynamic";
+import { Metadata } from "next";
+import { Target, Users, Shield, CheckCircle2 } from "lucide-react";
 
-// ✅ Dynamic import NextSeo (disable SSR to fix prerender error)
-const NextSeo = dynamic(() => import("next-seo").then((mod) => mod.NextSeo), {
-  ssr: false,
-});
+// ✅ Native Next.js SEO Metadata
+export const metadata: Metadata = {
+  title: "About Us | Insono Hearing Solutions",
+  description:
+    "Learn about Insono Hearing Solutions — trusted hearing care in India, led by Mr. Manoj Kumar with 10+ years of audiology experience.",
+  alternates: {
+    canonical: "https://www.insonohearing.com/about",
+  },
+  openGraph: {
+    title: "About Us | Insono Hearing Solutions",
+    description:
+      "Learn about Insono Hearing Solutions — trusted hearing care in India.",
+    url: "https://www.insonohearing.com/about",
+    siteName: "Insono Hearing Solutions",
+    images: [
+      {
+        url: "https://www.insonohearing.com/image/about-hero-new.jpeg",
+        width: 1200,
+        height: 630,
+        alt: "About Insono Hearing Solutions",
+      },
+    ],
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Us | Insono Hearing Solutions",
+    description:
+      "Learn about Insono Hearing Solutions — trusted hearing care in India.",
+    images: ["https://www.insonohearing.com/image/about-hero-new.jpeg"],
+  },
+};
+
+ 
 
 export default function AboutPage() {
-  const siteName = "Insono Hearing Solutions";
-  const siteUrl =
-    "https://mediumslateblue-seahorse-306408.hostingersite.com/about";
+  const values = [
+    {
+      icon: Target,
+      title: "Our Mission",
+      desc: "To provide top-quality hearing care with a personal touch and 100% patient satisfaction through trusted, customized solutions.",
+    },
+    {
+      icon: Users,
+      title: "Patient-First Approach",
+      desc: "Every individual receives dedicated attention and care to bring the joy of hearing back into their lives.",
+    },
+    {
+      icon: Shield,
+      title: "Unbiased Advice",
+      desc: "As an independent clinic, we are not owned by any hearing aid manufacturer — ensuring free and transparent guidance.",
+    },
+    {
+      icon: CheckCircle2,
+      title: "Trusted Expertise",
+      desc: "With 10+ years of audiology experience, we combine technology and compassion to deliver measurable impact.",
+    },
+  ];
 
   const doctors = [
     {
       id: 1,
       title: "Mr. Manoj Kumar, Director",
-      description: `The founder of Insono Hearing Solutions Pvt. Ltd., is a B.Tech graduate with a Diploma in Hearing,
-Language, and Speech (DHLS). With over 10+ years of experience in the audiology sector, he has built a
-reputation for delivering compassionate and personalized hearing care. His deep understanding of the
-challenges faced by those with hearing loss inspired him to create Insono Hearing Solutions, a
-company committed to providing tailored solutions that improve the lives of its patients. Under his
-leadership, the company has grown across India, helping individuals reconnect with the world around
-them.
-Driven by a patient-first approach, Mr. Manoj Kumar ensures every individual receives the attention
-and care they deserve, aiming to bring the joy of hearing back into their lives and impact their well-being.`,
-      image: "/image/a2.jpeg",
+      description: `The founder of Insono Hearing Solutions Pvt. Ltd., is a B.Tech graduate with a Diploma in Hearing, Language, and Speech (DHLS). With over 10+ years of experience in the audiology sector, he has built a reputation for delivering compassionate and personalized hearing care. His deep understanding of the challenges faced by those with hearing loss inspired him to create Insono Hearing Solutions, a company committed to providing tailored solutions that improve the lives of its patients. Under his leadership, the company has grown across India, helping individuals reconnect with the world around them.
+
+Driven by a patient-first approach, Mr. Manoj Kumar ensures every individual receives the attention and care they deserve, aiming to bring the joy of hearing back into their lives and impact their well-being.`,
+      image: "/manoj-singh.jpg",
     },
   ];
 
-  const awards = [
-    {
-      id: 1,
-      title:
-        "Insono Hearing Solutions Honored at Jagran Health Excellence Awards 2025",
-      description: `Insono Hearing Solutions Pvt. Ltd. was recognized at the Jagran Health Excellence Awards 2025 for excellence in hearing healthcare. Managing Director Mr. Manoj Kumar received the award from MP Dr. Nishikant Dubey.`,
-      image: "/image/a3.png",
-    },
-    {
-      id: 2,
-      title: "Jagran Health Excellence Awards 2025",
-      description: `Mr. Manoj Kumar, Managing Director of Insono Hearing Solutions Pvt. Ltd., honored at Jagran Health Excellence Awards 2025 for outstanding contributions in hearing healthcare. The event was graced by Hon'ble MP Dr. Nishikant Dubey and hosted by Dainik Jagran to celebrate excellence in the medical field.`,
-      image: "/image/a4.png",
-    },
-  ];
-
-  const contactNo = "+911234567890";
+ 
 
   return (
-    <div className="pt-24">
-      {/* ✅ SEO Meta Tags */}
-      <NextSeo
-        title={`About Us | ${siteName}`}
-        description={`Learn about ${siteName} – trusted hearing care in India, led by Mr. Manoj Kumar with 10+ years of audiology experience.`}
-        canonical={siteUrl}
-        openGraph={{
-          title: `About Us | ${siteName}`,
-          description: `Learn about ${siteName} – trusted hearing care in India.`,
-          url: siteUrl,
-          site_name: siteName,
-          images: [
-            {
-              url: "/image/a1.jpeg",
-              width: 1200,
-              height: 630,
-              alt: "About Insono Hearing Solutions",
-              type: "image/jpeg",
-            },
-          ],
-        }}
-      />
+    <main className="max-w-7xl mx-auto pt-24">
+      {/* 🧭 About Section */}
+      <section className="py-12 px-6 lg:px-12 space-y-8">
+        <div className="flex flex-col lg:flex-row items-center gap-10">
+          <div className="lg:w-6/12 w-full relative h-64 sm:h-80 md:h-96 lg:h-[500px] rounded-lg overflow-hidden shadow">
+            <Image
+              src="/manoj_singh.jpg"
+              alt="About Insono Hearing Solutions"
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+          <div className="lg:w-6/12">
+            <h1 className="text-3xl font-bold mb-4 text-gray-900">About Us</h1>
+            <p className="text-gray-700 leading-relaxed mb-6">
+              Hearing is an essential part of life, connecting us to the world
+              and each other. Yet, hearing loss often goes unnoticed, silently
+              affecting relationships and daily activities. At Insono Hearing
+              Solutions, we are dedicated to early detection, expert care, and
+              empowering people to rediscover the joy of sound.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {values.map((val) => (
+                <div
+                  key={val.title}
+                  className="p-4 border rounded-lg shadow-sm hover:shadow-md transition bg-white"
+                >
+                  <val.icon className="text-[#023784] mb-2" size={24} />
+                  <h3 className="font-semibold text-gray-900 mb-1">
+                    {val.title}
+                  </h3>
+                  <p className="text-sm text-gray-600">{val.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
-      {/* ✅ JSON-LD Structured Data */}
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "LocalBusiness",
-              name: siteName,
-              url: siteUrl,
-              logo: "/logo.png",
-              image: ["/image/a1.jpeg", "/image/a2.jpeg", "/image/a3.png"],
-              telephone: contactNo,
-              address: {
-                "@type": "PostalAddress",
-                addressCountry: "IN",
-              },
-              founder: {
-                "@type": "Person",
-                name: "Mr. Manoj Kumar",
-              },
-            }),
-          }}
-        />
-      </Head>
-
-      <main className="max-w-7xl mx-auto">
-        {/* About Us + Mission */}
-        <section
-          id="about"
-          className="py-12 px-6 lg:px-12 space-y-8"
-          aria-labelledby="about-heading"
-        >
-          <div className="flex flex-col lg:flex-row items-center gap-10">
-            <div className="lg:w-6/12 w-full h-64 sm:h-80 md:h-96 lg:h-[500px] relative rounded-lg overflow-hidden">
+      {/* 👤 Director Section */}
+      <section className="py-16 px-6 lg:px-12">
+        {doctors.map((doc) => (
+          <div
+            key={doc.id}
+            className="flex flex-col lg:flex-row items-center gap-10 rounded-lg bg-gray-50 p-8"
+          >
+            <div className="lg:w-4/12 w-full relative h-64 sm:h-80 md:h-96 rounded-lg overflow-hidden shadow">
               <Image
-                src="/image/a1.jpeg"
-                alt="About Insono Hearing Solutions"
+                src={doc.image}
+                alt={doc.title}
                 fill
                 className="object-cover"
-                priority
               />
             </div>
-            <article className="lg:w-6/12">
-              <h1
-                id="about-heading"
-                className="text-3xl font-bold mb-6 text-gray-900"
-              >
-                About Us
-              </h1>
-              <p className="text-gray-700 leading-relaxed whitespace-pre-line">
-                Hearing is an essential part of human life, allowing us to enjoy
-                sounds and connect with others. Often, hearing loss is not
-                noticed right away, making it a silent condition with very real
-                impacts. Hearing loss can be full or partial and may affect one
-                or both ears. It&apos;s one of the fastest-growing health issues
-                worldwide. Causes range from aging and infections to genetics,
-                long-term illnesses, and loud noise exposure. This can lead to
-                challenges in our relationships and daily activities.
-              </p>
-              <p className="text-gray-700 leading-relaxed whitespace-pre-line pt-6">
-                <span className="text-xl font-semibold">Our Mission</span> at{" "}
-                {siteName}, we&apos;re dedicated to providing top-quality
-                hearing care with a personal touch and a focus on 100% customer
-                satisfaction. We encourage patients to protect their hearing and
-                understand hearing loss, including ways to prevent it. By
-                building trust, our skilled audiologists and technical team work
-                closely with each patient, offering customized care for speech
-                and hearing needs. As an independent clinic, we&apos;re not
-                owned by any hearing aid manufacturer, allowing us to give free,
-                unbiased advice. We believe hearing is a vital part of life, and
-                we aim to support our patients in achieving better hearing
-                health and a more fulfilling life.
-              </p>
-            </article>
-          </div>
-        </section>
-
-        {/* Promotion Section */}
-        <section
-          id="promotion"
-          className="w-full bg-gradient-to-r from-[#4b72b5] to-[#023784] text-white rounded-2xl py-12 px-6 lg:px-12"
-        >
-          <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-6">
-            <div className="lg:w-2/3 text-center lg:text-left">
-              <h2 className="text-xl sm:text-2xl font-semibold mb-2">
-                Turn Up the Volume on Your Savings!
+            <div className="lg:w-8/12">
+              <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-gray-900">
+                {doc.title}
               </h2>
-              <p className="text-3xl font-bold">Rs. 20,000 on Hearing Aids.</p>
-            </div>
-            <div className="flex gap-4 justify-center lg:justify-end w-full lg:w-1/3">
-              <a
-                href={`tel:${contactNo}`}
-                className="bg-white text-[#023784] font-semibold px-6 py-3 rounded-lg shadow hover:bg-gray-100 transition w-full lg:w-auto text-center"
-              >
-                Call Us Now
-              </a>
-              <a
-                href={`https://wa.me/${contactNo}?text=Hello%F0%9F%91%8B%20Can%20I%20Get%20More%20Information%20About%20Insono%20Hearing%20Solutions%20Pvt.%20Ltd%20%3F%3F`}
-                className="bg-[#008212] font-semibold px-6 py-3 rounded-lg shadow hover:bg-green-700 transition w-full lg:w-auto text-center"
-              >
-                WhatsApp
-              </a>
+              <p className="text-gray-700 leading-relaxed whitespace-pre-line">
+                {doc.description}
+              </p>
             </div>
           </div>
-        </section>
+        ))}
+      </section>
 
-        {/* Director Section */}
-        <section
-          id="director"
-          className="py-16 px-6 lg:px-12 space-y-12"
-          aria-labelledby="director-heading"
-        >
-          {doctors.map((doc) => (
-            <article
-              key={doc.id}
-              className="flex flex-col lg:flex-row items-center gap-8 rounded-lg p-6"
-            >
-              <div className="lg:w-4/12 w-full h-64 sm:h-80 md:h-96 lg:h-[500px] relative rounded-lg overflow-hidden">
-                <Image
-                  src={doc.image}
-                  alt={doc.title}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="lg:w-8/12">
-                <h2
-                  id="director-heading"
-                  className="text-3xl lg:text-5xl font-bold mb-4 text-gray-900"
-                >
-                  {doc.title}
-                </h2>
-                <p className="text-gray-700 leading-relaxed whitespace-pre-line">
-                  {doc.description}
-                </p>
-              </div>
-            </article>
-          ))}
-        </section>
+      {/* 🏆 Awards & Recognition */}
+     <section className="bg-gray-50">
+               <div className="max-w-6xl mx-auto px-4 py-14">
+                 <h2 className="text-2xl md:text-3xl font-bold text-center">
+                   Awards & <span className="text-[#023784]">Recognitions</span>
+                 </h2>
+                 <p className="text-center text-gray-600 max-w-3xl mx-auto mt-3">
+       Insono Hearing Solutions has received multiple prestigious awards and holds certifications from top global hearing aid brands, reflecting our commitment to excellence in hearing care.
+     </p>
 
-        {/* Awards Section */}
-        <section
-          id="awards"
-          className="py-16 px-6 lg:px-12 space-y-12"
-          aria-labelledby="awards-heading"
-        >
-          <div className="text-center mb-12">
-            <h2
-              id="awards-heading"
-              className="text-3xl lg:text-5xl font-bold text-gray-900"
-            >
-              Awards & Recognition
-            </h2>
-          </div>
-          {awards.map((award, index) => (
-            <article
-              key={award.id}
-              className={`flex flex-col lg:flex-row items-center gap-8 ${
-                index % 2 === 1 ? "lg:flex-row-reverse" : ""
-              }`}
-            >
-              <div className="w-full relative h-64 sm:h-80 md:h-96 lg:h-[600px] rounded-lg overflow-hidden">
-                <Image
-                  src={award.image}
-                  alt={award.title}
-                  fill
-                  className="object-contain"
-                />
-              </div>
-
-              <div className="lg:w-7/12">
-                <h3 className="font-semibold text-xl sm:text-2xl mb-3 text-gray-900">
-                  {award.title}
-                </h3>
-                <p className="text-gray-700 leading-relaxed whitespace-pre-line">
-                  {award.description}
-                </p>
-              </div>
-            </article>
-          ))}
-        </section>
-      </main>
-    </div>
+                 <div className="mt-10 grid md:grid-cols-3 gap-6">
+                   {["award_insono.jpg", "lifeInsono.jpg", "insono_awarded.jpg",
+                   "signia.jpg","phonak.jpeg","award.jpeg"].map((img) => (
+                     <div
+                       key={img}
+                       className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow"
+                     >
+                       <Image
+                         src={`/${img}`}
+                         alt="Insono team and clinic moments"
+                         fill
+                         className="object-cover"
+                       />
+                     </div>
+                   ))}
+                 </div>
+                 
+               </div>
+             </section>
+    </main>
   );
 }

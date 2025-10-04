@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, ChevronDown, Search, MapPin } from "lucide-react";
+import { Phone, ChevronDown, Search, MapPin, Home } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
 import { usePathname } from "next/navigation";
 
@@ -93,8 +93,7 @@ export default function Navigation() {
   const brands: CategoryInfo[] = [
     {
       title: "Signia",
-      description:
-        "Advanced hearing technology by Signia with digital clarity.",
+      description: "Advanced hearing technology by Signia with digital clarity.",
     },
     {
       title: "Phonak",
@@ -158,7 +157,12 @@ export default function Navigation() {
 
         {/* Desktop Nav */}
         {!isFormPage && (
-          <nav className="hidden md:flex items-center justify-center flex-1 gap-8 text-gray-800 font-medium text-[18px]">
+          <nav className="hidden md:flex items-center justify-center flex-1 gap-4 ml-8 text-gray-800 font-medium text-[18px]">
+            {/* 🏠 Home Icon */}
+            <Link href="/" className="flex flex-col items-center">
+              <Home size={22} className="text-[#023784]" />
+            </Link>
+
             {/* Hearing Aids Dropdown */}
             <div className="relative" ref={dropdownRef}>
               <button
@@ -280,22 +284,30 @@ export default function Navigation() {
 
           <a
             href="tel:+916204260510"
-            className="flex items-center gap-2 bg-[#f59e0b] text-black font-medium px-4 py-2 rounded-md hover:bg-yellow-500 transition"
+            className="flex items-center gap-2 bg-[#f59e0b] text-black font-medium px-4 py-2 rounded-md hover:bg-yellow-500 transition relative"
           >
-            <Phone size={16} /> 6204260510
+            <span className="absolute inline-flex h-8 w-8 rounded-full bg-white/40 animate-slow-ping -left-2" />
+            <Phone size={16} className="relative z-10" /> 6204260510
           </a>
         </div>
 
         {/* Mobile Menu */}
         <div className="flex md:hidden items-center gap-6 text-sm text-gray-700 mr-4">
+          <Link href="/" className="flex flex-col items-center">
+            <Home size={20} className="text-[#023784]" />
+            <span className="text-xs">Home</span>
+          </Link>
           <Link href="/our-clinic" className="flex flex-col items-center">
             <MapPin size={20} className="text-[#023784]" />
             <span className="text-xs">Clinics</span>
           </Link>
-          <a href="tel:+916204260510" className="flex flex-col items-center">
-            <Phone size={20} className="text-[#023784]" />
-            <span className="text-xs">Call</span>
-          </a>
+          <Link href="tel:+916204260510" className="flex flex-col items-center">
+            <div className="relative flex items-center justify-center">
+              <span className="absolute inline-flex h-8 w-8 rounded-full bg-[#023784]/30 animate-slow-ping" />
+              <Phone size={20} className="text-[#023784] relative z-10" />
+            </div>
+            <span className="text-xs mt-1">Call</span>
+          </Link>
         </div>
       </div>
     </header>
