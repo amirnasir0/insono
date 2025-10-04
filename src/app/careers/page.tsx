@@ -132,6 +132,14 @@ const roles = [
   },
 ];
 
+// ✅ Define FAQ type
+type FAQEntity = {
+  name: string;
+  acceptedAnswer: {
+    text: string;
+  };
+};
+
 export default function CareersPage() {
   return (
     <>
@@ -152,7 +160,7 @@ export default function CareersPage() {
           <div className="relative max-w-6xl mx-auto px-4 pt-24 pb-16 grid md:grid-cols-2 gap-10 items-center">
             <div>
               <h1 className="text-3xl md:text-5xl font-bold leading-tight">
-                Join Insono Hearing. {" "}
+                Join Insono Hearing.{" "}
                 <span className="text-[#023784]">Work with Purpose</span>
               </h1>
               <p className="mt-4 text-gray-600 md:text-lg">
@@ -285,10 +293,7 @@ export default function CareersPage() {
                 "Oticon Certification",
                 "Widex Certification",
               ].map((b) => (
-                <div
-                  key={b}
-                  className="rounded-xl border bg-white shadow-sm p-4"
-                >
+                <div key={b} className="rounded-xl border bg-white shadow-sm p-4">
                   {b}
                 </div>
               ))}
@@ -303,26 +308,30 @@ export default function CareersPage() {
               Life at <span className="text-[#023784]">Insono</span>
             </h2>
             <p className="text-center text-gray-600 max-w-3xl mx-auto mt-3">
-  At Insono Hearing, we believe work should feel meaningful, collaborative, and inspiring.
-  Every day, our team comes together to improve lives through better hearing — whether it&apos;s
-  helping a patient rediscover sound, building new digital solutions, or supporting each other’s
-  growth. We celebrate small wins, encourage ideas from everyone, and foster a culture where
-  learning and empathy are just as important as performance.
-</p>
+              At Insono Hearing, we believe work should feel meaningful,
+              collaborative, and inspiring. Every day, our team comes together
+              to improve lives through better hearing — whether it&apos;s
+              helping a patient rediscover sound, building new digital
+              solutions, or supporting each other&apos;s growth. We celebrate
+              small wins, encourage ideas from everyone, and foster a culture
+              where learning and empathy are just as important as performance.
+            </p>
             <div className="mt-10 grid md:grid-cols-3 gap-6">
-              {["award_insono.jpg", "lifeInsono.jpg", "insono_awarded.jpg"].map((img) => (
-                <div
-                  key={img}
-                  className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow"
-                >
-                  <Image
-                    src={`/${img}`}
-                    alt="Insono team and clinic moments"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              ))}
+              {["award_insono.jpg", "lifeInsono.jpg", "insono_awarded.jpg"].map(
+                (img) => (
+                  <div
+                    key={img}
+                    className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow"
+                  >
+                    <Image
+                      src={`/${img}`}
+                      alt="Insono team and clinic moments"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                )
+              )}
             </div>
           </div>
         </section>
@@ -333,7 +342,7 @@ export default function CareersPage() {
             Careers <span className="text-[#023784]">FAQ</span>
           </h2>
           <div className="mt-8 divide-y border rounded-xl bg-white shadow-sm">
-            {faqJsonLd.mainEntity.map((item: any, idx: number) => (
+            {faqJsonLd.mainEntity.map((item: FAQEntity, idx: number) => (
               <details key={idx} className="group p-5">
                 <summary className="flex cursor-pointer list-none items-center justify-between font-medium">
                   <span>{item.name}</span>
@@ -341,7 +350,9 @@ export default function CareersPage() {
                     ▾
                   </span>
                 </summary>
-                <p className="mt-3 text-gray-700">{item.acceptedAnswer.text}</p>
+                <p className="mt-3 text-gray-700">
+                  {item.acceptedAnswer.text}
+                </p>
               </details>
             ))}
           </div>
