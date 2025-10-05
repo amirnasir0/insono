@@ -49,9 +49,9 @@ const categories = [
   "Signia",
   "Phonak",
   "Widex",
-  "Bluetooth",
+  "Oticon",
   "ITC Hearing Aids",
-  "Bluetooth Hearing Aids",
+  "Bluetooth",
 ];
 
 export default function ProductSection() {

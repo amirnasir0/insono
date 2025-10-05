@@ -2,7 +2,17 @@
 import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 
-const faqs = [
+interface FAQItem {
+  q: string;
+  a: string;
+}
+
+interface FAQProps {
+  faqs?: FAQItem[];
+  heading?: string;
+}
+
+const defaultFaqs: FAQItem[] = [
   {
     q: "What types of hearing aids does Insono Hearing offer?",
     a: "We provide BTE, RIC/RITE, ITE, CIC, and rechargeable models from leading brands, covering mild to profound hearing loss.",
@@ -19,28 +29,16 @@ const faqs = [
     q: "What follow-up care is included?",
     a: "We provide regular fine-tuning sessions, maintenance, and checkups to ensure your device works perfectly over time.",
   },
-  {
-    q: "Can I connect my hearing aid to my phone and TV?",
-    a: "Yes, most of our modern hearing aids are Bluetooth-enabled, allowing you to stream calls, music, and TV audio directly.",
-  },
-  {
-    q: "Are hearing aids water or sweat resistant?",
-    a: "Many models are moisture-resistant with IP ratings, but they are not designed for swimming or bathing.",
-  },
-  {
-    q: "How much do hearing aids cost, and do you offer financing?",
-    a: "Costs vary by brand, features, and technology. We offer flexible payment plans and financing options to make them affordable.",
-  },
 ];
 
-export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null); // ✅ Fixed type
+export default function FAQ({ faqs = defaultFaqs, heading }: FAQProps) {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-[#4b72b5] to-[#023784] py-16 px-4">
+    <section className="min-h-[60vh] flex flex-col items-center justify-center bg-gradient-to-r from-[#4b72b5] to-[#023784] py-16 px-4">
       <div className="max-w-4xl w-full text-white">
         <h2 className="text-3xl font-bold text-center mb-12">
-          FAQs – All You Need to Know
+          {heading || "FAQs – All You Need to Know"}
         </h2>
         <div className="space-y-6">
           {faqs.map((faq, idx) => (
@@ -65,9 +63,7 @@ export default function FAQ() {
               </button>
               <div
                 className={`ml-10 overflow-hidden transition-all duration-500 ease-in-out ${
-                  openIndex === idx
-                    ? "max-h-40 opacity-100"
-                    : "max-h-0 opacity-0"
+                  openIndex === idx ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
                 }`}
               >
                 <p className="text-white/80 text-sm leading-relaxed pr-6 pb-4">
@@ -82,8 +78,7 @@ export default function FAQ() {
         <div className="text-center mt-16">
           <h3 className="text-xl font-semibold mb-4">Still have questions?</h3>
           <p className="text-white/80 mb-6">
-            Our audiologists are here to guide you. Book a free consultation
-            today.
+            Our audiologists are here to guide you. Book a free consultation today.
           </p>
           <a
             href="/appointment"

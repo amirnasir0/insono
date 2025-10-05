@@ -89,28 +89,28 @@ export default function Footer() {
             <h4 className="text-white font-semibold mb-3">Hearing Solutions</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="/hearing-aid-price" className="hover:text-white">
-                  Digital Hearing Aids
+                <a href="/hearing-aids/signia" className="hover:text-white">
+                  Signia Hearing Aids
                 </a>
               </li>
               <li>
-                <a href="/hearing-aid-price" className="hover:text-white">
+                <a href="/hearing-aids/signia" className="hover:text-white">
                   Invisible Hearing Aids
                 </a>
               </li>
               <li>
-                <a href="/hearing-aid-price" className="hover:text-white">
-                  Receiver In Canal
+                <a href="/hearing-aids/phonak" className="hover:text-white">
+                  Phonak Hearing Aids
                 </a>
               </li>
               <li>
-                <a href="/hearing-aid-price" className="hover:text-white">
-                  Behind The Ear
+                <a href="/hearing-aids/widex" className="hover:text-white">
+                  Widex Hearing Aids
                 </a>
               </li>
               <li>
-                <a href="/hearing-aid-price" className="hover:text-white">
-                  Rechargeable Hearing Aids
+                <a href="/hearing-aids/oticon" className="hover:text-white">
+                  Oticon Hearing Aids
                 </a>
               </li>
             </ul>

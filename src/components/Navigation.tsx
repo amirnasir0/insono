@@ -28,11 +28,7 @@ export default function Navigation() {
 
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const words = [
-    "best hearing aids",
-    "digital hearing aids",
-    "top 5 hearing aids",
-  ];
+  const words = ["best hearing aids", "digital hearing aids", "top 5 hearing aids"];
 
   // Scroll effect
   useEffect(() => {
@@ -71,7 +67,6 @@ export default function Navigation() {
 
   const isFormPage = pathname === "/appointment";
 
-  // Dropdown options
   const types: CategoryInfo[] = [
     {
       title: "RIC Hearing Aids",
@@ -87,21 +82,6 @@ export default function Navigation() {
       title: "ITE Hearing Aids",
       description:
         "In-the-ear hearing aids, custom-made to fit your ear comfortably.",
-    },
-  ];
-
-  const brands: CategoryInfo[] = [
-    {
-      title: "Signia",
-      description: "Advanced hearing technology by Signia with digital clarity.",
-    },
-    {
-      title: "Phonak",
-      description: "Reliable Phonak hearing aids for all age groups and needs.",
-    },
-    {
-      title: "Widex",
-      description: "Widex hearing aids focusing on natural sound and comfort.",
     },
   ];
 
@@ -158,7 +138,6 @@ export default function Navigation() {
         {/* Desktop Nav */}
         {!isFormPage && (
           <nav className="hidden md:flex items-center justify-center flex-1 gap-4 ml-8 text-gray-800 font-medium text-[18px]">
-            {/* 🏠 Home Icon */}
             <Link href="/" className="flex flex-col items-center">
               <Home size={22} className="text-[#023784]" />
             </Link>
@@ -202,7 +181,7 @@ export default function Navigation() {
                             <li key={t.title}>
                               <button
                                 className="hover:text-[#023784] text-left"
-                                onClick={() => setSelectedCategory(t)}
+                                onMouseEnter={() => setSelectedCategory(t)}
                               >
                                 {t.title}
                               </button>
@@ -217,16 +196,66 @@ export default function Navigation() {
                           By Brand
                         </h4>
                         <ul className="space-y-1 text-gray-700">
-                          {brands.map((b) => (
-                            <li key={b.title}>
-                              <button
-                                className="hover:text-[#023784] text-left"
-                                onClick={() => setSelectedCategory(b)}
-                              >
-                                {b.title}
-                              </button>
-                            </li>
-                          ))}
+                          <li>
+                            <Link
+                              href="/hearing-aids/signia"
+                              onMouseEnter={() =>
+                                setSelectedCategory({
+                                  title: "Signia",
+                                  description:
+                                    "Advanced hearing technology by Signia with digital clarity.",
+                                })
+                              }
+                              className="hover:text-[#023784] block text-left"
+                            >
+                              Signia
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="/hearing-aids/phonak"
+                              onMouseEnter={() =>
+                                setSelectedCategory({
+                                  title: "Phonak",
+                                  description:
+                                    "Reliable Phonak hearing aids for all age groups and needs.",
+                                })
+                              }
+                              className="hover:text-[#023784] block text-left"
+                            >
+                              Phonak
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="/hearing-aids/widex"
+                              onMouseEnter={() =>
+                                setSelectedCategory({
+                                  title: "Widex",
+                                  description:
+                                    "Widex hearing aids focusing on natural sound and comfort.",
+                                })
+                              }
+                              className="hover:text-[#023784] block text-left"
+                            >
+                              Widex
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="/hearing-aids/oticon"
+                              onMouseEnter={() =>
+                                setSelectedCategory({
+                                  title: "Oticon",
+                                  description:
+                                    "Oticon BrainHearing™ technology for natural sound experience.",
+                                })
+                              }
+                              className="hover:text-[#023784] block text-left"
+                            >
+                              Oticon
+                            </Link>
+                          </li>
                         </ul>
                       </div>
 
@@ -240,7 +269,7 @@ export default function Navigation() {
                             <li key={u.title}>
                               <button
                                 className="hover:text-[#023784] text-left"
-                                onClick={() => setSelectedCategory(u)}
+                                onMouseEnter={() => setSelectedCategory(u)}
                               >
                                 {u.title}
                               </button>
@@ -266,14 +295,11 @@ export default function Navigation() {
           </nav>
         )}
 
-        {/* Right section (search + call) */}
+        {/* Right section */}
         <div className="hidden md:flex items-center gap-4 ml-6">
           {!isFormPage && (
             <div className="relative w-56">
-              <Search
-                className="absolute left-2 top-2.5 text-gray-400"
-                size={16}
-              />
+              <Search className="absolute left-2 top-2.5 text-gray-400" size={16} />
               <input
                 type="text"
                 placeholder={`Search for ${animatedText}`}
@@ -281,7 +307,6 @@ export default function Navigation() {
               />
             </div>
           )}
-
           <a
             href="tel:+916204260510"
             className="flex items-center gap-2 bg-[#f59e0b] text-black font-medium px-4 py-2 rounded-md hover:bg-yellow-500 transition relative"
