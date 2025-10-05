@@ -5,6 +5,7 @@ import { Metadata } from "next";
 import FAQ from "@/components/FAQ";
 import ImageShowcaseSection from "@/components/ImageShowcaseSection";
 import Whychoose from "@/components/whychoose";
+import Image from "next/image";
 
 // ✅ SEO Meta Tags
 export const metadata: Metadata = {
@@ -107,13 +108,13 @@ export default function WidexPage() {
         </div>
 
         <div className="flex-1 flex justify-center">
-          <video
+          <Image
+            src="/hero/widex.png"
+            alt="Oticon Hearing Aids"
+            width={500}
+            height={400}
             className="rounded-lg w-full max-w-[500px] h-auto object-cover"
-            src="/video/widex-hero.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
+            priority
           />
         </div>
       </section>

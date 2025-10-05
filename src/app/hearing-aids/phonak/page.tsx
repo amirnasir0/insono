@@ -110,7 +110,7 @@ export default function PhonakPage() {
         <div className="flex-1 flex justify-center">
           <video
             className="rounded-lg w-full max-w-[500px] h-auto object-cover"
-            src="/video/phonak-hero.mp4"
+            src="/video/phonak.mp4"
             autoPlay
             loop
             muted

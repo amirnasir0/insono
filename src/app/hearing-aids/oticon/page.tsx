@@ -1,5 +1,6 @@
 import CategoryProductSection from "@/components/CategoryProductSection";
 import Link from "next/link";
+import Image from "next/image";
 import { Headphones, Bluetooth, BatteryCharging, Waves } from "lucide-react";
 import { Metadata } from "next";
 import FAQ from "@/components/FAQ";
@@ -107,14 +108,14 @@ export default function OticonPage() {
         </div>
 
         <div className="flex-1 flex justify-center">
-          <video
-            className="rounded-lg w-full max-w-[500px] h-auto object-cover"
-            src="/video/oticon-hero.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-          />
+          <Image
+  src="/hero/oticon.jpg"
+  alt="Oticon Hearing Aids"
+  width={500}
+  height={400}
+  className="rounded-lg w-full max-w-[500px] h-auto object-cover"
+  priority
+/>
         </div>
       </section>
 
