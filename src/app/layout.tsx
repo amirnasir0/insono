@@ -3,6 +3,8 @@ import Navigation from "@/components/Navigation";
 import "./globals.css";
 import type { Metadata } from "next";
 import Footer from "@/components/Footer";
+import Script from "next/script";
+
 
 export const metadata: Metadata = {
   title: {
@@ -62,6 +64,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <Script
+          src="https://chat-xbot.webspecia.in/js/widget/omf5pwsilxzzkba1/float.js"
+          strategy="afterInteractive"
+          async
+          defer
+        />
       <body className="font-museo bg-white text-gray-900 antialiased bg-gradient-to-b from-[#eaf5ff] to-white">
         <Navigation />
         {children}
