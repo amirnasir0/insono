@@ -4,7 +4,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import Footer from "@/components/Footer";
 import Script from "next/script";
-
+import StickyVideoWrapper from "@/components/StickyVideoWrapper";
 
 export const metadata: Metadata = {
   title: {
@@ -22,16 +22,16 @@ export const metadata: Metadata = {
   authors: [{ name: "Insono Hearing" }],
   creator: "Insono Hearing",
   metadataBase: new URL(
-    "https://mediumslateblue-seahorse-306408.hostingersite.com"
+    "https://insonohearing.com"
   ),
   openGraph: {
     title: "Insono Hearing",
     description: "Affordable, reliable hearing aids with local support.",
-    url: "https://mediumslateblue-seahorse-306408.hostingersite.com",
+    url: "https://insonohearing.com",
     siteName: "Insono Hearing",
     images: [
       {
-        url: "https://mediumslateblue-seahorse-306408.hostingersite.com/og-image.jpg",
+        url: "https://insonohearing.com/logo.webp",
         width: 1200,
         height: 630,
         alt: "Insono Hearing",
@@ -45,9 +45,9 @@ export const metadata: Metadata = {
     title: "Insono Hearing",
     description: "Affordable, reliable hearing aids with local support.",
     images: [
-      "https://mediumslateblue-seahorse-306408.hostingersite.com/og-image.jpg",
+      "https://insonohearing.com/logo.webp",
     ],
-    creator: "@yourtwitterhandle",
+    creator: "@insonohearing",
   },
   icons: {
     icon: "/favicon.ico",
@@ -64,16 +64,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      {/* External chatbot widget */}
       <Script
-          src="https://chat-xbot.webspecia.in/js/widget/omf5pwsilxzzkba1/float.js"
-          strategy="afterInteractive"
-          async
-          defer
-        />
+        src="https://chat-xbot.webspecia.in/js/widget/omf5pwsilxzzkba1/float.js"
+        strategy="afterInteractive"
+        async
+        defer
+      />
       <body className="font-museo bg-white text-gray-900 antialiased bg-gradient-to-b from-[#eaf5ff] to-white">
         <Navigation />
         {children}
         <Footer />
+
+        {/* ✅ Sticky video visible on all pages except excluded ones */}
+        <StickyVideoWrapper />
       </body>
     </html>
   );

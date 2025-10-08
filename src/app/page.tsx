@@ -54,7 +54,7 @@ export default function HomePage() {
       <Testomonial />
       <BlogSection />
       <FAQ />
-       <StickyVideo src="/video/phonak.mp4" />
+     
     </main>
   );
 }
