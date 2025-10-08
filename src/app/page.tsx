@@ -5,6 +5,8 @@ import HeroSection from "@/components/HeroSection";
 import HearingaidType from "@/components/HearingaidType";
 import Whychoose from "@/components/whychoose";
 import Testomonial from "@/components/testomonial";
+import StickyVideo from "@/components/StickyVideo";
+
 
 // ✅ Dynamic Metadata works now
 export async function generateMetadata() {
@@ -52,6 +54,7 @@ export default function HomePage() {
       <Testomonial />
       <BlogSection />
       <FAQ />
+       <StickyVideo src="/video/phonak.mp4" />
     </main>
   );
 }
