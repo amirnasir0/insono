@@ -196,7 +196,7 @@ export default function Footer() {
               className="transition transform hover:scale-105"
             >
               <Image
-                src="/badge/google.png" // place your PNG/SVG in /public/badges/
+                src="/badge/google.webp" // place your PNG/SVG in /public/badges/
                 alt="Google Reviews"
                 width={120}
                 height={40}
