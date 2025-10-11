@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import Script from "next/script";
 import { notFound, permanentRedirect } from "next/navigation";
 import type { Metadata } from "next";
@@ -215,13 +216,21 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           <ProductContent content={post.content} />
 
           <div className="flex flex-col sm:flex-row gap-4 mt-6">
-            <button className="bg-[#023784] text-white px-8 py-3 rounded-md font-medium hover:bg-[#012d66] transition w-full sm:w-auto">
-              View Price
-            </button>
-            <button className="border border-[#023784] text-[#023784] px-8 py-3 rounded-md font-medium hover:bg-[#023784] hover:text-white transition w-full sm:w-auto">
-              Get Free Trial
-            </button>
-          </div>
+  <Link
+  href={`/price-download?utm_source=website&utm_medium=single_product&utm_campaign=${encodeURIComponent(post.title)}`}
+  className="bg-[#023784] text-white px-8 py-3 rounded-md font-medium hover:bg-[#012d66] transition w-full sm:w-auto text-center"
+>
+  View Price
+</Link>
+
+  <Link
+  href={`/appointment?utm_source=website&utm_medium=single_product&utm_campaign=${encodeURIComponent(post.title)}`}
+  className="border border-[#023784] text-[#023784] px-8 py-3 rounded-md font-medium hover:bg-[#023784] hover:text-white transition w-full sm:w-auto text-center"
+>
+  Get Free Trial
+</Link>
+
+</div>
         </div>
       </div>
 
