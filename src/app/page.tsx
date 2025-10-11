@@ -10,11 +10,11 @@ import StickyVideo from "@/components/StickyVideo";
 
 // ✅ Dynamic Metadata works now
 export async function generateMetadata() {
-  const siteName = "Insono Hearing Aids";
-  const heroKeyword = "Digital, Rechargeable & Invisible Hearing Aids";
+  const siteName = "Insono Hearing Solutions | Digital Hearing Aids";
+  const heroKeyword = "Digital, Rechargeable & Invisible Hearing Aids ";
 
   return {
-    title: `Best Hearing Aids in India | ${siteName}`,
+    title: `Best Digital Hearing Aids in India | Authorized Signia Phonak Widex Partner`,
     description: `Explore ${heroKeyword}. Discover the latest models with expert reviews and trusted recommendations from ${siteName}.`,
     keywords: [
       "hearing aids",
@@ -24,8 +24,8 @@ export async function generateMetadata() {
       "best hearing aids in India",
     ],
     openGraph: {
-      title: `Best Digital Hearing Aids | ${siteName}`,
-      description: `Compare and buy ${heroKeyword} at ${siteName}.`,
+      title: `Best Digital Hearing Aids | Authorized Signia Phonak Widex Partner`,
+      description: `Compare and buy ${heroKeyword} at ${siteName}. Genuine Signia, Phonak, Widex Digital Hearing Aids`,
       url: "https://insonohearing.com",
       siteName,
       type: "website",

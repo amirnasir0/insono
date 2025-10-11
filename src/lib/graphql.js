@@ -11,7 +11,7 @@ export const graphQLClient = new GraphQLClient(endpoint);
 // Fetch latest 10 posts
 export const GET_POSTS = gql`
   query GetPosts {
-    posts(first: 10) {
+    posts(first: 50) {
       nodes {
         id
         title
@@ -41,7 +41,7 @@ export const GET_POSTS = gql`
 // Fetch products
 export const GET_PRODUCTS = gql`
   query GetProducts {
-    products(first: 10) {
+    products(first: 50) {
       nodes {
         id
         title
@@ -83,6 +83,39 @@ export const GET_POST_BY_SLUG = gql`
         nodes {
           name
         }
+      }
+    }
+  }
+`;
+
+
+export const GET_PRODUCT_BY_SLUG = gql`
+  query GetProductBySlug($slug: String!) {
+    productBy(slug: $slug) {
+      id
+      slug
+      title
+      content
+      featuredImage {
+        node {
+          sourceUrl
+        }
+      }
+      categories {
+        nodes {
+          name
+        }
+      }
+    }
+  }
+`;
+
+
+export const GET_PRODUCT_SLUGS = gql`
+  query GetProductSlugs {
+    products(first: 1000) {
+      nodes {
+        slug
       }
     }
   }
