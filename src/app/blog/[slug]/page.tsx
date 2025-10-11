@@ -28,6 +28,12 @@ interface Product {
   featuredImage?: { node?: { sourceUrl: string } };
 }
 
+interface RelatedPost {
+  id: string;
+  slug: string;
+  title: string;
+  featuredImage?: { node?: { sourceUrl: string } };
+}
 // Fetch Single Blog Post
 async function getPost(slug: string): Promise<PostResponse["post"] | null> {
   try {
@@ -76,14 +82,17 @@ const GET_BEST_SELLER_PRODUCTS = gql`
 `;
 
 // Helper: Get related blog posts
-async function getRelatedPosts(categories: string[], currentSlug: string) {
-  let allRelated: any[] = [];
+async function getRelatedPosts(
+  categories: string[],
+  currentSlug: string
+): Promise<RelatedPost[]> {
+  let allRelated: RelatedPost[] = [];
 
   for (const name of categories) {
-    const { posts } = await graphQLClient.request<{ posts: { nodes: any[] } }>(
-      GET_RELATED_POSTS,
-      { categoryName: name }
-    );
+    const { posts } = await graphQLClient.request<{
+      posts: { nodes: RelatedPost[] };
+    }>(GET_RELATED_POSTS, { categoryName: name });
+
     allRelated = allRelated.concat(posts.nodes);
   }
 
@@ -93,6 +102,7 @@ async function getRelatedPosts(categories: string[], currentSlug: string) {
 
   return deduped.slice(0, 6);
 }
+
 
 // Helper: Get best seller products
 async function getBestSellerProducts(): Promise<Product[]> {
