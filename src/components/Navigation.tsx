@@ -9,7 +9,7 @@ export default function Navigation() {
   return (
     <header className="fixed top-0 left-0 z-50 w-full bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/70 shadow-sm">
       <div className="w-full flex items-center justify-between px-3 sm:px-6 lg:px-20 py-3">
-        {/* Logo */}
+        {/* =================== LOGO =================== */}
         <Link href="/" className="flex items-center">
           <Image
             src="/logo.webp"
@@ -31,21 +31,24 @@ export default function Navigation() {
             <span>Home</span>
           </Link>
 
-          {/* 🦻 Hearing Aids - Full Width Mega Menu */}
-          <div className="relative group">
-            <button className="flex items-center gap-1 hover:text-[#023784] transition">
+          {/* 🦻 Hearing Aids - Full Width Mega Menu (hover-only) */}
+          <div className="relative">
+            {/* Button */}
+            <div className="peer flex items-center gap-1 hover:text-[#023784] transition cursor-pointer">
               Hearing Aids
               <ChevronDown size={16} className="mt-0.5" />
-            </button>
+            </div>
 
+            {/* Mega Menu Panel */}
             <div
               className="
                 absolute left-0 top-full mt-2 w-screen bg-white border-t border-gray-200 shadow-2xl
-                opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-2
+                opacity-0 invisible peer-hover:opacity-100 peer-hover:visible
+                hover:opacity-100 hover:visible
+                translate-y-2 peer-hover:translate-y-0 hover:translate-y-0
                 transition-all duration-200 z-50
               "
             >
-              {/* ✅ Full width container with inner padding to avoid edge overflow */}
               <div className="w-full px-12 py-8 grid grid-cols-3 gap-10">
                 {sections.map((section) => (
                   <div key={section.label}>
