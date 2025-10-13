@@ -1,128 +1,13 @@
-"use client";
-
+// app/components/Navigation.tsx  (NO "use client")
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, ChevronDown, Search, MapPin, Home } from "lucide-react";
-import { useEffect, useState, useRef } from "react";
-import { usePathname } from "next/navigation";
-
-type CategoryInfo = {
-  title: string;
-  description: string;
-};
+import { Home, MapPin, Phone, Search, ChevronDown } from "lucide-react";
+import MobileMenu from "./nav/MobileMenu";
+import { topLinks, sections } from "./nav/menuData";
 
 export default function Navigation() {
-  const pathname = usePathname();
-  const [openMenu, setOpenMenu] = useState<string | null>(null);
-  const [scrolled, setScrolled] = useState(false);
-  const [loaded, setLoaded] = useState(false);
-  const [animatedText, setAnimatedText] = useState("");
-  const [wordIndex, setWordIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState<CategoryInfo>({
-    title: "Hearing Aids",
-    description:
-      "Explore our wide range of digital and rechargeable hearing aids, designed for adults, seniors, and children. Choose by type, brand, or user needs.",
-  });
-
-  const dropdownRef = useRef<HTMLDivElement>(null);
-
-  const words = ["best hearing aids", "digital hearing aids", "top 5 hearing aids"];
-
-  // Scroll effect
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // Load animation
-  useEffect(() => {
-    setTimeout(() => setLoaded(true), 100);
-  }, []);
-
-  // Typing animation
-  useEffect(() => {
-    const currentWord = words[wordIndex];
-    const typingSpeed = isDeleting ? 50 : 100;
-
-    const typing = setTimeout(() => {
-      if (!isDeleting && charIndex < currentWord.length) {
-        setAnimatedText(currentWord.substring(0, charIndex + 1));
-        setCharIndex(charIndex + 1);
-      } else if (isDeleting && charIndex > 0) {
-        setAnimatedText(currentWord.substring(0, charIndex - 1));
-        setCharIndex(charIndex - 1);
-      } else if (!isDeleting && charIndex === currentWord.length) {
-        setTimeout(() => setIsDeleting(true), 1200);
-      } else if (isDeleting && charIndex === 0) {
-        setIsDeleting(false);
-        setWordIndex((prev) => (prev + 1) % words.length);
-      }
-    }, typingSpeed);
-
-    return () => clearTimeout(typing);
-  }, [charIndex, isDeleting, wordIndex, words]);
-
-  const isFormPage = pathname === "/appointment";
-
-  const types: CategoryInfo[] = [
-    {
-      title: "RIC Hearing Aids",
-      description:
-        "Receiver-in-canal hearing aids suitable for mild to severe hearing loss.",
-    },
-    {
-      title: "BTE Hearing Aids",
-      description:
-        "Behind-the-ear devices offering powerful amplification and easy handling.",
-    },
-    {
-      title: "ITE Hearing Aids",
-      description:
-        "In-the-ear hearing aids, custom-made to fit your ear comfortably.",
-    },
-  ];
-
-  const users: CategoryInfo[] = [
-    {
-      title: "Adults",
-      description:
-        "Hearing solutions designed for adults with varying degrees of hearing loss.",
-    },
-    {
-      title: "Children",
-      description:
-        "Specialized hearing aids for children with pediatric audiology support.",
-    },
-    {
-      title: "Seniors",
-      description:
-        "Hearing aids tailored for seniors with ease-of-use and comfort.",
-    },
-  ];
-
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(e.target as Node)
-      ) {
-        setOpenMenu(null);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
   return (
-    <header
-      className={`fixed top-0 left-0 z-50 w-full transition-all duration-500 font-museo ${
-        scrolled ? "bg-white shadow-sm" : "bg-transparent"
-      } ${loaded ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-6"}`}
-    >
+    <header className="fixed top-0 left-0 z-50 w-full bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/70 shadow-sm">
       <div className="w-full flex items-center justify-between px-3 sm:px-6 lg:px-20 py-3">
         {/* Logo */}
         <Link href="/" className="flex items-center">
@@ -135,204 +20,116 @@ export default function Navigation() {
           />
         </Link>
 
-        {/* Desktop Nav */}
-        {!isFormPage && (
-          <nav className="hidden md:flex items-center justify-center flex-1 gap-4 ml-8 text-gray-800 font-medium text-[18px]">
-            <Link href="/" className="flex flex-col items-center">
-              <Home size={22} className="text-[#023784]" />
-            </Link>
+        {/* =================== DESKTOP NAV =================== */}
+        <nav className="hidden md:flex items-center justify-start flex-1 gap-8 ml-8 text-gray-800 font-medium text-[16px] relative">
+          {/* 🏠 Home */}
+          <Link
+            href="/"
+            className="flex items-center gap-1 hover:text-[#023784] transition"
+          >
+            <Home size={20} className="text-[#023784]" />
+            <span>Home</span>
+          </Link>
 
-            {/* Hearing Aids Dropdown */}
-            <div className="relative" ref={dropdownRef}>
-              <button
-                className="flex items-center gap-1 px-2 py-1 rounded-md hover:text-[#023784] transition"
-                onClick={() =>
-                  setOpenMenu(openMenu === "hearing" ? null : "hearing")
-                }
-              >
-                Hearing Aids <ChevronDown size={16} />
-              </button>
+          {/* 🦻 Hearing Aids - Full Width Mega Menu */}
+          <div className="relative group">
+            <button className="flex items-center gap-1 hover:text-[#023784] transition">
+              Hearing Aids
+              <ChevronDown size={16} className="mt-0.5" />
+            </button>
 
-              {openMenu === "hearing" && (
-                <div
-                  className="absolute pl-16 top-full mt-2 w-screen bg-white border border-gray-200 shadow-lg flex justify-center z-50 transform -translate-x-1/4"
-                  ref={dropdownRef}
-                >
-                  <div className="w-full flex bg-white rounded-lg overflow-hidden">
-                    {/* Left Panel */}
-                    <div className="w-1/3 p-6 border-r border-gray-200">
-                      <h4 className="font-bold text-[#023784] text-lg mb-2">
-                        {selectedCategory.title}
-                      </h4>
-                      <p className="text-gray-700 text-sm leading-relaxed">
-                        {selectedCategory.description}
-                      </p>
-                    </div>
-
-                    {/* Right Panel */}
-                    <div className="w-2/3 p-6 grid grid-cols-3 gap-6">
-                      {/* Types */}
-                      <div>
-                        <h4 className="font-semibold text-[#023784] mb-2">
-                          By Type
-                        </h4>
-                        <ul className="space-y-1 text-gray-700">
-                          {types.map((t) => (
-                            <li key={t.title}>
-                              <button
-                                className="hover:text-[#023784] text-left"
-                                onMouseEnter={() => setSelectedCategory(t)}
-                              >
-                                {t.title}
-                              </button>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      {/* Brands */}
-                      <div>
-                        <h4 className="font-semibold text-[#023784] mb-2">
-                          By Brand
-                        </h4>
-                        <ul className="space-y-1 text-gray-700">
-                          <li>
-                            <Link
-                              href="/hearing-aids/signia"
-                              onMouseEnter={() =>
-                                setSelectedCategory({
-                                  title: "Signia",
-                                  description:
-                                    "Advanced hearing technology by Signia with digital clarity.",
-                                })
-                              }
-                              className="hover:text-[#023784] block text-left"
-                            >
-                              Signia
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              href="/hearing-aids/phonak"
-                              onMouseEnter={() =>
-                                setSelectedCategory({
-                                  title: "Phonak",
-                                  description:
-                                    "Reliable Phonak hearing aids for all age groups and needs.",
-                                })
-                              }
-                              className="hover:text-[#023784] block text-left"
-                            >
-                              Phonak
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              href="/hearing-aids/widex"
-                              onMouseEnter={() =>
-                                setSelectedCategory({
-                                  title: "Widex",
-                                  description:
-                                    "Widex hearing aids focusing on natural sound and comfort.",
-                                })
-                              }
-                              className="hover:text-[#023784] block text-left"
-                            >
-                              Widex
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              href="/hearing-aids/oticon"
-                              onMouseEnter={() =>
-                                setSelectedCategory({
-                                  title: "Oticon",
-                                  description:
-                                    "Oticon BrainHearing™ technology for natural sound experience.",
-                                })
-                              }
-                              className="hover:text-[#023784] block text-left"
-                            >
-                              Oticon
-                            </Link>
-                          </li>
-                        </ul>
-                      </div>
-
-                      {/* Users */}
-                      <div>
-                        <h4 className="font-semibold text-[#023784] mb-2">
-                          For Users
-                        </h4>
-                        <ul className="space-y-1 text-gray-700">
-                          {users.map((u) => (
-                            <li key={u.title}>
-                              <button
-                                className="hover:text-[#023784] text-left"
-                                onMouseEnter={() => setSelectedCategory(u)}
-                              >
-                                {u.title}
-                              </button>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            <Link href="/our-clinic" className="px-2 py-1 hover:text-[#023784]">
-              Our Clinics
-            </Link>
-            <Link
-              href="/hearing-aid-price"
-              className="px-2 py-1 hover:text-[#023784]"
+            <div
+              className="
+                absolute left-0 top-full mt-2 w-screen bg-white border-t border-gray-200 shadow-2xl
+                opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-2
+                transition-all duration-200 z-50
+              "
             >
-              Hearing Aid Price
-            </Link>
-          </nav>
-        )}
-
-        {/* Right section */}
-        <div className="hidden md:flex items-center gap-4 ml-6">
-          {!isFormPage && (
-            <div className="relative w-56">
-              <Search className="absolute left-2 top-2.5 text-gray-400" size={16} />
-              <input
-                type="text"
-                placeholder={`Search for ${animatedText}`}
-                className="w-full pl-8 pr-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#023784] focus:outline-none text-sm"
-              />
+              {/* ✅ Full width container with inner padding to avoid edge overflow */}
+              <div className="w-full px-12 py-8 grid grid-cols-3 gap-10">
+                {sections.map((section) => (
+                  <div key={section.label}>
+                    <h4 className="text-[#023784] font-semibold mb-3 text-lg">
+                      {section.label}
+                    </h4>
+                    <ul className="space-y-2">
+                      {section.items.map((item) => (
+                        <li key={item.href}>
+                          <Link
+                            href={item.href}
+                            className="
+                              block text-gray-700 text-sm transition-all duration-200 ease-out rounded-md
+                              hover:bg-[#023784]/5 hover:text-[#023784] hover:pl-2
+                              py-2 px-3
+                            "
+                          >
+                            {item.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
             </div>
-          )}
+          </div>
+
+          {/* 🏥 Clinics + Other Links */}
+          <Link href="/our-clinic" className="hover:text-[#023784] transition">
+            Our Clinics
+          </Link>
+
+          {topLinks.map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              className="hover:text-[#023784] transition"
+            >
+              {l.label}
+            </Link>
+          ))}
+        </nav>
+
+        {/* =================== DESKTOP RIGHT =================== */}
+        <div className="hidden md:flex items-center gap-4 ml-6">
+          <div className="relative w-56">
+            <Search
+              className="absolute left-2 top-2.5 text-gray-400"
+              size={16}
+            />
+            <input
+              type="text"
+              placeholder="Search hearing aids"
+              className="w-full pl-8 pr-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#023784] focus:outline-none text-sm"
+              aria-label="Search"
+            />
+          </div>
           <a
             href="tel:+916204260510"
             className="flex items-center gap-2 bg-[#f59e0b] text-black font-medium px-4 py-2 rounded-md hover:bg-yellow-500 transition relative"
           >
-            <span className="absolute inline-flex h-8 w-8 rounded-full bg-white/40 animate-slow-ping -left-2" />
+            <span className="absolute inline-flex h-8 w-8 rounded-full bg-white/40 animate-ping -left-2" />
             <Phone size={16} className="relative z-10" /> 6204260510
           </a>
         </div>
 
-        {/* Mobile Menu */}
-        <div className="flex md:hidden items-center gap-6 text-sm text-gray-700 mr-4">
-          <Link href="/" className="flex flex-col items-center">
+        {/* =================== MOBILE NAV =================== */}
+        <div className="flex md:hidden items-center gap-4 text-sm text-gray-700">
+          <Link href="/" aria-label="Home">
             <Home size={20} className="text-[#023784]" />
-            <span className="text-xs">Home</span>
           </Link>
-          <Link href="/our-clinic" className="flex flex-col items-center">
+          <Link href="/our-clinic" aria-label="Clinics">
             <MapPin size={20} className="text-[#023784]" />
-            <span className="text-xs">Clinics</span>
           </Link>
-          <Link href="tel:+916204260510" className="flex flex-col items-center">
+          <a href="tel:+916204260510" aria-label="Call">
             <div className="relative flex items-center justify-center">
-              <span className="absolute inline-flex h-8 w-8 rounded-full bg-[#023784]/30 animate-slow-ping" />
+              <span className="absolute inline-flex h-8 w-8 rounded-full bg-[#023784]/30 animate-ping" />
               <Phone size={20} className="text-[#023784] relative z-10" />
             </div>
-            <span className="text-xs mt-1">Call</span>
-          </Link>
+          </a>
+
+          {/* Hamburger Menu (Client) */}
+          <MobileMenu topLinks={topLinks} sections={sections} />
         </div>
       </div>
     </header>
