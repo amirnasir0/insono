@@ -40,7 +40,10 @@ interface Product {
 // ✅ Cached Post Fetch
 const getPostCached = cache(async (slug: string): Promise<Post | null> => {
   try {
-    const data = await graphQLClient.request<{ post: Post }>(GET_POST_BY_SLUG, { id: slug });
+    const data = await graphQLClient.request<{ post: Post }>(
+      GET_POST_BY_SLUG,
+      { id: slug }
+    );
     return data.post || null;
   } catch (err) {
     console.error("Error fetching post:", err);
@@ -66,11 +69,17 @@ const GET_RELATED_POSTS = gql`
   }
 `;
 
-async function getRelatedPosts(categories: string[], currentSlug: string): Promise<RelatedPost[]> {
+async function getRelatedPosts(
+  categories: string[],
+  currentSlug: string
+): Promise<RelatedPost[]> {
   if (!categories.length) return [];
 
   const promises = categories.map((name) =>
-    graphQLClient.request<{ posts: { nodes: RelatedPost[] } }>(GET_RELATED_POSTS, { categoryName: name })
+    graphQLClient.request<{ posts: { nodes: RelatedPost[] } }>(
+      GET_RELATED_POSTS,
+      { categoryName: name }
+    )
   );
 
   const results = await Promise.all(promises);
@@ -104,10 +113,9 @@ const GET_BEST_SELLER_PRODUCTS = gql`
 async function getBestSellerProducts(): Promise<Product[]> {
   const highlightedCategory = "highlighted";
   try {
-    const { products } = await graphQLClient.request<{ products: { nodes: Product[] } }>(
-      GET_BEST_SELLER_PRODUCTS,
-      { categoryName: highlightedCategory }
-    );
+    const { products } = await graphQLClient.request<{
+      products: { nodes: Product[] };
+    }>(GET_BEST_SELLER_PRODUCTS, { categoryName: highlightedCategory });
     return products.nodes;
   } catch (err) {
     console.error("Error fetching best seller products:", err);
@@ -116,7 +124,9 @@ async function getBestSellerProducts(): Promise<Product[]> {
 }
 
 // ✅ Metadata
-export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: BlogPageProps): Promise<Metadata> {
   const post = await getPostCached(params.slug);
   if (!post) {
     return { title: "Post not found" };
@@ -224,7 +234,9 @@ async function SidebarContent() {
 
   return (
     <>
-      <h2 className="text-xl font-bold text-[#023784] mb-4">Best Seller Hearing Aids</h2>
+      <h2 className="text-xl font-bold text-[#023784] mb-4">
+        Best Seller Hearing Aids
+      </h2>
       <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-1 gap-4">
         {products.map((product) => (
           <a
