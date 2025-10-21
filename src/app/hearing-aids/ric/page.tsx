@@ -24,24 +24,49 @@ export const metadata: Metadata = {
   },
 };
 
-const signiaFaqs = [
+const ricHearingAidFaqs = [
   {
-    q: "What is the price of Signia hearing aids in India?",
-    a: "Prices start from ₹19,999 and vary depending on model and features. Download our price list for the latest offers.",
+    q: "What are RIC hearing aids and how do they work?",
+    a: "RIC hearing aids, or Receiver-in-Canal hearing aids, have the main body behind the ear and a small receiver (speaker) placed inside the ear canal. This design delivers clearer sound and reduces feedback, making them one of the most advanced hearing aid styles available in India.",
   },
   {
-    q: "Are Signia hearing aids rechargeable?",
-    a: "Yes, most modern Signia models offer rechargeable options with all-day battery life.",
+    q: "What is the price of RIC hearing aids in India?",
+    a: "RIC hearing aids in India typically range from ₹24,999 to ₹3,00,000 depending on the brand, model, and technology level. Brands like Signia, Widex, Phonak, and Oticon offer feature-rich RIC models with Bluetooth and rechargeable options.",
   },
   {
-    q: "Can I connect Signia hearing aids to my phone?",
-    a: "Yes, Signia Bluetooth hearing aids allow direct streaming to smartphones and TVs.",
+    q: "Are RIC hearing aids comfortable to wear?",
+    a: "Yes. RIC hearing aids are lightweight and sit discreetly behind the ear with a thin wire leading into the ear canal. The receiver is soft and flexible, offering a secure and comfortable fit for all-day wear, even in hot or humid Indian climates.",
   },
   {
-    q: "Do Signia hearing aids come with a warranty?",
-    a: "Yes, all Signia devices include a 2-year international warranty, extendable in India.",
+    q: "Do RIC hearing aids have Bluetooth connectivity?",
+    a: "Yes. Most modern RIC hearing aids come with Bluetooth connectivity, allowing you to stream calls, music, and TV audio directly from your smartphone or tablet to your ears. You can also control volume and settings through a mobile app.",
+  },
+  {
+    q: "Are RIC hearing aids rechargeable?",
+    a: "Yes, many RIC models are fully rechargeable, offering 20–30 hours of use per charge. They come with sleek charging cases — no need to handle tiny batteries, making them ideal for senior users in India.",
+  },
+  {
+    q: "Who should use RIC hearing aids?",
+    a: "RIC hearing aids are suitable for mild to severe hearing loss and are ideal for users who want clear sound, comfort, and smart connectivity. Audiologists often recommend RICs for their balanced performance and discreet appearance.",
+  },
+  {
+    q: "Are RIC hearing aids visible when worn?",
+    a: "RIC hearing aids are semi-invisible. The main unit sits discreetly behind the ear, while a thin wire connects to a small receiver inside your ear canal. They’re barely noticeable and much more aesthetic than traditional BTE models.",
+  },
+  {
+    q: "Do RIC hearing aids provide natural sound?",
+    a: "Yes. RIC hearing aids are known for delivering natural, open sound quality. Because the receiver sits close to your eardrum, they minimize echo and distortion while improving clarity in conversations and noisy environments.",
+  },
+  {
+    q: "How long do RIC hearing aids last?",
+    a: "With regular cleaning and professional servicing, RIC hearing aids last around 5–6 years. Proper maintenance and moisture protection are key to ensuring long life, especially in Indian weather conditions.",
+  },
+  {
+    q: "Where can I buy RIC hearing aids in India?",
+    a: "RIC hearing aids are available at authorized hearing clinics and audiologists across India. Insono Hearing offers free consultations, home trials, and personalized fittings with leading RIC models from global brands.",
   },
 ];
+
 
 // ✅ Breadcrumb structured data (optional for SEO)
 const breadcrumbSchema = {
@@ -82,13 +107,12 @@ export default function SigniaPage() {
       <section className="max-w-7xl mx-auto px-4 mt-30 md:px-20 flex flex-col md:flex-row items-center gap-6">
         <div className="flex-1 text-center md:text-left">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-snug mb-3">
-           Rechargeable Digital Hearing Aids from Top Brands
+            RIC Hearing Aids | Clearer Sound, Smart Bluetooth & Rechargeable Design
           </h1>
           <p className="text-gray-700 mb-5 text-sm sm:text-base">
-            Discover the full range of <strong>Rechargeable Digital hearing aids</strong> —
-            from rechargeable & Bluetooth-enabled devices to invisible CIC
-            models. Compare features, check prices, and book a free consultation
-            with certified experts.
+            Discover India’s latest RIC (Receiver-in-Canal) hearing aids.
+             lightweight, discreet and powerful. Experience crystal-clear sound, Bluetooth streaming,
+             and rechargeable convenience from leading brands like Signia, Widex & Phonak.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
             <Link
@@ -120,9 +144,9 @@ export default function SigniaPage() {
       </section>
 
        <CategoryProductSection
-  category="rechargeable"
-  title="Best Rechargeable Digital Hearing Aids"
-  description="Explore our top-selling Signia hearing aids. Discreet, powerful, and designed for all-day comfort."
+  category="ric"
+  title="Best RIC Digital Hearing Aids"
+  description="Explore our top-selling Reciever in canal hearing aids. Discreet, powerful, and designed for all-day comfort."
   limit={4}
 />
 
@@ -138,10 +162,10 @@ export default function SigniaPage() {
   <div className="relative max-w-7xl mx-auto text-center">
     {/* 🧠 Heading */}
     <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold mb-3 sm:mb-4">
-      Why Choose <span className="text-[#184A99]">Rechargeable Hearing Aids?</span>
+      Why Choose <span className="text-[#184A99]">RIC Digital Hearing Aids?</span>
     </h2>
     <p className="text-gray-700 text-sm sm:text-base max-w-2xl mx-auto mb-10">
-      <strong>Rechargeable</strong> blends German innovation with modern hearing
+      <strong>Powerful long lasting rechargeable hearing aids.</strong> blends German innovation with modern hearing
       technology — Bluetooth streaming, rechargeable power, invisible CIC
       designs, and unmatched comfort.
     </p>
@@ -237,7 +261,7 @@ export default function SigniaPage() {
 
 
 
-<FAQ faqs={signiaFaqs} heading="Signia Hearing Aids : FAQs" />
+<FAQ faqs={ricHearingAidFaqs} heading="RIC Hearing Aids : FAQs" />
 
 
       {/* 🟤 RELATED LINKS */}
@@ -245,7 +269,7 @@ export default function SigniaPage() {
       <div className="max-w-6xl mx-auto text-center">
         {/* 🧠 Section Title */}
         <h2 className="text-2xl sm:text-3xl font-extrabold mb-3">
-          Explore More Hearing Solutions
+          Explore More abour RIC Hearing Aids
         </h2>
         <p className="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto mb-10">
           Discover advanced hearing aid technologies and top global brands

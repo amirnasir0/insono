@@ -9,39 +9,64 @@ import ImageShowcaseSection from "@/components/ImageShowcaseSection";
 
 // ✅ SEO Meta Tags
 export const metadata: Metadata = {
-  title: "Signia Hearing Aids – Prices, Models & Features in India",
+  title: "IIC Hearing Aids – Prices, Models & Features in India",
   description:
-    "Explore Signia hearing aids — rechargeable, Bluetooth & invisible models. Compare features & prices, book free consultation or download price list. 100% genuine with warranty.",
+    "Explore IIC hearing aids — rechargeable, Bluetooth & invisible models. Compare features & prices, book free consultation or download price list. 100% genuine with warranty.",
   alternates: {
-    canonical: "https://www.insononhearing.com/hearing-aids/signia",
+    canonical: "https://www.insononhearing.com/hearing-aids/iic",
   },
   openGraph: {
-    title: "Signia Hearing Aids – Prices, Models & Features in India",
+    title: "IIC Hearing Aids – Prices, Models & Features in India",
     description:
-      "Explore Signia hearing aids — rechargeable, Bluetooth & invisible models. Compare features & prices, book free consultation or download price list.",
-    url: "https://www.insonohearing.com/hearing-aids/signia",
+      "Explore IIC hearing aids — rechargeable, Bluetooth & invisible models. Compare features & prices, book free consultation or download price list.",
+    url: "https://www.insonohearing.com/hearing-aids/iic",
     type: "website",
   },
 };
 
-const signiaFaqs = [
+const iicHearingAidFaqs = [
   {
-    q: "What is the price of Signia hearing aids in India?",
-    a: "Prices start from ₹19,999 and vary depending on model and features. Download our price list for the latest offers.",
+    q: "What are IIC hearing aids and how do they work?",
+    a: "IIC hearing aids, or Invisible-in-the-Canal hearing aids, are the smallest and most discreet type of hearing aids. They sit deep inside your ear canal and use advanced digital processing to deliver clear, natural sound without being visible to others.",
   },
   {
-    q: "Are Signia hearing aids rechargeable?",
-    a: "Yes, most modern Signia models offer rechargeable options with all-day battery life.",
+    q: "What is the price of IIC hearing aids in India?",
+    a: "IIC hearing aids in India typically range from ₹29,999 to ₹2,50,000, depending on the brand, technology level, and customization. Leading brands like Signia, Widex, Phonak, and Oticon offer high-performance IIC models with natural sound and premium comfort.",
   },
   {
-    q: "Can I connect Signia hearing aids to my phone?",
-    a: "Yes, Signia Bluetooth hearing aids allow direct streaming to smartphones and TVs.",
+    q: "Are IIC hearing aids completely invisible?",
+    a: "Yes, IIC hearing aids are designed to be completely invisible when worn. They fit deeply inside the ear canal, making them the most discreet option available — even smaller and less visible than CIC hearing aids.",
   },
   {
-    q: "Do Signia hearing aids come with a warranty?",
-    a: "Yes, all Signia devices include a 2-year international warranty, extendable in India.",
+    q: "Are IIC hearing aids comfortable to wear all day?",
+    a: "Yes. Since each IIC hearing aid is custom-moulded to fit your ear canal perfectly, it offers excellent comfort and stability for all-day wear. Most users forget they’re even wearing one after a few minutes.",
+  },
+  {
+    q: "Do IIC hearing aids have Bluetooth or wireless connectivity?",
+    a: "Due to their ultra-compact size, most IIC hearing aids do not have Bluetooth connectivity. However, some newer premium models include wireless features or remote adjustment options through smartphone apps.",
+  },
+  {
+    q: "Who is the right candidate for IIC hearing aids?",
+    a: "IIC hearing aids are best suited for people with mild to moderate hearing loss who want a completely invisible solution. An audiologist will examine your ear canal size and hearing profile to confirm if IIC is the right fit for you.",
+  },
+  {
+    q: "Are IIC hearing aids rechargeable?",
+    a: "Most IIC hearing aids still use small zinc-air disposable batteries due to their compact size. However, rechargeable IIC technology is being introduced gradually in select premium models by brands like Phonak and Starkey.",
+  },
+  {
+    q: "Do IIC hearing aids provide natural sound quality?",
+    a: "Yes, IIC hearing aids provide very natural and clear sound. Because they sit close to the eardrum, they use your ear’s natural shape to enhance sound direction and depth, resulting in realistic hearing experiences.",
+  },
+  {
+    q: "How long do IIC hearing aids last?",
+    a: "With regular maintenance and cleaning, IIC hearing aids last about 5 to 6 years. Routine servicing and professional ear cleaning help maintain sound quality and prevent moisture damage.",
+  },
+  {
+    q: "Where can I buy IIC hearing aids in India?",
+    a: "You can buy IIC hearing aids from authorized clinics and audiologists across India. Insono Hearing offers free consultations, home trials, and personalized fittings for all major IIC brands with service support across Delhi, Noida, and Gurgaon.",
   },
 ];
+
 
 // ✅ Breadcrumb structured data (optional for SEO)
 const breadcrumbSchema = {
@@ -82,13 +107,10 @@ export default function SigniaPage() {
       <section className="max-w-7xl mx-auto px-4 mt-30 md:px-20 flex flex-col md:flex-row items-center gap-6">
         <div className="flex-1 text-center md:text-left">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-snug mb-3">
-            Signia Hearing Aids – Models, Prices & Features in India
+           IIC - The Smallest Invisible Hearing Aids.
           </h1>
           <p className="text-gray-700 mb-5 text-sm sm:text-base">
-            Discover the full range of <strong>Signia hearing aids</strong> —
-            from rechargeable & Bluetooth-enabled devices to invisible CIC
-            models. Compare features, check prices, and book a free consultation
-            with certified experts.
+            Experience the next level of discretion with India’s latest IIC (Invisible-in-the-Canal) hearing aids. Custom-made to fit deep inside your ear, they stay completely hidden while delivering crystal-clear, natural sound.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
             <Link
@@ -120,9 +142,9 @@ export default function SigniaPage() {
       </section>
 
        <CategoryProductSection
-  category="Signia"
-  title="Best Signia Digital Hearing Aids"
-  description="Explore our top-selling Signia hearing aids. Discreet, powerful, and designed for all-day comfort."
+  category="iic"
+  title="Best IIC Digital Hearing Aids"
+  description="Explore our top-selling IIC hearing aids. Discreet, powerful, and designed for all-day comfort."
   limit={4}
 />
 
@@ -138,12 +160,11 @@ export default function SigniaPage() {
   <div className="relative max-w-7xl mx-auto text-center">
     {/* 🧠 Heading */}
     <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold mb-3 sm:mb-4">
-      Why Choose <span className="text-[#184A99]">Signia Hearing Aids?</span>
+      Why Choose <span className="text-[#184A99]">IIC Hearing Aids?</span>
     </h2>
     <p className="text-gray-700 text-sm sm:text-base max-w-2xl mx-auto mb-10">
-      <strong>Signia</strong> blends German innovation with modern hearing
-      technology — Bluetooth streaming, rechargeable power, invisible CIC
-      designs, and unmatched comfort.
+      IIC hearing aids, or Invisible-in-the-Canal hearing aids, are the smallest and most discreet type of hearing aids. They sit deep inside your ear canal and use advanced 
+      digital processing to deliver clear, natural sound without being visible to others.
     </p>
 
     {/* 🌟 Feature Cards */}
@@ -237,7 +258,7 @@ export default function SigniaPage() {
 
 
 
-<FAQ faqs={signiaFaqs} heading="Signia Hearing Aids : FAQs" />
+<FAQ faqs={iicHearingAidFaqs} heading="IIC Hearing Aids : FAQs" />
 
 
       {/* 🟤 RELATED LINKS */}

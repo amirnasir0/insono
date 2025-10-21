@@ -24,24 +24,49 @@ export const metadata: Metadata = {
   },
 };
 
-const signiaFaqs = [
+const bluetoothHearingAidFaqs = [
   {
-    q: "What is the price of Signia hearing aids in India?",
-    a: "Prices start from ₹19,999 and vary depending on model and features. Download our price list for the latest offers.",
+    q: "What are Bluetooth hearing aids and how do they work?",
+    a: "Bluetooth hearing aids are smart digital devices that wirelessly connect to your smartphone, TV, or laptop via Bluetooth technology. They let you stream calls, music, and media directly into your ears while amplifying surrounding sounds for clear communication.",
   },
   {
-    q: "Are Signia hearing aids rechargeable?",
-    a: "Yes, most modern Signia models offer rechargeable options with all-day battery life.",
+    q: "What is the price of Bluetooth hearing aids in India?",
+    a: "Bluetooth hearing aids in India start from around ₹24,999 and can go up to ₹3,00,000 depending on the brand, technology level, and features. Popular options include Signia, Phonak, Widex, and ReSound, which offer premium Bluetooth connectivity and mobile app support.",
   },
   {
-    q: "Can I connect Signia hearing aids to my phone?",
-    a: "Yes, Signia Bluetooth hearing aids allow direct streaming to smartphones and TVs.",
+    q: "Can I connect Bluetooth hearing aids to my smartphone?",
+    a: "Yes, you can connect Bluetooth hearing aids directly to Android and iPhone devices. Once paired, you can take calls, listen to music, and adjust volume through the hearing aid app without touching your phone.",
   },
   {
-    q: "Do Signia hearing aids come with a warranty?",
-    a: "Yes, all Signia devices include a 2-year international warranty, extendable in India.",
+    q: "Are Bluetooth hearing aids rechargeable?",
+    a: "Yes, most modern Bluetooth hearing aids are rechargeable and offer up to 24 hours of battery life on a single charge. A compact portable charging case makes them easy to recharge, just like wireless earbuds.",
+  },
+  {
+    q: "Do Bluetooth hearing aids support TV and laptop streaming?",
+    a: "Yes, Bluetooth hearing aids can pair with TVs, laptops, and tablets using built-in Bluetooth or accessories like TV streamers. This lets you enjoy movies, online meetings, and shows with clear, personalized sound directly in your ears.",
+  },
+  {
+    q: "Which are the best Bluetooth hearing aid brands in India?",
+    a: "Top Bluetooth hearing aid brands in India include Signia, Widex, Phonak, Oticon, and Starkey. These brands offer advanced noise cancellation, AI speech enhancement, and seamless smartphone integration for users of all ages.",
+  },
+  {
+    q: "Are Bluetooth hearing aids suitable for all types of hearing loss?",
+    a: "Bluetooth hearing aids are available in various styles and power levels — from small in-ear models for mild loss to behind-the-ear options for severe hearing loss. An audiologist can help you choose the best model for your hearing profile.",
+  },
+  {
+    q: "Do Bluetooth hearing aids need internet to work?",
+    a: "No, Bluetooth hearing aids don’t require internet. They use short-range wireless connectivity to pair directly with your devices. However, the companion mobile app may need the internet for firmware updates or advanced settings.",
+  },
+  {
+    q: "Are Bluetooth hearing aids comfortable to wear?",
+    a: "Yes, Bluetooth hearing aids are designed for all-day comfort with lightweight materials and ergonomic designs. Many are custom-fitted to your ear shape, making them comfortable even in India’s humid conditions.",
+  },
+  {
+    q: "Where can I buy Bluetooth hearing aids in India?",
+    a: "You can buy Bluetooth hearing aids from authorized hearing aid centers and audiologists in major cities like Delhi, Mumbai, Bangalore, and Chennai. Insono Hearing also offers home trials, expert fitting, and price match guarantees across India.",
   },
 ];
+
 
 // ✅ Breadcrumb structured data (optional for SEO)
 const breadcrumbSchema = {
@@ -235,7 +260,7 @@ export default function SigniaPage() {
 
 
 
-<FAQ faqs={signiaFaqs} heading="Signia Hearing Aids : FAQs" />
+<FAQ faqs={bluetoothHearingAidFaqs} heading="Bluetooth Hearing Aids : FAQs" />
 
 
       {/* 🟤 RELATED LINKS */}

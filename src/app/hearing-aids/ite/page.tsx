@@ -1,5 +1,5 @@
 import CategoryProductSection from "@/components/CategoryProductSection";
-import Image from "next/image";
+
 import { Headphones, Bluetooth, BatteryCharging, Waves } from "lucide-react";
 import Link from "next/link";
 import { Metadata } from "next";
@@ -9,17 +9,17 @@ import ImageShowcaseSection from "@/components/ImageShowcaseSection";
 
 // ✅ SEO Meta Tags
 export const metadata: Metadata = {
-  title: "Signia Hearing Aids – Prices, Models & Features in India",
+  title: "ITE Hearing Aids – Prices, Models & Features in India",
   description:
-    "Explore Signia hearing aids — rechargeable, Bluetooth & invisible models. Compare features & prices, book free consultation or download price list. 100% genuine with warranty.",
+    "Explore In the ear hearing aids — rechargeable, Bluetooth & invisible models. Compare features & prices, book free consultation or download price list. 100% genuine with warranty.",
   alternates: {
-    canonical: "https://www.insononhearing.com/hearing-aids/signia",
+    canonical: "https://www.insononhearing.com/hearing-aids/ite",
   },
   openGraph: {
-    title: "Signia Hearing Aids – Prices, Models & Features in India",
+    title: "ITE Hearing Aids – Prices, Models & Features in India",
     description:
-      "Explore Signia hearing aids — rechargeable, Bluetooth & invisible models. Compare features & prices, book free consultation or download price list.",
-    url: "https://www.insonohearing.com/hearing-aids/signia",
+      "Explore In the Ear hearing aids — rechargeable, Bluetooth & invisible models. Compare features & prices, book free consultation or download price list.",
+    url: "https://www.insonohearing.com/hearing-aids/ite",
     type: "website",
   },
 };
@@ -82,10 +82,10 @@ export default function SigniaPage() {
       <section className="max-w-7xl mx-auto px-4 mt-30 md:px-20 flex flex-col md:flex-row items-center gap-6">
         <div className="flex-1 text-center md:text-left">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-snug mb-3">
-            Signia Hearing Aids – Models, Prices & Features in India
+            ITE Hearing Aids – Models, Prices & Features in India
           </h1>
           <p className="text-gray-700 mb-5 text-sm sm:text-base">
-            Discover the full range of <strong>Signia hearing aids</strong> —
+            Discover the full range of <strong>ITE hearing aids</strong> —
             from rechargeable & Bluetooth-enabled devices to invisible CIC
             models. Compare features, check prices, and book a free consultation
             with certified experts.
@@ -98,7 +98,7 @@ export default function SigniaPage() {
               Download Price List
             </Link>
             <Link
-              href="/-appointment"
+              href="/appointment"
               className="border border-[#184A99] text-[#184A99] px-5 py-2.5 rounded-md text-sm font-semibold hover:bg-[#184A99] hover:text-white transition text-center"
             >
               Book Free Consultation
@@ -120,9 +120,9 @@ export default function SigniaPage() {
       </section>
 
        <CategoryProductSection
-  category="Signia"
-  title="Best Signia Digital Hearing Aids"
-  description="Explore our top-selling Signia hearing aids. Discreet, powerful, and designed for all-day comfort."
+  category="ite"
+  title="Best ITE Digital Hearing Aids"
+  description="Explore our top-selling ITE hearing aids. Discreet, powerful, and designed for all-day comfort."
   limit={4}
 />
 
@@ -138,13 +138,9 @@ export default function SigniaPage() {
   <div className="relative max-w-7xl mx-auto text-center">
     {/* 🧠 Heading */}
     <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold mb-3 sm:mb-4">
-      Why Choose <span className="text-[#184A99]">Signia Hearing Aids?</span>
+      Why Choose <span className="text-[#184A99]">ITE Hearing Aids?</span>
     </h2>
-    <p className="text-gray-700 text-sm sm:text-base max-w-2xl mx-auto mb-10">
-      <strong>Signia</strong> blends German innovation with modern hearing
-      technology — Bluetooth streaming, rechargeable power, invisible CIC
-      designs, and unmatched comfort.
-    </p>
+    
 
     {/* 🌟 Feature Cards */}
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -186,7 +182,7 @@ export default function SigniaPage() {
           </svg>
         </div>
         <h3 className="font-semibold text-gray-900 mb-2 text-base sm:text-lg">
-          Invisible CIC Design
+          Invisible Design
         </h3>
         <p className="text-sm text-gray-600 text-center">
           Practically invisible fit with maximum comfort.

@@ -9,37 +9,61 @@ import ImageShowcaseSection from "@/components/ImageShowcaseSection";
 
 // ✅ SEO Meta Tags
 export const metadata: Metadata = {
-  title: "Signia Hearing Aids – Prices, Models & Features in India",
+  title: "BTE Hearing Aids – Prices, Models & Features in India",
   description:
-    "Explore Signia hearing aids — rechargeable, Bluetooth & invisible models. Compare features & prices, book free consultation or download price list. 100% genuine with warranty.",
+    "BTE Behind the ear hearing aids — rechargeable, Bluetooth models. Compare features & prices, book free consultation or download price list. 100% genuine with warranty.",
   alternates: {
-    canonical: "https://www.insononhearing.com/hearing-aids/signia",
+    canonical: "https://www.insononhearing.com/hearing-aids/bte",
   },
   openGraph: {
-    title: "Signia Hearing Aids – Prices, Models & Features in India",
+    title: "BTE  Hearing Aids – Prices, Models & Features in India",
     description:
-      "Explore Signia hearing aids — rechargeable, Bluetooth & invisible models. Compare features & prices, book free consultation or download price list.",
-    url: "https://www.insonohearing.com/hearing-aids/signia",
+      "Explore BTE hearing aids — rechargeable, Bluetooth models. Compare features & prices, book free consultation or download price list.",
+    url: "https://www.insonohearing.com/hearing-aids/bte",
     type: "website",
   },
 };
 
-const signiaFaqs = [
+const bteHearingAidFaqs = [
   {
-    q: "What is the price of Signia hearing aids in India?",
-    a: "Prices start from ₹19,999 and vary depending on model and features. Download our price list for the latest offers.",
+    q: "What are BTE hearing aids and how do they work?",
+    a: "BTE hearing aids, or Behind-the-Ear hearing aids, sit comfortably behind the ear with a small tube that sends sound into an earmould or ear tip. They amplify sound clearly and are suitable for all types of hearing loss, from mild to profound.",
   },
   {
-    q: "Are Signia hearing aids rechargeable?",
-    a: "Yes, most modern Signia models offer rechargeable options with all-day battery life.",
+    q: "What is the price of BTE hearing aids in India?",
+    a: "BTE hearing aids in India range from around ₹18,999 to ₹2,80,000, depending on the brand, technology level, and features. Popular BTE models from Signia, Widex, Phonak, and Oticon include Bluetooth and rechargeable options.",
   },
   {
-    q: "Can I connect Signia hearing aids to my phone?",
-    a: "Yes, Signia Bluetooth hearing aids allow direct streaming to smartphones and TVs.",
+    q: "Are BTE hearing aids suitable for severe hearing loss?",
+    a: "Yes, BTE hearing aids are ideal for people with severe or profound hearing loss. They offer more amplification and power than smaller models like CIC or IIC, making them a reliable choice for stronger performance and clarity.",
   },
   {
-    q: "Do Signia hearing aids come with a warranty?",
-    a: "Yes, all Signia devices include a 2-year international warranty, extendable in India.",
+    q: "Are BTE hearing aids comfortable to wear?",
+    a: "Yes. Modern BTE hearing aids are lightweight, ergonomically designed, and comfortable even for long wear. The slim-tube and mini BTE designs fit discreetly behind the ear and are suitable for Indian weather conditions.",
+  },
+  {
+    q: "Are BTE hearing aids rechargeable?",
+    a: "Yes, most new BTE hearing aids come with built-in rechargeable lithium-ion batteries that last up to 24–30 hours per charge. They can be recharged easily using a portable charging case, eliminating the need for disposable batteries.",
+  },
+  {
+    q: "Do BTE hearing aids have Bluetooth connectivity?",
+    a: "Yes, many BTE hearing aids include Bluetooth connectivity for direct streaming of phone calls, TV audio, and music from smartphones and other devices. You can also adjust settings and volume through a mobile app.",
+  },
+  {
+    q: "Who should use BTE hearing aids?",
+    a: "BTE hearing aids are suitable for people of all ages and hearing levels. They are often recommended for children, seniors, and users with severe hearing loss who prefer easy handling and robust performance.",
+  },
+  {
+    q: "Are BTE hearing aids visible when worn?",
+    a: "BTE hearing aids are slightly visible as they sit behind the ear, but modern designs are smaller, sleeker, and available in multiple skin-tone colours for a discreet appearance.",
+  },
+  {
+    q: "How long do BTE hearing aids last?",
+    a: "With proper care and regular servicing, BTE hearing aids last around 5–7 years. Their durable build and moisture-resistant design make them well-suited for India’s humid and dusty climate.",
+  },
+  {
+    q: "Where can I buy BTE hearing aids in India?",
+    a: "You can buy BTE hearing aids from authorized hearing aid clinics and audiologists across India. Insono Hearing offers free consultations, trials, and professional fittings for the latest BTE models from global brands.",
   },
 ];
 
@@ -82,13 +106,11 @@ export default function SigniaPage() {
       <section className="max-w-7xl mx-auto px-4 mt-30 md:px-20 flex flex-col md:flex-row items-center gap-6">
         <div className="flex-1 text-center md:text-left">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-snug mb-3">
-            Signia Hearing Aids – Models, Prices & Features in India
+             BTE Hearing Aids — Trusted, Powerful, and Easy to Use
           </h1>
           <p className="text-gray-700 mb-5 text-sm sm:text-base">
-            Discover the full range of <strong>Signia hearing aids</strong> —
-            from rechargeable & Bluetooth-enabled devices to invisible CIC
-            models. Compare features, check prices, and book a free consultation
-            with certified experts.
+            Discover the full range of <strong>BTE hearing aids</strong> —
+            suitable for all types of hearing loss, from mild to profound
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
             <Link
@@ -120,9 +142,9 @@ export default function SigniaPage() {
       </section>
 
        <CategoryProductSection
-  category="Signia"
-  title="Best Signia Digital Hearing Aids"
-  description="Explore our top-selling Signia hearing aids. Discreet, powerful, and designed for all-day comfort."
+  category="BTE"
+  title="Best BTE Digital Hearing Aids"
+  description="Explore our top-selling Behind the ear hearing aids. Long lasting, powerful, and designed for all-day comfort."
   limit={4}
 />
 
@@ -138,12 +160,11 @@ export default function SigniaPage() {
   <div className="relative max-w-7xl mx-auto text-center">
     {/* 🧠 Heading */}
     <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold mb-3 sm:mb-4">
-      Why Choose <span className="text-[#184A99]">Signia Hearing Aids?</span>
+      Why Choose <span className="text-[#184A99]">BTE Hearing Aids?</span>
     </h2>
     <p className="text-gray-700 text-sm sm:text-base max-w-2xl mx-auto mb-10">
-      <strong>Signia</strong> blends German innovation with modern hearing
-      technology — Bluetooth streaming, rechargeable power, invisible CIC
-      designs, and unmatched comfort.
+      BTE hearing aids, or Behind-the-Ear hearing aids, sit comfortably behind the ear with a small tube that sends sound into an earmould or ear tip. They amplify 
+      sound clearly and are suitable for all types of hearing loss, from mild to profound.
     </p>
 
     {/* 🌟 Feature Cards */}
@@ -237,7 +258,7 @@ export default function SigniaPage() {
 
 
 
-<FAQ faqs={signiaFaqs} heading="Signia Hearing Aids : FAQs" />
+<FAQ faqs={bteHearingAidFaqs} heading="Behind the Ear Hearing Aids : FAQs" />
 
 
       {/* 🟤 RELATED LINKS */}

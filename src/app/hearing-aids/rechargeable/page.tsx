@@ -18,30 +18,55 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Top Rechargeable Digital Hearing Aids from Signia,Phonak, Widex & Oticon",
     description:
-      "Explore Signia hearing aids — rechargeable, Bluetooth & invisible models. Compare features & prices, book free consultation or download price list.",
+      "Explore rechargeable hearing aids — rechargeable, Bluetooth & invisible models. Compare features & prices, book free consultation or download price list.",
     url: "https://www.insonohearing.com/hearing-aids/rechargeable",
     type: "website",
   },
 };
 
-const signiaFaqs = [
+const rechargeableHearingAidFaqs = [
   {
-    q: "What is the price of Signia hearing aids in India?",
-    a: "Prices start from ₹19,999 and vary depending on model and features. Download our price list for the latest offers.",
+    q: "What are rechargeable hearing aids and how do they work?",
+    a: "Rechargeable hearing aids use built-in lithium-ion batteries instead of disposable ones. You simply place them in their charging case overnight, and they’re ready for a full day of clear, amplified hearing the next morning.",
   },
   {
-    q: "Are Signia hearing aids rechargeable?",
-    a: "Yes, most modern Signia models offer rechargeable options with all-day battery life.",
+    q: "What is the price of rechargeable hearing aids in India?",
+    a: "Rechargeable hearing aids in India start from around ₹24,999 and go up to ₹3,00,000, depending on the brand, technology level, and features. Premium models from Signia, Widex, and Phonak offer fast charging and all-day battery life.",
   },
   {
-    q: "Can I connect Signia hearing aids to my phone?",
-    a: "Yes, Signia Bluetooth hearing aids allow direct streaming to smartphones and TVs.",
+    q: "How long does the battery last on rechargeable hearing aids?",
+    a: "Most rechargeable hearing aids last up to 20–30 hours on a single charge, even with Bluetooth streaming. The battery is designed to last around 4–5 years before replacement is needed.",
   },
   {
-    q: "Do Signia hearing aids come with a warranty?",
-    a: "Yes, all Signia devices include a 2-year international warranty, extendable in India.",
+    q: "Are rechargeable hearing aids better than battery-powered ones?",
+    a: "Rechargeable hearing aids are more convenient and eco-friendly since you don’t have to change batteries weekly. They are ideal for senior citizens or active users who want low maintenance and quick charging without worrying about small batteries.",
+  },
+  {
+    q: "Do rechargeable hearing aids come with a portable charging case?",
+    a: "Yes, most modern rechargeable hearing aids come with a compact charging case, similar to wireless earbuds. Some models even have built-in power banks that provide multiple charges on the go — perfect for travel.",
+  },
+  {
+    q: "Are rechargeable hearing aids available in all styles?",
+    a: "Yes, rechargeable technology is now available in most styles, including behind-the-ear (BTE), receiver-in-canal (RIC), and some nearly invisible in-ear models. Your audiologist can recommend the best fit for your hearing needs.",
+  },
+  {
+    q: "Can I use rechargeable hearing aids with Bluetooth?",
+    a: "Yes, many rechargeable hearing aids also include Bluetooth connectivity, allowing you to stream calls, TV audio, and music directly from your smartphone or tablet.",
+  },
+  {
+    q: "How long does it take to fully charge a rechargeable hearing aid?",
+    a: "A full charge usually takes about 3–4 hours and provides up to 24 hours of usage. Quick charge options can deliver 6–8 hours of power in just 30 minutes.",
+  },
+  {
+    q: "Are rechargeable hearing aids safe for daily use in India’s climate?",
+    a: "Yes, rechargeable hearing aids are tested for durability and humidity resistance. Brands like Signia, Widex, and Oticon offer models designed for Indian weather conditions, ensuring stable performance and long life.",
+  },
+  {
+    q: "Where can I buy rechargeable hearing aids in India?",
+    a: "You can buy rechargeable hearing aids from authorized clinics and audiologists across India. Insono Hearing offers free home trials, professional fitting, and price-match guarantees on leading rechargeable models.",
   },
 ];
+
 
 // ✅ Breadcrumb structured data (optional for SEO)
 const breadcrumbSchema = {
@@ -234,7 +259,7 @@ export default function SigniaPage() {
 
 
 
-<FAQ faqs={signiaFaqs} heading="Signia Hearing Aids : FAQs" />
+<FAQ faqs={rechargeableHearingAidFaqs} heading="Rechargeable Hearing Aids : FAQs" />
 
 
       {/* 🟤 RELATED LINKS */}

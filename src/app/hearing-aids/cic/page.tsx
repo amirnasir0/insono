@@ -9,39 +9,64 @@ import ImageShowcaseSection from "@/components/ImageShowcaseSection";
 
 // ✅ SEO Meta Tags
 export const metadata: Metadata = {
-  title: "Signia Hearing Aids – Prices, Models & Features in India",
+  title: "CIC Hearing Aids India | Ultra-Discreet “Completely-in-the-Canal” Devices for Clear Hearing",
   description:
-    "Explore Signia hearing aids — rechargeable, Bluetooth & invisible models. Compare features & prices, book free consultation or download price list. 100% genuine with warranty.",
+    "premium CIC hearing aids in India: custom-moulded, ultra-discreet devices that sit deep inside the ear canal and deliver natural sound. Ideal for mild to moderate hearing loss, available from top brands like Signia, Widex & Phonak.",
   alternates: {
-    canonical: "https://www.insononhearing.com/hearing-aids/signia",
+    canonical: "https://www.insononhearing.com/hearing-aids/cic",
   },
   openGraph: {
-    title: "Signia Hearing Aids – Prices, Models & Features in India",
+    title: "CIC Hearing Aids India | Ultra-Discreet “Completely-in-the-Canal” Devices for Clear Hearing",
     description:
-      "Explore Signia hearing aids — rechargeable, Bluetooth & invisible models. Compare features & prices, book free consultation or download price list.",
-    url: "https://www.insonohearing.com/hearing-aids/signia",
+      "premium CIC hearing aids in India: custom-moulded, ultra-discreet devices that sit deep inside the ear canal and deliver natural sound. Ideal for mild to moderate hearing loss, available from top brands like Signia, Widex & Phonak.",
+    url: "https://www.insonohearing.com/hearing-aids/cic",
     type: "website",
   },
 };
 
-const signiaFaqs = [
+const cicHearingAidFaqs = [
   {
-    q: "What is the price of Signia hearing aids in India?",
-    a: "Prices start from ₹19,999 and vary depending on model and features. Download our price list for the latest offers.",
+    q: "What are CIC hearing aids and how do they work?",
+    a: "CIC hearing aids, or Completely-in-the-Canal hearing aids, are small custom-fitted devices that sit deep inside your ear canal. They capture and amplify sound naturally, offering clear hearing while staying nearly invisible to others.",
   },
   {
-    q: "Are Signia hearing aids rechargeable?",
-    a: "Yes, most modern Signia models offer rechargeable options with all-day battery life.",
+    q: "What is the price of CIC hearing aids in India?",
+    a: "CIC hearing aids in India start from around ₹22,000 and can go up to ₹2,50,000 depending on the brand, sound processing technology, and customization. Leading options include Signia, Widex, Phonak, and Oticon.",
   },
   {
-    q: "Can I connect Signia hearing aids to my phone?",
-    a: "Yes, Signia Bluetooth hearing aids allow direct streaming to smartphones and TVs.",
+    q: "Are CIC hearing aids invisible?",
+    a: "Yes. CIC hearing aids are among the most discreet types of hearing aids available. They sit entirely inside your ear canal, making them almost invisible when viewed from the front or side.",
   },
   {
-    q: "Do Signia hearing aids come with a warranty?",
-    a: "Yes, all Signia devices include a 2-year international warranty, extendable in India.",
+    q: "Are CIC hearing aids comfortable to wear all day?",
+    a: "Yes, CIC hearing aids are custom-made to fit the unique shape of your ear canal. This personalized design ensures a secure and comfortable fit for all-day use without irritation or slipping.",
+  },
+  {
+    q: "Do CIC hearing aids have Bluetooth or wireless connectivity?",
+    a: "Some advanced CIC hearing aids now offer Bluetooth or wireless features, but due to their compact size, not all models include it. If connectivity is important, you can choose a mini RIC or ITC model with built-in Bluetooth.",
+  },
+  {
+    q: "Who can use CIC hearing aids?",
+    a: "CIC hearing aids are ideal for individuals with mild to moderate hearing loss who prefer a discreet, natural-looking solution. However, users with very narrow ear canals or severe hearing loss may need other styles.",
+  },
+  {
+    q: "Are CIC hearing aids rechargeable?",
+    a: "Most CIC hearing aids still use small disposable zinc-air batteries due to their compact size. However, newer rechargeable CIC models are gradually entering the Indian market from brands like Starkey and Phonak.",
+  },
+  {
+    q: "Do CIC hearing aids provide natural sound quality?",
+    a: "Yes. Because CIC hearing aids sit close to your eardrum, they use your ear’s natural acoustics to deliver clear, natural, and directionally accurate sound — especially for conversations.",
+  },
+  {
+    q: "How long do CIC hearing aids last?",
+    a: "With proper cleaning and professional servicing, CIC hearing aids last around 5 to 6 years. Regular maintenance and ear wax cleaning help extend their life and maintain performance.",
+  },
+  {
+    q: "Where can I buy CIC hearing aids in India?",
+    a: "You can buy CIC hearing aids from authorized hearing clinics and audiologists across India. Insono Hearing offers custom CIC fittings, free trials, and brand comparisons with doorstep support in cities like Delhi, Noida, and Gurgaon.",
   },
 ];
+
 
 // ✅ Breadcrumb structured data (optional for SEO)
 const breadcrumbSchema = {
@@ -64,7 +89,7 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       position: 3,
       name: "Signia",
-      item: "https://www.insonohearing.com/hearing-aids/signia",
+      item: "https://www.insonohearing.com/hearing-aids/cic",
     },
   ],
 };
@@ -82,13 +107,11 @@ export default function SigniaPage() {
       <section className="max-w-7xl mx-auto px-4 mt-30 md:px-20 flex flex-col md:flex-row items-center gap-6">
         <div className="flex-1 text-center md:text-left">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-snug mb-3">
-            Signia Hearing Aids – Models, Prices & Features in India
+            Ultra-Discreet “Completely-in-the-Canal” Devices for Clear Hearing
           </h1>
           <p className="text-gray-700 mb-5 text-sm sm:text-base">
-            Discover the full range of <strong>Signia hearing aids</strong> —
-            from rechargeable & Bluetooth-enabled devices to invisible CIC
-            models. Compare features, check prices, and book a free consultation
-            with certified experts.
+           Explore premium CIC hearing aids in India: custom-moulded, 
+           ultra-discreet devices that sit deep inside the ear canal and deliver natural sound.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
             <Link
@@ -98,7 +121,7 @@ export default function SigniaPage() {
               Download Price List
             </Link>
             <Link
-              href="/-appointment"
+              href="/appointment"
               className="border border-[#184A99] text-[#184A99] px-5 py-2.5 rounded-md text-sm font-semibold hover:bg-[#184A99] hover:text-white transition text-center"
             >
               Book Free Consultation
@@ -237,7 +260,7 @@ export default function SigniaPage() {
 
 
 
-<FAQ faqs={signiaFaqs} heading="Signia Hearing Aids : FAQs" />
+<FAQ faqs={cicHearingAidFaqs} heading="CIC Hearing Aids : FAQs" />
 
 
       {/* 🟤 RELATED LINKS */}

@@ -9,39 +9,64 @@ import ImageShowcaseSection from "@/components/ImageShowcaseSection";
 
 // ✅ SEO Meta Tags
 export const metadata: Metadata = {
-  title: "Signia Hearing Aids – Prices, Models & Features in India",
+  title: "Invisible Hearing Aids in India | Discreet, Custom-Fit & Top Brands",
   description:
-    "Explore Signia hearing aids — rechargeable, Bluetooth & invisible models. Compare features & prices, book free consultation or download price list. 100% genuine with warranty.",
+    "Discover the latest invisible hearing aids in India — custom-moulded, nearly invisible devices from leading brands for clearer hearing, comfort and confidence. See price ranges (₹ 20K +), expert fitting and after-care support at Insono Hearing.",
   alternates: {
-    canonical: "https://www.insononhearing.com/hearing-aids/signia",
+    canonical: "https://www.insononhearing.com/hearing-aids/invisible",
   },
   openGraph: {
-    title: "Signia Hearing Aids – Prices, Models & Features in India",
+    title: "Invisible Hearing Aids in India | Discreet, Custom-Fit & Top Brands",
     description:
-      "Explore Signia hearing aids — rechargeable, Bluetooth & invisible models. Compare features & prices, book free consultation or download price list.",
-    url: "https://www.insonohearing.com/hearing-aids/signia",
+      "Discover the latest invisible hearing aids in India — custom-moulded, nearly invisible devices from leading brands for clearer hearing, comfort and confidence. See price ranges (₹ 20K +), expert fitting and after-care support at Insono Hearing.",
+    url: "https://www.insonohearing.com/hearing-aids/invisible",
     type: "website",
   },
 };
 
-const signiaFaqs = [
+const invisibleHearingAidFaqs = [
   {
-    q: "What is the price of Signia hearing aids in India?",
-    a: "Prices start from ₹19,999 and vary depending on model and features. Download our price list for the latest offers.",
+    q: "What are invisible hearing aids and how do they work?",
+    a: "Invisible hearing aids are tiny devices custom-fitted inside your ear canal, making them almost invisible to others. They use advanced digital sound processing to amplify speech clearly while reducing background noise, helping you hear naturally without any visible device.",
   },
   {
-    q: "Are Signia hearing aids rechargeable?",
-    a: "Yes, most modern Signia models offer rechargeable options with all-day battery life.",
+    q: "What is the price of invisible hearing aids in India?",
+    a: "Invisible hearing aids in India start from around ₹25,000 and can go up to ₹2,50,000 depending on the brand, technology level, and customization. You can request our detailed price list to compare models and offers from brands like Signia, Widex, and Phonak.",
   },
   {
-    q: "Can I connect Signia hearing aids to my phone?",
-    a: "Yes, Signia Bluetooth hearing aids allow direct streaming to smartphones and TVs.",
+    q: "Are invisible hearing aids comfortable to wear all day?",
+    a: "Yes. Each invisible hearing aid is custom-moulded to your ear canal, ensuring a snug and irritation-free fit. Lightweight and ergonomic, they stay comfortable even after hours of use — perfect for daily wear in India’s humid conditions.",
   },
   {
-    q: "Do Signia hearing aids come with a warranty?",
-    a: "Yes, all Signia devices include a 2-year international warranty, extendable in India.",
+    q: "Can invisible hearing aids connect to smartphones?",
+    a: "Some premium invisible hearing aids now come with Bluetooth or wireless connectivity options. This allows you to stream phone calls, TV audio, and music directly to your ears for a seamless listening experience.",
+  },
+  {
+    q: "Who is the right candidate for invisible hearing aids?",
+    a: "Invisible hearing aids are best suited for people with mild to moderate hearing loss who prefer a discreet look. After a professional hearing test, an audiologist can confirm if your ear canal size and hearing profile make you a good fit.",
+  },
+  {
+    q: "Do invisible hearing aids need frequent battery changes?",
+    a: "Most invisible hearing aids use small zinc-air batteries that last 4–7 days, depending on usage. Some newer models also offer rechargeable options, removing the need for battery replacements altogether.",
+  },
+  {
+    q: "Are invisible hearing aids available across India?",
+    a: "Yes, invisible hearing aids are available at authorized hearing care centers and clinics across major cities like Delhi, Mumbai, Bangalore, Chennai, and Kolkata. You can also schedule a free home visit or online consultation with Insono Hearing.",
+  },
+  {
+    q: "How long do invisible hearing aids last?",
+    a: "With proper care and regular servicing, invisible hearing aids typically last between 4 to 6 years. Regular cleaning and professional checkups help maintain sound quality and comfort over time.",
+  },
+  {
+    q: "Do invisible hearing aids come with a warranty?",
+    a: "Yes, most brands offer a 2-year international warranty on invisible hearing aids, with the option to extend coverage in India. The warranty covers manufacturing defects and service support.",
+  },
+  {
+    q: "How can I try invisible hearing aids before buying?",
+    a: "You can book a free trial or in-clinic demo with Insono Hearing. Our audiologists will test your hearing, fit an invisible device, and let you experience the difference before you decide to buy.",
   },
 ];
+
 
 // ✅ Breadcrumb structured data (optional for SEO)
 const breadcrumbSchema = {
@@ -64,7 +89,7 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       position: 3,
       name: "Signia",
-      item: "https://www.insonohearing.com/hearing-aids/signia",
+      item: "https://www.insonohearing.com/hearing-aids/invisible",
     },
   ],
 };
@@ -82,13 +107,14 @@ export default function SigniaPage() {
       <section className="max-w-7xl mx-auto px-4 mt-30 md:px-20 flex flex-col md:flex-row items-center gap-6">
         <div className="flex-1 text-center md:text-left">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-snug mb-3">
-            Signia Hearing Aids – Models, Prices & Features in India
+            Crystal-Clear Hearing in a Tiny Invisible Aid
           </h1>
           <p className="text-gray-700 mb-5 text-sm sm:text-base">
-            Discover the full range of <strong>Signia hearing aids</strong> —
-            from rechargeable & Bluetooth-enabled devices to invisible CIC
-            models. Compare features, check prices, and book a free consultation
-            with certified experts.
+            Experience India’s most advanced invisible hearing aids
+             — custom-fit, feather-light, and designed to give you 
+             natural hearing without anyone noticing. Book your free 
+             consultation today and rediscover the joy of effortless conversations.
+
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
             <Link
@@ -98,7 +124,7 @@ export default function SigniaPage() {
               Download Price List
             </Link>
             <Link
-              href="/-appointment"
+              href="/appointment"
               className="border border-[#184A99] text-[#184A99] px-5 py-2.5 rounded-md text-sm font-semibold hover:bg-[#184A99] hover:text-white transition text-center"
             >
               Book Free Consultation
@@ -120,9 +146,9 @@ export default function SigniaPage() {
       </section>
 
        <CategoryProductSection
-  category="Signia"
-  title="Best Signia Digital Hearing Aids"
-  description="Explore our top-selling Signia hearing aids. Discreet, powerful, and designed for all-day comfort."
+  category="invisible"
+  title="Best Invisible Digital Hearing Aids"
+  description="Explore our best-selling Invisible hearing aids. Discreet, powerful, and designed for all-day comfort."
   limit={4}
 />
 
@@ -138,12 +164,11 @@ export default function SigniaPage() {
   <div className="relative max-w-7xl mx-auto text-center">
     {/* 🧠 Heading */}
     <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold mb-3 sm:mb-4">
-      Why Choose <span className="text-[#184A99]">Signia Hearing Aids?</span>
+      Why Choose <span className="text-[#184A99]">Invisible Hearing Aids?</span>
     </h2>
     <p className="text-gray-700 text-sm sm:text-base max-w-2xl mx-auto mb-10">
-      <strong>Signia</strong> blends German innovation with modern hearing
-      technology — Bluetooth streaming, rechargeable power, invisible CIC
-      designs, and unmatched comfort.
+      Placed deep inside the ear canal, these aids are nearly impossible to see, even up close.
+Perfect for those who want to hear clearly without anyone noticing they’re wearing a device. 
     </p>
 
     {/* 🌟 Feature Cards */}
@@ -237,7 +262,7 @@ export default function SigniaPage() {
 
 
 
-<FAQ faqs={signiaFaqs} heading="Signia Hearing Aids : FAQs" />
+<FAQ faqs={invisibleHearingAidFaqs} heading="Invisible Hearing Aids : FAQs" />
 
 
       {/* 🟤 RELATED LINKS */}
