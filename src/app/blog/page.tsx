@@ -23,16 +23,10 @@ export default function BlogPage() {
         setLoading(false);
       }
     }
-    fetchPosts();
-  }, []);
 
-  if (loading) {
-    return (
-      <main className="max-w-6xl mx-auto px-6 py-16 mt-6 text-center">
-        <p className="text-lg font-medium text-gray-600">Loading blogs...</p>
-      </main>
-    );
-  }
+    // Start fetching immediately after paint
+    requestAnimationFrame(fetchPosts);
+  }, []);
 
   return (
     <main className="max-w-6xl mx-auto px-6 py-16 mt-6">
@@ -40,7 +34,9 @@ export default function BlogPage() {
         Our Blog
       </h1>
 
-      {posts.length === 0 ? (
+      {loading ? (
+        <SkeletonGrid />
+      ) : posts.length === 0 ? (
         <p className="text-center text-gray-600">No blogs found.</p>
       ) : (
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -59,16 +55,16 @@ export default function BlogPage() {
                 </div>
 
                 <div className="p-5">
-                  <h2 className="text-lg font-semibold text-gray-800 mb-2">
+                  <h2 className="text-lg font-semibold text-gray-800 mb-2 line-clamp-2">
                     {post.title}
                   </h2>
                   <p
-                    className="text-sm text-gray-600 mb-4"
+                    className="text-sm text-gray-600 mb-4 line-clamp-3"
                     dangerouslySetInnerHTML={{ __html: post.excerpt }}
                   />
 
                   <div className="flex items-center justify-between text-xs text-gray-500">
-                    <span>{post.author.node.name}</span>
+                    <span>{post.author?.node?.name}</span>
                     <span>{new Date(post.date).toDateString()}</span>
                   </div>
                 </div>
@@ -78,5 +74,38 @@ export default function BlogPage() {
         </div>
       )}
     </main>
+  );
+}
+
+/* ------------------------------
+   💀 Skeleton Loader Components
+--------------------------------*/
+
+function SkeletonCard() {
+  return (
+    <div className="bg-white rounded-2xl shadow-md overflow-hidden animate-pulse">
+      <div className="h-48 bg-gray-200 w-full"></div>
+
+      <div className="p-5 space-y-3">
+        <div className="h-5 bg-gray-200 rounded w-3/4"></div>
+        <div className="h-4 bg-gray-200 rounded w-full"></div>
+        <div className="h-4 bg-gray-200 rounded w-5/6"></div>
+
+        <div className="flex items-center justify-between pt-2">
+          <div className="h-3 bg-gray-200 rounded w-1/3"></div>
+          <div className="h-3 bg-gray-200 rounded w-1/4"></div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function SkeletonGrid() {
+  return (
+    <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      {Array.from({ length: 6 }).map((_, i) => (
+        <SkeletonCard key={i} />
+      ))}
+    </div>
   );
 }

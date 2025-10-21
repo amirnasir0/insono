@@ -4,6 +4,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import Footer from "@/components/Footer";
 import Script from "next/script";
+import PageTransition from "@/components/PageTransition";
 
 
 export const metadata: Metadata = {
@@ -76,7 +77,7 @@ export default function RootLayout({
       <body className="font-museo bg-white text-gray-900 antialiased bg-gradient-to-b from-[#eaf5ff] to-white">
         <Navigation />
         {/* <Breadcrumbs /> */}
-        {children}
+         <PageTransition>{children}</PageTransition>
         <Footer />
 
         {/* ✅ Sticky video visible on all pages except excluded ones */}
