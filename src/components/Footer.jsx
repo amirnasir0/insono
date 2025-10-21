@@ -227,7 +227,7 @@ export default function Footer() {
             <a href="/terms" className="hover:text-white">
               Terms
             </a>
-            <a href="/sitemap" className="hover:text-white">
+            <a href="/sitemap.xml" className="hover:text-white">
               Sitemap
             </a>
           </div>
