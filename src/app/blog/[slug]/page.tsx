@@ -8,9 +8,9 @@ import { graphQLClient, GET_POST_BY_SLUG } from "@/lib/graphql";
 // ✅ Revalidate every 60 seconds (ISR)
 export const revalidate = 60;
 
-interface BlogPageProps {
-  params: { slug: string };
-}
+type BlogPageProps = {
+  params: Promise<{ slug: string }> | { slug: string };
+};
 
 interface Post {
   id: string;
@@ -127,17 +127,20 @@ async function getBestSellerProducts(): Promise<Product[]> {
 export async function generateMetadata({
   params,
 }: BlogPageProps): Promise<Metadata> {
-  const post = await getPostCached(params.slug);
+  const resolved = await params;
+  const post = await getPostCached(resolved.slug);
+
   if (!post) {
     return { title: "Post not found" };
   }
+
   return {
     title: post.title,
     description: post.excerpt || post.title,
     openGraph: {
       title: post.title,
       description: post.excerpt || post.title,
-      url: `https://insonohearing.com/blog/${params.slug}`,
+      url: `https://insonohearing.com/blog/${resolved.slug}`,
       type: "article",
     },
   };
@@ -270,7 +273,10 @@ async function SidebarContent() {
 
 // 🧠 Main Page
 export default async function BlogPage({ params }: BlogPageProps) {
-  const post = await getPostCached(params.slug);
+  const resolved = await params;
+  const { slug } = resolved;
+
+  const post = await getPostCached(slug);
   if (!post) return <p className="text-center py-10">Post not found</p>;
 
   return (
@@ -278,11 +284,11 @@ export default async function BlogPage({ params }: BlogPageProps) {
       <div className="flex flex-col lg:flex-row gap-10">
         <div className="lg:w-2/3 w-full">
           <Suspense fallback={<BlogSkeleton />}>
-            <BlogContent slug={params.slug} />
+            <BlogContent slug={slug} />
           </Suspense>
 
           <Suspense fallback={<div className="mt-12"><BlogSkeleton /></div>}>
-            <RelatedPosts slug={params.slug} />
+            <RelatedPosts slug={slug} />
           </Suspense>
         </div>
 
