@@ -4,8 +4,6 @@ import "./globals.css";
 import type { Metadata } from "next";
 import Footer from "@/components/Footer";
 import Script from "next/script";
-import PageTransition from "@/components/PageTransition";
-
 
 export const metadata: Metadata = {
   title: {
@@ -22,9 +20,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Insono Hearing" }],
   creator: "Insono Hearing",
-  metadataBase: new URL(
-    "https://insonohearing.com"
-  ),
+  metadataBase: new URL("https://insonohearing.com"),
   openGraph: {
     title: "Insono Hearing",
     description: "Affordable, reliable hearing aids with local support.",
@@ -45,9 +41,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Insono Hearing",
     description: "Affordable, reliable hearing aids with local support.",
-    images: [
-      "https://insonohearing.com/logo.webp",
-    ],
+    images: ["https://insonohearing.com/logo.webp"],
     creator: "@insonohearing",
   },
   icons: {
@@ -64,24 +58,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en"><head>
-      {/* External chatbot widget */}
-      {/* <Script
-        src="https://chat-xbot.webspecia.in/js/widget/omf5pwsilxzzkba1/float.js"
-        strategy="afterInteractive"
-        async
-        defer
-      /> */}
-      <meta name="google-site-verification" content="_w3rNIazk1WMe-urSCcrtpzyAcqTeopxMU1qqLd0p6k" />
+    <html lang="en">
+      <head>
+        <meta
+          name="google-site-verification"
+          content="_w3rNIazk1WMe-urSCcrtpzyAcqTeopxMU1qqLd0p6k"
+        />
       </head>
       <body className="font-museo bg-white text-gray-900 antialiased bg-gradient-to-b from-[#eaf5ff] to-white">
+        {/* ✅ Navigation always at the top */}
         <Navigation />
-        {/* <Breadcrumbs /> */}
-         <PageTransition>{children}</PageTransition>
-        <Footer />
 
-        {/* ✅ Sticky video visible on all pages except excluded ones */}
-        {/* <StickyVideoWrapper /> */}
+        {/* ✅ YouTube-style page loading bar (below nav) */}
+        
+
+        {/* ✅ Page Content */}
+        {children}
+
+        {/* ✅ Footer visible on all pages */}
+        <Footer />
       </body>
     </html>
   );
