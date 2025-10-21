@@ -316,6 +316,36 @@
 }
 
 
+/* === Force NProgress Bar to Always Show on Top === */
+/* === YouTube-style Progress Bar === */
+#nprogress {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999999 !important;
+}
+
+#nprogress .bar {
+  background: #023784 !important; /* Insono blue */
+  height: 3px !important;
+  border-radius: 0 2px 2px 0;
+  box-shadow: 0 0 10px #023784, 0 0 5px #023784;
+}
+
+#nprogress .peg {
+  display: block;
+  position: absolute;
+  right: 0px;
+  width: 100px;
+  height: 100%;
+  box-shadow: 0 0 10px #023784, 0 0 5px #023784;
+  opacity: 1;
+  transform: rotate(3deg) translate(0px, -4px);
+}
+
+
 /* Custom class for slower ping with gaps */
 .animate-slow-ping {
   animation: slow-ping 3s ease-out infinite; /* ⏱ 3s total, pulse happens in first 1.5s, then gap */

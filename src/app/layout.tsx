@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import Footer from "@/components/Footer";
 import Script from "next/script";
 
+
 export const metadata: Metadata = {
   title: {
     default: "Insono Hearing",
@@ -66,16 +67,10 @@ export default function RootLayout({
         />
       </head>
       <body className="font-museo bg-white text-gray-900 antialiased bg-gradient-to-b from-[#eaf5ff] to-white">
-        {/* ✅ Navigation always at the top */}
         <Navigation />
 
-        {/* ✅ YouTube-style page loading bar (below nav) */}
-        
-
-        {/* ✅ Page Content */}
         {children}
 
-        {/* ✅ Footer visible on all pages */}
         <Footer />
       </body>
     </html>
