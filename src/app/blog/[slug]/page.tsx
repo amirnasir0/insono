@@ -1,17 +1,18 @@
 import { Suspense } from "react";
-import type { Metadata } from "next";
+import type { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import { cache } from "react";
 import { gql } from "graphql-request";
 import { graphQLClient, GET_POST_BY_SLUG } from "@/lib/graphql";
 
-// ✅ Revalidate every 60 seconds (ISR)
 export const revalidate = 60;
 
-type BlogPageProps = {
-  params: Promise<{ slug: string }> | { slug: string };
-};
+// ✅ Define type as async-compatible
+interface BlogPageProps {
+  params: Promise<{ slug: string }>;
+}
 
+// Post interfaces
 interface Post {
   id: string;
   title: string;
@@ -37,7 +38,7 @@ interface Product {
   featuredImage?: { node?: { sourceUrl: string } };
 }
 
-// ✅ Cached Post Fetch
+// ✅ Cached fetch
 const getPostCached = cache(async (slug: string): Promise<Post | null> => {
   try {
     const data = await graphQLClient.request<{ post: Post }>(
@@ -51,7 +52,6 @@ const getPostCached = cache(async (slug: string): Promise<Post | null> => {
   }
 });
 
-// ✅ Related Posts
 const GET_RELATED_POSTS = gql`
   query RelatedPosts($categoryName: String!) {
     posts(first: 6, where: { categoryName: $categoryName }) {
@@ -92,7 +92,6 @@ async function getRelatedPosts(
   return deduped.slice(0, 6);
 }
 
-// ✅ Best Seller Products
 const GET_BEST_SELLER_PRODUCTS = gql`
   query BestSellerProducts($categoryName: String!) {
     products(first: 6, where: { categoryName: $categoryName }) {
@@ -123,16 +122,15 @@ async function getBestSellerProducts(): Promise<Product[]> {
   }
 }
 
-// ✅ Metadata
-export async function generateMetadata({
-  params,
-}: BlogPageProps): Promise<Metadata> {
-  const resolved = await params;
-  const post = await getPostCached(resolved.slug);
+// ✅ Metadata (async params)
+export async function generateMetadata(
+  { params }: BlogPageProps,
+  _parent: ResolvingMetadata
+): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getPostCached(slug);
 
-  if (!post) {
-    return { title: "Post not found" };
-  }
+  if (!post) return { title: "Post not found" };
 
   return {
     title: post.title,
@@ -140,13 +138,13 @@ export async function generateMetadata({
     openGraph: {
       title: post.title,
       description: post.excerpt || post.title,
-      url: `https://insonohearing.com/blog/${resolved.slug}`,
+      url: `https://insonohearing.com/blog/${slug}`,
       type: "article",
     },
   };
 }
 
-// 🦴 Skeletons
+// 🦴 Skeleton loaders
 function BlogSkeleton() {
   return (
     <div className="animate-pulse space-y-4">
@@ -171,7 +169,7 @@ function SidebarSkeleton() {
   );
 }
 
-// 🧱 Async Content Sections
+// 🧱 Async Components
 async function BlogContent({ slug }: { slug: string }) {
   const post = await getPostCached(slug);
   if (!post) return null;
@@ -271,11 +269,9 @@ async function SidebarContent() {
   );
 }
 
-// 🧠 Main Page
+// ✅ Main Page
 export default async function BlogPage({ params }: BlogPageProps) {
-  const resolved = await params;
-  const { slug } = resolved;
-
+  const { slug } = await params;
   const post = await getPostCached(slug);
   if (!post) return <p className="text-center py-10">Post not found</p>;
 
