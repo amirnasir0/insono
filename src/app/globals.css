@@ -29,196 +29,414 @@
 }
 
 
-/* ----- Global Typography Styling for WP blocks ----- */
+
+
+/* -------------------------------------------------
+   INSONO BLOG THEME
+   Clean | Readable | Senior-Friendly | High-Contrast
+   Applies to WordPress content rendered inside:
+   <div class="prose max-w-full" />
+-------------------------------------------------- */
 
 .prose {
-  max-width: 65ch; /* keep text width readable */
+  --tw-prose-body: #1c1c1c;
+  --tw-prose-headings: #0a0a0a;
+  --tw-prose-links: #0056d2; /* vivid royal blue */
+  --tw-prose-links-hover: #003a91; /* deep navy */
+  --tw-prose-bold: #111;
+  --tw-prose-counters: #0056d2;
+  --tw-prose-bullets: #0056d2;
+  --tw-prose-hr: #e0e0e0;
+  --tw-prose-bg: #fafafa;
+
+  font-family: 'Source Sans 3', system-ui, -apple-system, sans-serif;
+  color: var(--tw-prose-body);
+  line-height: 1.8;
+  font-size: 1.08rem;
+  background-color: var(--tw-prose-bg);
+  border-radius: 12px;
+  padding: 5px;
+  max-width: 760px;
+  margin: 0 auto;
 }
 
-.prose h1, .wp-block-heading.h1 {
-  font-size: 2rem;
+/* ---------- Headings ---------- */
+.prose h1,
+.prose h2,
+.prose h3 {
   font-weight: 700;
-  margin-bottom: 1rem;
-  line-height: 1.2;
+  line-height: 1.3;
+  margin-top: 1.6rem;
+  margin-bottom: 0.8rem;
+  color: var(--tw-prose-headings);
 }
 
-.prose h2, .wp-block-heading.h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
+.prose h1 {
+  font-size: 1.9rem;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 0.4rem;
 }
 
-.prose h3, .wp-block-heading.h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-top: 1.5rem;
-  margin-bottom: 0.75rem;
+.prose h2 {
+  font-size: 1.45rem;
+  color: #003a91;
 }
 
-.prose h4, .wp-block-heading.h4 {
-  font-size: 1.125rem;
-  font-weight: 500;
-}
-
-.prose p {
-  margin-bottom: 1.5rem;
-  font-size: 1rem;
-  line-height: 1.5;
+.prose h3 {
+  font-size: 1.2rem;
   color: #333;
 }
 
+/* ---------- Paragraphs ---------- */
+.prose p {
+  margin: 0.9rem 0;
+}
+
 .prose strong {
-  font-weight: 600;
+  font-weight: 700;
   color: #111;
 }
 
-.prose ul, .prose ol, .wp-block-list {
-  margin: 1rem 0 1rem 1.5rem;
-  padding-left: 1rem;
+.prose em {
+  font-style: italic;
+  color: #333;
 }
 
-.prose ul li, .prose ol li {
-  margin-bottom: 0.5rem;
-  line-height: 1.6;
+/* ---------- Lists ---------- */
+.prose ul,
+.prose ol {
+  margin: 1.1rem 0;
+  padding-left: 1.4rem;
 }
 
+.prose li {
+  margin-bottom: 0.65rem;
+  line-height: 1.9;
+  font-size: 1.05rem;
+  position: relative;
+}
+
+/* Custom bullet style for clarity */
 .prose ul li::marker {
-  color: #4b5563; /* Tailwind gray-600 */
+  color: #0056d2;
+  font-weight: bold;
 }
 
-.prose hr, .wp-block-separator {
-  margin: 2rem 0;
-  border: none;
-  border-top: 1px solid #e5e7eb; /* Tailwind gray-200 */
+/* Add subtle separation between list items */
+.prose ul li:not(:last-child),
+.prose ol li:not(:last-child) {
+  border-bottom: 1px dashed #e0e0e0;
+  padding-bottom: 0.4rem;
 }
 
-.prose img {
-  border-radius: 0.5rem;
+/* ---------- Links ---------- */
+.prose a {
+  color: var(--tw-prose-links);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 600;
+  transition: color 0.2s ease-in-out, text-decoration-color 0.2s;
+}
+
+.prose a:hover,
+.prose a:focus {
+  color: var(--tw-prose-links-hover);
+  text-decoration-color: var(--tw-prose-links-hover);
+}
+
+/* ---------- Tables ---------- */
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
   margin: 1.5rem 0;
+  font-size: 1rem;
+}
+
+.prose th,
+.prose td {
+  border: 1px solid #dcdcdc;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.prose th {
+  background-color: #edf3ff;
+  font-weight: 700;
+  color: #003a91;
+}
+
+.prose tr:nth-child(even) {
+  background-color: #f7f9fc;
+}
+
+/* ---------- Blockquotes ---------- */
+.prose blockquote {
+  border-left: 4px solid #0056d2;
+  background-color: #f5f8ff;
+  padding: 1rem 1.4rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: #333;
+  border-radius: 6px;
+}
+
+/* ---------- Images ---------- */
+.prose img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 1rem 0;
+}
+
+/* ---------- Responsive Typography ---------- */
+@media (max-width: 768px) {
+  .prose {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+
+  .prose h1 {
+    font-size: 1.5rem;
+  }
+
+  .prose h2 {
+    font-size: 1.25rem;
+  }
+
+  .prose h3 {
+    font-size: 1.1rem;
+  }
+
+  .prose ul li,
+  .prose ol li {
+    border-bottom: none;
+    padding-bottom: 0.3rem;
+  }
+}
+
+/* -------------------------------------------------
+   WORDPRESS IMAGE ALIGNMENTS
+   clean spacing | float handling | mobile safe
+-------------------------------------------------- */
+
+.prose figure.wp-block-image {
+  display: block;
+  margin: 1.5rem auto;
+  text-align: center;
+  max-width: 100%;
+}
+
+.prose figure.wp-block-image img {
+  border-radius: 12px;
   max-width: 100%;
   height: auto;
 }
 
-/* Mobile friendly tweaks */
+/* ---------- Caption ---------- */
+.prose figure.wp-block-image figcaption {
+  font-size: 0.9rem;
+  color: #666;
+  text-align: center;
+  margin-top: 0.4rem;
+  line-height: 1.4;
+}
+
+/* ---------- Alignment: LEFT ---------- */
+.prose .alignleft {
+  float: left;
+  max-width: 50%;
+  margin: 0.4rem 1.5rem 1rem 0;
+  padding: 0.3rem; /* inner padding around image */
+  border-radius: 12px;
+  background-color: #f9f9f9; /* subtle visual separation */
+}
+
+/* ---------- Alignment: RIGHT ---------- */
+.prose .alignright {
+  float: right;
+  max-width: 50%;
+  margin: 0.4rem 0 1rem 1.5rem;
+  padding: 0.3rem;
+  border-radius: 12px;
+  background-color: #f9f9f9;
+}
+
+/* ---------- Alignment: CENTER ---------- */
+.prose .aligncenter {
+  display: block;
+  margin: 1.5rem auto;
+  text-align: center;
+  clear: both;
+  padding: 0.3rem;
+  border-radius: 12px;
+  background-color: #f9f9f9;
+}
+
+/* ---------- Wide & Full ---------- */
+.prose .alignwide,
+.prose .alignfull {
+  width: 100%;
+  margin: 1.5rem 0;
+  display: block;
+  text-align: center;
+  padding: 0.3rem;
+  border-radius: 12px;
+  background-color: #f9f9f9;
+}
+
+/* ---------- Handle Large/Resized Images ---------- */
+.prose .size-large img,
+.prose .is-resized img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+/* ---------- Clear Floats After Paragraphs ---------- */
+.prose p::after,
+.prose ul::after,
+.prose ol::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* ---------- Responsive Fixes ---------- */
 @media (max-width: 768px) {
-  .prose {
+  .prose .alignleft,
+  .prose .alignright {
+    float: none;
+    display: block;
+    margin: 1rem auto;
     max-width: 100%;
-    padding: 0 1rem;
-  }
-  .prose h1 { font-size: 1.75rem; }
-  .prose h2 { font-size: 1.375rem; }
-  .prose h3 { font-size: 1.125rem; }
-}
-@keyframes slow-ping {
-  0% {
-    transform: scale(1);
-    opacity: 0.6;
-  }
-  50% {
-    transform: scale(2);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 0;
+    text-align: center;
+    background-color: transparent; /* remove grey background for simplicity */
+    padding: 0;
   }
 }
+
 
 /* Custom class for slower ping with gaps */
 .animate-slow-ping {
   animation: slow-ping 3s ease-out infinite; /* ⏱ 3s total, pulse happens in first 1.5s, then gap */
 }
-/* ===== Global Table Styling for WordPress ===== */
+/* -------------------------------------------------
+   GLOBAL TABLE STYLING for WordPress (.wp-block-table)
+   Clean | Readable | Accessible | Minimal Healthcare Look
+-------------------------------------------------- */
+
 .wp-block-table {
   width: 100%;
   overflow-x: auto;
-  margin: 1.5rem 0;
-  border-radius: 14px;
+  margin: 0.5rem 0;
+  border-radius: 12px;
   background: #ffffff;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-  border: 1px solid #e5e7eb; /* slate-200 */
+  border: 1px solid #e5e7eb; /* soft neutral border */
 }
 
-/* Actual <table> element inside Gutenberg block */
+/* Actual <table> element */
 .wp-block-table table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  background: transparent;
+  font-size: 1rem;
+  line-height: 1.7;
+  background-color: transparent;
 }
 
-.wp-block-table th,
-.wp-block-table td {
+/* Headings */
+.wp-block-table thead th {
+  background: #f0f6ff; /* calm blue-tinted background */
+  color: #002a5c;
+  font-weight: 700;
   padding: 14px 16px;
   text-align: left;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+/* Body Cells */
+.wp-block-table th,
+.wp-block-table td {
+  padding: 12px 16px;
+  text-align: left;
   vertical-align: top;
+  border-bottom: 1px solid #e5e7eb;
+  color: #1e1e1e;
 }
 
-.wp-block-table thead th {
-  background: #f8fafc; /* slate-50 */
-  font-weight: 600;
-  font-size: 0.95rem;
-  text-transform: none;
-}
-
+/* Alternate row shading for readability */
 .wp-block-table tbody tr:nth-child(even) {
-  background: #f9fafb;
+  background: #fafafa;
 }
 
+/* Hover state (soft highlight) */
 .wp-block-table tbody tr:hover {
-  background: #f1f5f9;
+  background: #f5f9ff;
 }
 
-.wp-block-table th strong {
-  color: #2563eb; /* optional accent for product headers */
-}
-
-/* Optional: emphasize "price" or key cells if you wrap them in <strong> */
+/* Strong emphasis cells */
+.wp-block-table th strong,
 .wp-block-table td strong {
-  color: #1d4ed8;
-  font-weight: 600;
+  color: #004aad;
+  font-weight: 700;
 }
 
-/* Badges (for availability, status, etc.) */
+/* Optional badges (e.g. Availability, Status) */
 .wp-block-table .badge {
   display: inline-block;
-  padding: 3px 10px;
-  background: #dbeafe;
-  color: #1d4ed8;
+  padding: 4px 10px;
+  background: #e0edff;
+  color: #004aad;
   border-radius: 9999px;
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
-/* Mobile responsive adjustments */
-@media (max-width: 640px) {
+/* Table responsiveness */
+@media (max-width: 768px) {
+  .wp-block-table {
+    border-radius: 8px;
+    margin: 1rem 0;
+  }
+
   .wp-block-table th,
   .wp-block-table td {
     padding: 10px 12px;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+  }
+
+  .wp-block-table table {
+    min-width: 600px; /* keeps columns readable when scrolled */
   }
 }
 
-/* Dark mode support */
+/* Optional: subtle scroll hint for overflow tables */
+.wp-block-table::-webkit-scrollbar {
+  height: 8px;
+}
+.wp-block-table::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 4px;
+}
+.wp-block-table::-webkit-scrollbar-track {
+  background: #f9fafb;
+}
+
+/* Dark Mode Support */
 @media (prefers-color-scheme: dark) {
   .wp-block-table {
     background: #0f172a;
     border-color: #1e293b;
-    box-shadow: 0 0 0 1px #1e293b;
-  }
-
-  .wp-block-table th,
-  .wp-block-table td {
-    border-bottom: 1px solid #1e293b;
-    color: #e2e8f0;
   }
 
   .wp-block-table thead th {
     background: #1e293b;
-    color: #f8fafc;
+    color: #e2e8f0;
+  }
+
+  .wp-block-table th,
+  .wp-block-table td {
+    color: #f1f5f9;
+    border-bottom: 1px solid #334155;
   }
 
   .wp-block-table tbody tr:nth-child(even) {
