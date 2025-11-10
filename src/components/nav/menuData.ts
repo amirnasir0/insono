@@ -17,7 +17,7 @@ export const sections: MenuSection[] = [
     ],
   },
   {
-    label: "Hearing Hids by Shape",
+    label: "Hearing Aids by Shape",
     items: [
       { label: "IIC Hearing Aids", href: "/hearing-aids/iic" },
       { label: "CIC Hearing Aids", href: "/hearing-aids/cic" },
