@@ -42,12 +42,13 @@ export default function Navigation() {
             {/* Mega Menu Panel */}
             <div
               className="
-                absolute left-0 top-full mt-2 w-screen bg-white border-t border-gray-200 shadow-2xl
-                opacity-0 invisible peer-hover:opacity-100 peer-hover:visible
-                hover:opacity-100 hover:visible
-                translate-y-2 peer-hover:translate-y-0 hover:translate-y-0
-                transition-all duration-200 z-50
-              "
+    absolute left-0 top-full mt-2 bg-white border border-gray-200 shadow-2xl
+    opacity-0 invisible peer-hover:opacity-100 peer-hover:visible
+    hover:opacity-100 hover:visible
+    translate-y-2 peer-hover:translate-y-0 hover:translate-y-0
+    transition-all duration-200 z-50
+    w-max min-w-[200px]
+  "
             >
               <div className="w-full px-12 py-8 grid grid-cols-3 gap-10">
                 {sections.map((section) => (

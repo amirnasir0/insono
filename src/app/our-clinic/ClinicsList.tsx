@@ -13,6 +13,7 @@ interface Clinic {
   hours: string;
   tag?: string;
   catSlug?: string;
+  placeId?: string;
 }
 
 /* ---------- Data ---------- */
@@ -21,41 +22,51 @@ const clinics: Clinic[] = [
     id: "vinod-nagar",
     name: "Hearing Aid Clinic in Vinod Nagar",
     locationLine: "Vinod Nagar — Delhi",
-    address: "D-251, Ground Floor, D Block, West Vinod Nagar, New Delhi - 110092",
+    address:
+      "D-251, Ground Floor, D Block, West Vinod Nagar, New Delhi - 110092",
     hours: "Open, Closes by 7 pm",
     tag: "Clinic",
+    placeId: "ChIJhYM9dWzlDDkRYd_B7lw9FNU",
   },
   {
     id: "banka",
     name: "Hearing Aid Clinic in Banka",
     locationLine: "Banka — Bihar",
-    address: "Enjoy Better Hearing In, Navjyoti Nursing Home, near Indian Petrol Pump, Jagatpur, Banka, Bihar - 813102, India",
+    address:
+      "Enjoy Better Hearing In, Navjyoti Nursing Home, near Indian Petrol Pump, Jagatpur, Banka, Bihar - 813102, India",
     hours: "Open, Closes by 7 pm",
     tag: "Clinic",
+    placeId: "ChIJ_UUO4CH_8DkRtIOVjYr5eGk",
   },
   {
     id: "deoghar",
     name: "Hearing Aid Clinic in Deoghar",
     locationLine: "Deoghar — Jharkhand",
-    address: "First Floor House No 349 A, Purnima Height, Ambedkar Chowk, near Krishna ENT, Barmasia, Deoghar, Jharkhand 814112, India",
+    address:
+      "First Floor House No 349 A, Purnima Height, Ambedkar Chowk, near Krishna ENT, Barmasia, Deoghar, Jharkhand 814112, India",
     hours: "Open, Closes by 7 pm",
     tag: "Clinic",
+    placeId: "ChIJa0Lte_wX8TkRAOO9p8fzWgY",
   },
   {
     id: "bhagalpur",
     name: "Hearing Aid Clinic in Bhagalpur",
     locationLine: "Bhagalpur — Bihar",
-    address: "Kalpana Oro Dental & Implant Centre, near Hatiya Rd, Tilkamanjhi, Bhagalpur, Bihar 812001, India",
+    address:
+      "Kalpana Oro Dental & Implant Centre, near Hatiya Rd, Tilkamanjhi, Bhagalpur, Bihar 812001, India",
     hours: "Open, Closes by 7 pm",
     tag: "Clinic",
+    placeId: "ChIJC8CLllJL8DkRx3loHLy7qaw",
   },
   {
     id: "noida",
     name: "Hearing Aid Clinic in Noida",
     locationLine: "Noida — Uttar Pradesh",
-    address: "E-142, Ground Floor, Sector 20, Noida, Near Kerala Ayurveda, Uttar Pradesh - 201301",
+    address:
+      "E-142, Ground Floor, Sector 20, Noida, Near Kerala Ayurveda, Uttar Pradesh - 201301",
     hours: "Open, Closes by 7 pm",
     tag: "Clinic",
+    placeId: "ChIJAfTkBADlDDkRAO95N7UQRFQ",
   },
   {
     id: "asansol",
@@ -64,6 +75,7 @@ const clinics: Clinic[] = [
     address: "GT Road, Asansol",
     hours: "Open, Closes by 7 pm",
     tag: "Clinic",
+    placeId: "ChIJAfTkBADlDDkRAO95N7UQRFQ",
   },
   {
     id: "dehradun",
@@ -72,30 +84,37 @@ const clinics: Clinic[] = [
     address: "Dehradun",
     hours: "Open, Closes by 7 pm",
     tag: "Clinic",
+    placeId: "ChIJH2SisK8pCTkRBsz4y5kNE2Y",
   },
   {
     id: "gurgaon",
     name: "Hearing Aid Clinic in Gurgaon",
     locationLine: "Gurgaon — Haryana",
-    address: "Shop No 232, First Floor, Central Arcade, Mehrauli Gurgaon Rd, Opposite Sahara Mall, A Block, DLF Phase 2, Sector 25, Gurugram, Haryana 122008",
+    address:
+      "Shop No 232, First Floor, Central Arcade, Mehrauli Gurgaon Rd, Opposite Sahara Mall, A Block, DLF Phase 2, Sector 25, Gurugram, Haryana 122008",
     hours: "Open, Closes by 7 pm",
     tag: "Clinic",
+    placeId: "ChIJi0EKPSQZDTkRUEBiyh0-VXw",
   },
   {
     id: "giridih",
     name: "Hearing Aid Clinic in Giridih",
     locationLine: "Giridih — Jharkhand",
-    address: "Basement, Under Bata Showroom, A & S Building, Court Rd, Opposite Old Telephone Exchange, Giridih, Jharkhand 815301, India",
+    address:
+      "Basement, Under Bata Showroom, A & S Building, Court Rd, Opposite Old Telephone Exchange, Giridih, Jharkhand 815301, India",
     hours: "Open, Closes by 7 pm",
     tag: "Clinic",
+    placeId: "ChIJC2eHau9V8TkRBEoBoGUXfWo",
   },
   {
     id: "lajpat-nagar",
     name: "Hearing Aid Clinic in Lajpat Nagar",
     locationLine: "Lajpat Nagar — Delhi",
-    address: "E-195, Ground Floor, Amar Colony, Lajpat Nagar-4, New Delhi - 110024",
+    address:
+      "E-195, Ground Floor, Amar Colony, Lajpat Nagar-4, New Delhi - 110024",
     hours: "Open, Closes by 7 pm",
     tag: "Clinic",
+    placeId: "ChIJGQuhawDlDDkRcuXRFQaYEbA",
   },
   {
     id: "jamshedpur",
@@ -104,14 +123,17 @@ const clinics: Clinic[] = [
     address: "Jamshedpur",
     hours: "Open, Closes by 7 pm",
     tag: "Clinic",
+    placeId: "ChIJAfTkBADlDDkRAO95N7UQRFQ",
   },
   {
     id: "lucknow",
     name: "Hearing Aid Clinic in Lucknow",
     locationLine: "Lucknow — Uttar Pradesh",
-    address: "10/36, Tedhi Pulia Ring Rd, near Narayan Automobile, behind Mahendra Agency, Shekhupura, Vikas Nagar, Lucknow, Uttar Pradesh 226022",
+    address:
+      "10/36, Tedhi Pulia Ring Rd, near Narayan Automobile, behind Mahendra Agency, Shekhupura, Vikas Nagar, Lucknow, Uttar Pradesh 226022",
     hours: "Open, Closes by 7 pm",
     tag: "Clinic",
+    placeId: "ChIJzWAWfZFXmTkREIOqkh4urOY",
   },
   {
     id: "ranchi",
@@ -120,6 +142,7 @@ const clinics: Clinic[] = [
     address: "Online Service Available",
     hours: "Open, Closes by 7 pm",
     tag: "Clinic",
+    placeId: "ChIJAfTkBADlDDkRAO95N7UQRFQ",
   },
   {
     id: "jalandhar",
@@ -128,6 +151,7 @@ const clinics: Clinic[] = [
     address: "Service Available",
     hours: "Open, Closes by 7 pm",
     tag: "Clinic",
+    placeId: "ChIJAfTkBADlDDkRAO95N7UQRFQ",
   },
   {
     id: "jammu",
@@ -136,14 +160,17 @@ const clinics: Clinic[] = [
     address: "Service Available",
     hours: "Open, Closes by 7 pm",
     tag: "Clinic",
+    placeId: "ChIJAfTkBADlDDkRAO95N7UQRFQ",
   },
   {
     id: "garia-kolkata",
     name: "Hearing Aid Clinic in Garia Kolkata",
     locationLine: "Garia — West Bengal",
-    address: "ACOUSTIC HEARING SOLUTION, P-515, Raja S C Mullick Road, Garia Kolkata - 700084, Opp. Sreeleathers",
+    address:
+      "ACOUSTIC HEARING SOLUTION, P-515, Raja S C Mullick Road, Garia Kolkata - 700084, Opp. Sreeleathers",
     hours: "Open, Closes by 7 pm",
     tag: "Clinic",
+    placeId: "ChIJjUYoG49xAjoRK75wxbdHB2E",
   },
   {
     id: "chandigarh",
@@ -152,6 +179,7 @@ const clinics: Clinic[] = [
     address: "Service Available",
     hours: "Open, Closes by 7 pm",
     tag: "Clinic",
+    placeId: "ChIJAfTkBADlDDkRAO95N7UQRFQ",
   },
   {
     id: "ambala",
@@ -160,6 +188,7 @@ const clinics: Clinic[] = [
     address: "Service Available",
     hours: "Open, Closes by 7 pm",
     tag: "Clinic",
+    placeId: "ChIJAfTkBADlDDkRAO95N7UQRFQ",
   },
   {
     id: "patna",
@@ -168,6 +197,7 @@ const clinics: Clinic[] = [
     address: "Service Available",
     hours: "Open, Closes by 7 pm",
     tag: "Clinic",
+    placeId: "ChIJAfTkBADlDDkRAO95N7UQRFQ",
   },
   {
     id: "ludhiana",
@@ -176,6 +206,7 @@ const clinics: Clinic[] = [
     address: "Service Available",
     hours: "Open, Closes by 7 pm",
     tag: "Clinic",
+    placeId: "ChIJAfTkBADlDDkRAO95N7UQRFQ",
   },
   {
     id: "hyderabad",
@@ -184,17 +215,19 @@ const clinics: Clinic[] = [
     address: "Service Available",
     hours: "Open, Closes by 7 pm",
     tag: "Clinic",
+    placeId: "ChIJAfTkBADlDDkRAO95N7UQRFQ",
   },
   {
     id: "kolkata",
     name: "Hearing Aid Clinic in Kolkata",
     locationLine: "Kolkata — West Bengal",
-    address: "13 Ram Mohan Dutta Road, (Near Northern Park) Bhawanipur, Kolkata - 700020",
+    address:
+      "13 Ram Mohan Dutta Road, (Near Northern Park) Bhawanipur, Kolkata - 700020",
     hours: "Open, Closes by 7 pm",
     tag: "Clinic",
+    placeId: "ChIJjUYoG49xAjoRK75wxbdHB2E",
   },
 ];
-
 
 /* ---------- Comparison Items ---------- */
 const comparisonItems: string[] = [
@@ -260,16 +293,29 @@ export default function ClinicsList() {
                     </span>
                   </div>
                   {/* Google Maps directions */}
-                  <a
-                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                      c.address
-                    )}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-blue-600 hover:underline mt-2 block"
-                  >
-                    Get Directions
-                  </a>
+                  <div className="flex items-center gap-4 mt-2">
+                    <a
+                      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                        c.address
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-blue-600 hover:underline"
+                    >
+                      Get Directions
+                    </a>
+
+                    <span className="text-gray-400">|</span>
+
+                    <a
+                      href={`https://search.google.com/local/writereview?placeid=${c.placeId}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-blue-600 hover:underline capitalize"
+                    >
+                      Write Review
+                    </a>
+                  </div>
                 </div>
 
                 <div className="p-4 border-t bg-white">
