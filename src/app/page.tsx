@@ -5,8 +5,6 @@ import HeroSection from "@/components/HeroSection";
 import HearingaidType from "@/components/HearingaidType";
 import Whychoose from "@/components/whychoose";
 import Testomonial from "@/components/testomonial";
-
-
 // ✅ Dynamic Metadata works now
 export async function generateMetadata() {
   const siteName = "Insono Hearing Solutions | Digital Hearing Aids";
