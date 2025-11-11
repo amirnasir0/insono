@@ -36,8 +36,6 @@ export const metadata: Metadata = {
   },
 };
 
- 
-
 export default function AboutPage() {
   const values = [
     {
@@ -72,8 +70,6 @@ Driven by a patient-first approach, Mr. Manoj Kumar ensures every individual rec
       image: "/manoj-singh.jpg",
     },
   ];
-
- 
 
   return (
     <main className="max-w-7xl mx-auto pt-24">
@@ -144,34 +140,41 @@ Driven by a patient-first approach, Mr. Manoj Kumar ensures every individual rec
       </section>
 
       {/* 🏆 Awards & Recognition */}
-     <section className="bg-gray-50">
-               <div className="max-w-6xl mx-auto px-4 py-14">
-                 <h2 className="text-2xl md:text-3xl font-bold text-center">
-                   Awards & <span className="text-[#023784]">Recognitions</span>
-                 </h2>
-                 <p className="text-center text-gray-600 max-w-3xl mx-auto mt-3">
-       Insono Hearing Solutions has received multiple prestigious awards and holds certifications from top global hearing aid brands, reflecting our commitment to excellence in hearing care.
-     </p>
+      <section className="bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 py-14">
+          <h2 className="text-2xl md:text-3xl font-bold text-center">
+            Awards & <span className="text-[#023784]">Recognitions</span>
+          </h2>
+          <p className="text-center text-gray-600 max-w-3xl mx-auto mt-3">
+            Insono Hearing Solutions has received multiple prestigious awards
+            and holds certifications from top global hearing aid brands,
+            reflecting our commitment to excellence in hearing care.
+          </p>
 
-                 <div className="mt-10 grid md:grid-cols-3 gap-6">
-                   {["award_insono.jpg", "lifeInsono.jpg", "insono_awarded.jpg",
-                   "signia.jpg","phonak.jpeg","award.jpeg"].map((img) => (
-                     <div
-                       key={img}
-                       className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow"
-                     >
-                       <Image
-                         src={`/${img}`}
-                         alt="Insono team and clinic moments"
-                         fill
-                         className="object-cover"
-                       />
-                     </div>
-                   ))}
-                 </div>
-                 
-               </div>
-             </section>
+          <div className="mt-10 grid md:grid-cols-3 gap-6">
+            {[
+              "award_insono.jpg",
+              "lifeInsono.jpg",
+              "insono_awarded.jpg",
+              "signia.jpg",
+              "phonak.jpeg",
+              "images/certifications/widex.png",
+            ].map((img) => (
+              <div
+                key={img}
+                className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow"
+              >
+                <Image
+                  src={`/${img}`}
+                  alt="Insono team and clinic moments"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

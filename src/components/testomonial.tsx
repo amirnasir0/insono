@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const videoIds = ["yNfh_NyIkdE", "oc3g0RElFko", "lVKCKh3DRMk", "qO83ovMXinM"];
+const videoIds = ["Txf2pcFkEeU", "qO83ovMXinM", "wmLXMMS_Nrg", "rEr9EYpPpBo"];
 
 export default function Testimonials() {
   const [activeVideos, setActiveVideos] = useState<Record<number, boolean>>({});

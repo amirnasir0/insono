@@ -46,6 +46,7 @@ export const GET_PRODUCTS = gql`
         id
         title
         slug
+        date
         featuredImage {
           node {
             sourceUrl
@@ -88,7 +89,6 @@ export const GET_POST_BY_SLUG = gql`
   }
 `;
 
-
 export const GET_PRODUCT_BY_SLUG = gql`
   query GetProductBySlug($slug: String!) {
     productBy(slug: $slug) {
@@ -109,7 +109,6 @@ export const GET_PRODUCT_BY_SLUG = gql`
     }
   }
 `;
-
 
 export const GET_PRODUCT_SLUGS = gql`
   query GetProductSlugs {

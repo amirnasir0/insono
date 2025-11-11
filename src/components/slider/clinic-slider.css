@@ -1,0 +1,65 @@
+/* ✅ Arrow Buttons - outside the image on left & right center */
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  color: #023784;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  font-size: 22px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e5e7eb;
+  z-index: 30;
+}
+
+.slider-arrow:hover {
+  background: #023784;
+  color: white;
+}
+
+/* ✅ Left & Right positions */
+.clinic-prev {
+  left: -50px;
+}
+.clinic-next {
+  right: -50px;
+}
+
+/* ✅ Move dots below image */
+.swiper-pagination {
+  position: relative !important;
+  bottom: 6px !important; /* move below image */
+  margin-top: 10px;
+}
+
+.swiper-pagination-bullet {
+  background: #d1d5db;
+  opacity: 1;
+  width: 10px;
+  height: 10px;
+}
+
+.swiper-pagination-bullet-active {
+  background: #023784;
+}
+
+/* ✅ Responsive: shift arrows inside OR hide on mobile */
+@media (max-width: 640px) {
+  .clinic-prev,
+  .clinic-next {
+    display: none !important; /* ✅ hide arrows on mobile */
+  }
+
+  /* ensure dots spacing stays good on mobile */
+  .swiper-pagination {
+    bottom: 0 !important;
+    margin-top: 6px;
+  }
+}
