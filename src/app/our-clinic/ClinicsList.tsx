@@ -271,7 +271,10 @@ export default function ClinicsList() {
                 className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col h-full"
               >
                 <div className="bg-[#e9f2ff] p-3">
-                  <h2 className="text-[#023784] font-semibold">{c.name}</h2>
+                  <Link 
+  href={`/our-clinic/${c.id}`} 
+  className="text-[#023784] font-semibold hover:underline"
+><h2 className="text-[#023784] font-semibold">{c.name}</h2></Link>
                   {c.tag && (
                     <p className="text-xs text-gray-600 mt-1">{c.tag}</p>
                   )}
