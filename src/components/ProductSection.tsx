@@ -10,14 +10,18 @@ interface Product {
   slug: string;
   description: string;
   price: string;
-  category: string[]; // we will store both names and slugs (if available)
+  category: string[];
   featuredImage?: {
     node?: { sourceUrl?: string | null };
   };
-  createdAt?: string; // WP date string or fallback
+  createdAt?: string;
 }
 
+<<<<<<< HEAD
 /** Minimal shape of the GraphQL product node (only fields we use) */
+=======
+/** Minimal shape of the GraphQL product node */
+>>>>>>> 2ce7227 (new changes)
 interface ProductNode {
   id: string;
   title: string;
@@ -25,7 +29,13 @@ interface ProductNode {
   description?: string | null;
   featuredImage?: { node?: { sourceUrl?: string | null } } | null;
   date?: string | null;
+<<<<<<< HEAD
   categories?: { nodes?: Array<{ name?: string | null; slug?: string | null }> } | null;
+=======
+  categories?: {
+    nodes?: Array<{ name?: string | null; slug?: string | null }>;
+  } | null;
+>>>>>>> 2ce7227 (new changes)
 }
 
 interface GraphQLResponse {
@@ -77,7 +87,7 @@ const titleOrCatsHave = (p: Product, keywords: string[]) => {
 };
 
 const isHighlighted = (p: Product) =>
-  titleOrCatsHave(p, ["highlighted", "featured"]); // covers both common tags
+  titleOrCatsHave(p, ["highlighted", "featured"]);
 
 const ts = (p: Product) => {
   const t = p.createdAt ? new Date(p.createdAt).getTime() : 0;
@@ -97,20 +107,25 @@ export default function ProductSection({ heading }: ProductSectionProps) {
         const mappedProducts: Product[] = data.products.nodes.map(
           (product: ProductNode, i: number) => {
             const catNodes = product.categories?.nodes ?? [];
+<<<<<<< HEAD
             // collect both names and slugs if present; filter(Boolean) removes undefined/null
             const catStrings: string[] = catNodes.flatMap((n) =>
               [n?.name, n?.slug].filter(Boolean) as string[]
+=======
+            const catStrings: string[] = catNodes.flatMap(
+              (n) => [n?.name, n?.slug].filter(Boolean) as string[]
+>>>>>>> 2ce7227 (new changes)
             );
 
             return {
               id: product.id,
               title: product.title,
               slug: product.slug,
-              category: catStrings, // names + slugs for robust matching
+              category: catStrings,
               description: product.description || "",
               price: "Contact for price",
               featuredImage: product.featuredImage ?? undefined,
-              createdAt: product.date ?? String(i), // fallback index if no date
+              createdAt: product.date ?? String(i),
             };
           }
         );
@@ -132,15 +147,13 @@ export default function ProductSection({ heading }: ProductSectionProps) {
 
   const brands = ["signia", "phonak", "oticon", "widex"];
 
-  // ---------- ALL TAB LOGIC ----------
   let filteredProducts: Product[] = [];
+
   if (activeCategory === "All") {
     const picks: Product[] = [];
 
     brands.forEach((brand) => {
       const brandKeywords = BRAND_KEYWORDS[brand];
-
-      // 1) Try highlighted + brand match
       const highlightedMatches = products
         .filter((p) => isHighlighted(p) && titleOrCatsHave(p, brandKeywords))
         .sort((a, b) => ts(b) - ts(a));
@@ -150,7 +163,6 @@ export default function ProductSection({ heading }: ProductSectionProps) {
         return;
       }
 
-      // 2) Fallback: latest product of that brand (even if not highlighted)
       const brandLatest = products
         .filter((p) => titleOrCatsHave(p, brandKeywords))
         .sort((a, b) => ts(b) - ts(a));
@@ -158,21 +170,17 @@ export default function ProductSection({ heading }: ProductSectionProps) {
       if (brandLatest[0]) picks.push(brandLatest[0]);
     });
 
-    // 3) Final fallback: if still empty, show latest 4 overall
     filteredProducts =
       picks.length > 0
         ? picks.slice(0, 4)
         : [...products].sort((a, b) => ts(b) - ts(a)).slice(0, 4);
   } else {
-    // ---------- NON-ALL TABS (brand/feature tabs) ----------
     const keywords = categoryKeywords[activeCategory] || [activeCategory];
 
-    // First: highlighted matches
     const highlightedFirst = products
       .filter((p) => isHighlighted(p) && titleOrCatsHave(p, keywords))
       .sort((a, b) => ts(b) - ts(a));
 
-    // If none highlighted, fallback to normal matches
     const fallbackMatches =
       highlightedFirst.length > 0
         ? []
@@ -190,7 +198,12 @@ export default function ProductSection({ heading }: ProductSectionProps) {
       <div className="text-center mb-10">
         <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold leading-snug mb-3">
           <span className="bg-gradient-to-r from-[#E83D6D] via-[#184A99] to-[#7C7C7C] bg-clip-text text-transparent">
+<<<<<<< HEAD
             {heading || "Explore Our Range of Digital Hearing Aids"}
+=======
+            {heading ||
+              "Top Digital Hearing Aids in Lucknow – Latest Models & Best Prices"}
+>>>>>>> 2ce7227 (new changes)
           </span>
         </h2>
         <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
