@@ -1,19 +1,10 @@
 // app/layout.tsx
-<<<<<<< HEAD
-import NavigationWrapper from "@/components/NavigationWrapper";
-import "./globals.css";
-import type { Metadata } from "next";
-import Script from "next/script";
-
-=======
 import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import "./globals.css";
 import type { Metadata } from "next";
-import Footer from "@/components/Footer";
 import Script from "next/script";
 
-
->>>>>>> 70dd47460916e377acae18c9b5f7293a3b1fedc9
 export const metadata: Metadata = {
   title: {
     default: "Insono Hearing",
@@ -68,11 +59,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-<<<<<<< HEAD
-      <body className="font-museo bg-white text-gray-900 antialiased bg-gradient-to-b from-[#eaf5ff] to-white">
-        <NavigationWrapper>{children}</NavigationWrapper>
-=======
       <head>
+        {/* Google site verification (kept from incoming branch) */}
         <meta
           name="google-site-verification"
           content="_w3rNIazk1WMe-urSCcrtpzyAcqTeopxMU1qqLd0p6k"
@@ -81,10 +69,22 @@ export default function RootLayout({
       <body className="font-museo bg-white text-gray-900 antialiased bg-gradient-to-b from-[#eaf5ff] to-white">
         <Navigation />
 
-        {children}
+        <main>{children}</main>
 
         <Footer />
->>>>>>> 70dd47460916e377acae18c9b5f7293a3b1fedc9
+
+        {/* Optional: add analytics or other scripts here via next/script */}
+        {/* Example:
+        <Script src="https://www.googletagmanager.com/gtag/js?id=YOUR_ID" strategy="afterInteractive" />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'YOUR_ID');
+          `}
+        </Script>
+        */}
       </body>
     </html>
   );
