@@ -1,10 +1,5 @@
 // app/layout.tsx
-<<<<<<< HEAD
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
-=======
 import NavigationWrapper from "@/components/NavigationWrapper";
->>>>>>> 2ce7227 (new changes)
 import "./globals.css";
 import type { Metadata } from "next";
 import Script from "next/script";
@@ -63,7 +58,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-<<<<<<< HEAD
       <head>
         {/* Google site verification (kept from incoming branch) */}
         <meta
@@ -71,15 +65,12 @@ export default function RootLayout({
           content="_w3rNIazk1WMe-urSCcrtpzyAcqTeopxMU1qqLd0p6k"
         />
       </head>
+
       <body className="font-museo bg-white text-gray-900 antialiased bg-gradient-to-b from-[#eaf5ff] to-white">
-        <Navigation />
-
-        <main>{children}</main>
-
-        <Footer />
+        <NavigationWrapper>{children}</NavigationWrapper>
 
         {/* Optional: add analytics or other scripts here via next/script */}
-        {/* Example:
+        {/*
         <Script src="https://www.googletagmanager.com/gtag/js?id=YOUR_ID" strategy="afterInteractive" />
         <Script id="gtag-init" strategy="afterInteractive">
           {`
@@ -90,10 +81,6 @@ export default function RootLayout({
           `}
         </Script>
         */}
-=======
-      <body className="font-museo bg-white text-gray-900 antialiased bg-gradient-to-b from-[#eaf5ff] to-white">
-        <NavigationWrapper>{children}</NavigationWrapper>
->>>>>>> 2ce7227 (new changes)
       </body>
     </html>
   );

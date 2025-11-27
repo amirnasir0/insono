@@ -17,11 +17,7 @@ interface Product {
   createdAt?: string;
 }
 
-<<<<<<< HEAD
 /** Minimal shape of the GraphQL product node (only fields we use) */
-=======
-/** Minimal shape of the GraphQL product node */
->>>>>>> 2ce7227 (new changes)
 interface ProductNode {
   id: string;
   title: string;
@@ -29,13 +25,7 @@ interface ProductNode {
   description?: string | null;
   featuredImage?: { node?: { sourceUrl?: string | null } } | null;
   date?: string | null;
-<<<<<<< HEAD
   categories?: { nodes?: Array<{ name?: string | null; slug?: string | null }> } | null;
-=======
-  categories?: {
-    nodes?: Array<{ name?: string | null; slug?: string | null }>;
-  } | null;
->>>>>>> 2ce7227 (new changes)
 }
 
 interface GraphQLResponse {
@@ -107,14 +97,9 @@ export default function ProductSection({ heading }: ProductSectionProps) {
         const mappedProducts: Product[] = data.products.nodes.map(
           (product: ProductNode, i: number) => {
             const catNodes = product.categories?.nodes ?? [];
-<<<<<<< HEAD
             // collect both names and slugs if present; filter(Boolean) removes undefined/null
             const catStrings: string[] = catNodes.flatMap((n) =>
               [n?.name, n?.slug].filter(Boolean) as string[]
-=======
-            const catStrings: string[] = catNodes.flatMap(
-              (n) => [n?.name, n?.slug].filter(Boolean) as string[]
->>>>>>> 2ce7227 (new changes)
             );
 
             return {
@@ -198,12 +183,7 @@ export default function ProductSection({ heading }: ProductSectionProps) {
       <div className="text-center mb-10">
         <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold leading-snug mb-3">
           <span className="bg-gradient-to-r from-[#E83D6D] via-[#184A99] to-[#7C7C7C] bg-clip-text text-transparent">
-<<<<<<< HEAD
             {heading || "Explore Our Range of Digital Hearing Aids"}
-=======
-            {heading ||
-              "Top Digital Hearing Aids in Lucknow – Latest Models & Best Prices"}
->>>>>>> 2ce7227 (new changes)
           </span>
         </h2>
         <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
