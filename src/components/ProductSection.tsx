@@ -17,6 +17,10 @@ interface Product {
   createdAt?: string; // WP date string or fallback
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 70dd47460916e377acae18c9b5f7293a3b1fedc9
 /** Minimal shape of the GraphQL product node (only fields we use) */
 interface ProductNode {
   id: string;
@@ -25,9 +29,13 @@ interface ProductNode {
   description?: string | null;
   featuredImage?: { node?: { sourceUrl?: string | null } } | null;
   date?: string | null;
+<<<<<<< HEAD
   categories?: {
     nodes?: Array<{ name?: string | null; slug?: string | null }>;
   } | null;
+=======
+  categories?: { nodes?: Array<{ name?: string | null; slug?: string | null }> } | null;
+>>>>>>> 70dd47460916e377acae18c9b5f7293a3b1fedc9
 }
 
 interface GraphQLResponse {
@@ -35,9 +43,12 @@ interface GraphQLResponse {
     nodes: ProductNode[];
   };
 }
+<<<<<<< HEAD
 type ProductSectionProps = {
   heading?: string;
 };
+=======
+>>>>>>> 70dd47460916e377acae18c9b5f7293a3b1fedc9
 
 const categories = [
   "All",
@@ -85,7 +96,11 @@ const ts = (p: Product) => {
   return Number.isFinite(t) ? t : 0;
 };
 
+<<<<<<< HEAD
 export default function ProductSection({ heading }: ProductSectionProps) {
+=======
+export default function ProductSection() {
+>>>>>>> 70dd47460916e377acae18c9b5f7293a3b1fedc9
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeCategory, setActiveCategory] = useState("All");
@@ -99,8 +114,13 @@ export default function ProductSection({ heading }: ProductSectionProps) {
           (product: ProductNode, i: number) => {
             const catNodes = product.categories?.nodes ?? [];
             // collect both names and slugs if present; filter(Boolean) removes undefined/null
+<<<<<<< HEAD
             const catStrings: string[] = catNodes.flatMap(
               (n) => [n?.name, n?.slug].filter(Boolean) as string[]
+=======
+            const catStrings: string[] = catNodes.flatMap((n) =>
+              [n?.name, n?.slug].filter(Boolean) as string[]
+>>>>>>> 70dd47460916e377acae18c9b5f7293a3b1fedc9
             );
 
             return {
@@ -191,7 +211,11 @@ export default function ProductSection({ heading }: ProductSectionProps) {
       <div className="text-center mb-10">
         <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold leading-snug mb-3">
           <span className="bg-gradient-to-r from-[#E83D6D] via-[#184A99] to-[#7C7C7C] bg-clip-text text-transparent">
+<<<<<<< HEAD
             {heading || "Explore Our Range of Digital Hearing Aids"}
+=======
+            Explore Our Range of Digital Hearing Aids
+>>>>>>> 70dd47460916e377acae18c9b5f7293a3b1fedc9
           </span>
         </h2>
         <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-2xl mx-auto">

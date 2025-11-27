@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Home, MapPin, Phone, Search, ChevronDown } from "lucide-react";
 import MobileMenu from "./nav/MobileMenu";
 import { topLinks, sections } from "./nav/menuData";
+<<<<<<< HEAD
 import SearchBox from "./nav/SearchBox";
 
 type NavigationProps = {
@@ -35,6 +36,10 @@ export default function Navigation({ minimal = false }: NavigationProps) {
       </header>
     );
   }
+=======
+
+export default function Navigation() {
+>>>>>>> 70dd47460916e377acae18c9b5f7293a3b1fedc9
   return (
     <header className="fixed top-0 left-0 z-50 w-full bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/70 shadow-sm">
       <div className="w-full flex items-center justify-between px-3 sm:px-6 lg:px-20 py-3">
@@ -125,7 +130,22 @@ export default function Navigation({ minimal = false }: NavigationProps) {
 
         {/* =================== DESKTOP RIGHT =================== */}
         <div className="hidden md:flex items-center gap-4 ml-6">
+<<<<<<< HEAD
           <SearchBox />
+=======
+          <div className="relative w-56">
+            <Search
+              className="absolute left-2 top-2.5 text-gray-400"
+              size={16}
+            />
+            <input
+              type="text"
+              placeholder="Search hearing aids"
+              className="w-full pl-8 pr-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#023784] focus:outline-none text-sm"
+              aria-label="Search"
+            />
+          </div>
+>>>>>>> 70dd47460916e377acae18c9b5f7293a3b1fedc9
           <a
             href="tel:+916204260510"
             className="flex items-center gap-2 bg-[#f59e0b] text-black font-medium px-4 py-2 rounded-md hover:bg-yellow-500 transition relative"
