@@ -12,17 +12,17 @@ import Testomonial from "@/components/testomonial";
 
 // ✅ SEO Meta Tags
 export const metadata: Metadata = {
-  title: "Best Hearing Aid in Lucknow | Prices, Models & Free Hearing Test",
+  title: "Hearing Aid Repair Shop Nearby | Signia Phonak & All hearing Aid repair shop",
   description:
-    "Looking for the best hearing aid in Lucknow? Explore digital, Bluetooth & rechargeable hearing aids. Book free hearing test with certified audiologists today.",
+    "Hearing Aid Repair Shop Nearby | Signia Phonak & All hearing Aid repair shop",
   alternates: {
-    canonical: "https://www.yoursite.com/hearing-aid-lucknow",
+    canonical: "https://insonohearing.com/landing/repair",
   },
   openGraph: {
-    title: "Best Hearing Aid in Lucknow - Free Hearing Test & Consultation",
+    title: "Hearing Aid Repair Shop Nearby | Signia Phonak & All hearing Aid repair shop",
     description:
-      "Discover affordable and advanced hearing aids in Lucknow with expert consultation and same-day fitting.",
-    url: "https://www.yoursite.com/hearing-aid-lucknow",
+      "Discover hearing aid repair shop nearby with expert consultation and same-day fitting.",
+    url: "https://insonohearing.com/landing/repair",
     type: "website",
   },
 };
