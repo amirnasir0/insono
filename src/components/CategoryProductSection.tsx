@@ -39,9 +39,9 @@ interface GraphQLResponse {
 }
 
 interface CategoryProductSectionProps {
-  category: string;        // e.g. "Signia,Invisible"
-  title?: string;          // Optional custom title
-  description?: string;    // Optional description/subheading
+  category: string; // e.g. "Signia,Invisible"
+  title?: string; // Optional custom title
+  description?: string; // Optional description/subheading
   limit?: number;
 }
 
@@ -70,14 +70,23 @@ export default async function CategoryProductSection({
     .map((kw) => kw.trim().toLowerCase())
     .filter(Boolean);
 
+  // // ✅ Product filter logic (AND matching for all keywords)
+  // const filteredProducts = products.filter((product) =>
+  //   keywords.every((kw) => {
+  //     const titleMatch = product.title.toLowerCase().includes(kw);
+  //     const categoryMatch = product.category.some((cat) =>
+  //       cat.toLowerCase().includes(kw)
+  //     );
+  //     return titleMatch || categoryMatch;
+  //   })
+  // );
   // ✅ Product filter logic (AND matching for all keywords)
   const filteredProducts = products.filter((product) =>
     keywords.every((kw) => {
-      const titleMatch = product.title.toLowerCase().includes(kw);
       const categoryMatch = product.category.some((cat) =>
         cat.toLowerCase().includes(kw)
       );
-      return titleMatch || categoryMatch;
+      return categoryMatch;
     })
   );
 

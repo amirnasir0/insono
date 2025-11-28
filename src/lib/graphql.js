@@ -41,7 +41,7 @@ export const GET_POSTS = gql`
 // Fetch products
 export const GET_PRODUCTS = gql`
   query GetProducts {
-    products(first: 50) {
+    products(first: 500) {
       nodes {
         id
         title
