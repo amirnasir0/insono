@@ -12,14 +12,16 @@ import Testomonial from "@/components/testomonial";
 
 // ✅ SEO Meta Tags
 export const metadata: Metadata = {
-  title: "Hearing Aid Repair Shop Nearby | Signia Phonak & All hearing Aid repair shop",
+  title:
+    "Hearing Aid Repair Shop Nearby | Signia Phonak & All hearing Aid repair shop",
   description:
     "Hearing Aid Repair Shop Nearby | Signia Phonak & All hearing Aid repair shop",
   alternates: {
     canonical: "https://insonohearing.com/landing/repair",
   },
   openGraph: {
-    title: "Hearing Aid Repair Shop Nearby | Signia Phonak & All hearing Aid repair shop",
+    title:
+      "Hearing Aid Repair Shop Nearby | Signia Phonak & All hearing Aid repair shop",
     description:
       "Discover hearing aid repair shop nearby with expert consultation and same-day fitting.",
     url: "https://insonohearing.com/landing/repair",
@@ -66,7 +68,7 @@ const lucknowRepairFaqs = [
   },
 ];
 
-export default function HearingAidLucknowPage() {
+export default function HearingAidRepairPage() {
   return (
     <>
       {/* 🟦 HERO SECTION */}
