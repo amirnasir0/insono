@@ -9,7 +9,6 @@ import ProductSection from "@/components/ProductSection";
 import HearingaidType from "@/components/HearingaidType";
 import Whychoose from "@/components/whychoose";
 import Testomonial from "@/components/testomonial";
-
 // ✅ SEO Meta Tags
 export const metadata: Metadata = {
   title: "Best Hearing Aid in Lucknow | Prices, Models & Free Hearing Test",
