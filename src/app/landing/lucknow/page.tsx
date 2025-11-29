@@ -16,13 +16,13 @@ export const metadata: Metadata = {
   description:
     "Looking for the best hearing aid in Lucknow? Explore digital, Bluetooth & rechargeable hearing aids. Book free hearing test with certified audiologists today.",
   alternates: {
-    canonical: "https://www.yoursite.com/hearing-aid-lucknow",
+    canonical: "https://insonohearing.com/landing/lucknow",
   },
   openGraph: {
     title: "Best Hearing Aid in Lucknow - Free Hearing Test & Consultation",
     description:
       "Discover affordable and advanced hearing aids in Lucknow with expert consultation and same-day fitting.",
-    url: "https://www.yoursite.com/hearing-aid-lucknow",
+    url: "https://insonohearing.com/landing/lucknow",
     type: "website",
   },
 };
