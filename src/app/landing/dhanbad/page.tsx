@@ -11,53 +11,53 @@ import Whychoose from "@/components/whychoose";
 import Testomonial from "@/components/testomonial";
 // ✅ SEO Meta Tags
 export const metadata: Metadata = {
-  title: "Best Hearing Aid in lucknow | Prices, Models & Free Hearing Test",
+  title: "Best Hearing Aid in Dhanbad | Prices, Models & Free Hearing Test",
   description:
-    "Looking for the best hearing aid in lucknow? Explore digital, Bluetooth & rechargeable hearing aids. Book free hearing test with certified audiologists today.",
+    "Looking for the best hearing aid in Dhanbad? Explore digital, Bluetooth & rechargeable hearing aids. Book free hearing test with certified audiologists today.",
   alternates: {
-    canonical: "https://insonohearing.com/landing/lucknow",
+    canonical: "https://insonohearing.com/landing/dhanbad",
   },
   openGraph: {
-    title: "Best Hearing Aid in lucknow - Free Hearing Test & Consultation",
+    title: "Best Hearing Aid in Dhanbad - Free Hearing Test & Consultation",
     description:
-      "Discover affordable and advanced hearing aids in lucknow with expert consultation and same-day fitting.",
-    url: "https://insonohearing.com/landing/lucknow",
+      "Discover affordable and advanced hearing aids in dhanbad with expert consultation and same-day fitting.",
+    url: "https://insonohearing.com/landing/dhanbad",
     type: "website",
   },
 };
 
 const lucknowFaqs = [
   {
-    q: "What is the price of hearing aids in lucknow?",
-    a: "The price of hearing aids in lucknow starts from ₹9,999 and can go up depending on brand, technology, and features like Bluetooth or rechargeability. We offer options for every budget with EMI facilities available.",
+    q: "What is the price of hearing aids in Dhanbad?",
+    a: "The price of hearing aids in Dhanbad starts from ₹9,999 and can go up depending on brand, technology, and features like Bluetooth or rechargeability. We offer options for every budget with EMI facilities available.",
   },
   {
-    q: "Do you provide free hearing tests in lucknow?",
-    a: "Yes, we provide 100% free hearing tests and professional consultation at our lucknow clinic conducted by certified audiologists using advanced diagnostic equipment.",
+    q: "Do you provide free hearing tests in Dhanbad?",
+    a: "Yes, we provide 100% free hearing tests and professional consultation at our Dhanbad clinic conducted by certified audiologists using advanced diagnostic equipment.",
   },
   {
-    q: "Where is your hearing aid clinic located in lucknow?",
-    a: "Our hearing aid clinic in lucknow is centrally located and easily accessible. You can book an appointment to get the exact location and directions.",
+    q: "Where is your hearing aid clinic located in Dhanbad?",
+    a: "Our hearing aid clinic in Dhanbad is centrally located and easily accessible. You can book an appointment to get the exact location and directions.",
   },
   {
-    q: "Which brands of hearing aids are available in your lucknow clinic?",
+    q: "Which brands of hearing aids are available in your Dhanbad clinic?",
     a: "We provide all premium brands including Signia, Phonak, Widex, Oticon, ReSound, and Starkey at competitive prices in lucknow.",
   },
   {
-    q: "Are rechargeable hearing aids available in lucknow?",
+    q: "Are rechargeable hearing aids available in Dhanbad?",
     a: "Yes, we offer advanced rechargeable hearing aids that provide up to 24 hours of usage on a single charge with fast charging support.",
   },
   {
-    q: "Do you offer home visits in lucknow?",
-    a: "Yes, we provide home hearing tests and hearing aid trials across lucknow for senior citizens and patients who prefer in-home consultation.",
+    q: "Do you offer home visits in Dhanbad?",
+    a: "Yes, we provide home hearing tests and hearing aid trials across Dhanbad for senior citizens and patients who prefer in-home consultation.",
   },
   {
     q: "Is there a warranty and after-sales support?",
     a: "All hearing aids come with manufacturer warranty along with dedicated after-sales support, servicing and programming assistance at our lucknow clinic.",
   },
   {
-    q: "How do I book an appointment in lucknow?",
-    a: "You can book your appointment online, call us directly, or visit our lucknow clinic. Our team will assist you with slot availability and consultation details.",
+    q: "How do I book an appointment in Dhanbad?",
+    a: "You can book your appointment online, call us directly, or visit our Dhanbad clinic. Our team will assist you with slot availability and consultation details.",
   },
 ];
 
@@ -66,7 +66,7 @@ export default function HearingAidlucknowPage() {
     <>
       {/* 🟦 HERO SECTION */}
       <lucknow />
-      <ProductSection heading="Premium Digital Hearing Aids Available in lucknow" />
+      <ProductSection heading="Premium Digital Hearing Aids Available in Dhanbad" />
       <Whychoose />
       <HearingaidType />
       <Testomonial />
@@ -75,7 +75,7 @@ export default function HearingAidlucknowPage() {
       {/* <section className="py-16 px-4">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-2xl sm:text-3xl font-extrabold mb-10">
-            Our Hearing Aid Services in lucknow
+            Our Hearing Aid Services in Dhanbad
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             <ServiceCard
@@ -98,7 +98,7 @@ export default function HearingAidlucknowPage() {
         </div>
       </section> */}
       {/* 🟧 FAQ */}
-      <FAQ faqs={lucknowFaqs} heading="Hearing Aid in lucknow - FAQs" />
+      <FAQ faqs={lucknowFaqs} heading="Hearing Aid in Dhanbad - FAQs" />
 
       {/* 🟤 CONTACT */}
       <footer className="bg-gray-900 text-gray-300 pt-12 pb-6">
