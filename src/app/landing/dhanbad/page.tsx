@@ -5,7 +5,7 @@ import { Headphones, MapPin, Phone, Ear, Waves } from "lucide-react";
 import { Metadata } from "next";
 
 // FIXED: Capitalized component import
-import Lucknow from "@/components/landingHero/lucknow";
+import Lucknow from "@/components/landingHero/dhanbad";
 
 import FAQ from "@/components/FAQ";
 import ProductSection from "@/components/ProductSection";
