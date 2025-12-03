@@ -3,7 +3,7 @@ import Link from "next/link";
 import { FaFacebook, FaInstagram, FaYoutube, FaLinkedin } from "react-icons/fa";
 import { Headphones, MapPin, Phone, Ear, Waves } from "lucide-react";
 import { Metadata } from "next";
-import Lucknow from "@/components/landingHero/lucknow";
+import dhanbad from "@/components/landingHero/dhanbad";
 import FAQ from "@/components/FAQ";
 import ProductSection from "@/components/ProductSection";
 import HearingaidType from "@/components/HearingaidType";
@@ -11,62 +11,62 @@ import Whychoose from "@/components/whychoose";
 import Testomonial from "@/components/testomonial";
 // ✅ SEO Meta Tags
 export const metadata: Metadata = {
-  title: "Best Hearing Aid in Lucknow | Prices, Models & Free Hearing Test",
+  title: "Best Hearing Aid in Dhanbad | Prices, Models & Free Hearing Test",
   description:
-    "Looking for the best hearing aid in Lucknow? Explore digital, Bluetooth & rechargeable hearing aids. Book free hearing test with certified audiologists today.",
+    "Looking for the best hearing aid in Dhanbad? Explore digital, Bluetooth & rechargeable hearing aids. Book free hearing test with certified audiologists today.",
   alternates: {
-    canonical: "https://insonohearing.com/landing/lucknow",
+    canonical: "https://insonohearing.com/landing/dhanbad",
   },
   openGraph: {
-    title: "Best Hearing Aid in Lucknow - Free Hearing Test & Consultation",
+    title: "Best Hearing Aid in Dhanbad - Free Hearing Test & Consultation",
     description:
-      "Discover affordable and advanced hearing aids in Lucknow with expert consultation and same-day fitting.",
-    url: "https://insonohearing.com/landing/lucknow",
+      "Discover affordable and advanced hearing aids in Dhanbad with expert consultation and same-day fitting.",
+    url: "https://insonohearing.com/landing/dhanbad",
     type: "website",
   },
 };
 
-const lucknowFaqs = [
+const dhanbadFaqs = [
   {
-    q: "What is the price of hearing aids in Lucknow?",
-    a: "The price of hearing aids in Lucknow starts from ₹9,999 and can go up depending on brand, technology, and features like Bluetooth or rechargeability. We offer options for every budget with EMI facilities available.",
+    q: "What is the price of hearing aids in Dhanbad?",
+    a: "The price of hearing aids in dhanbad starts from ₹9,999 and can go up depending on brand, technology, and features like Bluetooth or rechargeability. We offer options for every budget with EMI facilities available.",
   },
   {
-    q: "Do you provide free hearing tests in Lucknow?",
-    a: "Yes, we provide 100% free hearing tests and professional consultation at our Lucknow clinic conducted by certified audiologists using advanced diagnostic equipment.",
+    q: "Do you provide free hearing tests in Dhanbad?",
+    a: "Yes, we provide 100% free hearing tests and professional consultation at our dhanbad clinic conducted by certified audiologists using advanced diagnostic equipment.",
   },
   {
-    q: "Where is your hearing aid clinic located in Lucknow?",
-    a: "Our hearing aid clinic in Lucknow is centrally located and easily accessible. You can book an appointment to get the exact location and directions.",
+    q: "Where is your hearing aid clinic located in Dhanbad?",
+    a: "Our hearing aid clinic in dhanbad is centrally located and easily accessible. You can book an appointment to get the exact location and directions.",
   },
   {
-    q: "Which brands of hearing aids are available in your Lucknow clinic?",
-    a: "We provide all premium brands including Signia, Phonak, Widex, Oticon, ReSound, and Starkey at competitive prices in Lucknow.",
+    q: "Which brands of hearing aids are available in your dhanbad clinic?",
+    a: "We provide all premium brands including Signia, Phonak, Widex, Oticon, ReSound, and Starkey at competitive prices in dhanbad.",
   },
   {
-    q: "Are rechargeable hearing aids available in Lucknow?",
+    q: "Are rechargeable hearing aids available in dhanbad?",
     a: "Yes, we offer advanced rechargeable hearing aids that provide up to 24 hours of usage on a single charge with fast charging support.",
   },
   {
-    q: "Do you offer home visits in Lucknow?",
-    a: "Yes, we provide home hearing tests and hearing aid trials across Lucknow for senior citizens and patients who prefer in-home consultation.",
+    q: "Do you offer home visits in dhanbad?",
+    a: "Yes, we provide home hearing tests and hearing aid trials across dhanbad for senior citizens and patients who prefer in-home consultation.",
   },
   {
     q: "Is there a warranty and after-sales support?",
-    a: "All hearing aids come with manufacturer warranty along with dedicated after-sales support, servicing and programming assistance at our Lucknow clinic.",
+    a: "All hearing aids come with manufacturer warranty along with dedicated after-sales support, servicing and programming assistance at our dhanbad clinic.",
   },
   {
-    q: "How do I book an appointment in Lucknow?",
-    a: "You can book your appointment online, call us directly, or visit our Lucknow clinic. Our team will assist you with slot availability and consultation details.",
+    q: "How do I book an appointment in dhanbad?",
+    a: "You can book your appointment online, call us directly, or visit our dhanbad clinic. Our team will assist you with slot availability and consultation details.",
   },
 ];
 
-export default function HearingAidLucknowPage() {
+export default function HearingAiddhanbadPage() {
   return (
     <>
       {/* 🟦 HERO SECTION */}
-      <Lucknow />
-      <ProductSection heading="Premium Digital Hearing Aids Available in Lucknow" />
+      <dhanbad />
+      <ProductSection heading="Premium Digital Hearing Aids Available in dhanbad" />
       <Whychoose />
       <HearingaidType />
       <Testomonial />
@@ -75,7 +75,7 @@ export default function HearingAidLucknowPage() {
       {/* <section className="py-16 px-4">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-2xl sm:text-3xl font-extrabold mb-10">
-            Our Hearing Aid Services in Lucknow
+            Our Hearing Aid Services in dhanbad
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             <ServiceCard
@@ -98,7 +98,7 @@ export default function HearingAidLucknowPage() {
         </div>
       </section> */}
       {/* 🟧 FAQ */}
-      <FAQ faqs={lucknowFaqs} heading="Hearing Aid in Lucknow - FAQs" />
+      <FAQ faqs={dhanbadFaqs} heading="Hearing Aid in dhanbad - FAQs" />
 
       {/* 🟤 CONTACT */}
       <footer className="bg-gray-900 text-gray-300 pt-12 pb-6">
