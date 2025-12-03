@@ -3,12 +3,16 @@ import Link from "next/link";
 import { FaFacebook, FaInstagram, FaYoutube, FaLinkedin } from "react-icons/fa";
 import { Headphones, MapPin, Phone, Ear, Waves } from "lucide-react";
 import { Metadata } from "next";
-import lucknow from "@/components/landingHero/lucknow";
+
+// FIXED: Capitalized component import
+import Lucknow from "@/components/landingHero/lucknow";
+
 import FAQ from "@/components/FAQ";
 import ProductSection from "@/components/ProductSection";
 import HearingaidType from "@/components/HearingaidType";
 import Whychoose from "@/components/whychoose";
 import Testomonial from "@/components/testomonial";
+
 // ✅ SEO Meta Tags
 export const metadata: Metadata = {
   title: "Best Hearing Aid in Dhanbad | Prices, Models & Free Hearing Test",
@@ -26,7 +30,7 @@ export const metadata: Metadata = {
   },
 };
 
-const lucknowFaqs = [
+const dhanbadFaqs = [
   {
     q: "What is the price of hearing aids in Dhanbad?",
     a: "The price of hearing aids in Dhanbad starts from ₹9,999 and can go up depending on brand, technology, and features like Bluetooth or rechargeability. We offer options for every budget with EMI facilities available.",
@@ -41,7 +45,7 @@ const lucknowFaqs = [
   },
   {
     q: "Which brands of hearing aids are available in your Dhanbad clinic?",
-    a: "We provide all premium brands including Signia, Phonak, Widex, Oticon, ReSound, and Starkey at competitive prices in lucknow.",
+    a: "We provide all premium brands including Signia, Phonak, Widex, Oticon, ReSound, and Starkey at competitive prices in Dhanbad.",
   },
   {
     q: "Are rechargeable hearing aids available in Dhanbad?",
@@ -53,7 +57,7 @@ const lucknowFaqs = [
   },
   {
     q: "Is there a warranty and after-sales support?",
-    a: "All hearing aids come with manufacturer warranty along with dedicated after-sales support, servicing and programming assistance at our lucknow clinic.",
+    a: "All hearing aids come with manufacturer warranty along with dedicated after-sales support, servicing and programming assistance at our Dhanbad clinic.",
   },
   {
     q: "How do I book an appointment in Dhanbad?",
@@ -61,50 +65,25 @@ const lucknowFaqs = [
   },
 ];
 
-export default function HearingAidlucknowPage() {
+export default function HearingAidDhanbadPage() {
   return (
     <>
       {/* 🟦 HERO SECTION */}
-      <lucknow />
+      <Lucknow />
+
       <ProductSection heading="Premium Digital Hearing Aids Available in Dhanbad" />
       <Whychoose />
       <HearingaidType />
       <Testomonial />
 
-      {/* 🟨 SERVICES */}
-      {/* <section className="py-16 px-4">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-2xl sm:text-3xl font-extrabold mb-10">
-            Our Hearing Aid Services in Dhanbad
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            <ServiceCard
-              icon={<Ear className="w-7 h-7 text-[#184A99]" />}
-              title="Free Hearing Test"
-            />
-            <ServiceCard
-              icon={<Headphones className="w-7 h-7 text-[#184A99]" />}
-              title="Digital Hearing Aids"
-            />
-            <ServiceCard
-              icon={<Waves className="w-7 h-7 text-[#184A99]" />}
-              title="Invisible Models"
-            />
-            <ServiceCard
-              icon={<Phone className="w-7 h-7 text-[#184A99]" />}
-              title="Home Visit"
-            />
-          </div>
-        </div>
-      </section> */}
       {/* 🟧 FAQ */}
-      <FAQ faqs={lucknowFaqs} heading="Hearing Aid in Dhanbad - FAQs" />
+      <FAQ faqs={dhanbadFaqs} heading="Hearing Aid in Dhanbad - FAQs" />
 
       {/* 🟤 CONTACT */}
       <footer className="bg-gray-900 text-gray-300 pt-12 pb-6">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          {/* 🌟 Bottom Bar */}
-          <div className="  border-gray-700 pt-6 flex flex-col md:flex-row items-center justify-between text-sm space-y-4 md:space-y-0">
+          <div className="border-gray-700 pt-6 flex flex-col md:flex-row items-center justify-between text-sm space-y-4 md:space-y-0">
+
             {/* Social Icons */}
             <div className="flex space-x-4">
               <a
@@ -141,7 +120,7 @@ export default function HearingAidlucknowPage() {
               </a>
             </div>
 
-            {/* ✅ Google & Trustpilot Reviews Badges */}
+            {/* Review Badges */}
             <div className="flex items-center gap-4">
               <a
                 href="https://maps.app.goo.gl/RvRyJE8vQqNQnhNF8"
@@ -150,7 +129,7 @@ export default function HearingAidlucknowPage() {
                 className="transition transform hover:scale-105"
               >
                 <Image
-                  src="/badge/google.webp" // place your PNG/SVG in /public/badges/
+                  src="/badge/google.webp"
                   alt="Google Reviews"
                   width={120}
                   height={40}
@@ -164,7 +143,7 @@ export default function HearingAidlucknowPage() {
                 className="transition transform hover:scale-105"
               >
                 <Image
-                  src="/badge/trustpilot.webp" // place your PNG/SVG in /public/badges/
+                  src="/badge/trustpilot.webp"
                   alt="Trustpilot Reviews"
                   width={120}
                   height={40}
@@ -192,13 +171,8 @@ export default function HearingAidlucknowPage() {
   );
 }
 
-function ServiceCard({
-  icon,
-  title,
-}: {
-  icon: React.ReactNode;
-  title: string;
-}) {
+// Utility Cards
+function ServiceCard({ icon, title }: { icon: React.ReactNode; title: string }) {
   return (
     <div className="flex flex-col items-center bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition">
       <div className="mb-3 bg-[#184A99]/10 p-3 rounded-full">{icon}</div>
