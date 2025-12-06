@@ -28,9 +28,6 @@
   }
 }
 
-
-
-
 /* -------------------------------------------------
    INSONO BLOG THEME
    Clean | Readable | Senior-Friendly | High-Contrast
@@ -49,7 +46,7 @@
   --tw-prose-hr: #e0e0e0;
   --tw-prose-bg: #fafafa;
 
-  font-family: 'Source Sans 3', system-ui, -apple-system, sans-serif;
+  font-family: "Source Sans 3", system-ui, -apple-system, sans-serif;
   color: var(--tw-prose-body);
   line-height: 1.8;
   font-size: 1.08rem;
@@ -315,7 +312,6 @@
   }
 }
 
-
 /* === Force NProgress Bar to Always Show on Top === */
 /* === YouTube-style Progress Bar === */
 #nprogress {
@@ -344,7 +340,6 @@
   opacity: 1;
   transform: rotate(3deg) translate(0px, -4px);
 }
-
 
 /* Custom class for slower ping with gaps */
 .animate-slow-ping {
@@ -482,9 +477,6 @@
     color: #bfdbfe;
   }
 }
-
-
-
 
 @font-face {
   font-family: "Museo Sans";
