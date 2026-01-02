@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { PhoneCall, MessageCircle, Download } from "lucide-react";
 
-const PDF_URL = "/insono.pdf"; // 👉 place PDF in /public
+const PDF_URL = "insono.pdf"; // 👉 place PDF in /public
 
 export default function ThankYouPage() {
   return (
