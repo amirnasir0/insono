@@ -4,13 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { PhoneCall, MessageCircle, Download } from "lucide-react";
 
-const PDF_URL = "insono.pdf"; // 👉 place PDF in /public
+const PDF_URL = "/Insono.pdf"; // 👉 place PDF in /public
 
 export default function ThankYouPage() {
   return (
     <section className="min-h-screen bg-gray-50 flex flex-col items-center px-4 py-10">
       {/* HEADER */}
-      <div className="text-center max-w-xl">
+      <div className="text-center max-w-xl mt-16">
         <h1 className="text-3xl sm:text-4xl font-bold text-blue-600">
           🎉 Thank You!
         </h1>
