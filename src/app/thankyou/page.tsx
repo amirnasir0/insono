@@ -48,7 +48,7 @@ export default function ThankYouPage() {
         <div className="flex gap-4 justify-center">
           {/* CALL */}
           <a
-            href="tel:+919999999999"
+            href="tel:+916204260510"
             className="flex items-center gap-2 px-5 py-3 rounded-full bg-green-600 text-white shadow hover:bg-green-700 transition"
           >
             <PhoneCall size={18} />
@@ -57,7 +57,7 @@ export default function ThankYouPage() {
 
           {/* WHATSAPP */}
           <a
-            href="https://wa.me/919999999999"
+            href="https://wa.me/916204260510"
             target="_blank"
             className="flex items-center gap-2 px-5 py-3 rounded-full bg-emerald-500 text-white shadow hover:bg-emerald-600 transition"
           >
