@@ -190,7 +190,7 @@ export const clinics: Clinic[] = [
     id: "lajpat-nagar",
     name: "Hearing Aid Clinic in Lajpat Nagar",
     locationLine: "Lajpat Nagar — Delhi",
-    address: "E-195, Ground Floor, Amar Colony, Lajpat Nagar-4, New Delhi - 110024",
+    address: "3/59, Old Story, Lajpat Nagar 4, Lajpat Nagar, New Delhi, Delhi 110024",
     hours: "Open, Closes by 7 pm",
     tag: "Clinic",
     placeId: "ChIJGQuhawDlDDkRcuXRFQaYEbA",

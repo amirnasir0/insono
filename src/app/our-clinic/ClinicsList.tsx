@@ -111,7 +111,7 @@ const clinics: Clinic[] = [
     name: "Hearing Aid Clinic in Lajpat Nagar",
     locationLine: "Lajpat Nagar — Delhi",
     address:
-      "E-195, Ground Floor, Amar Colony, Lajpat Nagar-4, New Delhi - 110024",
+      "3/59, Old Story, Lajpat Nagar 4, Lajpat Nagar, New Delhi, Delhi 110024",
     hours: "Open, Closes by 7 pm",
     tag: "Clinic",
     placeId: "ChIJGQuhawDlDDkRcuXRFQaYEbA",
@@ -271,10 +271,12 @@ export default function ClinicsList() {
                 className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col h-full"
               >
                 <div className="bg-[#e9f2ff] p-3">
-                  <Link 
-  href={`/our-clinic/${c.id}`} 
-  className="text-[#023784] font-semibold hover:underline"
-><h2 className="text-[#023784] font-semibold">{c.name}</h2></Link>
+                  <Link
+                    href={`/our-clinic/${c.id}`}
+                    className="text-[#023784] font-semibold hover:underline"
+                  >
+                    <h2 className="text-[#023784] font-semibold">{c.name}</h2>
+                  </Link>
                   {c.tag && (
                     <p className="text-xs text-gray-600 mt-1">{c.tag}</p>
                   )}
