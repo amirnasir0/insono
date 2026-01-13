@@ -2,7 +2,8 @@
 import NavigationWrapper from "@/components/NavigationWrapper";
 import "./globals.css";
 import type { Metadata } from "next";
-import Script from "next/script";
+import ChatWidgetLoader from "@/components/ChatWidgetLoader";
+
 
 export const metadata: Metadata = {
   title: {
@@ -64,11 +65,11 @@ export default function RootLayout({
           name="google-site-verification"
           content="_w3rNIazk1WMe-urSCcrtpzyAcqTeopxMU1qqLd0p6k"
         />
-        <script async defer src="https://chat-xbot.webspecia.in/js/widget/omf5pwsilxzzkba1/float.js"></script>
+       
       </head>
 
       <body className="font-museo bg-white text-gray-900 antialiased bg-gradient-to-b from-[#eaf5ff] to-white">
-        <NavigationWrapper>{children}</NavigationWrapper>
+        <NavigationWrapper>{children} <ChatWidgetLoader /></NavigationWrapper>
 
         {/* Optional: add analytics or other scripts here via next/script */}
         {/*
