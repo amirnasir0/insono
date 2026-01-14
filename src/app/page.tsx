@@ -41,10 +41,11 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="relative min-h-[90vh] bg-gradient-to-b from-[#eaf5ff] to-white flex flex-col items-center justify-center text-center">
         <HeroSection />
+         <ProductSection />
         <Whychoose />
         
       </section>
-      <ProductSection />
+     
       <HearingaidType />
       
       
