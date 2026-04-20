@@ -323,10 +323,10 @@ export default async function ProductPage({
               View Price
             </Link>
             <Link
-              href={`/appointment?utm_source=website&utm_medium=single_product&utm_campaign=${encodeURIComponent(product.title)}`}
+              href={`/order/${product.slug}`}
               className="border border-[#023784] text-[#023784] px-6 py-3 rounded-md font-medium hover:bg-[#023784] hover:text-white transition text-center"
             >
-              Get Free Trial
+              Buy Now
             </Link>
           </div>
         </div>
