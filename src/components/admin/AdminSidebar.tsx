@@ -14,11 +14,13 @@ import {
     ChevronRight,
     FileText,
     Rss,
+    ShoppingBag,
 } from "lucide-react";
 
 const navLinks = [
     { href: "/admin", label: "Dashboard", icon: LayoutDashboard, exact: true },
     { href: "/admin/products", label: "Products", icon: Package },
+    { href: "/admin/orders", label: "Orders", icon: ShoppingBag },
     { href: "/admin/settings", label: "Settings", icon: Settings },
 ];
 
