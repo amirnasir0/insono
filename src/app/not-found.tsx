@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -10,28 +9,28 @@ export const metadata: Metadata = {
 const brands = [
   {
     name: "Signia",
-    logo: "/logos/signia.svg",
+    logo: "/brands/signia.svg",
     href: "/hearing-aids/signia",
     count: 143,
     color: "bg-red-50 border-red-100",
   },
   {
     name: "Widex",
-    logo: "/logos/widexlogo.svg",
+    logo: "/brands/widexlogo.svg",
     href: "/hearing-aids/widex",
     count: 135,
     color: "bg-blue-50 border-blue-100",
   },
   {
     name: "Phonak",
-    logo: "/logos/phonaklogo.svg",
+    logo: "/brands/phonaklogo.svg",
     href: "/hearing-aids/phonak",
     count: 95,
     color: "bg-rose-50 border-rose-100",
   },
   {
     name: "Oticon",
-    logo: "/logos/oticon.svg",
+    logo: "/brands/oticon.svg",
     href: "/hearing-aids/oticon",
     count: null,
     color: "bg-orange-50 border-orange-100",
@@ -92,14 +91,11 @@ export default function NotFound() {
                 href={brand.href}
                 className={`flex flex-col items-center justify-center gap-2 rounded-2xl border p-4 sm:p-5 hover:shadow-md hover:-translate-y-0.5 transition-all ${brand.color}`}
               >
-                <div className="relative w-20 h-8">
-                  <Image
-                    src={brand.logo}
-                    alt={brand.name}
-                    fill
-                    className="object-contain"
-                  />
-                </div>
+                <img
+                  src={brand.logo}
+                  alt={brand.name}
+                  className="h-8 w-auto object-contain"
+                />
                 {brand.count && (
                   <span className="text-xs text-gray-500">
                     {brand.count}+ models
