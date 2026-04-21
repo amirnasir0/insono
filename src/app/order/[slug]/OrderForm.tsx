@@ -328,8 +328,26 @@ export default function OrderForm({ product }: { product: Product }) {
                 )}
               </button>
 
-              <p className="text-xs text-gray-400 text-center mt-4">
-                By placing this order you agree to be contacted by our team to confirm delivery.
+              {/* Shipping & policy info */}
+              <div className="flex items-start gap-2 bg-gray-50 border border-gray-100 rounded-xl px-4 py-3 mt-1">
+                <svg className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                <p className="text-xs text-gray-500 leading-relaxed">
+                  Free shipping · Delivered in 5–7 business days · Pay cash on delivery.{" "}
+                  <Link href="/return-policy" target="_blank" className="text-[#023784] hover:underline font-medium">
+                    7-day return policy
+                  </Link>
+                  {" "}applies.
+                </p>
+              </div>
+
+              <p className="text-xs text-gray-400 text-center mt-3">
+                By placing this order you agree to our{" "}
+                <Link href="/return-policy" target="_blank" className="text-[#023784] hover:underline">
+                  Return & Refund Policy
+                </Link>
+                {" "}and to be contacted by our team to confirm delivery.
               </p>
             </form>
           </div>
