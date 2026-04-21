@@ -317,16 +317,16 @@ export default async function ProductPage({
 
           <div className="flex flex-col sm:flex-row gap-3 mt-4">
             <Link
-              href={`/price-download?utm_source=website&utm_medium=single_product&utm_campaign=${encodeURIComponent(product.title)}`}
+              href={`/order/${product.slug}`}
               className="bg-[#023784] text-white px-6 py-3 rounded-md font-medium hover:bg-[#012d66] transition text-center"
             >
-              View Price
+              Buy Now
             </Link>
             <Link
-              href={`/order/${product.slug}`}
+              href={`/price-download?utm_source=website&utm_medium=single_product&utm_campaign=${encodeURIComponent(product.title)}`}
               className="border border-[#023784] text-[#023784] px-6 py-3 rounded-md font-medium hover:bg-[#023784] hover:text-white transition text-center"
             >
-              Buy Now
+              View Price
             </Link>
           </div>
         </div>
