@@ -11,17 +11,16 @@ export default function NavigationWrapper({
 }) {
   const pathname = usePathname();
 
-  // ✅ Safe landing detection
+  // Hide global nav & footer for all /landing/* pages (they have their own headers)
   const isLandingPage =
     pathname === "/landing" || pathname.startsWith("/landing/");
 
   return (
     <>
-      <Navigation minimal={isLandingPage} />
+      {!isLandingPage && <Navigation />}
 
       {children}
 
-      {/* Footer hide only for landing pages */}
       {!isLandingPage && <Footer />}
     </>
   );

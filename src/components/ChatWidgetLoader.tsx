@@ -1,9 +1,15 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export default function ChatWidgetLoader() {
+  const pathname = usePathname();
+  const isLandingPage = pathname.startsWith("/landing");
+
   useEffect(() => {
+    if (isLandingPage) return;
+
     let loaded = false;
 
     const loadChat = () => {
@@ -35,7 +41,7 @@ export default function ChatWidgetLoader() {
       window.removeEventListener("mousemove", loadChat);
       window.removeEventListener("touchstart", loadChat);
     };
-  }, []);
+  }, [isLandingPage]);
 
   return null;
 }

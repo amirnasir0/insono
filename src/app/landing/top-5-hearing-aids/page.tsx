@@ -4,28 +4,41 @@ import Link from "next/link";
 import LeadForm from "./LeadForm";
 
 export const metadata: Metadata = {
-  title: "Top 5 Hearing Aids in India 2025 — Prices & Comparison | Insono Hearing",
+  title: "Top 5 Hearing Aids in India 2025 — Expert Comparison | Insono Hearing",
   description:
-    "Compare the top 5 hearing aids in India with prices. Signia, Widex & Phonak models — starting ₹2,41,000. Free trial available. Cash on delivery.",
+    "Compare the top 5 hearing aids in India. Signia, Widex & Phonak models — starting ₹15,000. Free trial available. Cash on delivery. Get your personalised price today.",
 };
 
 const TOP5 = [
   {
     rank: 1,
-    badge: "Best Overall",
+    badge: "Top Choice",
     badgeColor: "bg-yellow-400 text-yellow-900",
-    title: "Widex Kit ARRDI 440",
-    slug: "kit-arrdi-440-",
-    brand: "Widex",
-    brandLogo: "/brands/widexlogo.svg",
-    image: "https://an7bjwndlmaemx4x.public.blob.vercel-storage.com/products/1773206476873-widex-p1.png",
-    mrp: 800000,
-    features: ["AI-Powered Sound", "Bluetooth Streaming", "Rechargeable", "Noise Cancellation", "Tinnitus Masking"],
-    highlight: "World's most natural sound technology",
+    title: "Signia Orion C&G 200",
+    slug: "signia-orion-cg-200",
+    brand: "Signia",
+    brandLogo: "/brands/signia.svg",
+    image: "https://an7bjwndlmaemx4x.public.blob.vercel-storage.com/products/1772781326903-Signia-Orion-C%26G-200%40.jpg",
+    mrp: 38990,
+    features: ["Rechargeable Battery", "Bluetooth Streaming", "Noise Reduction", "Speech Clarity", "App Control"],
+    highlight: "Best entry-level rechargeable from Signia",
   },
   {
     rank: 2,
-    badge: "Editor's Pick",
+    badge: "Best Invisible",
+    badgeColor: "bg-red-500 text-white",
+    title: "Signia Silk 7X",
+    slug: "signia-silk-7x",
+    brand: "Signia",
+    brandLogo: "/brands/signia.svg",
+    image: "https://an7bjwndlmaemx4x.public.blob.vercel-storage.com/products/1775551490244-Untitled-design---2026-04-07T141048.093.png",
+    mrp: 314990,
+    features: ["Invisible In-Canal", "IX Platform AI", "Ready-to-Wear", "Own Voice Processing", "Tinnitus Therapy"],
+    highlight: "Smallest invisible hearing aid by Signia",
+  },
+  {
+    rank: 3,
+    badge: "Best Overall",
     badgeColor: "bg-blue-500 text-white",
     title: "Phonak Audeo I 90 Sphere",
     slug: "audeo-i-90-sphere",
@@ -37,43 +50,30 @@ const TOP5 = [
     highlight: "Industry-first full conversation hearing",
   },
   {
-    rank: 3,
-    badge: "Best Value",
-    badgeColor: "bg-green-500 text-white",
-    title: "Widex Kit ARRDI 330",
-    slug: "kit-arrdi-330",
-    brand: "Widex",
-    brandLogo: "/brands/widexlogo.svg",
-    image: "https://an7bjwndlmaemx4x.public.blob.vercel-storage.com/products/1773208950188-widex-5-%281%29.png",
-    mrp: 480000,
-    features: ["AI Sound Processing", "Bluetooth", "Rechargeable", "Noise Cancellation", "App Control"],
-    highlight: "Premium features at an accessible price",
-  },
-  {
     rank: 4,
-    badge: "Most Popular",
-    badgeColor: "bg-red-500 text-white",
-    title: "Signia Pure Charge&Go 7IX",
-    slug: "signia-pure-charge-go-7ix",
-    brand: "Signia",
-    brandLogo: "/brands/signia.svg",
-    image: "https://an7bjwndlmaemx4x.public.blob.vercel-storage.com/products/1772792684301-Signia-Pure-Charge%26Go-7IX%40%40%40.webp",
-    mrp: 379990,
-    features: ["IX Platform AI", "Bluetooth", "Rechargeable", "Own Voice Processing", "Tinnitus Therapy"],
-    highlight: "Most sold hearing aid in India",
+    badge: "Editor's Pick",
+    badgeColor: "bg-purple-500 text-white",
+    title: "Phonak Slim L90-R",
+    slug: "slim-l90-r",
+    brand: "Phonak",
+    brandLogo: "/brands/phonaklogo.svg",
+    image: "https://an7bjwndlmaemx4x.public.blob.vercel-storage.com/products/1774002227903-Untitled-design---2026-03-20T155340.689.png",
+    mrp: 609000,
+    features: ["Ultra-Slim Design", "Bluetooth Streaming", "Rechargeable", "AutoSense OS 5.0", "Roger Ready"],
+    highlight: "Most stylish hearing aid from Phonak",
   },
   {
     rank: 5,
-    badge: "Budget Pick",
-    badgeColor: "bg-purple-500 text-white",
-    title: "Phonak Audeo L 50-R",
-    slug: "audeo-l-50-r",
-    brand: "Phonak",
-    brandLogo: "/brands/phonaklogo.svg",
-    image: "https://an7bjwndlmaemx4x.public.blob.vercel-storage.com/products/1773226833392-Untitled-design-%282%29.png",
-    mrp: 241000,
-    features: ["Bluetooth", "Rechargeable", "Speech Enhancer", "Noise Reduction", "App Control"],
-    highlight: "Great entry point into premium hearing",
+    badge: "Premium Choice",
+    badgeColor: "bg-green-500 text-white",
+    title: "Signia Active Pro",
+    slug: "signia-active-pro",
+    brand: "Signia",
+    brandLogo: "/brands/signia.svg",
+    image: "/products/signia active pro.png",
+    mrp: 234990,
+    features: ["Earbud Design", "Xperience Platform", "Instant Fit", "Rechargeable", "Bluetooth Streaming"],
+    highlight: "Hearing aids that look like premium earbuds",
   },
 ];
 
@@ -91,15 +91,15 @@ export default function Top5LandingPage() {
       {/* ── Minimal Header ── */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-100 shadow-sm">
         <div className="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
-          <Link href="/">
+          <Link href="#">
             <img src="/logo.webp" alt="Insono Hearing" className="h-8 w-auto" />
           </Link>
           <a
-            href="tel:+919999999999"
+            href="tel:+916204260510"
             className="flex items-center gap-2 bg-[#023784] text-white px-4 py-2 rounded-xl text-sm font-semibold hover:bg-[#012d66] transition"
           >
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/>
+              <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z" />
             </svg>
             Call Expert
           </a>
@@ -113,27 +113,27 @@ export default function Top5LandingPage() {
 
             {/* Left: Copy */}
             <div className="flex-1 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm rounded-full px-4 py-1.5 text-xs font-semibold mb-4">
+              <div className="hidden lg:inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm rounded-full px-4 py-1.5 text-xs font-semibold mb-4">
                 <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
                 Updated April 2026 · Expert Curated
               </div>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight mb-4">
-                Top 5 Hearing Aids<br />
-                <span className="text-yellow-300">in India — With Prices</span>
+              <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black leading-tight mb-4">
+                Top 5 Hearing Aids in India<br />
+                <span className="text-yellow-300">Save Up to ₹31,500 Today</span>
               </h1>
               <p className="text-blue-100 text-base sm:text-lg mb-6 max-w-lg mx-auto lg:mx-0">
-                Compare Signia, Widex & Phonak. Starting from <strong className="text-white">₹2,41,000</strong>. Free trial · Cash on Delivery · Expert guidance.
+                Compare Signia, Widex &amp; Phonak. Starting from <strong className="text-yellow-300">₹15,000</strong>. <span className="hidden lg:inline">Free trial · Cash on Delivery · Expert guidance.</span>
               </p>
 
-              {/* Trust chips */}
-              <div className="flex flex-wrap gap-2 justify-center lg:justify-start mb-8">
+              {/* Trust chips — desktop only */}
+              <div className="hidden lg:flex flex-wrap gap-2 justify-start mb-8">
                 {["✓ Free Home Delivery", "✓ 7-Day Return Policy", "✓ Free Trial Available", "✓ EMI Options"].map((t) => (
                   <span key={t} className="bg-white/15 text-white text-xs font-medium px-3 py-1.5 rounded-full">{t}</span>
                 ))}
               </div>
 
-              {/* Stats row */}
-              <div className="grid grid-cols-4 gap-2 max-w-md mx-auto lg:mx-0">
+              {/* Stats row — desktop only */}
+              <div className="hidden lg:grid grid-cols-4 gap-2 max-w-md mx-auto lg:mx-0">
                 {TRUST.map((t) => (
                   <div key={t.label} className="text-center">
                     <div className="text-xl mb-0.5">{t.icon}</div>
@@ -147,8 +147,8 @@ export default function Top5LandingPage() {
             {/* Right: Lead form */}
             <div className="w-full lg:w-80 flex-shrink-0">
               <div className="bg-white rounded-2xl shadow-2xl p-6">
-                <p className="text-[#023784] font-bold text-lg mb-1 text-center">Get Price List — Free</p>
-                <p className="text-gray-500 text-sm mb-4 text-center">Our expert calls you within 30 mins</p>
+                <p className="text-[#023784] font-bold text-lg mb-1 text-center">📋 Get Complete Price List</p>
+                <p className="text-gray-500 text-sm mb-4 text-center">Enter your WhatsApp number — we'll instantly send you prices of all top hearing aid models to compare.</p>
                 <LeadForm />
               </div>
             </div>
@@ -159,8 +159,8 @@ export default function Top5LandingPage() {
       {/* ── Top 5 Products ── */}
       <section className="max-w-5xl mx-auto px-4 py-12" id="products">
         <div className="text-center mb-8">
-          <h2 className="text-2xl sm:text-3xl font-black text-gray-800">Top 5 Hearing Aids — Ranked & Priced</h2>
-          <p className="text-gray-500 mt-2 text-sm">All prices are MRP. Contact us for best deal & trial.</p>
+          <h2 className="text-2xl sm:text-3xl font-black text-gray-800">Top 5 Hearing Aids — Expert Ranked</h2>
+          <p className="text-gray-500 mt-2 text-sm">Prices differ by city, clinic &amp; hearing profile. Fill the form below to get your personalised price instantly.</p>
         </div>
 
         <div className="space-y-4">
@@ -210,22 +210,16 @@ export default function Top5LandingPage() {
 
                   <div className="flex flex-col sm:flex-row sm:items-center gap-3 mt-2">
                     <div>
-                      <p className="text-xs text-gray-400 leading-none mb-0.5">MRP</p>
-                      <p className="text-2xl font-black text-gray-800">₹{p.mrp.toLocaleString("en-IN")}</p>
+                      <p className="text-xs text-gray-500 leading-none mb-0.5 font-medium">Price varies by city &amp; hearing profile</p>
+                      <p className="text-base font-bold text-[#023784]">👉 Get your personalised price</p>
                     </div>
                     <div className="flex gap-2 sm:ml-auto flex-wrap">
-                      <Link
-                        href={`/order/${p.slug}`}
+                      <a
+                        href="#get-price"
                         className="flex-1 sm:flex-none bg-[#023784] text-white px-5 py-2.5 rounded-xl font-semibold text-sm hover:bg-[#012d66] transition text-center"
                       >
-                        Buy Now — COD
-                      </Link>
-                      <Link
-                        href={`/product/${p.slug}`}
-                        className="flex-1 sm:flex-none border border-[#023784] text-[#023784] px-5 py-2.5 rounded-xl font-semibold text-sm hover:bg-[#023784] hover:text-white transition text-center"
-                      >
-                        View Details
-                      </Link>
+                        Get Complete Price List
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -259,9 +253,9 @@ export default function Top5LandingPage() {
       {/* ── Bottom Lead Form ── */}
       <section className="max-w-lg mx-auto px-4 py-14" id="get-price">
         <div className="bg-[#023784] rounded-3xl p-7 sm:p-9 text-white text-center">
-          <h2 className="text-2xl font-black mb-2">Still Confused?</h2>
+          <h2 className="text-2xl font-black mb-2">Save upto ₹31,500 on Latest Hearing Aids 💰</h2>
           <p className="text-blue-100 text-sm mb-6">
-            Talk to our audiologist — free of charge. We&apos;ll help you find the right hearing aid for your needs and budget.
+            Thousands of people are overpaying for hearing aids every day. Our audiologist will find you the best model at the lowest price — <strong className="text-white">100% free, no obligation.</strong>
           </p>
           <div className="bg-white rounded-2xl p-5">
             <LeadForm compact />
@@ -270,23 +264,26 @@ export default function Top5LandingPage() {
       </section>
 
       {/* ── Certifications strip ── */}
-      <section className="border-t border-gray-100 py-6 bg-white">
-        <div className="max-w-5xl mx-auto px-4 flex flex-wrap items-center justify-center gap-6 opacity-70">
-          {["/images/certifications/signia.jpg", "/images/certifications/widex.png", "/images/certifications/phonak.jpeg"].map((src, i) => (
-            <img key={i} src={src} alt="Certification" className="h-10 w-auto object-contain grayscale hover:grayscale-0 transition" />
-          ))}
-          <span className="text-xs text-gray-400 font-medium">Authorized Partner · Signia · Widex · Phonak</span>
+      <section className="border-t border-gray-200 py-10 bg-gray-50">
+        <div className="max-w-5xl mx-auto px-4 text-center">
+          <p className="text-sm font-semibold text-gray-500 uppercase tracking-widest mb-6">Official Authorized Partner</p>
+          <div className="flex flex-wrap items-center justify-center gap-10">
+            {["/images/certifications/signia.jpg", "/images/certifications/widex.png", "/images/certifications/phonak.jpeg"].map((src, i) => (
+              <img key={i} src={src} alt="Certification" className="h-16 w-auto object-contain hover:scale-105 transition" />
+            ))}
+          </div>
+          <p className="mt-6 text-sm text-gray-500 font-medium">Signia · Widex · Phonak — Certified Hearing Aid Partner</p>
         </div>
       </section>
 
       {/* ── Sticky Mobile Bottom Bar ── */}
       <div className="fixed bottom-0 left-0 right-0 z-50 sm:hidden bg-white border-t border-gray-200 shadow-lg px-4 py-3 flex gap-3">
         <a
-          href="tel:+919999999999"
+          href="tel:+916204260510"
           className="flex-1 flex items-center justify-center gap-2 border border-[#023784] text-[#023784] py-3 rounded-xl font-bold text-sm"
         >
           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/>
+            <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z" />
           </svg>
           Call Now
         </a>
