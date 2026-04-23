@@ -70,10 +70,6 @@ const FAQS = [
     a: "While many feel instant relief due to the masking effect, it typically takes 2-4 weeks of consistent use for the brain to fully adapt and significantly reduce the perception of ringing.",
   },
   {
-    q: "How do hearing aids compare to Dr. Spectra tinnitus devices?",
-    a: "While devices like Dr. Spectra focus solely on sound therapy, modern hearing aids from Signia and Phonak provide a dual advantage. They combine advanced sound masking with sound amplification, which is critical since 80% of tinnitus patients also have hearing loss. Hearing aids are also much more discrete and can be used throughout the day.",
-  },
-  {
     q: "Are there any hearing aids that help with tinnitus?",
     a: "Absolutely. Brands like Signia (Notch Therapy), Widex (Zen), and Phonak (Tinnitus Balance) have dedicated hardware and software specifically designed to suppress tinnitus sounds.",
   },
@@ -99,7 +95,7 @@ export default function TinnitusLandingPage() {
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.634 1.437h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
             </svg>
-            Chat with Expert
+            Chat with Audiologist
           </a>
         </div>
       </header>
@@ -204,13 +200,23 @@ export default function TinnitusLandingPage() {
                     ))}
                   </div>
                 </div>
-                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-6 border-t border-gray-100">
-                  <div>
-                    <p className="text-[10px] text-gray-400 font-bold uppercase mb-0.5">Best Price Guarantee</p>
-                    <p className="text-lg font-black text-[#023784]">Price on Request</p>
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pt-6 border-t border-gray-100">
+                  <div className="flex flex-col gap-3">
+                    <div>
+                      <p className="text-lg font-black text-[#023784]">Get Expert Advice</p>
+                    </div>
+                    <a
+                      href={`https://wa.me/916204260510?text=Hi, I want to consult an audiologist about ${p.title} for tinnitus relief.`}
+                      className="inline-flex items-center gap-2 bg-[#25D366] text-white px-4 py-2 rounded-lg text-xs font-bold hover:bg-[#128C7E] transition shadow-sm w-fit"
+                    >
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.634 1.437h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                      </svg>
+                      Chat with Audiologist
+                    </a>
                   </div>
                   <a href="#lead-form" className="w-full sm:w-auto bg-[#023784] text-white px-8 py-3 rounded-xl font-bold text-sm text-center hover:bg-[#012d66] transition">
-                    Get Personalised Price
+                    Download Price List
                   </a>
                 </div>
               </div>
@@ -231,12 +237,7 @@ export default function TinnitusLandingPage() {
               </div>
             ))}
           </div>
-          <div className="mt-12 text-center">
-            <p className="text-gray-400 text-sm mb-6">Still have questions about Tinnitus treatment or machine prices?</p>
-            <a href="tel:+916204260510" className="inline-flex items-center gap-3 bg-white text-[#023784] px-8 py-4 rounded-2xl font-black text-lg hover:bg-yellow-300 transition">
-              Talk to an Audiologist Now
-            </a>
-          </div>
+
         </div>
       </section>
 
@@ -244,7 +245,7 @@ export default function TinnitusLandingPage() {
       <section className="py-20" id="lead-form">
         <div className="max-w-4xl mx-auto px-4">
           <div className="bg-gradient-to-br from-[#023784] to-[#012d66] rounded-[3rem] p-8 sm:p-16 text-center text-white shadow-2xl relative overflow-hidden">
-             <div className="relative z-10">
+            <div className="relative z-10">
               <h2 className="text-3xl sm:text-4xl font-black mb-4">Start Your Journey to Silence</h2>
               <p className="text-blue-100 mb-8 max-w-lg mx-auto">Don't let tinnitus control your life. Fill the form below to get a <strong>Free Tinnitus Consultation</strong> and our latest price list.</p>
               <div className="bg-white max-w-md mx-auto rounded-[2rem] p-6 sm:p-8 text-left shadow-xl">
@@ -256,10 +257,10 @@ export default function TinnitusLandingPage() {
                 </div>
                 <LeadForm compact />
               </div>
-             </div>
-             {/* Decorative element */}
-             <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
-             <div className="absolute -top-20 -left-20 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl"></div>
+            </div>
+            {/* Decorative element */}
+            <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
+            <div className="absolute -top-20 -left-20 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl"></div>
           </div>
         </div>
       </section>
