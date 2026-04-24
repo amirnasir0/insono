@@ -48,7 +48,7 @@ export default function LeadForm({ compact = false }: { compact?: boolean }) {
         type="submit"
         className="w-full bg-[#023784] text-white text-base font-bold py-3.5 rounded-xl hover:bg-[#012d66] transition active:scale-[0.98]"
       >
-        {compact ? "📞 Get Free Expert Callback" : "✉️ Send Me the Full Price List"}
+        {compact ? "📞 Get Free Expert Callback" : "Download Full Price List"}
       </button>
 
       <p className="text-xs text-gray-400 text-center">
