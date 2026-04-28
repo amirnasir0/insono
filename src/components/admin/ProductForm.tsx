@@ -4,7 +4,7 @@ import { useEffect, useState, useCallback } from "react";
 import Image from "next/image";
 import { X, Upload, Loader2, Star } from "lucide-react";
 
-const CATEGORIES = ["signia", "phonak", "widex", "oticon", "starkey"];
+const CATEGORIES = ["signia", "phonak", "widex", "oticon", "starkey", "resound"];
 
 interface Setting { id: string; value: string; }
 interface Settings { technology?: Setting[]; shape?: Setting[]; suitableFor?: Setting[]; }

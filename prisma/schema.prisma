@@ -13,6 +13,7 @@ enum ProductCategory {
   widex
   oticon
   starkey
+  resound
 }
 
 model AdminUser {

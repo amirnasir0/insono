@@ -1,4 +1,4 @@
-export const BRANDS = ["signia", "phonak", "widex", "oticon", "starkey"] as const;
+export const BRANDS = ["signia", "phonak", "widex", "oticon", "starkey", "resound"] as const;
 export const SHAPES = ["ric", "bte", "ite", "itc", "cic", "iic"] as const;
 export const TECHNOLOGIES = ["bluetooth", "rechargeable", "ai"] as const;
 export const PRICE_RANGES = [

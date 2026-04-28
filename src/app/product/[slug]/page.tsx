@@ -13,7 +13,7 @@ export const revalidate = 60;
 export const dynamicParams = true;
 
 // Define the Prisma enum manually to avoid Vercel build issues where it isn't exported
-type ProductCategory = "signia" | "phonak" | "widex" | "oticon" | "starkey";
+type ProductCategory = "signia" | "phonak" | "widex" | "oticon" | "starkey" | "resound";
 
 // Type definition for the product returned by Prisma
 type Product = {
