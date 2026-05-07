@@ -86,7 +86,8 @@ export default function HearingAidDhanbadPage() {
       {/* 🟤 CONTACT */}
       <footer className="bg-gray-900 text-gray-300 pt-12 pb-6">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="border-gray-700 pt-6 flex flex-col md:flex-row items-center justify-between text-sm space-y-4 md:space-y-0">
+          {/* 🌟 Bottom Bar */}
+          <div className="  border-gray-700 pt-6 flex flex-col md:flex-row items-center justify-between text-sm space-y-4 md:space-y-0">
             {/* Social Icons */}
             <div className="flex space-x-4">
               <a
@@ -123,7 +124,7 @@ export default function HearingAidDhanbadPage() {
               </a>
             </div>
 
-            {/* Review Badges */}
+            {/* ✅ Google & Trustpilot Reviews Badges */}
             <div className="flex items-center gap-4">
               <a
                 href="https://maps.app.goo.gl/RvRyJE8vQqNQnhNF8"
@@ -132,7 +133,7 @@ export default function HearingAidDhanbadPage() {
                 className="transition transform hover:scale-105"
               >
                 <Image
-                  src="/badge/google.webp"
+                  src="/badge/google.webp" // place your PNG/SVG in /public/badges/
                   alt="Google Reviews"
                   width={120}
                   height={40}
@@ -146,7 +147,7 @@ export default function HearingAidDhanbadPage() {
                 className="transition transform hover:scale-105"
               >
                 <Image
-                  src="/badge/trustpilot.webp"
+                  src="/badge/trustpilot.webp" // place your PNG/SVG in /public/badges/
                   alt="Trustpilot Reviews"
                   width={120}
                   height={40}
@@ -174,7 +175,6 @@ export default function HearingAidDhanbadPage() {
   );
 }
 
-// Utility Cards
 function ServiceCard({
   icon,
   title,

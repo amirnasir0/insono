@@ -84,6 +84,7 @@ export default function HearingAidMeerutPage() {
       {/* WHY CHOOSE */}
       <Whychoose />
 
+      {/* <HearingaidType /> */}
       <HearingAidGuide />
       <Location />
 

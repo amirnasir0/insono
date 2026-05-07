@@ -16,6 +16,7 @@ export default function CityListSection() {
     { id: 10, name: "Jamshedpur", link: "/our-clinic/jamshedpur" },
     { id: 11, name: "Asansol", link: "/our-clinic/asansol" },
     { id: 12, name: "Dehradun", link: "/our-clinic/dehradun" },
+    { id: 13, name: "Chandigarh", link: "/landing/chandigarh" },
   ];
 
   return (
