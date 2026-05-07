@@ -34,9 +34,9 @@ export default function HearingAidLandingPage() {
   };
 
   return (
-    <section className="w-full overflow-x-hidden mt-12">
+    <section className="w-full overflow-x-hidden mt-0">
       {/* ============ MOBILE VIEW ============ */}
-      <div className="lg:hidden px-4 sm:px-6 py-12 flex flex-col gap-8 text-center">
+      <div className="lg:hidden px-4 sm:px-6 pt-4 pb-12 flex flex-col gap-8 text-center">
         {/* MOBILE HEADLINE */}
         <h1 className="text-3xl font-bold leading-snug">
           <span className="bg-gradient-to-r from-[#E83D6D] via-[#0D2240] to-[#7C7C7C] bg-clip-text text-transparent">
@@ -112,7 +112,7 @@ export default function HearingAidLandingPage() {
       </div>
 
       {/* ============ DESKTOP VIEW ============ */}
-      <div className="hidden lg:flex max-w-6xl mx-auto py-16 gap-16 items-center">
+      <div className="hidden lg:flex max-w-6xl mx-auto pt-6 pb-16 gap-16 items-center">
         {/* LEFT CONTENT */}
         <div className="flex-1 space-y-6">
           {/* DESKTOP HEADLINE */}

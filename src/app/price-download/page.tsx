@@ -29,7 +29,7 @@ export default function ContactFormPage() {
             <input
               type="hidden"
               name="zf_redirect_url"
-              value="https://prices.insonohearing.com/landing/pd-thank-you"
+              value="https://www.insonohearing.com/thankyou"
             />
             <input type="hidden" id="zc_gad" name="zc_gad" value="" />
             <input type="hidden" name="utm_source" value="Google Organic" />

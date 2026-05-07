@@ -42,9 +42,9 @@ export default function HeroSectionMeerut() {
   };
 
   return (
-    <section className="overflow-x-hidden w-full mt-12">
+    <section className="overflow-x-hidden w-full mt-0">
       {/* ------------------ MOBILE LAYOUT ------------------ */}
-      <div className="lg:hidden px-4 sm:px-6 md:px-8 py-12 flex flex-col gap-8 text-center">
+      <div className="lg:hidden px-4 sm:px-6 md:px-8 pt-4 pb-12 flex flex-col gap-8 text-center">
         <h1 className="text-2xl md:text-4xl font-bold leading-snug">
           <span className="bg-gradient-to-r from-[#E83D6D] via-[#0D2240] to-[#7C7C7C] bg-clip-text text-transparent">
             Best Hearing Aid in Meerut – Now in Your City
@@ -175,6 +175,7 @@ export default function HeroSectionMeerut() {
             method="POST"
             className="flex flex-col gap-3"
           >
+            <input type="hidden" name="zf_redirect_url" value="https://www.insonohearing.com/thankyou" />
             <input type="hidden" name="utm_source" value="Google Organic" />
 
             <input
@@ -220,7 +221,7 @@ export default function HeroSectionMeerut() {
       </div>
 
       {/* ------------------ DESKTOP LAYOUT ------------------ */}
-      <div className="hidden lg:flex w-full max-w-7xl mx-auto py-16 gap-10 items-start px-6">
+      <div className="hidden lg:flex w-full max-w-7xl mx-auto pt-6 pb-16 gap-10 items-start px-6">
         {/* LEFT TEXT */}
         <div className="flex-1 min-w-[350px] space-y-6 text-left">
           <h1 className="text-3xl font-bold leading-snug">
@@ -356,6 +357,7 @@ export default function HeroSectionMeerut() {
             method="POST"
             className="flex flex-col gap-3"
           >
+            <input type="hidden" name="zf_redirect_url" value="https://www.insonohearing.com/thankyou" />
             <input
               type="text"
               name="SingleLine"

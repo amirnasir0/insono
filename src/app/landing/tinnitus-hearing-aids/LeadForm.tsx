@@ -11,7 +11,7 @@ export default function LeadForm({ compact = false }: { compact?: boolean }) {
     >
       {/* Zoho hidden fields */}
       <input type="hidden" name="zf_referrer_name" value="" />
-      <input type="hidden" name="zf_redirect_url" value="https://prices.insonohearing.com/landing/pd-thank-you" />
+      <input type="hidden" name="zf_redirect_url" value="https://www.insonohearing.com/thankyou" />
       <input type="hidden" id="zc_gad" name="zc_gad" value="" />
       <input type="hidden" name="utm_source" value="tinnitus-ads" />
       <input type="hidden" name="utm_medium" value="google-ads" />

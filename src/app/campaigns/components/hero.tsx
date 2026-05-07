@@ -77,6 +77,7 @@ export default function HeroSection() {
             method="POST"
             className="flex flex-col gap-3"
           >
+            <input type="hidden" name="zf_redirect_url" value="https://www.insonohearing.com/thankyou" />
             <input
               type="text"
               name="SingleLine"

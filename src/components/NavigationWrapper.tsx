@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import Navigation from "./Navigation";
+import LandingNav from "./LandingNav";
 import Footer from "./Footer";
 
 export default function NavigationWrapper({
@@ -17,9 +18,11 @@ export default function NavigationWrapper({
 
   return (
     <>
-      {!isLandingPage && <Navigation />}
+      {isLandingPage ? <LandingNav /> : <Navigation />}
 
-      {children}
+      <main className={!isLandingPage ? "pt-9 md:pt-12" : ""}>
+        {children}
+      </main>
 
       {!isLandingPage && <Footer />}
     </>

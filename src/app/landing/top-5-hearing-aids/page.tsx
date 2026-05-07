@@ -152,39 +152,9 @@ const REVIEWS = [
 export default function Top5LandingPage() {
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-blue-100 selection:text-blue-900">
-      
-      {/* ── Scarcity Banner ── */}
-      <div className="bg-red-600 text-white py-2 px-4 text-center text-xs sm:text-sm font-bold sticky top-0 z-[60] shadow-md animate-pulse">
-        ⚠️ Trial of powerful hearing aids available – only 500 slots left this month!
-      </div>
-
-      {/* ── Header ── */}
-      <header className="bg-white border-b border-slate-200 sticky top-[36px] sm:top-[40px] z-50">
-        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-          <Link href="/">
-            <Image src="/logo.webp" alt="Insono Hearing" width={120} height={40} className="h-8 w-auto" />
-          </Link>
-          <div className="hidden md:flex items-center gap-6">
-            <span className="flex items-center gap-1.5 text-sm font-medium text-slate-600">
-              <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-              1,500+ Audiologists Pan-India
-            </span>
-            <a 
-              href="tel:+916204260510" 
-              className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full text-sm font-bold transition-all shadow-lg shadow-blue-200 flex items-center gap-2"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-              Call Now
-            </a>
-          </div>
-          <a href="#lead-form" className="md:hidden bg-blue-600 text-white px-4 py-2 rounded-full text-xs font-extrabold uppercase tracking-wider">
-            Book Trial
-          </a>
-        </div>
-      </header>
 
       {/* ── Hero ── */}
-      <section className="relative overflow-hidden bg-white py-12 lg:py-20">
+      <section className="relative overflow-hidden bg-white py-6 md:py-10 mt-0">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="text-center lg:text-left">
@@ -197,7 +167,7 @@ export default function Top5LandingPage() {
               <p className="text-lg md:text-xl text-slate-600 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
                 Engineered in Germany, our AI-powered hearing aids provide crystal-clear sound for nearly all hearing challenges. Small, rechargeable, and virtually invisible.
               </p>
-              
+
               <div className="grid grid-cols-2 gap-4 mb-10 max-w-md mx-auto lg:mx-0">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
@@ -258,7 +228,7 @@ export default function Top5LandingPage() {
             {TOP5.map((product) => (
               <div key={product.rank} className="group relative bg-white rounded-[2rem] border border-slate-200 hover:border-blue-200 shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden">
                 <div className="grid md:grid-cols-12">
-                  
+
                   {/* Product Image */}
                   <div className="md:col-span-5 bg-slate-50 relative flex items-center justify-center p-12 overflow-hidden">
                     <div className="absolute top-6 left-6 z-10 bg-white/90 backdrop-blur-sm border border-slate-200 px-4 py-2 rounded-2xl shadow-sm">
@@ -298,13 +268,13 @@ export default function Top5LandingPage() {
                     </div>
 
                     <div className="flex flex-wrap items-center gap-4">
-                      <a 
-                        href="#lead-form" 
+                      <a
+                        href="#lead-form"
                         className="flex-1 min-w-[200px] bg-blue-600 hover:bg-blue-700 text-white text-center py-4 rounded-2xl font-black text-sm uppercase tracking-wider transition-all shadow-lg shadow-blue-100"
                       >
                         Book Hearing Aid Trial
                       </a>
-                      <a 
+                      <a
                         href={`https://wa.me/916204260510?text=Hi, I want to know more about ${product.title}.`}
                         className="flex items-center justify-center w-14 h-14 rounded-2xl border-2 border-slate-200 hover:border-green-500 hover:text-green-500 transition-all text-slate-400"
                       >
@@ -327,17 +297,17 @@ export default function Top5LandingPage() {
             <h2 className="text-3xl md:text-5xl font-black mb-4">Trusted by 4 Million+ Indians</h2>
             <p className="text-slate-400 mb-12">Join thousands who have rediscovered the joy of hearing.</p>
             <div className="relative w-full max-w-5xl mx-auto rounded-3xl overflow-hidden shadow-2xl mb-16 border border-white/10">
-              <Image 
-                src="/patients .jpeg" 
-                alt="Happy Insono Customers" 
-                width={1200} 
-                height={400} 
+              <Image
+                src="/patients .jpeg"
+                alt="Happy Insono Customers"
+                width={1200}
+                height={400}
                 className="w-full h-auto"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent"></div>
             </div>
           </div>
-          
+
           <div className="grid lg:grid-cols-3 gap-8">
             {REVIEWS.map((review, i) => (
               <div key={i} className="bg-white/5 border border-white/10 p-10 rounded-[2.5rem] relative">
@@ -384,28 +354,28 @@ export default function Top5LandingPage() {
           <div className="bg-gradient-to-br from-blue-600 to-blue-800 rounded-[3rem] p-12 md:p-20 text-center text-white shadow-2xl shadow-blue-200 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 blur-3xl"></div>
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-black/10 rounded-full -ml-32 -mb-32 blur-3xl"></div>
-            
+
             <div className="relative z-10">
               <h2 className="text-3xl md:text-5xl font-black mb-6">How to try these hearing aids in your area?</h2>
               <p className="text-blue-100 text-lg mb-12 max-w-xl mx-auto">
                 We have a presence in 450+ cities across India. Answer a few short questions and claim your trial slot today.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a 
-                  href="#lead-form" 
+                <a
+                  href="#lead-form"
                   className="w-full sm:w-auto bg-white text-blue-700 hover:bg-blue-50 px-10 py-5 rounded-2xl font-black text-sm uppercase tracking-widest transition-all"
                 >
                   Check Eligibility
                 </a>
-                <a 
-                  href="tel:+916204260510" 
+                <a
+                  href="tel:+916204260510"
                   className="w-full sm:w-auto border-2 border-white/30 hover:border-white text-white px-10 py-5 rounded-2xl font-black text-sm uppercase tracking-widest transition-all"
                 >
                   Call +91 6204 260 510
                 </a>
               </div>
-              
+
               <p className="mt-10 text-blue-200 text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2">
                 <span className="w-2 h-2 bg-red-400 rounded-full animate-ping"></span>
                 Only 12 slots remaining in your area
@@ -430,24 +400,6 @@ export default function Top5LandingPage() {
           </p>
         </div>
       </footer>
-
-      {/* ── Sticky Mobile Bottom Bar ── */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 p-4 z-[60] flex gap-3 shadow-[0_-10px_30px_-15px_rgba(0,0,0,0.1)]">
-        <a 
-          href="tel:+916204260510" 
-          className="flex-1 bg-slate-100 text-slate-900 h-14 rounded-2xl flex items-center justify-center gap-2 font-black text-xs uppercase tracking-wider border border-slate-200"
-        >
-          <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-          Call Now
-        </a>
-        <a 
-          href="#lead-form" 
-          className="flex-[2] bg-blue-600 text-white h-14 rounded-2xl flex items-center justify-center font-black text-xs uppercase tracking-widest shadow-lg shadow-blue-200"
-        >
-          Book Free Trial
-        </a>
-      </div>
-      <div className="md:hidden h-24"></div>
 
     </div>
   );

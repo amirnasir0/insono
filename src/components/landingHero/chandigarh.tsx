@@ -28,7 +28,7 @@ export default function HeroSection() {
   ];
 
   return (
-    <section className="relative w-full bg-slate-50 overflow-hidden pt-4 md:pt-12 lg:pt-24">
+    <section className="relative w-full bg-slate-50 overflow-hidden pt-4 md:pt-6">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
           {/* --- LEFT CONTENT (Text & Stats) --- */}
@@ -156,7 +156,7 @@ export default function HeroSection() {
                 <input
                   type="hidden"
                   name="zf_redirect_url"
-                  value="https://prices.insonohearing.com/landing/apt-thank-you"
+                  value="https://www.insonohearing.com/thankyou"
                 />
                 <input
                   type="text"
