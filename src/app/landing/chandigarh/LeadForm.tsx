@@ -1,6 +1,5 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { User, MessageSquare, Phone, ChevronRight, ShieldCheck } from "lucide-react";
 
 export default function LeadForm({ 
@@ -10,14 +9,6 @@ export default function LeadForm({
   compact?: boolean; 
   isMobile?: boolean;
 }) {
-  const [pageUrl, setPageUrl] = useState("");
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setPageUrl(window.location.href);
-    }
-  }, []);
-
   return (
     <form
       acceptCharset="UTF-8"
@@ -28,7 +19,7 @@ export default function LeadForm({
     >
       {/* Zoho hidden fields */}
       <input type="hidden" name="zf_referrer_name" value="" />
-      <input type="hidden" name="zf_redirect_url" value="https://wa.me/916204260510?text=Hi,%20I%20want%20to%20compare%20hearing%20aids%20in%20Chandigarh%20and%20get%20the%20best%20price." />
+      <input type="hidden" name="zf_redirect_url" value="https://www.insonohearing.com/thankyou" />
       <input type="hidden" id="zc_gad" name="zc_gad" value="" />
       
       {/* UTM tracking */}
@@ -38,10 +29,6 @@ export default function LeadForm({
       <input type="hidden" name="utm_term" value="" />
       <input type="hidden" name="utm_content" value={isMobile ? "mobile rebuild" : "chandigarh rebuild"} />
 
-      <input type="hidden" name="source" value="Chandigarh Landing Page" />
-      <input type="hidden" name="medium" value={isMobile ? "Mobile" : "Desktop"} />
-      <input type="hidden" name="city" value="Chandigarh" />
-      <input type="hidden" name="page_url" value={pageUrl} />
 
       {/* Name Field */}
       <div className="relative">

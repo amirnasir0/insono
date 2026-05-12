@@ -83,7 +83,7 @@ export default function RootLayout({
         />
       </head>
 
-      <body className="font-museo bg-white text-gray-900 antialiased bg-gradient-to-b from-[#eaf5ff] to-white">
+      <body className="font-museo text-gray-900 antialiased bg-gradient-to-b from-[#eaf5ff] to-white min-h-screen">
         <NavigationWrapper>{children}</NavigationWrapper>
 
         {/* ✅ Global chat widget – loads once, after hydration */}

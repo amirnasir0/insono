@@ -48,7 +48,7 @@ async function getRelatedProducts(category: ProductCategory, excludeSlug: string
   try {
     const products = await prisma.product.findMany({
       where: {
-        category,
+        category: category as any,
         slug: { not: excludeSlug }
       },
       take: 6,
