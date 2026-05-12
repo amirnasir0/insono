@@ -16,7 +16,7 @@ export default function LandingNav() {
         </div>
 
         {/* ── Header ── */}
-        <header className="bg-white border-b border-slate-200">
+        <header className="bg-transparent">
           <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
             <Link href="/">
               <Image
