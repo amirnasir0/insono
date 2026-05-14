@@ -1,14 +1,23 @@
 "use client";
 
-import { User, MessageSquare, Phone, ChevronRight, ShieldCheck } from "lucide-react";
+import { useState, useEffect } from "react";
+import { User, MessageSquare, ChevronRight, ShieldCheck } from "lucide-react";
 
-export default function LeadForm({ 
-  compact = false, 
-  isMobile = false 
-}: { 
-  compact?: boolean; 
+export default function LeadForm({
+  compact = false,
+  isMobile = false
+}: {
+  compact?: boolean;
   isMobile?: boolean;
 }) {
+  const [gclid, setGclid] = useState("");
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const val = params.get("gclid") || "";
+    setGclid(val);
+  }, []);
+
   return (
     <form
       acceptCharset="UTF-8"
@@ -20,7 +29,7 @@ export default function LeadForm({
       {/* Zoho hidden fields */}
       <input type="hidden" name="zf_referrer_name" value="" />
       <input type="hidden" name="zf_redirect_url" value="https://www.insonohearing.com/thankyou" />
-      <input type="hidden" id="zc_gad" name="zc_gad" value="" />
+      <input type="hidden" id="zc_gad" name="zc_gad" value={gclid} />
       
       {/* UTM tracking */}
       <input type="hidden" name="utm_source" value={isMobile ? "chandigarh-mobile-first" : "chandigarh-landing"} />
