@@ -424,7 +424,7 @@ export default function ChandigarhLandingPage() {
             className="w-full mt-4 h-[46px] bg-[#184A99] text-white flex items-center justify-center gap-2 rounded-xl text-[13px] font-bold active:scale-[0.97] transition shadow-md shadow-[#184A99]/20"
           >
             <FileText className="w-4 h-4" />
-            Book Free Hearing Test at Insono
+            Download & Compare Prices
           </button>
         </section>
 
@@ -714,7 +714,7 @@ export default function ChandigarhLandingPage() {
                 className="inline-flex items-center gap-3 bg-[#184A99] text-white px-10 py-5 rounded-2xl font-bold text-sm hover:bg-[#13366e] transition shadow-xl shadow-blue-100 uppercase tracking-widest"
               >
                 <FileText className="w-5 h-5" />
-                Book Free Hearing Test at Insono
+                Download & Compare Prices
               </button>
             </div>
           </div>

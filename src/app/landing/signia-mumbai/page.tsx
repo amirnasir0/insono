@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import LeadForm from "./LeadForm";
 import { Download, Phone, MessageSquare, ArrowRight, Users, MapPin, Stethoscope, FileText } from "lucide-react";
 
-const CHANDIGARH_MODELS = [
+const MUMBAI_MODELS = [
   {
     rank: 1,
     badge: "Best Seller",
@@ -20,7 +20,7 @@ const CHANDIGARH_MODELS = [
     channels: "16 Channels",
     style: "BTE",
     highlight: "Powerful BTE for moderate to severe hearing loss",
-    waMessage: "Hi, I want to know about Signia Fun SP in Chandigarh",
+    waMessage: "Hi, I want to know about Signia Fun SP in Mumbai",
   },
   {
     rank: 2,
@@ -34,7 +34,7 @@ const CHANDIGARH_MODELS = [
     channels: "24 Channels",
     style: "RIC",
     highlight: "Best entry-level rechargeable hearing aid by Signia",
-    waMessage: "Hi, I want to know about Signia Orion C&G in Chandigarh",
+    waMessage: "Hi, I want to know about Signia Orion C&G in Mumbai",
   },
   {
     rank: 3,
@@ -48,7 +48,7 @@ const CHANDIGARH_MODELS = [
     channels: "32 Channels",
     style: "IIC",
     highlight: "Smallest invisible hearing aid — fits instantly, no custom mold",
-    waMessage: "Hi, I want to know about Signia Silk in Chandigarh",
+    waMessage: "Hi, I want to know about Signia Silk in Mumbai",
   },
   {
     rank: 4,
@@ -62,7 +62,7 @@ const CHANDIGARH_MODELS = [
     channels: "48 Channels",
     style: "RIC",
     highlight: "Fashion-forward hearing aid with premium sound quality",
-    waMessage: "Hi, I want to know about Signia Styletto in Chandigarh",
+    waMessage: "Hi, I want to know about Signia Styletto in Mumbai",
   },
   {
     rank: 5,
@@ -76,21 +76,21 @@ const CHANDIGARH_MODELS = [
     channels: "48 Channels",
     style: "RIC",
     highlight: "India's most sold hearing aid — clinically proven performance",
-    waMessage: "Hi, I want to know about Signia Pure Charge&Go in Chandigarh",
+    waMessage: "Hi, I want to know about Signia Pure Charge&Go in Mumbai",
   },
 ];
 
 const FAQS = [
   {
-    q: "What is the price of hearing aids in Chandigarh?",
+    q: "What is the price of hearing aids in Mumbai?",
     a: "Prices start from ₹9,999 and vary by brand, technology, and features like Bluetooth or rechargeability. EMI options are available for every budget. Fill the form to get the full price list instantly on WhatsApp.",
   },
   {
-    q: "Do you offer free hearing tests in Chandigarh?",
-    a: "Yes, 100% free hearing tests at our Chandigarh clinic by certified audiologists using advanced diagnostic equipment. No purchase obligation.",
+    q: "Do you offer free hearing tests in Mumbai?",
+    a: "Yes, 100% free hearing tests at our Mumbai clinic by certified audiologists using advanced diagnostic equipment. No purchase obligation.",
   },
   {
-    q: "Which hearing aid brands are available in Chandigarh?",
+    q: "Which hearing aid brands are available in Mumbai?",
     a: "Signia, Phonak, Widex, Oticon, ReSound, and Starkey — all premium brands with genuine manufacturer warranty.",
   },
   {
@@ -98,12 +98,12 @@ const FAQS = [
     a: "Yes. Most patients are professionally fitted and walk out with their hearing aid on the same day of their appointment.",
   },
   {
-    q: "Do you offer home visits in Chandigarh?",
-    a: "Yes, home hearing tests and trials are available across Chandigarh, especially for senior citizens who prefer in-home consultation.",
+    q: "Do you offer home visits in Mumbai?",
+    a: "Yes, home hearing tests and trials are available across Mumbai, especially for senior citizens who prefer in-home consultation.",
   },
   {
     q: "Is there warranty and after-sales support?",
-    a: "All hearing aids come with manufacturer warranty along with up to 4 years extended warranty, with full servicing support at our Chandigarh clinic.",
+    a: "All hearing aids come with manufacturer warranty along with up to 4 years extended warranty, with full servicing support at our Mumbai clinic.",
   },
 ];
 
@@ -112,15 +112,15 @@ const REVIEWS = [
     name: "Vikram Sharma",
     initials: "VS",
     avatarColor: "bg-[#184A99]",
-    location: "Chandigarh",
+    location: "Mumbai",
     time: "1 month ago",
-    text: "Excellent service at Insono Chandigarh. The audiologist was very patient in explaining which Signia model suited my hearing loss. Got fitted the same day. Highly recommend!",
+    text: "Excellent service at Insono Mumbai. The audiologist was very patient in explaining which Signia model suited my hearing loss. Got fitted the same day. Highly recommend!",
   },
   {
     name: "Anita Rao",
     initials: "AR",
     avatarColor: "bg-emerald-600",
-    location: "Mohali",
+    location: "Thane",
     time: "2 months ago",
     text: "I was confused between multiple brands but the team at Insono helped me choose Signia Pure Charge&Go. Sound quality is amazing and the price was transparent — no hidden charges.",
   },
@@ -128,7 +128,7 @@ const REVIEWS = [
     name: "Kuldeep Dhillon",
     initials: "KD",
     avatarColor: "bg-purple-600",
-    location: "Panchkula",
+    location: "Andheri",
     time: "3 months ago",
     text: "Free hearing test was done professionally. Got a 7-day trial before I bought. Cash on delivery made it easy. Very happy with my Signia Styletto — looks great too!",
   },
@@ -136,7 +136,7 @@ const REVIEWS = [
     name: "Meena Verma",
     initials: "MV",
     avatarColor: "bg-rose-600",
-    location: "Chandigarh",
+    location: "Mumbai",
     time: "2 weeks ago",
     text: "My mother got her Signia hearing aid from Insono. The home delivery was on time and the after-sales support has been wonderful. Will recommend to everyone.",
   },
@@ -196,7 +196,7 @@ function FAQAccordion() {
   );
 }
 
-export default function ChandigarhLandingPage() {
+export default function MumbaiLandingPage() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   return (
@@ -223,7 +223,7 @@ export default function ChandigarhLandingPage() {
         {/* SECTION 1 — TOP URGENCY BAR */}
         <div className="bg-[#0D2240] text-white py-2.5 px-4 text-center text-[10px] font-bold uppercase tracking-[0.2em] relative z-[60]">
           <span className="inline-block w-2 h-2 bg-rose-500 rounded-full animate-pulse mr-2"></span>
-          Limited Trial Slots for May in Chandigarh
+          Limited Trial Slots for May in Mumbai
         </div>
 
         {/* SECTION 2 — HEADER */}
@@ -285,7 +285,7 @@ export default function ChandigarhLandingPage() {
             >
               {[
                 { icon: "🎧", text: "Bluetooth & Rechargeable Models" },
-                { icon: "🏥", text: "Free Hearing Test at Chandigarh Clinic" },
+                { icon: "🏥", text: "Free Hearing Test at Mumbai Clinic" },
                 { icon: "💰", text: "Save upto ₹31,500 on Hearing Aids" },
               ].map((b) => (
                 <li key={b.text} className="flex items-center gap-3">
@@ -320,7 +320,7 @@ export default function ChandigarhLandingPage() {
             <p className="text-[11px] text-slate-400 mt-1">Tap any model to get the full price list</p>
           </div>
           <div className="space-y-3">
-            {CHANDIGARH_MODELS.map((p) => (
+            {MUMBAI_MODELS.map((p) => (
               <div key={p.rank} className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden flex">
 
                 {/* Left: Image */}
@@ -377,7 +377,7 @@ export default function ChandigarhLandingPage() {
         <section className="py-8 px-4 bg-slate-50">
           <div className="text-center mb-5">
             <h2 className="text-lg font-black text-slate-900">Insono vs Other Dealers</h2>
-            <p className="text-[11px] text-slate-400 mt-1">Why thousands choose Insono in Chandigarh</p>
+            <p className="text-[11px] text-slate-400 mt-1">Why thousands choose Insono in Mumbai</p>
           </div>
           <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
             {/* Header row */}
@@ -482,7 +482,7 @@ export default function ChandigarhLandingPage() {
         {/* STICKY BOTTOM BAR */}
         <div className="fixed bottom-0 left-0 right-0 z-[9999] bg-white shadow-[0_-4px_20px_rgba(0,0,0,0.1)] border-t border-slate-100 custom-bottom-bar flex">
           <a
-            href="https://wa.me/916204260510?text=Hi, I want to chat with an audiologist about Signia hearing aids in Chandigarh"
+            href="https://wa.me/916204260510?text=Hi, I want to chat with an audiologist about Signia hearing aids in Mumbai"
             target="_blank"
             rel="noopener noreferrer"
             className="flex-1 bg-[#25D366] text-white flex flex-col items-center justify-center py-2.5 gap-0.5"
@@ -518,7 +518,7 @@ export default function ChandigarhLandingPage() {
                   className="hidden lg:inline-flex items-center gap-2 bg-[#184A99]/10 rounded-full px-5 py-2 text-[11px] font-bold text-[#184A99] mb-8 border border-[#184A99]/20"
                 >
                   <span className="w-2 h-2 bg-[#184A99] rounded-full animate-pulse"></span>
-                  Authorized Partner · Expert Audiologists in Chandigarh
+                  Authorized Partner · Expert Audiologists in Mumbai
                 </motion.div>
 
                 <motion.h1
@@ -538,7 +538,7 @@ export default function ChandigarhLandingPage() {
                   transition={{ delay: 0.2 }}
                   className="text-slate-500 text-xl mb-12 max-w-xl leading-relaxed font-medium"
                 >
-                  Discover the <span className="text-[#184A99] font-bold underline decoration-4 decoration-[#184A99]/10 underline-offset-8">2026 Elite Collection</span>. Experience digital clarity with a <span className="text-[#184A99] font-bold">Free Clinical Trial</span> at Chandigarh's most trusted center.
+                  Discover the <span className="text-[#184A99] font-bold underline decoration-4 decoration-[#184A99]/10 underline-offset-8">2026 Elite Collection</span>. Experience digital clarity with a <span className="text-[#184A99] font-bold">Free Clinical Trial</span> at Mumbai's most trusted center.
                 </motion.p>
 
                 <motion.div
@@ -617,11 +617,11 @@ export default function ChandigarhLandingPage() {
               <h2 className="text-[10px] font-black text-[#184A99] uppercase tracking-[0.4em] mb-4">Premium Collection</h2>
               <h3 className="text-5xl font-bold text-slate-900 tracking-tight">2026's Top Models</h3>
             </div>
-            <p className="text-slate-500 max-w-sm font-medium leading-relaxed text-lg">Individually selected by our experts for the active lifestyles of Chandigarh residents.</p>
+            <p className="text-slate-500 max-w-sm font-medium leading-relaxed text-lg">Individually selected by our experts for the active lifestyles of Mumbai residents.</p>
           </div>
 
           <div className="grid gap-12">
-            {CHANDIGARH_MODELS.map((p) => (
+            {MUMBAI_MODELS.map((p) => (
               <motion.div
                 whileHover={{ y: -5 }}
                 key={p.rank}
@@ -670,7 +670,7 @@ export default function ChandigarhLandingPage() {
             <div className="text-center mb-10">
               <h2 className="text-[10px] font-black text-[#184A99] uppercase tracking-[0.4em] mb-4">The Difference</h2>
               <h3 className="text-4xl font-bold text-slate-900 tracking-tight">Insono vs Other Dealers</h3>
-              <p className="text-slate-500 mt-3 text-base">Why thousands in Chandigarh choose Insono</p>
+              <p className="text-slate-500 mt-3 text-base">Why thousands in Mumbai choose Insono</p>
             </div>
             <div className="rounded-3xl overflow-hidden border border-slate-200 shadow-sm">
               {/* Header */}
@@ -786,7 +786,7 @@ export default function ChandigarhLandingPage() {
         <footer className="py-20 border-t border-slate-100 text-center bg-slate-50">
           <div className="max-w-6xl mx-auto px-6">
             <Image src="/logo.webp" alt="Insono" width={140} height={40} className="h-9 w-auto mx-auto mb-8 grayscale opacity-50" />
-            <p className="text-[11px] text-slate-400 font-bold uppercase tracking-[0.4em]">© 2026 Insono Hearing · Chandigarh Specialist Center</p>
+            <p className="text-[11px] text-slate-400 font-bold uppercase tracking-[0.4em]">© 2026 Insono Hearing · Mumbai Specialist Center</p>
           </div>
         </footer>
       </div>
@@ -849,7 +849,7 @@ export default function ChandigarhLandingPage() {
                       "Signia Fun SP, Orion, Silk, Styletto & Pure C&G",
                       "All model prices with EMI breakdown",
                       "Side-by-side feature comparison chart",
-                      "Exclusive Chandigarh clinic discount",
+                      "Exclusive Mumbai clinic discount",
                     ].map((item) => (
                       <li key={item} className="flex items-start gap-2 text-[12px] text-slate-700 font-medium">
                         <span className="text-emerald-500 font-black text-sm leading-none mt-0.5">✓</span>

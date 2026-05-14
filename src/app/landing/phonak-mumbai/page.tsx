@@ -7,145 +7,145 @@ import { motion, AnimatePresence } from "framer-motion";
 import LeadForm from "./LeadForm";
 import { Download, Phone, MessageSquare, ArrowRight, Users, MapPin, Stethoscope, FileText } from "lucide-react";
 
-const CHANDIGARH_MODELS = [
+const MUMBAI_MODELS = [
   {
     rank: 1,
-    badge: "Best Seller",
+    badge: "AI Powered",
     badgeColor: "bg-[#184A99] text-white",
-    title: "Signia Fun SP",
-    brand: "Signia",
-    brandLogo: "/brands/signia.svg",
-    image: "https://an7bjwndlmaemx4x.public.blob.vercel-storage.com/products/1773219362292-SIGNIA-FAST-P-IMG-1.png",
-    features: ["Super Power BTE", "Noise Reduction", "Tinnitus Therapy", "Wireless Streaming"],
-    channels: "16 Channels",
-    style: "BTE",
-    highlight: "Powerful BTE for moderate to severe hearing loss",
-    waMessage: "Hi, I want to know about Signia Fun SP in Chandigarh",
+    title: "Phonak Audeo Sphere I90",
+    brand: "Phonak",
+    brandLogo: "/brands/phonaklogo.svg",
+    image: "https://an7bjwndlmaemx4x.public.blob.vercel-storage.com/products/1773054606126-IMG-1.png",
+    features: ["Dual AI Engines", "Speech from Noise", "Universal Bluetooth", "Rechargeable"],
+    channels: "48 Channels",
+    style: "RIC",
+    highlight: "World's first hearing aid with a dedicated AI chip for speech clarity",
+    waMessage: "Hi, I want to know about Phonak Audeo Sphere I90 in Mumbai",
   },
   {
     rank: 2,
-    badge: "Top Rated",
+    badge: "Ultra Stylish",
     badgeColor: "bg-emerald-600 text-white",
-    title: "Signia Orion C&G",
-    brand: "Signia",
-    brandLogo: "/brands/signia.svg",
-    image: "https://an7bjwndlmaemx4x.public.blob.vercel-storage.com/products/1772781326903-Signia-Orion-C%26G-200%40.jpg",
-    features: ["Rechargeable", "Bluetooth Streaming", "Speech Clarity", "App Control"],
-    channels: "24 Channels",
+    title: "Phonak Slim L90-R",
+    brand: "Phonak",
+    brandLogo: "/brands/phonaklogo.svg",
+    image: "https://an7bjwndlmaemx4x.public.blob.vercel-storage.com/products/1774002227903-Untitled-design---2026-03-20T155340.689.png",
+    features: ["Ergonomic Slim Design", "AutoSense OS 5.0", "Direct Streaming", "Fast Charging"],
+    channels: "32 Channels",
     style: "RIC",
-    highlight: "Best entry-level rechargeable hearing aid by Signia",
-    waMessage: "Hi, I want to know about Signia Orion C&G in Chandigarh",
+    highlight: "Award-winning design that follows the natural curve of your head",
+    waMessage: "Hi, I want to know about Phonak Slim L90-R in Mumbai",
   },
   {
     rank: 3,
-    badge: "Nearly Invisible",
+    badge: "Best Seller",
     badgeColor: "bg-purple-600 text-white",
-    title: "Signia Silk",
-    brand: "Signia",
-    brandLogo: "/brands/signia.svg",
-    image: "https://an7bjwndlmaemx4x.public.blob.vercel-storage.com/products/1775551490244-Untitled-design---2026-04-07T141048.093.png",
-    features: ["Invisible In-Canal", "Ready-to-Wear", "Own Voice Processing", "Tinnitus Therapy"],
-    channels: "32 Channels",
-    style: "IIC",
-    highlight: "Smallest invisible hearing aid — fits instantly, no custom mold",
-    waMessage: "Hi, I want to know about Signia Silk in Chandigarh",
+    title: "Phonak Audeo Lumity",
+    brand: "Phonak",
+    brandLogo: "/brands/phonaklogo.svg",
+    image: "/lp/phonak1.png",
+    features: ["SmartSpeech Tech", "Universal Connectivity", "Health Tracking", "Waterproof Option"],
+    channels: "24 Channels",
+    style: "RIC",
+    highlight: "Most popular Phonak model for active social lifestyles",
+    waMessage: "Hi, I want to know about Phonak Audeo Lumity in Mumbai",
   },
   {
     rank: 4,
-    badge: "Ultra Stylish",
+    badge: "Super Power",
     badgeColor: "bg-rose-600 text-white",
-    title: "Signia Styletto",
-    brand: "Signia",
-    brandLogo: "/brands/signia.svg",
-    image: "https://an7bjwndlmaemx4x.public.blob.vercel-storage.com/products/1772794609852-cosmic-blue_rose-gold_double_dd4310ec-bb18-403c-a7c9-05467ff34b3b-%281%29.webp",
-    features: ["Slim Elegant Design", "Rechargeable", "Bluetooth 5.0", "IX Platform AI"],
-    channels: "48 Channels",
-    style: "RIC",
-    highlight: "Fashion-forward hearing aid with premium sound quality",
-    waMessage: "Hi, I want to know about Signia Styletto in Chandigarh",
+    title: "Phonak Naida Lumity",
+    brand: "Phonak",
+    brandLogo: "/brands/phonaklogo.svg",
+    image: "/lp/phonak4.png",
+    features: ["Ultimate Speech Clarity", "Power BTE", "Roger Connectivity", "App Control"],
+    channels: "20 Channels",
+    style: "BTE",
+    highlight: "High-power hearing aid for severe to profound hearing loss",
+    waMessage: "Hi, I want to know about Phonak Naida Lumity in Mumbai",
   },
   {
     rank: 5,
-    badge: "Doctor's Choice",
+    badge: "Great Value",
     badgeColor: "bg-amber-500 text-white",
-    title: "Signia Pure Charge&Go",
-    brand: "Signia",
-    brandLogo: "/brands/signia.svg",
-    image: "https://an7bjwndlmaemx4x.public.blob.vercel-storage.com/products/1772792684301-Signia-Pure-Charge%26Go-7IX%40%40%40.webp",
-    features: ["IX Platform AI", "Own Voice Processing", "Rechargeable", "Tinnitus Therapy"],
-    channels: "48 Channels",
-    style: "RIC",
-    highlight: "India's most sold hearing aid — clinically proven performance",
-    waMessage: "Hi, I want to know about Signia Pure Charge&Go in Chandigarh",
+    title: "Phonak Terra",
+    brand: "Phonak",
+    brandLogo: "/brands/phonaklogo.svg",
+    image: "/lp/phonak3.png",
+    features: ["Digital Sound", "Feedback Cancellation", "Comfort Fit", "Affordable"],
+    channels: "12 Channels",
+    style: "BTE/RIC",
+    highlight: "Reliable Swiss quality at an entry-level price point",
+    waMessage: "Hi, I want to know about Phonak Terra in Mumbai",
   },
 ];
 
 const FAQS = [
   {
-    q: "What is the price of hearing aids in Chandigarh?",
-    a: "Prices start from ₹9,999 and vary by brand, technology, and features like Bluetooth or rechargeability. EMI options are available for every budget. Fill the form to get the full price list instantly on WhatsApp.",
+    q: "What is the price of Phonak hearing aids in Mumbai?",
+    a: "Phonak prices start from ₹18,500 and vary by technology level (Sphere, Lumity, etc.). We offer 0% EMI options for all models. Fill the form to get the latest Phonak price list instantly on WhatsApp.",
   },
   {
-    q: "Do you offer free hearing tests in Chandigarh?",
-    a: "Yes, 100% free hearing tests at our Chandigarh clinic by certified audiologists using advanced diagnostic equipment. No purchase obligation.",
+    q: "Do you offer free Phonak trials in Mumbai?",
+    a: "Yes, we offer a 100% free clinical trial of the latest Phonak models at our Mumbai clinic so you can experience the sound quality before you buy.",
   },
   {
-    q: "Which hearing aid brands are available in Chandigarh?",
-    a: "Signia, Phonak, Widex, Oticon, ReSound, and Starkey — all premium brands with genuine manufacturer warranty.",
+    q: "Is Phonak Audeo Sphere available in Mumbai?",
+    a: "Yes! Insono is an authorized partner for the latest Phonak Sphere AI technology in Mumbai. You can book a live demo at our clinic today.",
   },
   {
-    q: "Can I get fitted on the same day?",
-    a: "Yes. Most patients are professionally fitted and walk out with their hearing aid on the same day of their appointment.",
+    q: "Do Phonak hearing aids connect to Android and iPhone?",
+    a: "Absolutely. Phonak is famous for its universal connectivity, allowing you to stream calls and music directly from any Bluetooth-enabled device.",
   },
   {
-    q: "Do you offer home visits in Chandigarh?",
-    a: "Yes, home hearing tests and trials are available across Chandigarh, especially for senior citizens who prefer in-home consultation.",
+    q: "What is the warranty on Phonak hearing aids?",
+    a: "Phonak offers up to 4 years of international manufacturer warranty along with lifetime after-sales support at our Mumbai center.",
   },
   {
-    q: "Is there warranty and after-sales support?",
-    a: "All hearing aids come with manufacturer warranty along with up to 4 years extended warranty, with full servicing support at our Chandigarh clinic.",
+    q: "Do you provide home visits for Phonak trials in Mumbai?",
+    a: "Yes, for senior citizens and those unable to travel, we provide home hearing tests and Phonak trials across Mumbai, Thane, and Andheri.",
   },
 ];
 
 const REVIEWS = [
   {
-    name: "Vikram Sharma",
-    initials: "VS",
+    name: "Rajesh Ahluwalia",
+    initials: "RA",
     avatarColor: "bg-[#184A99]",
-    location: "Chandigarh",
-    time: "1 month ago",
-    text: "Excellent service at Insono Chandigarh. The audiologist was very patient in explaining which Signia model suited my hearing loss. Got fitted the same day. Highly recommend!",
-  },
-  {
-    name: "Anita Rao",
-    initials: "AR",
-    avatarColor: "bg-emerald-600",
-    location: "Mohali",
-    time: "2 months ago",
-    text: "I was confused between multiple brands but the team at Insono helped me choose Signia Pure Charge&Go. Sound quality is amazing and the price was transparent — no hidden charges.",
-  },
-  {
-    name: "Kuldeep Dhillon",
-    initials: "KD",
-    avatarColor: "bg-purple-600",
-    location: "Panchkula",
-    time: "3 months ago",
-    text: "Free hearing test was done professionally. Got a 7-day trial before I bought. Cash on delivery made it easy. Very happy with my Signia Styletto — looks great too!",
-  },
-  {
-    name: "Meena Verma",
-    initials: "MV",
-    avatarColor: "bg-rose-600",
-    location: "Chandigarh",
+    location: "Bandra, Mumbai",
     time: "2 weeks ago",
-    text: "My mother got her Signia hearing aid from Insono. The home delivery was on time and the after-sales support has been wonderful. Will recommend to everyone.",
+    text: "Switched to Phonak Lumity after using other brands. The speech clarity in noisy restaurants is unmatched. Excellent service by Insono audiologists.",
+  },
+  {
+    name: "Gurpreet Singh",
+    initials: "GS",
+    avatarColor: "bg-emerald-600",
+    location: "Thane",
+    time: "1 month ago",
+    text: "The Phonak Slim looks like a Bluetooth headset, not a hearing aid. Very happy with the design and the seamless connectivity with my Android phone.",
+  },
+  {
+    name: "Suman Lata",
+    initials: "SL",
+    avatarColor: "bg-purple-600",
+    location: "Andheri",
+    time: "3 months ago",
+    text: "Got my father fitted with Phonak Naida. He can finally hear the grandkids clearly. The free home trial was a blessing. Highly recommend Insono.",
+  },
+  {
+    name: "Vikram Duggal",
+    initials: "VD",
+    avatarColor: "bg-rose-600",
+    location: "Mumbai",
+    time: "1 week ago",
+    text: "Best price for Phonak in Mumbai. Transparent pricing and genuine products with warranty. The free hearing test was very professional.",
   },
 ];
 
 const BRAND_LOGOS = [
+  "/brands/phonaklogo.svg",
   "/brands/signia.svg",
   "/brands/widex.svg",
-  "/brands/phonaklogo.svg",
   "/brands/oticon.svg",
   "/brands/resound.svg",
 ];
@@ -196,7 +196,7 @@ function FAQAccordion() {
   );
 }
 
-export default function ChandigarhLandingPage() {
+export default function MumbaiLandingPage() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   return (
@@ -223,7 +223,7 @@ export default function ChandigarhLandingPage() {
         {/* SECTION 1 — TOP URGENCY BAR */}
         <div className="bg-[#0D2240] text-white py-2.5 px-4 text-center text-[10px] font-bold uppercase tracking-[0.2em] relative z-[60]">
           <span className="inline-block w-2 h-2 bg-rose-500 rounded-full animate-pulse mr-2"></span>
-          Limited Trial Slots for May in Chandigarh
+          Limited Trial Slots for May in Mumbai
         </div>
 
         {/* SECTION 2 — HEADER */}
@@ -253,7 +253,7 @@ export default function ChandigarhLandingPage() {
               className="text-[22px] font-black leading-[1.15] mb-5 text-center tracking-tight"
             >
               <span className="bg-gradient-to-r from-[#E83D6D] via-[#0D2240] to-[#7C7C7C] bg-clip-text text-transparent">
-                Signia Digital Hearing
+                Phonak Digital Hearing
                 Aids Price 2026
               </span>
             </motion.h1>
@@ -267,8 +267,8 @@ export default function ChandigarhLandingPage() {
             >
               <div className="absolute w-[140px] h-[140px] bg-[#184A99]/8 rounded-full blur-[40px]"></div>
               <Image
-                src="/signia_bct2.png"
-                alt="Signia Digital Hearing Aid"
+                src="/lp/phonak1.png"
+                alt="Phonak Digital Hearing Aid"
                 width={180}
                 height={180}
                 className="relative z-10 object-contain drop-shadow-[0_10px_24px_rgba(0,0,0,0.12)]"
@@ -284,9 +284,9 @@ export default function ChandigarhLandingPage() {
               className="space-y-3 mb-6 text-left"
             >
               {[
-                { icon: "🎧", text: "Bluetooth & Rechargeable Models" },
-                { icon: "🏥", text: "Free Hearing Test at Chandigarh Clinic" },
-                { icon: "💰", text: "Save upto ₹31,500 on Hearing Aids" },
+                { icon: "🎧", text: "Universal Bluetooth Connectivity" },
+                { icon: "🏥", text: "Free Hearing Test at Mumbai Clinic" },
+                { icon: "💰", text: "Save upto ₹31,500 on Phonak Aids" },
               ].map((b) => (
                 <li key={b.text} className="flex items-center gap-3">
                   <span className="text-lg flex-shrink-0">{b.icon}</span>
@@ -307,7 +307,7 @@ export default function ChandigarhLandingPage() {
                 className="w-full h-[50px] bg-[#184A99] text-white flex items-center justify-center gap-2 rounded-xl text-[14px] font-bold shadow-lg shadow-[#184A99]/20 active:scale-[0.97] transition-all"
               >
                 <FileText className="w-4 h-4" />
-                Download Signia Price List
+                Download Phonak Price List
               </button>
             </motion.div>
           </div>
@@ -320,7 +320,7 @@ export default function ChandigarhLandingPage() {
             <p className="text-[11px] text-slate-400 mt-1">Tap any model to get the full price list</p>
           </div>
           <div className="space-y-3">
-            {CHANDIGARH_MODELS.map((p) => (
+            {MUMBAI_MODELS.map((p) => (
               <div key={p.rank} className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden flex">
 
                 {/* Left: Image */}
@@ -377,7 +377,7 @@ export default function ChandigarhLandingPage() {
         <section className="py-8 px-4 bg-slate-50">
           <div className="text-center mb-5">
             <h2 className="text-lg font-black text-slate-900">Insono vs Other Dealers</h2>
-            <p className="text-[11px] text-slate-400 mt-1">Why thousands choose Insono in Chandigarh</p>
+            <p className="text-[11px] text-slate-400 mt-1">Why thousands choose Insono in Mumbai</p>
           </div>
           <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
             {/* Header row */}
@@ -482,7 +482,7 @@ export default function ChandigarhLandingPage() {
         {/* STICKY BOTTOM BAR */}
         <div className="fixed bottom-0 left-0 right-0 z-[9999] bg-white shadow-[0_-4px_20px_rgba(0,0,0,0.1)] border-t border-slate-100 custom-bottom-bar flex">
           <a
-            href="https://wa.me/916204260510?text=Hi, I want to chat with an audiologist about Signia hearing aids in Chandigarh"
+            href="https://wa.me/916204260510?text=Hi, I want to chat with an audiologist about Phonak hearing aids in Mumbai"
             target="_blank"
             rel="noopener noreferrer"
             className="flex-1 bg-[#25D366] text-white flex flex-col items-center justify-center py-2.5 gap-0.5"
@@ -518,7 +518,7 @@ export default function ChandigarhLandingPage() {
                   className="hidden lg:inline-flex items-center gap-2 bg-[#184A99]/10 rounded-full px-5 py-2 text-[11px] font-bold text-[#184A99] mb-8 border border-[#184A99]/20"
                 >
                   <span className="w-2 h-2 bg-[#184A99] rounded-full animate-pulse"></span>
-                  Authorized Partner · Expert Audiologists in Chandigarh
+                  Authorized Partner · Expert Audiologists in Mumbai
                 </motion.div>
 
                 <motion.h1
@@ -528,7 +528,7 @@ export default function ChandigarhLandingPage() {
                   className="text-5xl lg:text-[52px] font-black leading-[1.15] mb-8 text-[#0D2240] tracking-tight"
                 >
                   <span className="bg-gradient-to-r from-[#E83D6D] via-[#0D2240] to-[#7C7C7C] bg-clip-text text-transparent">
-                    Signia Digital Hearing Aids Price 2026
+                    Phonak Digital Hearing Aids Price 2026
                   </span>
                 </motion.h1>
 
@@ -538,7 +538,7 @@ export default function ChandigarhLandingPage() {
                   transition={{ delay: 0.2 }}
                   className="text-slate-500 text-xl mb-12 max-w-xl leading-relaxed font-medium"
                 >
-                  Discover the <span className="text-[#184A99] font-bold underline decoration-4 decoration-[#184A99]/10 underline-offset-8">2026 Elite Collection</span>. Experience digital clarity with a <span className="text-[#184A99] font-bold">Free Clinical Trial</span> at Chandigarh's most trusted center.
+                  Discover the <span className="text-[#184A99] font-bold underline decoration-4 decoration-[#184A99]/10 underline-offset-8">2026 Elite Collection</span>. Experience digital clarity with a <span className="text-[#184A99] font-bold">Free Clinical Trial</span> at Mumbai's most trusted center.
                 </motion.p>
 
                 <motion.div
@@ -579,8 +579,8 @@ export default function ChandigarhLandingPage() {
               >
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#184A99]/10 via-transparent to-[#E83D6D]/10 rounded-full blur-[100px] animate-pulse"></div>
                 <Image
-                  src="/signia_bct2.png"
-                  alt="Premium Signia Hearing Aids"
+                  src="/lp/phonak1.png"
+                  alt="Premium Phonak Hearing Aids"
                   width={500}
                   height={500}
                   className="object-contain drop-shadow-[0_20px_60px_rgba(0,0,0,0.15)] relative z-10 hover:scale-105 transition-transform duration-700 rounded-3xl"
@@ -599,8 +599,8 @@ export default function ChandigarhLandingPage() {
                   <div className="absolute top-0 right-0 bg-[#E83D6D] text-white text-[10px] font-bold px-5 py-2 rounded-bl-2xl uppercase tracking-widest">
                     Free Consultation
                   </div>
-                  <h2 className="text-2xl font-bold mb-3 pt-4 text-[#0D2240]">Download Prices & Claim Free Trial</h2>
-                  <p className="text-slate-500 text-xs mb-8 leading-relaxed">Get the full 2026 Brand Price List instantly on WhatsApp.</p>
+                  <h2 className="text-2xl font-bold mb-3 pt-4 text-[#0D2240]">Download Phonak Prices & Claim Free Trial</h2>
+                  <p className="text-slate-500 text-xs mb-8 leading-relaxed">Get the full 2026 Phonak Price List instantly on WhatsApp.</p>
                   <LeadForm />
                 </div>
               </motion.div>
@@ -617,11 +617,11 @@ export default function ChandigarhLandingPage() {
               <h2 className="text-[10px] font-black text-[#184A99] uppercase tracking-[0.4em] mb-4">Premium Collection</h2>
               <h3 className="text-5xl font-bold text-slate-900 tracking-tight">2026's Top Models</h3>
             </div>
-            <p className="text-slate-500 max-w-sm font-medium leading-relaxed text-lg">Individually selected by our experts for the active lifestyles of Chandigarh residents.</p>
+            <p className="text-slate-500 max-w-sm font-medium leading-relaxed text-lg">Individually selected by our experts for the active lifestyles of Mumbai residents.</p>
           </div>
 
           <div className="grid gap-12">
-            {CHANDIGARH_MODELS.map((p) => (
+            {MUMBAI_MODELS.map((p) => (
               <motion.div
                 whileHover={{ y: -5 }}
                 key={p.rank}
@@ -670,7 +670,7 @@ export default function ChandigarhLandingPage() {
             <div className="text-center mb-10">
               <h2 className="text-[10px] font-black text-[#184A99] uppercase tracking-[0.4em] mb-4">The Difference</h2>
               <h3 className="text-4xl font-bold text-slate-900 tracking-tight">Insono vs Other Dealers</h3>
-              <p className="text-slate-500 mt-3 text-base">Why thousands in Chandigarh choose Insono</p>
+              <p className="text-slate-500 mt-3 text-base">Why thousands in Mumbai choose Insono</p>
             </div>
             <div className="rounded-3xl overflow-hidden border border-slate-200 shadow-sm">
               {/* Header */}
@@ -786,7 +786,7 @@ export default function ChandigarhLandingPage() {
         <footer className="py-20 border-t border-slate-100 text-center bg-slate-50">
           <div className="max-w-6xl mx-auto px-6">
             <Image src="/logo.webp" alt="Insono" width={140} height={40} className="h-9 w-auto mx-auto mb-8 grayscale opacity-50" />
-            <p className="text-[11px] text-slate-400 font-bold uppercase tracking-[0.4em]">© 2026 Insono Hearing · Chandigarh Specialist Center</p>
+            <p className="text-[11px] text-slate-400 font-bold uppercase tracking-[0.4em]">© 2026 Insono Hearing · Phonak Specialist Center · Mumbai</p>
           </div>
         </footer>
       </div>
@@ -801,20 +801,16 @@ export default function ChandigarhLandingPage() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsPopupOpen(false)}
-              className="absolute inset-0 bg-[#0D2240]/80 backdrop-blur-sm"
+              className="absolute inset-0 bg-slate-900/60 backdrop-blur-md"
             />
 
-            {/* Modal Card */}
+            {/* Modal */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative w-full max-w-[420px] bg-white rounded-3xl shadow-[0_30px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden"
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              className="relative w-full max-w-[440px] bg-white rounded-[2.5rem] shadow-[0_30px_100px_-20px_rgba(0,0,0,0.3)] overflow-hidden"
             >
-              {/* Top accent bar */}
-              <div className="h-1.5 w-full bg-gradient-to-r from-[#184A99] via-[#E83D6D] to-[#184A99]" />
-
-              {/* Close Button */}
               <button
                 onClick={() => setIsPopupOpen(false)}
                 className="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 hover:text-rose-500 transition-colors z-10"
@@ -827,8 +823,8 @@ export default function ChandigarhLandingPage() {
               <div className="px-6 pt-5 pb-6">
                 {/* Header */}
                 <div className="flex items-start gap-4 mb-5">
-                  <div className="flex-shrink-0 w-14 h-14 rounded-2xl overflow-hidden border border-slate-100 shadow-sm">
-                    <img src="/image/dha-price.png" alt="Price List" className="w-full h-full object-cover" />
+                  <div className="flex-shrink-0 w-14 h-14 rounded-2xl overflow-hidden border border-slate-100 shadow-sm text-center flex items-center justify-center bg-slate-50">
+                    <img src="/brands/phonaklogo.svg" alt="Phonak" className="w-10 h-auto grayscale" />
                   </div>
                   <div>
                     <div className="inline-flex items-center gap-1.5 bg-green-50 border border-green-100 rounded-full px-2.5 py-0.5 mb-1.5">
@@ -836,7 +832,7 @@ export default function ChandigarhLandingPage() {
                       <span className="text-[9px] font-bold text-green-700 uppercase tracking-wider">Free · Instant on WhatsApp</span>
                     </div>
                     <h2 className="text-[18px] font-black text-[#0D2240] leading-tight">
-                      Download Complete<br />Signia Price List 2026
+                      Download Complete<br />Phonak Price List 2026
                     </h2>
                   </div>
                 </div>
@@ -846,10 +842,10 @@ export default function ChandigarhLandingPage() {
                   <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">What's included</p>
                   <ul className="space-y-2">
                     {[
-                      "Signia Fun SP, Orion, Silk, Styletto & Pure C&G",
+                      "Audeo Sphere AI, Slim, Lumity & Naida",
                       "All model prices with EMI breakdown",
                       "Side-by-side feature comparison chart",
-                      "Exclusive Chandigarh clinic discount",
+                      "Exclusive Mumbai clinic discount",
                     ].map((item) => (
                       <li key={item} className="flex items-start gap-2 text-[12px] text-slate-700 font-medium">
                         <span className="text-emerald-500 font-black text-sm leading-none mt-0.5">✓</span>
@@ -864,7 +860,7 @@ export default function ChandigarhLandingPage() {
 
                 {/* Trust row */}
                 <div className="flex items-center justify-center gap-4 mt-4">
-                  <img src="/brands/signia.svg" alt="Signia" className="h-4 w-auto grayscale opacity-40" />
+                  <img src="/brands/phonaklogo.svg" alt="Phonak" className="h-4 w-auto grayscale opacity-40" />
                   <span className="text-[9px] text-slate-300">|</span>
                   <div className="flex items-center gap-1">
                     {[1,2,3,4,5].map(s => <span key={s} className="text-yellow-400 text-[10px]">★</span>)}
