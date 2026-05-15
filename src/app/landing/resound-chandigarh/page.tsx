@@ -208,6 +208,7 @@ export default function ResoundChandigarhPage() {
                 height={180}
                 className="relative z-10 object-contain drop-shadow-[0_10px_24px_rgba(0,0,0,0.12)]"
                 priority
+                fetchPriority="high"
               />
             </div>
 
@@ -460,6 +461,7 @@ export default function ResoundChandigarhPage() {
                   sizes="500px"
                   className="object-contain drop-shadow-[0_20px_60px_rgba(0,0,0,0.15)] relative z-10 hover:scale-105 transition-transform duration-700 rounded-3xl"
                   priority
+                  fetchPriority="high"
                 />
               </div>
 

@@ -64,6 +64,11 @@ export default function RootLayout({
           name="google-site-verification"
           content="_w3rNIazk1WMe-urSCcrtpzyAcqTeopxMU1qqLd0p6k"
         />
+        {/* Preconnect to third-party origins to eliminate connection setup latency */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
+        <link rel="dns-prefetch" href="https://chat-xbot.webspecia.in" />
+        <link rel="dns-prefetch" href="https://wa.me" />
         {/* Preload primary font so it's fetched in parallel with CSS */}
         <link
           rel="preload"

@@ -353,6 +353,7 @@ export default function Top5LandingPage() {
                 height={380}
                 className="object-contain drop-shadow-[0_20px_60px_rgba(0,0,0,0.15)] relative z-10 hover:scale-105 transition-transform duration-700"
                 priority
+                fetchPriority="high"
               />
             </div>
 
