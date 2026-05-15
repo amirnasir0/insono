@@ -62,7 +62,7 @@ const FAQS = [
     a: "Yes! 80% of people with tinnitus also have some level of hearing loss. Hearing aids help by amplifying background sounds to mask the ringing and using specialized 'Notch Therapy' or 'Zen Tones' to train the brain to ignore the tinnitus.",
   },
   {
-    q: "What is the price of a tinnitus masking device in India?",
+    q: "What is the price of a tinnitus masking device?",
     a: "Tinnitus hearing aid prices vary based on the technology level (e.g., Notch Therapy vs Basic Masking). We offer the best price guarantee on all top brands. Fill the form to get the latest price list on WhatsApp instantly.",
   },
   {
@@ -74,8 +74,8 @@ const FAQS = [
     a: "Absolutely. Brands like Signia (Notch Therapy), Widex (Zen), and Phonak (Tinnitus Balance) have dedicated hardware and software specifically designed to suppress tinnitus sounds.",
   },
   {
-    q: "Do you offer Tinnitus Retraining Therapy (TRT) in Delhi?",
-    a: "Yes, our clinics in Delhi and across India offer comprehensive Tinnitus management including Tinnitus Retraining Therapy (TRT). Our certified audiologists combine sound therapy with counseling to help you habituate to the sound.",
+    q: "Do you offer Tinnitus Retraining Therapy (TRT)?",
+    a: "Yes, our clinics offer comprehensive Tinnitus management including Tinnitus Retraining Therapy (TRT). Our certified audiologists combine sound therapy with counseling to help you habituate to the sound.",
   },
 ];
 
@@ -228,7 +228,7 @@ export default function TinnitusLandingPage() {
               <div className="grid grid-cols-3 gap-8 pt-10 border-t border-slate-100 mb-12">
                 {[
                   { label: "2 Lakh+", sub: "Happy Customers" },
-                  { label: "15+", sub: "Clinics Across India" },
+                  { label: "15+", sub: "Clinics Pan India" },
                   { label: "100+", sub: "Audiologists" },
                 ].map((s) => (
                   <div key={s.label}>
@@ -363,7 +363,7 @@ export default function TinnitusLandingPage() {
             </div>
           </div>
           <p className="text-center text-[10px] text-slate-400 max-w-2xl mx-auto leading-relaxed">
-            © 2026 Insono Hearing. All rights reserved. Our hearing aids are medical devices and should be fitted by certified professionals. Tinnitus relief results may vary by individual. Authorized partner for Signia, Phonak, and Widex in India.
+            © 2026 Insono Hearing. All rights reserved. Our hearing aids are medical devices and should be fitted by certified professionals. Tinnitus relief results may vary by individual. Authorized partner for Signia, Phonak, and Widex.
           </p>
         </div>
       </footer>
