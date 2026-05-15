@@ -376,8 +376,8 @@ export default function MumbaiLandingPage() {
         {/* COMPARISON — Insono vs Others */}
         <section className="py-8 px-4 bg-slate-50">
           <div className="text-center mb-5">
-            <h2 className="text-lg font-black text-slate-900">Insono vs Other Dealers</h2>
-            <p className="text-[11px] text-slate-400 mt-1">Why thousands choose Insono in Mumbai</p>
+            <h2 className="text-lg font-black text-slate-900">Insono Hearing vs Others</h2>
+            <p className="text-[11px] text-slate-400 mt-1">Why thousands choose Insono Hearing in Mumbai</p>
           </div>
           <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
             {/* Header row */}
@@ -669,7 +669,7 @@ export default function MumbaiLandingPage() {
           <div className="max-w-3xl mx-auto px-6">
             <div className="text-center mb-10">
               <h2 className="text-[10px] font-black text-[#184A99] uppercase tracking-[0.4em] mb-4">The Difference</h2>
-              <h3 className="text-4xl font-bold text-slate-900 tracking-tight">Insono vs Other Dealers</h3>
+              <h3 className="text-4xl font-bold text-slate-900 tracking-tight">Insono Hearing vs Others</h3>
               <p className="text-slate-500 mt-3 text-base">Why thousands in Mumbai choose Insono</p>
             </div>
             <div className="rounded-3xl overflow-hidden border border-slate-200 shadow-sm">

@@ -2,146 +2,17 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { use, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import LeadForm from "./LeadForm";
-import { Download, Phone, MessageSquare, ArrowRight, Users, MapPin, Stethoscope, FileText } from "lucide-react";
+import { Phone, MessageSquare, ArrowRight, Users, MapPin, Stethoscope, FileText, Lock } from "lucide-react";
 
-const CHANDIGARH_MODELS = [
-  {
-    rank: 1,
-    badge: "Best Rated",
-    badgeColor: "bg-[#184A99] text-white",
-    title: "Signia Pure Charge&Go IX",
-    brand: "Signia",
-    brandLogo: "/brands/signia.svg",
-    image: "/lp/signia1.png",
-    features: ["IX Platform AI", "Own Voice Processing", "Rechargeable", "Bluetooth 5.0"],
-    channels: "48 Channels",
-    style: "RIC",
-    highlight: "Industry-leading speech clarity with dynamic soundscape processing",
-    waMessage: "Hi, I want to know about Signia Pure Charge&Go in Chandigarh",
-  },
-  {
-    rank: 2,
-    badge: "Top Connectivity",
-    badgeColor: "bg-emerald-600 text-white",
-    title: "Phonak Audeo Lumity",
-    brand: "Phonak",
-    brandLogo: "/brands/phonaklogo.svg",
-    image: "/lp/phonak1.png",
-    features: ["SmartSpeech Tech", "Universal Bluetooth", "Health Tracking", "Rechargeable"],
-    channels: "32 Channels",
-    style: "RIC",
-    highlight: "Superior connectivity—streams directly to any Bluetooth device",
-    waMessage: "Hi, I want to know about Phonak Audeo Lumity in Chandigarh",
-  },
-  {
-    rank: 3,
-    badge: "Purest Sound",
-    badgeColor: "bg-purple-600 text-white",
-    title: "Widex MOMENT Sheer",
-    brand: "Widex",
-    brandLogo: "/brands/widex.svg",
-    image: "/lp/widex1.png",
-    features: ["PureSound Tech", "ZeroDelay ZeroDistortion", "Rechargeable", "AI Personalization"],
-    channels: "24 Channels",
-    style: "RIC",
-    highlight: "The world's most natural-sounding digital hearing aid",
-    waMessage: "Hi, I want to know about Widex MOMENT Sheer in Chandigarh",
-  },
-  {
-    rank: 4,
-    badge: "Nearly Invisible",
-    badgeColor: "bg-rose-600 text-white",
-    title: "Signia Silk Charge&Go",
-    brand: "Signia",
-    brandLogo: "/brands/signia.svg",
-    image: "/lp/signia3.png",
-    features: ["Invisible Fit", "Ready-to-Wear", "Rechargeable Case", "Discreet Control"],
-    channels: "32 Channels",
-    style: "IIC",
-    highlight: "The only rechargeable invisible hearing aid that fits instantly",
-    waMessage: "Hi, I want to know about Signia Silk in Chandigarh",
-  },
-  {
-    rank: 5,
-    badge: "Most Stylish",
-    badgeColor: "bg-amber-500 text-white",
-    title: "Phonak Slim L90-R",
-    brand: "Phonak",
-    brandLogo: "/brands/phonaklogo.svg",
-    image: "/lp/phonak2.png",
-    features: ["Ergonomic Slim Design", "AutoSense OS 5.0", "Direct Streaming", "Fast Charging"],
-    channels: "48 Channels",
-    style: "RIC",
-    highlight: "A fashion-forward design that makes wearing hearing aids cool",
-    waMessage: "Hi, I want to know about Phonak Slim in Chandigarh",
-  },
-];
-
-
-const FAQS = [
-  {
-    q: "What is the price of hearing aids in Chandigarh?",
-    a: "Hearing aid prices in Chandigarh start from ₹9,999 and can go up to ₹3,50,000 for high-end AI models. We offer brands like Signia, Phonak, and Widex with 0% EMI options. Fill the form to get the full price list.",
-  },
-  {
-    q: "Which is the best hearing aid brand in India?",
-    a: "Signia, Phonak, and Widex are the top-tier brands. The 'best' brand depends on your hearing loss and lifestyle. We offer free trials of all top brands at our Chandigarh clinic to help you decide.",
-  },
-  {
-    q: "Do you offer free hearing tests in Chandigarh?",
-    a: "Yes, we provide 100% free diagnostic hearing tests by certified audiologists at our Chandigarh center. No purchase is mandatory.",
-  },
-  {
-    q: "Are Bluetooth hearing aids available?",
-    a: "Yes, most modern hearing aids from Phonak and Signia come with Bluetooth for direct streaming of calls and music from your smartphone.",
-  },
-  {
-    q: "Do you provide home trials in Chandigarh?",
-    a: "Yes, we offer home hearing tests and trials across Chandigarh, Mohali, and Panchkula for those who cannot visit our clinic.",
-  },
-  {
-    q: "What warranty do you provide?",
-    a: "All devices come with an official manufacturer warranty of 2-4 years, plus Insono's lifetime service support in Chandigarh.",
-  },
-];
-
-const REVIEWS = [
-  {
-    name: "Harish Bakshi",
-    initials: "HB",
-    avatarColor: "bg-[#184A99]",
-    location: "Sector 35, Chandigarh",
-    time: "3 weeks ago",
-    text: "Excellent variety of brands. I could compare Signia and Phonak side-by-side. The audiologist was very knowledgeable and helped me pick the right one.",
-  },
-  {
-    name: "Neena Malhotra",
-    initials: "NM",
-    avatarColor: "bg-emerald-600",
-    location: "Mohali",
-    time: "2 months ago",
-    text: "Insono Chandigarh provided me with a Widex hearing aid at the best price. The sound quality is so natural, I forget I'm wearing them.",
-  },
-  {
-    name: "Capt. Ravinder Singh",
-    initials: "RS",
-    avatarColor: "bg-purple-600",
-    location: "Panchkula",
-    time: "1 month ago",
-    text: "Professional staff and genuine products. The free hearing test was comprehensive. Got a good discount on Signia Silk. Very satisfied.",
-  },
-  {
-    name: "Amit Verma",
-    initials: "AV",
-    avatarColor: "bg-rose-600",
-    location: "Chandigarh",
-    time: "2 weeks ago",
-    text: "Best place for hearing aids in Chandigarh. Transparent pricing and no hidden costs. The after-sales service has been very supportive.",
-  },
-];
+function formatCity(slug: string) {
+  return slug
+    .split("-")
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ");
+}
 
 const BRAND_LOGOS = [
   "/brands/signia.svg",
@@ -151,83 +22,193 @@ const BRAND_LOGOS = [
   "/brands/resound.svg",
 ];
 
-function FAQAccordion() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+const COMPARISON_ROWS = [
+  { feature: "Free Hearing Test", insono: true, others: false },
+  { feature: "7-Day Free Trial", insono: true, others: false },
+  { feature: "Genuine Products", insono: true, others: "Sometimes" },
+  { feature: "EMI / 0% Finance", insono: true, others: false },
+  { feature: "Home Delivery (COD)", insono: true, others: false },
+  { feature: "Lifetime Servicing", insono: true, others: false },
+  { feature: "Certified Audiologist", insono: true, others: "Varies" },
+  { feature: "Price Transparency", insono: true, others: false },
+];
 
-  return (
-    <div className="space-y-4 max-w-3xl mx-auto">
-      {FAQS.map((faq, i) => (
-        <div
-          key={i}
-          className={`border rounded-[2rem] overflow-hidden transition-all duration-300 ${openIndex === i ? "border-[#184A99]/20 bg-slate-50/50" : "border-slate-100 bg-white"
-            }`}
-        >
-          <button
-            onClick={() => setOpenIndex(openIndex === i ? null : i)}
-            className="w-full flex justify-between items-center text-left p-6 sm:p-8"
-          >
-            <span className="font-bold text-slate-900 pr-8 text-base sm:text-lg leading-snug">{faq.q}</span>
-            <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${openIndex === i ? "bg-[#184A99] text-white rotate-180" : "bg-slate-100 text-slate-400"
-              }`}>
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
-              </svg>
-            </div>
-          </button>
-          <AnimatePresence>
-            {openIndex === i && (
-              <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: "auto", opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-              >
-                <div className="px-6 sm:px-8 pb-8">
-                  <div className="h-[1px] bg-slate-100 mb-6 w-full"></div>
-                  <p className="text-slate-500 text-[15px] sm:text-[16px] leading-relaxed font-medium">
-                    {faq.a}
-                  </p>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-      ))}
-    </div>
-  );
-}
+export default function HearingAidCityPage({ params }: { params: Promise<{ city: string }> }) {
+  const { city: citySlug } = use(params);
+  const city = formatCity(citySlug);
 
-export default function ChandigarhLandingPage() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+
+  const MODELS = [
+    {
+      rank: 1,
+      badge: "Best Seller",
+      badgeColor: "bg-[#184A99] text-white",
+      title: "Signia Orion C&G",
+      brand: "Signia",
+      brandLogo: "/brands/signia.svg",
+      image: "https://an7bjwndlmaemx4x.public.blob.vercel-storage.com/products/1772781326903-Signia-Orion-C%26G-200%40.jpg",
+      features: ["Rechargeable", "Bluetooth Streaming", "Speech Clarity", "App Control"],
+      channels: "24 Channels",
+      style: "RIC",
+      highlight: "Best entry-level rechargeable hearing aid — great for first-time users",
+    },
+    {
+      rank: 2,
+      badge: "Ultra Stylish",
+      badgeColor: "bg-rose-600 text-white",
+      title: "Signia Styletto",
+      brand: "Signia",
+      brandLogo: "/brands/signia.svg",
+      image: "https://an7bjwndlmaemx4x.public.blob.vercel-storage.com/products/1772794609852-cosmic-blue_rose-gold_double_dd4310ec-bb18-403c-a7c9-05467ff34b3b-%281%29.webp",
+      features: ["Slim Elegant Design", "Rechargeable", "Bluetooth 5.0", "IX Platform AI"],
+      channels: "48 Channels",
+      style: "RIC",
+      highlight: "Fashion-forward hearing aid with premium AI sound quality",
+    },
+    {
+      rank: 3,
+      badge: "AI Powered",
+      badgeColor: "bg-emerald-600 text-white",
+      title: "Phonak Audeo Sphere I90",
+      brand: "Phonak",
+      brandLogo: "/brands/phonaklogo.svg",
+      image: "https://an7bjwndlmaemx4x.public.blob.vercel-storage.com/products/1773054606126-IMG-1.png",
+      features: ["Dual AI Engines", "Speech from Noise", "Universal Bluetooth", "Rechargeable"],
+      channels: "48 Channels",
+      style: "RIC",
+      highlight: "World's first hearing aid with a dedicated AI chip for speech clarity",
+    },
+    {
+      rank: 4,
+      badge: "Doctor's Choice",
+      badgeColor: "bg-amber-500 text-white",
+      title: "Phonak Audeo Lumity",
+      brand: "Phonak",
+      brandLogo: "/brands/phonaklogo.svg",
+      image: "/lp/phonak1.png",
+      features: ["SmartSpeech Tech", "Universal Connectivity", "Health Tracking", "Waterproof"],
+      channels: "24 Channels",
+      style: "RIC",
+      highlight: "Most popular Phonak model for active social lifestyles",
+    },
+    {
+      rank: 5,
+      badge: "Crystal Sound",
+      badgeColor: "bg-purple-600 text-white",
+      title: "Widex MOMENT 440",
+      brand: "Widex",
+      brandLogo: "/brands/widex.svg",
+      image: "/lp/widex1.png",
+      features: ["Pure Sound", "True Input Technology", "ZeroDelay", "App Control"],
+      channels: "44 Channels",
+      style: "RIC",
+      highlight: "Widex's flagship — the world's fastest signal processing",
+    },
+    {
+      rank: 6,
+      badge: "Smart AI",
+      badgeColor: "bg-teal-600 text-white",
+      title: "Oticon Intent",
+      brand: "Oticon",
+      brandLogo: "/brands/oticon.svg",
+      image: "/lp/oticon1.png",
+      features: ["4D Sensor", "Intent Detection", "BrainHearing", "Rechargeable"],
+      channels: "64 Channels",
+      style: "RIC",
+      highlight: "First hearing aid that senses user intent to automatically adjust",
+    },
+  ];
+
+  const FAQS = [
+    {
+      q: `What is the price of hearing aids in ${city}?`,
+      a: `Hearing aid prices in ${city} start from ₹9,999 and vary by brand, technology, and features like Bluetooth or rechargeability. EMI options are available for every budget. Fill the form to get the full price list instantly on WhatsApp.`,
+    },
+    {
+      q: `Do you offer free hearing tests in ${city}?`,
+      a: `Yes, 100% free hearing tests in ${city} by certified audiologists using advanced diagnostic equipment. No purchase obligation.`,
+    },
+    {
+      q: "Which hearing aid brands are available?",
+      a: "Signia, Phonak, Widex, Oticon, ReSound, and Starkey — all premium brands with genuine manufacturer warranty.",
+    },
+    {
+      q: "Can I get fitted on the same day?",
+      a: "Yes. Most patients are professionally fitted and walk out with their hearing aid on the same day of their appointment.",
+    },
+    {
+      q: `Do you offer home visits in ${city}?`,
+      a: `Yes, home hearing tests and trials are available across ${city}, especially for senior citizens who prefer in-home consultation.`,
+    },
+    {
+      q: "Is there warranty and after-sales support?",
+      a: "All hearing aids come with manufacturer warranty along with up to 4 years extended warranty, with full servicing support at our nearest clinic.",
+    },
+  ];
+
+  const REVIEWS = [
+    {
+      name: "Vikram Sharma",
+      initials: "VS",
+      avatarColor: "bg-[#184A99]",
+      location: city,
+      time: "1 month ago",
+      text: `Excellent service at Insono ${city}. The audiologist was very patient in explaining which model suited my hearing loss. Got fitted the same day. Highly recommend!`,
+    },
+    {
+      name: "Anita Rao",
+      initials: "AR",
+      avatarColor: "bg-emerald-600",
+      location: city,
+      time: "2 months ago",
+      text: "I was confused between multiple brands but the team at Insono helped me choose the right hearing aid. Sound quality is amazing and the price was transparent — no hidden charges.",
+    },
+    {
+      name: "Kuldeep Dhillon",
+      initials: "KD",
+      avatarColor: "bg-purple-600",
+      location: city,
+      time: "3 months ago",
+      text: "Free hearing test was done professionally. Got a 7-day trial before I bought. Cash on delivery made it easy. Very happy with my hearing aid — looks great too!",
+    },
+    {
+      name: "Meena Verma",
+      initials: "MV",
+      avatarColor: "bg-rose-600",
+      location: city,
+      time: "2 weeks ago",
+      text: `My mother got her hearing aid from Insono ${city}. The home delivery was on time and the after-sales support has been wonderful. Will recommend to everyone.`,
+    },
+  ];
 
   return (
     <div className="min-h-screen bg-white font-sans overflow-x-hidden selection:bg-[#eaf5ff]">
-      {/* ── Global Style Overrides for Mobile ── */}
       <style dangerouslySetInnerHTML={{
         __html: `
         @media (max-width: 768px) {
-          header:not(.custom-mobile-header), 
+          header:not(.custom-mobile-header),
           .sticky.top-0:not(.custom-mobile-header-wrapper),
           .md\\:hidden.fixed.bottom-0:not(.custom-bottom-bar) {
             display: none !important;
           }
-          body {
-            padding-top: 0 !important;
-          }
+          body { padding-top: 0 !important; }
         }
       ` }} />
-      {/* ────────────────────────────────────────────────────────────────────────────
-          MOBILE VERSION (max-width: 768px)
-      ──────────────────────────────────────────────────────────────────────────── */}
+
+      {/* ────────────────────────────────────────────────
+          MOBILE  (≤ 768px)
+      ──────────────────────────────────────────────── */}
       <div className="block md:hidden pb-20">
 
-        {/* SECTION 1 — TOP URGENCY BAR */}
+        {/* Urgency bar */}
         <div className="bg-[#0D2240] text-white py-2.5 px-4 text-center text-[10px] font-bold uppercase tracking-[0.2em] relative z-[60]">
           <span className="inline-block w-2 h-2 bg-rose-500 rounded-full animate-pulse mr-2"></span>
-          Limited Trial Slots for May in Chandigarh
+          A call can save you upto ₹31,500 on hearing aids
         </div>
 
-        {/* SECTION 2 — HEADER */}
+        {/* Header */}
         <div className="sticky top-0 z-50 bg-transparent custom-mobile-header-wrapper">
           <header className="px-4 py-3 flex items-center justify-between custom-mobile-header">
             <Link href="/">
@@ -235,31 +216,28 @@ export default function ChandigarhLandingPage() {
             </Link>
             <a
               href="tel:+916204260510"
-              className="bg-[#184A99] text-white px-5 py-2.5 rounded-full text-[10px] font-bold flex items-center gap-2 active:scale-95 transition uppercase tracking-widest"
+              className="bg-[#184A99] text-white px-4 py-2.5 rounded-full text-[12px] font-bold flex items-center gap-2 active:scale-95 transition"
             >
               <Phone className="w-3.5 h-3.5" />
-              Call Expert
+              +91 62042 60510
             </a>
           </header>
         </div>
 
-        {/* SECTION 3 — HERO SECTION */}
+        {/* Hero */}
         <section className="bg-gradient-to-b from-[#eaf5ff] to-white relative overflow-hidden">
           <div className="px-4 pt-3 pb-10 relative z-10 text-center">
 
-            {/* 1. Title */}
             <motion.h1
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-[22px] font-black leading-[1.15] mb-5 text-center tracking-tight"
+              className="text-[22px] font-black leading-[1.15] mb-5 tracking-tight"
             >
               <span className="bg-gradient-to-r from-[#E83D6D] via-[#0D2240] to-[#7C7C7C] bg-clip-text text-transparent">
-                Digital Hearing Aids
-                Price 2026 Chandigarh
+                Hearing Aid Price in {city} 2026
               </span>
             </motion.h1>
 
-            {/* 2. Image */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -268,8 +246,8 @@ export default function ChandigarhLandingPage() {
             >
               <div className="absolute w-[140px] h-[140px] bg-[#184A99]/8 rounded-full blur-[40px]"></div>
               <Image
-                src="/lp/signia1.png"
-                alt="Digital Hearing Aids Chandigarh"
+                src="/signia_bct2.png"
+                alt="Digital Hearing Aid"
                 width={180}
                 height={180}
                 className="relative z-10 object-contain drop-shadow-[0_10px_24px_rgba(0,0,0,0.12)]"
@@ -277,68 +255,64 @@ export default function ChandigarhLandingPage() {
               />
             </motion.div>
 
-            {/* 3. Bullet points */}
-            <motion.ul
+            <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="space-y-3 mb-6 text-left"
+              className="space-y-2.5 mb-6 text-left"
             >
-              {[
-                { icon: "🏥", text: "Top Brands: Signia, Phonak, Widex" },
-                { icon: "🔬", text: "Free Hearing Test at Chandigarh Clinic" },
-                { icon: "💰", text: "Save upto ₹31,500 on Latest Models" },
-              ].map((b) => (
-                <li key={b.text} className="flex items-center gap-3">
-                  <span className="text-lg flex-shrink-0">{b.icon}</span>
-                  <span className="text-[13px] font-semibold text-slate-700 leading-snug">{b.text}</span>
-                </li>
-              ))}
-            </motion.ul>
+              {/* Bullet 1 */}
+              <div className="flex items-center gap-3 bg-slate-50 border border-slate-100 rounded-2xl px-4 py-3">
+                <div className="w-9 h-9 rounded-xl bg-[#184A99]/10 flex items-center justify-center flex-shrink-0 text-lg">🏆</div>
+                <span className="text-[13px] font-semibold text-slate-700 leading-snug">Lowest price guaranteed</span>
+              </div>
 
-            {/* 4. CTA */}
+              {/* Bullet 2 */}
+              <div className="flex items-center gap-3 bg-slate-50 border border-slate-100 rounded-2xl px-4 py-3">
+                <div className="w-9 h-9 rounded-xl bg-[#184A99]/10 flex items-center justify-center flex-shrink-0 text-lg">💳</div>
+                <span className="text-[13px] font-semibold text-slate-700 leading-snug">0% EMI options, prices start from <span className="text-[#184A99] font-black">₹18,000</span> only</span>
+              </div>
+
+              {/* Bullet 3 */}
+              <div className="flex items-center gap-3 bg-slate-50 border border-slate-100 rounded-2xl px-4 py-3">
+                <div className="w-9 h-9 rounded-xl bg-[#184A99]/10 flex items-center justify-center flex-shrink-0 text-lg">💰</div>
+                <span className="text-[13px] font-semibold text-slate-700 leading-snug">
+                  Save upto <span className="text-emerald-600 font-black text-[16px]">₹31,500</span> on hearing aids
+                </span>
+              </div>
+            </motion.div>
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="w-full"
             >
               <button
                 onClick={() => setIsPopupOpen(true)}
                 className="w-full h-[50px] bg-[#184A99] text-white flex items-center justify-center gap-2 rounded-xl text-[14px] font-bold shadow-lg shadow-[#184A99]/20 active:scale-[0.97] transition-all"
               >
                 <FileText className="w-4 h-4" />
-                Download Brand Price List 2026
+                Download Hearing Aid Price List
               </button>
             </motion.div>
           </div>
         </section>
 
-        {/* SECTION 5 — PRODUCT SHOWCASE */}
+        {/* Products */}
         <section className="py-8 px-4 bg-white">
           <div className="text-center mb-5">
-            <h2 className="text-lg font-black text-slate-900">Best Selling Hearing Aids</h2>
+            <h2 className="text-lg font-black text-slate-900">Top Hearing Aids in {city}</h2>
             <p className="text-[11px] text-slate-400 mt-1">Tap any model to get the full price list</p>
           </div>
           <div className="space-y-3">
-            {CHANDIGARH_MODELS.map((p) => (
+            {MODELS.map((p) => (
               <div key={p.rank} className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden flex">
-
-                {/* Left: Image */}
                 <div className="relative w-[110px] flex-shrink-0 bg-slate-50 flex items-center justify-center p-3">
-                  <Image
-                    src={p.image}
-                    alt={p.title}
-                    width={90}
-                    height={90}
-                    className="object-contain"
-                  />
+                  <Image src={p.image} alt={p.title} width={90} height={90} className="object-contain" />
                   <span className={`absolute top-2 left-2 text-[8px] font-bold px-2 py-0.5 rounded-full leading-tight ${p.badgeColor}`}>
                     {p.badge}
                   </span>
                 </div>
-
-                {/* Right: Details */}
                 <div className="flex-1 p-3 flex flex-col justify-between min-w-0">
                   <div>
                     <div className="flex items-center gap-1.5 mb-1">
@@ -348,9 +322,7 @@ export default function ChandigarhLandingPage() {
                     <h3 className="text-[14px] font-bold text-slate-900 leading-tight mb-1.5">{p.title}</h3>
                     <div className="flex flex-wrap gap-1 mb-1.5">
                       {p.features.slice(0, 3).map((f) => (
-                        <span key={f} className="text-[9px] bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full font-semibold leading-tight">
-                          {f}
-                        </span>
+                        <span key={f} className="text-[9px] bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full font-semibold leading-tight">{f}</span>
                       ))}
                     </div>
                     <p className="text-[9px] text-slate-500 font-medium mb-1">{p.style} · {p.channels}</p>
@@ -368,20 +340,49 @@ export default function ChandigarhLandingPage() {
                     </button>
                   </div>
                 </div>
-
               </div>
             ))}
           </div>
+
+          {/* Lock teaser — mobile */}
+          <div className="relative mt-3 mx-0">
+            <div className="space-y-3 pointer-events-none select-none" aria-hidden>
+              {[1, 2].map((i) => (
+                <div key={i} className={`bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden flex h-24 ${i === 2 ? "opacity-40" : "opacity-70"}`}>
+                  <div className="w-[110px] flex-shrink-0 bg-slate-100" />
+                  <div className="flex-1 p-3 space-y-2">
+                    <div className="h-3 bg-slate-100 rounded-full w-3/4" />
+                    <div className="h-2 bg-slate-100 rounded-full w-1/2" />
+                    <div className="h-2 bg-slate-100 rounded-full w-2/3" />
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/75 backdrop-blur-[3px] rounded-2xl">
+              <div className="text-center px-6">
+                <div className="w-11 h-11 bg-[#184A99] rounded-full flex items-center justify-center mx-auto mb-2.5 shadow-lg shadow-[#184A99]/30">
+                  <Lock className="w-5 h-5 text-white" />
+                </div>
+                <h3 className="text-[14px] font-black text-slate-900 mb-1">10+ More Models Available</h3>
+                <p className="text-[11px] text-slate-500 mb-3">Download the full price list to compare all brands & models</p>
+                <button
+                  onClick={() => setIsPopupOpen(true)}
+                  className="bg-[#184A99] text-white text-[12px] font-bold px-6 py-2.5 rounded-xl active:scale-95 transition shadow-md"
+                >
+                  Download Full Price List
+                </button>
+              </div>
+            </div>
+          </div>
         </section>
 
-        {/* COMPARISON — Insono vs Others */}
+        {/* Comparison */}
         <section className="py-8 px-4 bg-slate-50">
           <div className="text-center mb-5">
             <h2 className="text-lg font-black text-slate-900">Insono Hearing vs Others</h2>
-            <p className="text-[11px] text-slate-400 mt-1">Why thousands choose Insono Hearing in Chandigarh</p>
+            <p className="text-[11px] text-slate-400 mt-1">Why thousands choose Insono Hearing in {city}</p>
           </div>
           <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
-            {/* Header row */}
             <div className="grid grid-cols-3 bg-[#184A99] text-white text-[11px] font-bold">
               <div className="py-3 px-3">Feature</div>
               <div className="py-3 px-2 text-center border-l border-white/20 bg-white/10">
@@ -389,21 +390,8 @@ export default function ChandigarhLandingPage() {
               </div>
               <div className="py-3 px-2 text-center border-l border-white/20 text-white/70">Others</div>
             </div>
-            {/* Rows */}
-            {[
-              { feature: "Free Hearing Test",   insono: true,  others: false },
-              { feature: "7-Day Free Trial",     insono: true,  others: false },
-              { feature: "Genuine Products",     insono: true,  others: "Sometimes" },
-              { feature: "EMI / 0% Finance",     insono: true,  others: false },
-              { feature: "Home Delivery (COD)",  insono: true,  others: false },
-              { feature: "Lifetime Servicing",   insono: true,  others: false },
-              { feature: "Certified Audiologist",insono: true,  others: "Varies" },
-              { feature: "Price Transparency",   insono: true,  others: false },
-            ].map((row, i) => (
-              <div
-                key={row.feature}
-                className={`grid grid-cols-3 text-[11px] border-t border-slate-100 ${i % 2 === 0 ? "bg-white" : "bg-slate-50/60"}`}
-              >
+            {COMPARISON_ROWS.map((row, i) => (
+              <div key={row.feature} className={`grid grid-cols-3 text-[11px] border-t border-slate-100 ${i % 2 === 0 ? "bg-white" : "bg-slate-50/60"}`}>
                 <div className="py-3 px-3 font-medium text-slate-700 leading-snug">{row.feature}</div>
                 <div className="py-3 px-2 flex items-center justify-center border-l border-slate-100 bg-blue-50/40">
                   <span className="text-emerald-500 text-base font-black">✓</span>
@@ -425,11 +413,11 @@ export default function ChandigarhLandingPage() {
             className="w-full mt-4 h-[46px] bg-[#184A99] text-white flex items-center justify-center gap-2 rounded-xl text-[13px] font-bold active:scale-[0.97] transition shadow-md shadow-[#184A99]/20"
           >
             <FileText className="w-4 h-4" />
-            Book Free Hearing Test at Insono
+            Download & Compare Prices
           </button>
         </section>
 
-        {/* REVIEWS SECTION — Mobile */}
+        {/* Reviews */}
         <section className="py-8 px-4 bg-white">
           <div className="text-center mb-5">
             <div className="flex items-center justify-center gap-2 mb-2">
@@ -437,7 +425,7 @@ export default function ChandigarhLandingPage() {
               <span className="text-[11px] font-bold text-slate-500">Google Reviews</span>
             </div>
             <div className="flex items-center justify-center gap-1 mb-1">
-              {[1,2,3,4,5].map(s => <span key={s} className="text-yellow-400 text-lg">★</span>)}
+              {[1, 2, 3, 4, 5].map((s) => <span key={s} className="text-yellow-400 text-lg">★</span>)}
             </div>
             <p className="text-[13px] font-black text-slate-800">4.9 / 5</p>
             <p className="text-[10px] text-slate-400 font-medium">Based on 1,200+ verified reviews</p>
@@ -456,7 +444,7 @@ export default function ChandigarhLandingPage() {
                     </div>
                     <p className="text-[9px] text-slate-400 mt-0.5">{r.location} · <span className="text-emerald-500 font-semibold">✓ Verified</span></p>
                     <div className="flex gap-0.5 mt-1">
-                      {[1,2,3,4,5].map(s => <span key={s} className="text-yellow-400 text-[10px]">★</span>)}
+                      {[1, 2, 3, 4, 5].map((s) => <span key={s} className="text-yellow-400 text-[10px]">★</span>)}
                     </div>
                   </div>
                 </div>
@@ -474,16 +462,50 @@ export default function ChandigarhLandingPage() {
           </a>
         </section>
 
-        {/* SECTION 8 — FAQ */}
+        {/* FAQ */}
         <section className="py-20 px-6 bg-white mb-20">
           <h2 className="text-2xl font-bold text-slate-900 mb-12 text-center">Hearing Aid FAQ</h2>
-          <FAQAccordion />
+          <div className="space-y-4 max-w-3xl mx-auto">
+            {FAQS.map((faq, i) => (
+              <div
+                key={i}
+                className={`border rounded-[2rem] overflow-hidden transition-all duration-300 ${openFaqIndex === i ? "border-[#184A99]/20 bg-slate-50/50" : "border-slate-100 bg-white"}`}
+              >
+                <button
+                  onClick={() => setOpenFaqIndex(openFaqIndex === i ? null : i)}
+                  className="w-full flex justify-between items-center text-left p-6"
+                >
+                  <span className="font-bold text-slate-900 pr-8 text-base leading-snug">{faq.q}</span>
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${openFaqIndex === i ? "bg-[#184A99] text-white rotate-180" : "bg-slate-100 text-slate-400"}`}>
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                </button>
+                <AnimatePresence>
+                  {openFaqIndex === i && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                    >
+                      <div className="px-6 pb-6">
+                        <div className="h-[1px] bg-slate-100 mb-4 w-full"></div>
+                        <p className="text-slate-500 text-[14px] leading-relaxed font-medium">{faq.a}</p>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            ))}
+          </div>
         </section>
 
-        {/* STICKY BOTTOM BAR */}
+        {/* Sticky bottom bar */}
         <div className="fixed bottom-0 left-0 right-0 z-[9999] bg-white shadow-[0_-4px_20px_rgba(0,0,0,0.1)] border-t border-slate-100 custom-bottom-bar flex">
           <a
-            href="https://wa.me/916204260510?text=Hi, I want to chat with an audiologist about hearing aids in Chandigarh"
+            href={`https://wa.me/916204260510?text=Hi, I want to know about hearing aids in ${city}`}
             target="_blank"
             rel="noopener noreferrer"
             className="flex-1 bg-[#25D366] text-white flex flex-col items-center justify-center py-2.5 gap-0.5"
@@ -502,16 +524,17 @@ export default function ChandigarhLandingPage() {
         </div>
       </div>
 
-      {/* ────────────────────────────────────────────────────────────────────────────
-          DESKTOP VERSION (min-width: 769px)
-      ──────────────────────────────────────────────────────────────────────────── */}
+      {/* ────────────────────────────────────────────────
+          DESKTOP  (≥ 769px)
+      ──────────────────────────────────────────────── */}
       <div className="hidden md:block">
 
-        {/* HERO SECTION */}
+        {/* Hero */}
         <section className="relative pt-2 pb-20 bg-gradient-to-b from-[#eaf5ff] to-white overflow-hidden">
           <div className="max-w-6xl mx-auto px-6 pt-10">
             <div className="flex flex-col lg:flex-row gap-16 items-start">
-              {/* Column 1: Text */}
+
+              {/* Text */}
               <div className="flex-[1.6] pt-8">
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
@@ -519,17 +542,17 @@ export default function ChandigarhLandingPage() {
                   className="hidden lg:inline-flex items-center gap-2 bg-[#184A99]/10 rounded-full px-5 py-2 text-[11px] font-bold text-[#184A99] mb-8 border border-[#184A99]/20"
                 >
                   <span className="w-2 h-2 bg-[#184A99] rounded-full animate-pulse"></span>
-                  Authorized Partner · Expert Audiologists in Chandigarh
+                  Authorized Partner · Expert Audiologists in {city}
                 </motion.div>
 
                 <motion.h1
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 }}
-                  className="text-5xl lg:text-[52px] font-black leading-[1.15] mb-8 text-[#0D2240] tracking-tight"
+                  className="text-5xl lg:text-[52px] font-black leading-[1.15] mb-8 tracking-tight"
                 >
                   <span className="bg-gradient-to-r from-[#E83D6D] via-[#0D2240] to-[#7C7C7C] bg-clip-text text-transparent">
-                    Digital Hearing Aids Price 2026 Chandigarh
+                    Hearing Aid Price in {city} 2026
                   </span>
                 </motion.h1>
 
@@ -539,7 +562,8 @@ export default function ChandigarhLandingPage() {
                   transition={{ delay: 0.2 }}
                   className="text-slate-500 text-xl mb-12 max-w-xl leading-relaxed font-medium"
                 >
-                  Discover the <span className="text-[#184A99] font-bold underline decoration-4 decoration-[#184A99]/10 underline-offset-8">2026 Elite Collection</span>. Experience digital clarity with a <span className="text-[#184A99] font-bold">Free Clinical Trial</span> at Chandigarh's most trusted center.
+                  Compare top brands — Signia, Phonak, Widex, ReSound & more. Get a{" "}
+                  <span className="text-[#184A99] font-bold">Free Clinical Trial</span> at {city}&apos;s most trusted hearing aid center.
                 </motion.p>
 
                 <motion.div
@@ -571,7 +595,7 @@ export default function ChandigarhLandingPage() {
                 </div>
               </div>
 
-              {/* Column 2: Image (Center) */}
+              {/* Center image */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -580,8 +604,8 @@ export default function ChandigarhLandingPage() {
               >
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#184A99]/10 via-transparent to-[#E83D6D]/10 rounded-full blur-[100px] animate-pulse"></div>
                 <Image
-                  src="/lp/signia1.png"
-                  alt="Premium Hearing Aids Chandigarh"
+                  src="/signia_bct2.png"
+                  alt="Premium Hearing Aids"
                   width={500}
                   height={500}
                   className="object-contain drop-shadow-[0_20px_60px_rgba(0,0,0,0.15)] relative z-10 hover:scale-105 transition-transform duration-700 rounded-3xl"
@@ -589,7 +613,7 @@ export default function ChandigarhLandingPage() {
                 />
               </motion.div>
 
-              {/* Column 3: Form */}
+              {/* Form */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -600,29 +624,27 @@ export default function ChandigarhLandingPage() {
                   <div className="absolute top-0 right-0 bg-[#E83D6D] text-white text-[10px] font-bold px-5 py-2 rounded-bl-2xl uppercase tracking-widest">
                     Free Consultation
                   </div>
-                  <h2 className="text-2xl font-bold mb-3 pt-4 text-[#0D2240]">Download Prices & Claim Free Trial</h2>
-                  <p className="text-slate-500 text-xs mb-8 leading-relaxed">Get the full 2026 Brands Price List instantly on WhatsApp.</p>
-                  <LeadForm />
+                  <h2 className="text-2xl font-bold mb-3 pt-4 text-[#0D2240]">Download Hearing Aid Prices & Claim Free Trial</h2>
+                  <p className="text-slate-500 text-xs mb-8 leading-relaxed">Get the full 2026 Price List for all major brands instantly on WhatsApp.</p>
+                  <LeadForm city={citySlug} />
                 </div>
               </motion.div>
             </div>
           </div>
         </section>
 
-
-
-        {/* PRODUCT SECTION */}
+        {/* Products */}
         <section className="max-w-6xl mx-auto px-6 py-32" id="models">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8">
-            <div className="text-left">
+            <div>
               <h2 className="text-[10px] font-black text-[#184A99] uppercase tracking-[0.4em] mb-4">Premium Collection</h2>
-              <h3 className="text-5xl font-bold text-slate-900 tracking-tight">2026's Top Models</h3>
+              <h3 className="text-5xl font-bold text-slate-900 tracking-tight">Top 5 Hearing Aids in {city}</h3>
             </div>
-            <p className="text-slate-500 max-w-sm font-medium leading-relaxed text-lg">Individually selected by our experts for the active lifestyles of Chandigarh residents.</p>
+            <p className="text-slate-500 max-w-sm font-medium leading-relaxed text-lg">Individually selected by our audiologists — best models across all major brands.</p>
           </div>
 
           <div className="grid gap-12">
-            {CHANDIGARH_MODELS.map((p) => (
+            {MODELS.map((p) => (
               <motion.div
                 whileHover={{ y: -5 }}
                 key={p.rank}
@@ -642,7 +664,7 @@ export default function ChandigarhLandingPage() {
                       <span className="text-[10px] text-slate-400 font-bold uppercase tracking-[0.2em]">{p.style} · {p.channels}</span>
                     </div>
                     <h3 className="text-5xl font-bold text-slate-950 mb-6 tracking-tight">{p.title}</h3>
-                    <p className="text-[#184A99] text-2xl font-bold mb-12 italic leading-relaxed">"{p.highlight}"</p>
+                    <p className="text-[#184A99] text-2xl font-bold mb-12 italic leading-relaxed">&ldquo;{p.highlight}&rdquo;</p>
                     <div className="flex flex-wrap gap-4 mb-12">
                       {p.features.map((f) => (
                         <span key={f} className="bg-slate-50 text-slate-500 px-6 py-3 rounded-2xl text-[11px] font-bold border border-slate-100 uppercase tracking-widest">
@@ -654,7 +676,7 @@ export default function ChandigarhLandingPage() {
                   <div className="flex flex-col sm:flex-row items-center justify-start gap-10 pt-12 border-t border-slate-50">
                     <button
                       onClick={() => setIsPopupOpen(true)}
-                      className="w-full sm:w-auto flex items-center justify-center gap-3 bg-[#184A99] text-white px-12 py-6 rounded-[2rem] font-bold text-sm text-center hover:bg-[#13366e] transition border border-slate-200 uppercase tracking-widest shadow-xl shadow-blue-100"
+                      className="w-full sm:w-auto flex items-center justify-center gap-3 bg-[#184A99] text-white px-12 py-6 rounded-[2rem] font-bold text-sm hover:bg-[#13366e] transition uppercase tracking-widest shadow-xl shadow-blue-100"
                     >
                       Get Full Price List <ArrowRight className="w-4 h-4" />
                     </button>
@@ -663,18 +685,49 @@ export default function ChandigarhLandingPage() {
               </motion.div>
             ))}
           </div>
+
+          {/* Lock teaser — desktop */}
+          <div className="relative mt-12">
+            <div className="grid gap-12 pointer-events-none select-none" aria-hidden>
+              {[1, 2].map((i) => (
+                <div key={i} className={`bg-white border border-slate-100 rounded-[4rem] overflow-hidden flex flex-col lg:flex-row h-[180px] ${i === 2 ? "opacity-30" : "opacity-60"}`}>
+                  <div className="lg:w-[420px] bg-slate-100 flex-shrink-0" />
+                  <div className="flex-1 p-12 space-y-4">
+                    <div className="h-5 bg-slate-100 rounded-full w-1/3" />
+                    <div className="h-8 bg-slate-100 rounded-full w-2/3" />
+                    <div className="h-4 bg-slate-100 rounded-full w-1/2" />
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/75 backdrop-blur-[4px] rounded-[4rem]">
+              <div className="text-center px-6">
+                <div className="w-16 h-16 bg-[#184A99] rounded-full flex items-center justify-center mx-auto mb-4 shadow-xl shadow-[#184A99]/30">
+                  <Lock className="w-7 h-7 text-white" />
+                </div>
+                <h3 className="text-2xl font-black text-slate-900 mb-2">10+ More Models Available</h3>
+                <p className="text-slate-500 text-sm mb-6 max-w-sm mx-auto">Download the complete price list to compare all brands, models & features — free on WhatsApp.</p>
+                <button
+                  onClick={() => setIsPopupOpen(true)}
+                  className="inline-flex items-center gap-2 bg-[#184A99] text-white px-10 py-4 rounded-2xl font-bold text-sm hover:bg-[#13366e] transition shadow-xl shadow-blue-100 uppercase tracking-widest"
+                >
+                  <FileText className="w-4 h-4" />
+                  Download Full Price List
+                </button>
+              </div>
+            </div>
+          </div>
         </section>
 
-        {/* COMPARISON — Insono vs Others (Desktop) */}
+        {/* Comparison */}
         <section className="py-20 bg-slate-50">
           <div className="max-w-3xl mx-auto px-6">
             <div className="text-center mb-10">
               <h2 className="text-[10px] font-black text-[#184A99] uppercase tracking-[0.4em] mb-4">The Difference</h2>
               <h3 className="text-4xl font-bold text-slate-900 tracking-tight">Insono Hearing vs Others</h3>
-              <p className="text-slate-500 mt-3 text-base">Why thousands in Chandigarh choose Insono</p>
+              <p className="text-slate-500 mt-3 text-base">Why thousands in {city} choose Insono</p>
             </div>
             <div className="rounded-3xl overflow-hidden border border-slate-200 shadow-sm">
-              {/* Header */}
               <div className="grid grid-cols-3 bg-[#184A99] text-white text-sm font-bold">
                 <div className="py-4 px-6">Feature</div>
                 <div className="py-4 px-4 text-center border-l border-white/20 bg-white/10">
@@ -682,16 +735,7 @@ export default function ChandigarhLandingPage() {
                 </div>
                 <div className="py-4 px-4 text-center border-l border-white/20 text-white/70">Others</div>
               </div>
-              {[
-                { feature: "Free Hearing Test",    insono: true,  others: false },
-                { feature: "7-Day Free Trial",      insono: true,  others: false },
-                { feature: "Genuine Products",      insono: true,  others: "Sometimes" },
-                { feature: "EMI / 0% Finance",      insono: true,  others: false },
-                { feature: "Home Delivery (COD)",   insono: true,  others: false },
-                { feature: "Lifetime Servicing",    insono: true,  others: false },
-                { feature: "Certified Audiologist", insono: true,  others: "Varies" },
-                { feature: "Price Transparency",    insono: true,  others: false },
-              ].map((row, i) => (
+              {COMPARISON_ROWS.map((row, i) => (
                 <div key={row.feature} className={`grid grid-cols-3 text-sm border-t border-slate-100 ${i % 2 === 0 ? "bg-white" : "bg-slate-50/60"}`}>
                   <div className="py-4 px-6 font-medium text-slate-700">{row.feature}</div>
                   <div className="py-4 px-4 flex items-center justify-center border-l border-slate-100 bg-blue-50/40">
@@ -715,13 +759,13 @@ export default function ChandigarhLandingPage() {
                 className="inline-flex items-center gap-3 bg-[#184A99] text-white px-10 py-5 rounded-2xl font-bold text-sm hover:bg-[#13366e] transition shadow-xl shadow-blue-100 uppercase tracking-widest"
               >
                 <FileText className="w-5 h-5" />
-                Book Free Hearing Test at Insono
+                Download & Compare Prices
               </button>
             </div>
           </div>
         </section>
 
-        {/* REVIEWS SECTION — Desktop */}
+        {/* Reviews */}
         <section className="py-20 bg-white">
           <div className="max-w-5xl mx-auto px-6">
             <div className="text-center mb-12">
@@ -730,7 +774,7 @@ export default function ChandigarhLandingPage() {
                 <span className="text-sm font-bold text-slate-500">Google Reviews</span>
               </div>
               <div className="flex items-center justify-center gap-1 mb-2">
-                {[1,2,3,4,5].map(s => <span key={s} className="text-yellow-400 text-2xl">★</span>)}
+                {[1, 2, 3, 4, 5].map((s) => <span key={s} className="text-yellow-400 text-2xl">★</span>)}
               </div>
               <p className="text-2xl font-black text-slate-800">4.9 / 5</p>
               <p className="text-sm text-slate-400 font-medium mt-1">Based on 1,200+ verified Google reviews</p>
@@ -748,10 +792,10 @@ export default function ChandigarhLandingPage() {
                     </div>
                   </div>
                   <div className="flex gap-0.5">
-                    {[1,2,3,4,5].map(s => <span key={s} className="text-yellow-400 text-sm">★</span>)}
+                    {[1, 2, 3, 4, 5].map((s) => <span key={s} className="text-yellow-400 text-sm">★</span>)}
                     <span className="text-[10px] text-slate-400 ml-1 self-center">{r.time}</span>
                   </div>
-                  <p className="text-xs text-slate-600 leading-relaxed flex-1">"{r.text}"</p>
+                  <p className="text-xs text-slate-600 leading-relaxed flex-1">&ldquo;{r.text}&rdquo;</p>
                 </div>
               ))}
             </div>
@@ -768,7 +812,7 @@ export default function ChandigarhLandingPage() {
           </div>
         </section>
 
-        {/* FAQ SECTION */}
+        {/* FAQ */}
         <section className="bg-[#0D2240] py-32 text-white">
           <div className="max-w-4xl mx-auto px-6">
             <h2 className="text-4xl font-bold text-center mb-24">Frequently Asked Questions</h2>
@@ -783,20 +827,19 @@ export default function ChandigarhLandingPage() {
           </div>
         </section>
 
-        {/* FOOTER */}
+        {/* Footer */}
         <footer className="py-20 border-t border-slate-100 text-center bg-slate-50">
           <div className="max-w-6xl mx-auto px-6">
             <Image src="/logo.webp" alt="Insono" width={140} height={40} className="h-9 w-auto mx-auto mb-8 grayscale opacity-50" />
-            <p className="text-[11px] text-slate-400 font-bold uppercase tracking-[0.4em]">© 2026 Insono Hearing · Chandigarh Specialist Center</p>
+            <p className="text-[11px] text-slate-400 font-bold uppercase tracking-[0.4em]">© 2026 Insono Hearing · Hearing Aid Specialist · {city}</p>
           </div>
         </footer>
       </div>
 
-      {/* ── PREMIUM LEAD POPUP MODAL ── */}
+      {/* ── MODAL ── */}
       <AnimatePresence>
         {isPopupOpen && (
           <div className="fixed inset-0 z-[10000] flex items-center justify-center px-4">
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -804,18 +847,13 @@ export default function ChandigarhLandingPage() {
               onClick={() => setIsPopupOpen(false)}
               className="absolute inset-0 bg-[#0D2240]/80 backdrop-blur-sm"
             />
-
-            {/* Modal Card */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               className="relative w-full max-w-[420px] bg-white rounded-3xl shadow-[0_30px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden"
             >
-              {/* Top accent bar */}
               <div className="h-1.5 w-full bg-gradient-to-r from-[#184A99] via-[#E83D6D] to-[#184A99]" />
-
-              {/* Close Button */}
               <button
                 onClick={() => setIsPopupOpen(false)}
                 className="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 hover:text-rose-500 transition-colors z-10"
@@ -826,7 +864,6 @@ export default function ChandigarhLandingPage() {
               </button>
 
               <div className="px-6 pt-5 pb-6">
-                {/* Header */}
                 <div className="flex items-start gap-4 mb-5">
                   <div className="flex-shrink-0 w-14 h-14 rounded-2xl overflow-hidden border border-slate-100 shadow-sm">
                     <img src="/image/dha-price.png" alt="Price List" className="w-full h-full object-cover" />
@@ -837,20 +874,19 @@ export default function ChandigarhLandingPage() {
                       <span className="text-[9px] font-bold text-green-700 uppercase tracking-wider">Free · Instant on WhatsApp</span>
                     </div>
                     <h2 className="text-[18px] font-black text-[#0D2240] leading-tight">
-                      Download Complete<br />Brand Price List 2026
+                      Hearing Aid Price List<br />{city} 2026
                     </h2>
                   </div>
                 </div>
 
-                {/* What's inside */}
                 <div className="bg-slate-50 rounded-2xl p-4 mb-5 border border-slate-100">
-                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">What's included</p>
+                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">What&apos;s included</p>
                   <ul className="space-y-2">
                     {[
-                      "Signia, Phonak, Widex & More",
+                      "Signia, Phonak, Widex, ReSound & more",
                       "All model prices with EMI breakdown",
-                      "Side-by-side brand comparison chart",
-                      "Exclusive Chandigarh clinic discount",
+                      "Side-by-side feature comparison chart",
+                      `Exclusive ${city} clinic discount`,
                     ].map((item) => (
                       <li key={item} className="flex items-start gap-2 text-[12px] text-slate-700 font-medium">
                         <span className="text-emerald-500 font-black text-sm leading-none mt-0.5">✓</span>
@@ -860,17 +896,15 @@ export default function ChandigarhLandingPage() {
                   </ul>
                 </div>
 
-                {/* Form */}
-                <LeadForm compact isMobile={typeof window !== "undefined" && window.innerWidth < 768} />
+                <LeadForm
+                  compact
+                  city={citySlug}
+                  isMobile={typeof window !== "undefined" && window.innerWidth < 768}
+                />
 
-                {/* Trust row */}
-                <div className="flex items-center justify-center gap-4 mt-4">
-                  <img src="/brands/signia.svg" alt="Signia" className="h-4 w-auto grayscale opacity-40" />
-                  <span className="text-[9px] text-slate-300">|</span>
-                  <div className="flex items-center gap-1">
-                    {[1,2,3,4,5].map(s => <span key={s} className="text-yellow-400 text-[10px]">★</span>)}
-                    <span className="text-[9px] text-slate-400 font-medium ml-1">4.9 · 1,200+ reviews</span>
-                  </div>
+                <div className="flex items-center justify-center gap-1 mt-4">
+                  {[1, 2, 3, 4, 5].map((s) => <span key={s} className="text-yellow-400 text-[10px]">★</span>)}
+                  <span className="text-[9px] text-slate-400 font-medium ml-1">4.9 · 1,200+ reviews</span>
                 </div>
               </div>
             </motion.div>
