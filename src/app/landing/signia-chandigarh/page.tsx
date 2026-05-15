@@ -286,7 +286,7 @@ export default function ChandigarhLandingPage() {
               {[
                 { icon: "🎧", text: "Bluetooth & Rechargeable Models" },
                 { icon: "🏥", text: "Free Hearing Test at Chandigarh Clinic" },
-                { icon: "💰", text: "Save upto ₹31,500 on Hearing Aids" },
+                { icon: "💰", text: "Save upto ₹31,500 on Signia Aids" },
               ].map((b) => (
                 <li key={b.text} className="flex items-center gap-3">
                   <span className="text-lg flex-shrink-0">{b.icon}</span>
@@ -599,8 +599,8 @@ export default function ChandigarhLandingPage() {
                   <div className="absolute top-0 right-0 bg-[#E83D6D] text-white text-[10px] font-bold px-5 py-2 rounded-bl-2xl uppercase tracking-widest">
                     Free Consultation
                   </div>
-                  <h2 className="text-2xl font-bold mb-3 pt-4 text-[#0D2240]">Download Prices & Claim Free Trial</h2>
-                  <p className="text-slate-500 text-xs mb-8 leading-relaxed">Get the full 2026 Brand Price List instantly on WhatsApp.</p>
+                  <h2 className="text-2xl font-bold mb-3 pt-4 text-[#0D2240]">Download Signia Prices & Claim Free Trial</h2>
+                  <p className="text-slate-500 text-xs mb-8 leading-relaxed">Get the full 2026 Signia Price List instantly on WhatsApp.</p>
                   <LeadForm />
                 </div>
               </motion.div>
@@ -786,7 +786,7 @@ export default function ChandigarhLandingPage() {
         <footer className="py-20 border-t border-slate-100 text-center bg-slate-50">
           <div className="max-w-6xl mx-auto px-6">
             <Image src="/logo.webp" alt="Insono" width={140} height={40} className="h-9 w-auto mx-auto mb-8 grayscale opacity-50" />
-            <p className="text-[11px] text-slate-400 font-bold uppercase tracking-[0.4em]">© 2026 Insono Hearing · Chandigarh Specialist Center</p>
+            <p className="text-[11px] text-slate-400 font-bold uppercase tracking-[0.4em]">© 2026 Insono Hearing · Signia Specialist Center · Chandigarh</p>
           </div>
         </footer>
       </div>

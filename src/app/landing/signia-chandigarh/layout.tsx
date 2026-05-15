@@ -1,9 +1,9 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Best Hearing Aids in Chandigarh | Free Test & Trial | Insono Hearing",
-  description: "Experience 100% invisible hearing aids in Chandigarh. Authorized partner for Signia, Phonak & Widex. Get a free clinical hearing test & trial today. EMI starts at ₹999.",
-  keywords: ["hearing aids chandigarh", "hearing test chandigarh", "audiologist chandigarh", "invisible hearing aids india"],
+  title: "Signia Hearing Aids in Chandigarh | Latest Models & Best Prices",
+  description: "Experience the latest Signia IX Platform and Silk hearing aids in Chandigarh. Get free trials, expert fitting, and best prices on all Signia models at Insono.",
+  keywords: ["signia hearing aids chandigarh", "hearing test chandigarh", "audiologist chandigarh", "invisible hearing aids india"],
 };
 
 export default function ChandigarhLayout({

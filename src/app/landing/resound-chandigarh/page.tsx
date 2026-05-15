@@ -143,11 +143,11 @@ const REVIEWS = [
 ];
 
 const BRAND_LOGOS = [
+  "/brands/resound.svg",
   "/brands/signia.svg",
   "/brands/widex.svg",
   "/brands/phonaklogo.svg",
   "/brands/oticon.svg",
-  "/brands/resound.svg",
 ];
 
 function FAQAccordion() {

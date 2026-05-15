@@ -143,8 +143,8 @@ const REVIEWS = [
 ];
 
 const BRAND_LOGOS = [
-  "/brands/signia.svg",
   "/brands/widex.svg",
+  "/brands/signia.svg",
   "/brands/phonaklogo.svg",
   "/brands/oticon.svg",
   "/brands/resound.svg",
