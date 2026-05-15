@@ -9,9 +9,9 @@ import ImageShowcaseSection from "@/components/ImageShowcaseSection";
 
 // ✅ SEO Meta Tags
 export const metadata: Metadata = {
-  title: "Phonak Hearing Aids – Prices, Models & Features in India | Insono Hearing Solutions",
+  title: "Phonak Hearing Aids in India — Lumity, Audeo Sphere & More | Insono Hearing",
   description:
-    "Explore Phonak hearing aids — rechargeable, Bluetooth & invisible models. Compare features & prices, book free consultation or download price list. 100% genuine with warranty.",
+    "Explore Phonak hearing aids — Audeo Lumity, Audeo Sphere, Paradise, Slim & Naida. Rechargeable, Bluetooth & Roger-compatible. Prices from ₹30,000. Authorized Phonak partner. Free trial at Insono Hearing.",
   alternates: {
     canonical: "https://www.insonohearing.com/hearing-aids/phonak",
   },

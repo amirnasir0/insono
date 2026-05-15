@@ -9,16 +9,16 @@ import ImageShowcaseSection from "@/components/ImageShowcaseSection";
 
 // ✅ SEO Meta Tags
 export const metadata: Metadata = {
-  title: "Reciever in Canal (RIC) Digital Hearing Aids",
+  title: "RIC Hearing Aids in India — Prices, Models & Features | Insono Hearing",
   description:
-    "Explore RIC hearing aids — rechargeable, Bluetooth & invisible models. Compare features & prices, book free consultation or download price list. 100% genuine with warranty.",
+    "RIC (Receiver-in-Canal) hearing aids are discreet, powerful & ideal for mild to severe hearing loss. Compare Signia Pure, Phonak Audeo & Widex Moment RIC models. Prices from ₹25,000. Free 3-day trial at Insono Hearing.",
   alternates: {
     canonical: "https://www.insonohearing.com/hearing-aids/ric",
   },
   openGraph: {
-    title: "Reciever in Canal (RIC) Digital Hearing Aids",
+    title: "RIC Hearing Aids India — Prices & Models | Insono Hearing",
     description:
-      "Explore rechargeable hearing aids — rechargeable, Bluetooth & invisible models. Compare features & prices, book free consultation or download price list.",
+      "Compare RIC hearing aids from Signia, Phonak & Widex — small, discreet, speaker-in-canal design. Prices from ₹25,000. Free trial available.",
     url: "https://www.insonohearing.com/hearing-aids/ric",
     type: "website",
   },

@@ -9,16 +9,16 @@ import ImageShowcaseSection from "@/components/ImageShowcaseSection";
 
 // ✅ SEO Meta Tags
 export const metadata: Metadata = {
-  title: "IIC Hearing Aids – Prices, Models & Features in India",
+  title: "IIC Invisible Hearing Aids in India — Prices & Models | Insono Hearing",
   description:
-    "Explore IIC hearing aids — rechargeable, Bluetooth & invisible models. Compare features & prices, book free consultation or download price list. 100% genuine with warranty.",
+    "IIC (Invisible-in-Canal) hearing aids sit completely inside the ear canal — no one can see them. Compare Signia Silk, Phonak Virto & Widex IIC models. Custom-fit, prices from ₹60,000. Free trial at Insono Hearing.",
   alternates: {
     canonical: "https://www.insonohearing.com/hearing-aids/iic",
   },
   openGraph: {
-    title: "IIC Hearing Aids – Prices, Models & Features in India",
+    title: "IIC Invisible Hearing Aids India | Insono Hearing",
     description:
-      "Explore IIC hearing aids — rechargeable, Bluetooth & invisible models. Compare features & prices, book free consultation or download price list.",
+      "Completely invisible hearing aids custom-fit inside the ear canal. Signia Silk, Phonak Virto & Widex IIC. Prices from ₹60,000.",
     url: "https://www.insonohearing.com/hearing-aids/iic",
     type: "website",
   },

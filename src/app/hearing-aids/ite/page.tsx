@@ -9,16 +9,16 @@ import ImageShowcaseSection from "@/components/ImageShowcaseSection";
 
 // ✅ SEO Meta Tags
 export const metadata: Metadata = {
-  title: "ITE Hearing Aids – Prices, Models & Features in India",
+  title: "ITE Hearing Aids in India — Custom-Fit In-the-Ear Models | Insono Hearing",
   description:
-    "Explore In the ear hearing aids — rechargeable, Bluetooth & invisible models. Compare features & prices, book free consultation or download price list. 100% genuine with warranty.",
+    "ITE (In-the-Ear) hearing aids are custom-moulded to fit your ear — discreet, easy to handle, and ideal for mild to moderate hearing loss. Compare Signia, Phonak & Widex ITE models. Prices from ₹30,000.",
   alternates: {
     canonical: "https://www.insonohearing.com/hearing-aids/ite",
   },
   openGraph: {
-    title: "ITE Hearing Aids – Prices, Models & Features in India",
+    title: "ITE Hearing Aids India — Custom-Fit | Insono Hearing",
     description:
-      "Explore In the Ear hearing aids — rechargeable, Bluetooth & invisible models. Compare features & prices, book free consultation or download price list.",
+      "Custom-moulded in-the-ear hearing aids for mild to moderate loss. Signia, Phonak & Widex ITE models. Prices from ₹30,000.",
     url: "https://www.insonohearing.com/hearing-aids/ite",
     type: "website",
   },

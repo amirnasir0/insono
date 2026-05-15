@@ -4,6 +4,18 @@ export const metadata = {
   title: "Hearing Aid Clinics Across India | Insono Hearing Solutions",
   description:
     "Find Insono hearing aid clinics in Mumbai, Delhi, Noida, Gurgaon, Lucknow, Kolkata, Patna & more. Free hearing test, certified audiologists, premium brands. Open Mon–Sun, 10 AM–7 PM.",
+  alternates: {
+    canonical: "https://www.insonohearing.com/our-clinic",
+  },
+  openGraph: {
+    title: "Hearing Aid Clinics Near You | Insono Hearing Solutions",
+    description:
+      "15+ Insono hearing aid clinics across India — Mumbai, Delhi NCR, Kolkata, Lucknow & more. Free hearing test, top brands, open daily.",
+    url: "https://www.insonohearing.com/our-clinic",
+    siteName: "Insono Hearing Solutions",
+    locale: "en_IN",
+    type: "website",
+  },
 };
 
 const localBusinessSchema = {

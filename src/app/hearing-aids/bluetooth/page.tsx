@@ -9,16 +9,16 @@ import ImageShowcaseSection from "@/components/ImageShowcaseSection";
 
 // ✅ SEO Meta Tags
 export const metadata: Metadata = {
-  title: "Bluetooth Powered Digital Hearing Aids from Signia Phonak Widex ",
+  title: "Bluetooth Hearing Aids in India — Stream Phone, TV & More | Insono Hearing",
   description:
-    "Hearing Aids with Bluetooth connectivity with mobile, tv and other devices. Top brand hearing aids with bluetooth connectivity on mobile phones.",
+    "Bluetooth hearing aids let you stream audio directly from your phone, TV, and smart devices. Compare Signia Pure, Phonak Audeo & Widex Moment Bluetooth models. Prices from ₹35,000. Free trial at Insono Hearing.",
   alternates: {
     canonical: "https://www.insonohearing.com/hearing-aids/bluetooth",
   },
   openGraph: {
-    title: "Bluetooth Powered Digital Hearing Aids from Signia Phonak Widex",
+    title: "Bluetooth Hearing Aids India — Stream Phone & TV | Insono Hearing",
     description:
-      "Explore Signia hearing aids — rechargeable, Bluetooth & invisible models. Compare features & prices, book free consultation or download price list.",
+      "Stream audio from phone, TV & smart devices directly to your hearing aid. Signia, Phonak & Widex Bluetooth models. Prices from ₹35,000.",
     url: "https://www.insonohearing.com/hearing-aids/bluetooth",
     type: "website",
   },

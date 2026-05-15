@@ -4,16 +4,16 @@ import { Target, Users, Shield, CheckCircle2 } from "lucide-react";
 
 // ✅ Native Next.js SEO Metadata
 export const metadata: Metadata = {
-  title: "About Us | Insono Hearing Solutions",
+  title: "About Insono Hearing — India's Trusted Hearing Aid Clinic Since 2015",
   description:
-    "Learn about Insono Hearing Solutions — trusted hearing care in India, led by Mr. Manoj Kumar with 10+ years of audiology experience.",
+    "Insono Hearing Solutions is one of India's leading hearing aid clinic chains — 15+ locations, 2,00,000+ patients, 4.9★ rating. Founded in 2015 by Mr. Manoj Kumar (DHLS). Authorized partner of Signia, Phonak, Widex & Oticon.",
   alternates: {
     canonical: "https://www.insonohearing.com/about-us",
   },
   openGraph: {
-    title: "About Us | Insono Hearing Solutions",
+    title: "About Insono Hearing — India's Trusted Hearing Aid Clinic Since 2015",
     description:
-      "Learn about Insono Hearing Solutions — trusted hearing care in India.",
+      "15+ clinics, 2,00,000+ patients, 4.9★ rating. Founded 2015 by Mr. Manoj Kumar. Authorized partner of Signia, Phonak, Widex & Oticon.",
     url: "https://www.insonohearing.com/about-us",
     siteName: "Insono Hearing Solutions",
     images: [
@@ -29,9 +29,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "About Us | Insono Hearing Solutions",
+    title: "About Insono Hearing — India's Trusted Hearing Aid Clinic Since 2015",
     description:
-      "Learn about Insono Hearing Solutions — trusted hearing care in India.",
+      "15+ clinics, 2,00,000+ patients, 4.9★ rating. Founded 2015. Authorized Signia, Phonak, Widex & Oticon partner.",
     images: ["https://www.insonohearing.com/image/about-hero-new.jpeg"],
   },
 };

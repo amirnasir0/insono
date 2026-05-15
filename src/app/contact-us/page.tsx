@@ -3,14 +3,23 @@ import Link from "next/link";
 import { MapPin, Phone, Mail, Building2 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Insono Hearing Solutions",
+  title: "Contact Insono Hearing — Book Free Hearing Test | +91 62042 60510",
   description:
-    "Get in touch with Insono Hearing. Visit our clinics in Noida & Delhi, call +91 6204260510, or fill the form. Free hearing test available at all locations.",
+    "Contact Insono Hearing Solutions — call +91 62042 60510, WhatsApp, or visit any of our 15+ clinics across India. Free hearing test available. Expert audiologists. Open Mon–Sun, 10 AM–7 PM.",
   alternates: { canonical: "https://www.insonohearing.com/contact-us" },
   openGraph: {
-    title: "Contact Insono Hearing | Clinics in Noida & Delhi",
-    description: "Call, visit or message Insono Hearing. Expert audiologists, free hearing tests, open daily 10 AM – 7 PM.",
+    title: "Contact Insono Hearing | +91 62042 60510 | Free Hearing Test",
+    description:
+      "Call, WhatsApp or visit Insono Hearing. 15+ clinics across India. Free hearing tests, open daily 10 AM–7 PM.",
     url: "https://www.insonohearing.com/contact-us",
+    siteName: "Insono Hearing Solutions",
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact Insono Hearing | +91 62042 60510",
+    description: "Call, WhatsApp or visit. 15+ clinics across India. Free hearing tests, open daily.",
   },
 };
 

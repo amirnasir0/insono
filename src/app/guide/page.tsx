@@ -3,16 +3,26 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Hearing Aid Buying Guide 2026 — How to Choose the Right Hearing Aid | Insono Hearing",
+  title: "Hearing Aid Buying Guide 2026 | Insono Hearing",
   description:
-    "Complete hearing aid buying guide for 2026. Compare types (RIC, BTE, IIC), brands (Signia, Phonak, Widex), prices, and features. Expert advice from certified audiologists.",
+    "How to choose the right hearing aid in India — compare RIC, BTE, IIC types, Signia vs Phonak vs Widex brands, price ranges from ₹18,000 to ₹2,50,000, and what to look for. Expert advice from certified audiologists.",
   alternates: {
     canonical: "https://www.insonohearing.com/guide",
   },
   openGraph: {
     title: "Hearing Aid Buying Guide 2026 | Insono Hearing",
-    description: "Everything you need to know before buying a hearing aid — types, brands, prices, and expert tips.",
+    description:
+      "Compare hearing aid types, brands & prices before you buy. RIC, BTE, IIC explained. Signia, Phonak & Widex compared. ₹18,000–₹2,50,000 price guide.",
     url: "https://www.insonohearing.com/guide",
+    siteName: "Insono Hearing Solutions",
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Hearing Aid Buying Guide 2026 | Insono Hearing",
+    description:
+      "Compare types, brands & prices before you buy. RIC, BTE, IIC explained. Expert advice from certified audiologists.",
   },
 };
 

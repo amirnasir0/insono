@@ -9,16 +9,16 @@ import ImageShowcaseSection from "@/components/ImageShowcaseSection";
 
 // ✅ SEO Meta Tags
 export const metadata: Metadata = {
-  title: "ITC Hearing Aids – Prices, Models & Features in India",
+  title: "ITC Hearing Aids in India — In-the-Canal Prices & Models | Insono Hearing",
   description:
-    "Explore ITC hearing aids — rechargeable, Bluetooth & invisible models. Compare features & prices, book free consultation or download price list. 100% genuine with warranty.",
+    "ITC (In-the-Canal) hearing aids sit partly inside the ear canal — discreet and comfortable with easy-access controls. Ideal for mild to moderately severe loss. Compare brands & prices from ₹35,000 at Insono Hearing.",
   alternates: {
     canonical: "https://www.insonohearing.com/hearing-aids/itc",
   },
   openGraph: {
-    title: "ITC Hearing Aids – Prices, Models & Features in India",
+    title: "ITC Hearing Aids India — In-the-Canal | Insono Hearing",
     description:
-      "Explore in the canal hearing aids — rechargeable, Bluetooth & invisible models. Compare features & prices, book free consultation or download price list.",
+      "Discreet in-the-canal hearing aids with accessible controls. Mild to moderately severe loss. Prices from ₹35,000.",
     url: "https://www.insonohearing.com/hearing-aids/itc",
     type: "website",
   },

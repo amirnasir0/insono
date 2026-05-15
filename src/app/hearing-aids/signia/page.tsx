@@ -14,9 +14,9 @@ export const revalidate = 60;
 
 // ✅ SEO Meta
 export const metadata: Metadata = {
-  title: "Signia Hearing Aids – Prices, Models & Features in India",
+  title: "Signia Hearing Aids in India — Pure, Styletto, Silk & More | Insono Hearing",
   description:
-    "Explore Signia hearing aids — rechargeable, Bluetooth & invisible models. Compare features & prices, book free consultation or download price list. 100% genuine with warranty.",
+    "Explore Signia hearing aids — Pure Charge&Go, Styletto, Silk, Orion & Intuis. Rechargeable, Bluetooth & invisible models from ₹25,000. 100% genuine with manufacturer warranty. Free 3-day trial at Insono Hearing.",
   alternates: {
     canonical: "https://www.insonohearing.com/hearing-aids/signia",
   },

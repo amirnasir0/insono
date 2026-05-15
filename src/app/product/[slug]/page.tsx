@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import Script from "next/script";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import HearingAidTypes from "@/components/HearingaidType";
@@ -30,7 +29,7 @@ type Product = {
   images: string[];
 };
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://insonohearing.com";
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.insonohearing.com";
 
 async function getProduct(slug: string): Promise<Product | null> {
   try {
@@ -139,26 +138,33 @@ export async function generateMetadata({
   }
 
   const brandName = product.category.charAt(0).toUpperCase() + product.category.slice(1);
+  const techStr = product.technology.slice(0, 2).join(" & ");
+  const priceStr = product.mrp ? ` at ₹${product.mrp.toLocaleString()}` : "";
   const description =
-    product.description?.replace(/<[^>]+>/g, "").slice(0, 155) ||
-    `Buy ${product.title} from ${brandName}. ${product.technology.slice(0, 2).join(", ")} hearing aid${product.mrp ? ` at ₹${product.mrp.toLocaleString()}` : ""}. Expert fitting at Insono Hearing.`;
+    (product.description?.replace(/<[^>]+>/g, "").trim().slice(0, 155)) ||
+    `${product.title} — ${techStr ? `${techStr} hearing aid` : `${brandName} hearing aid`}${priceStr}. Free 3-day trial & expert fitting available at Insono Hearing. 100% genuine with manufacturer warranty.`;
 
-  const image = product.images[0] || `${BASE_URL}/default-og.jpg`;
+  const image = product.images[0] || `${BASE_URL}/logo.webp`;
+  const canonicalUrl = `https://www.insonohearing.com/product/${product.slug}`;
 
   return {
-    title: `${product.title} | ${brandName} Hearing Aid | Insono`,
+    title: `${product.title} | ${brandName} Hearing Aid Price & Review | Insono`,
     description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
-      title: product.title,
+      title: `${product.title} | ${brandName} Hearing Aid`,
       description,
-      url: `${BASE_URL}/product/${product.slug}`,
+      url: canonicalUrl,
       type: "website",
-      siteName: "Insono Hearing",
+      siteName: "Insono Hearing Solutions",
       images: [{ url: image }],
+      locale: "en_IN",
     },
     twitter: {
       card: "summary_large_image",
-      title: product.title,
+      title: `${product.title} | ${brandName} Hearing Aid`,
       description,
       images: [image],
     },
@@ -181,14 +187,19 @@ export default async function ProductPage({
   const cleanDescription =
     product.description?.replace(/<[^>]+>/g, "").slice(0, 160) || "";
 
+  const productUrl = `${BASE_URL}/product/${product.slug}`;
+  const priceValidUntil = new Date();
+  priceValidUntil.setFullYear(priceValidUntil.getFullYear() + 1);
+
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
     name: product.title,
-    description: cleanDescription,
+    description: cleanDescription || `${product.title} by ${brandName} — available at Insono Hearing Solutions.`,
     brand: { "@type": "Brand", name: brandName },
-    image: product.images,
-    url: `${BASE_URL}/product/${product.slug}`,
+    image: product.images.length > 0 ? product.images : [`${BASE_URL}/logo.webp`],
+    url: productUrl,
+    sku: product.slug,
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.9",
@@ -196,15 +207,20 @@ export default async function ProductPage({
       bestRating: "5",
       worstRating: "1",
     },
-    ...(product.mrp && {
-      offers: {
-        "@type": "Offer",
-        price: product.mrp,
-        priceCurrency: "INR",
-        availability: "https://schema.org/InStock",
-        seller: { "@type": "Organization", name: "Insono Hearing" },
+    offers: {
+      "@type": "Offer",
+      url: productUrl,
+      price: product.mrp ?? 0,
+      priceCurrency: "INR",
+      priceValidUntil: priceValidUntil.toISOString().split("T")[0],
+      availability: "https://schema.org/InStock",
+      itemCondition: "https://schema.org/NewCondition",
+      seller: {
+        "@type": "Organization",
+        name: "Insono Hearing Solutions",
+        url: BASE_URL,
       },
-    }),
+    },
   };
 
   const faqSchema = {
@@ -219,18 +235,14 @@ export default async function ProductPage({
 
   return (
     <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 mt-16">
-      {/* JSON-LD Schemas */}
-      <Script
-        id="product-schema"
+      {/* JSON-LD Schemas — must be plain <script> tags (not Next.js Script) so they are in the initial HTML for Google Merchant Center */}
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
-        strategy="afterInteractive"
       />
-      <Script
-        id="faq-schema"
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        strategy="afterInteractive"
       />
 
       {/* Product top section */}
@@ -306,7 +318,7 @@ export default async function ProductPage({
           )}
 
           {product.suitableFor.length > 0 && (
-            <div className="mb-4">
+            <div className="mb-5">
               <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Suitable For</p>
               <div className="flex flex-wrap gap-1.5">
                 {product.suitableFor.map((s) => (
@@ -316,26 +328,35 @@ export default async function ProductPage({
             </div>
           )}
 
-          {product.description && (
-            <div className="mb-6">
-              <ProductContent content={product.description} />
-            </div>
-          )}
-
-          <div className="flex flex-col sm:flex-row gap-3 mt-4">
+          {/* Primary CTAs — above the fold, clearly visible */}
+          <div className="flex flex-col sm:flex-row gap-3 mb-6 pt-1">
             <Link
               href={`/order/${product.slug}`}
-              className="bg-[#023784] text-white px-6 py-3 rounded-md font-medium hover:bg-[#012d66] transition text-center"
+              className="flex-1 bg-[#023784] text-white px-6 py-3.5 rounded-xl font-bold hover:bg-[#012d66] transition text-center text-base shadow-sm"
             >
               Buy Now
             </Link>
             <Link
-              href={`/price-download?utm_source=website&utm_medium=single_product&utm_campaign=${encodeURIComponent(product.title)}`}
-              className="border border-[#023784] text-[#023784] px-6 py-3 rounded-md font-medium hover:bg-[#023784] hover:text-white transition text-center"
+              href={`/appointment?utm_source=product&utm_medium=single_product&utm_campaign=${encodeURIComponent(product.title)}`}
+              className="flex-1 border-2 border-[#023784] text-[#023784] px-6 py-3.5 rounded-xl font-bold hover:bg-[#023784] hover:text-white transition text-center text-base"
             >
-              View Price
+              Book Free Trial
             </Link>
           </div>
+
+          <div className="flex items-center gap-4 text-xs text-gray-500 mb-6">
+            <span>✅ Free 3-day home trial</span>
+            <span>·</span>
+            <span>🚚 Cash on delivery</span>
+            <span>·</span>
+            <span>🛡️ Genuine warranty</span>
+          </div>
+
+          {product.description && (
+            <div className="border-t border-gray-100 pt-5">
+              <ProductContent content={product.description} />
+            </div>
+          )}
         </div>
       </section>
 

@@ -9,9 +9,9 @@ import Whychoose from "@/components/whychoose";
 
 // ✅ SEO Meta Tags
 export const metadata: Metadata = {
-  title: "Oticon Hearing Aids – Models, Prices & Features in India | Insono Hearing Solutions",
+  title: "Oticon Hearing Aids in India — More, Real, Intent & More | Insono Hearing",
   description:
-    "Explore Oticon hearing aids — known for BrainHearing™ technology, rechargeable models, and Bluetooth connectivity. View prices, models & book a free consultation.",
+    "Explore Oticon hearing aids — Intent, Real, More & OPN S. Powered by BrainHearing™ technology for 360° sound awareness. Rechargeable & Bluetooth models. Prices from ₹40,000. Free consultation at Insono Hearing.",
   alternates: {
     canonical: "https://www.insonohearing.com/hearing-aids/oticon",
   },

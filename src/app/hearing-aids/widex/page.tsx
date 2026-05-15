@@ -9,9 +9,9 @@ import Image from "next/image";
 
 // ✅ SEO Meta Tags
 export const metadata: Metadata = {
-  title: "Widex Hearing Aids – Models, Prices & Features in India | Insono Hearing Solutions",
+  title: "Widex Hearing Aids in India — Moment, Evoke & More | Insono Hearing",
   description:
-    "Discover Widex hearing aids — known for natural sound, rechargeable power, and Bluetooth connectivity. View prices, models, and book a free consultation with certified experts.",
+    "Discover Widex hearing aids — Moment Sheer, Evoke, Magnify & ENJOY. Known for natural sound quality, rechargeable & Bluetooth models. Prices from ₹35,000. Free consultation with certified audiologists at Insono Hearing.",
   alternates: {
     canonical: "https://www.insonohearing.com/hearing-aids/widex",
   },

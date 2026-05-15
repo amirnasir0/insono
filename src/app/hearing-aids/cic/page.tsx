@@ -9,16 +9,16 @@ import ImageShowcaseSection from "@/components/ImageShowcaseSection";
 
 // ✅ SEO Meta Tags
 export const metadata: Metadata = {
-  title: "CIC Hearing Aids India | Ultra-Discreet “Completely-in-the-Canal” Devices for Clear Hearing",
+  title: "CIC Hearing Aids in India — Completely-in-Canal Prices & Models | Insono Hearing",
   description:
-    "premium CIC hearing aids in India: custom-moulded, ultra-discreet devices that sit deep inside the ear canal and deliver natural sound. Ideal for mild to moderate hearing loss, available from top brands like Signia, Widex & Phonak.",
+    "CIC (Completely-in-Canal) hearing aids are custom-moulded, ultra-discreet devices that sit deep in the ear canal. Ideal for mild to moderate hearing loss. Compare Signia, Widex & Phonak CIC models. Prices from ₹40,000.",
   alternates: {
     canonical: "https://www.insonohearing.com/hearing-aids/cic",
   },
   openGraph: {
-    title: "CIC Hearing Aids India | Ultra-Discreet “Completely-in-the-Canal” Devices for Clear Hearing",
+    title: "CIC Hearing Aids India — Completely-in-Canal | Insono Hearing",
     description:
-      "premium CIC hearing aids in India: custom-moulded, ultra-discreet devices that sit deep inside the ear canal and deliver natural sound. Ideal for mild to moderate hearing loss, available from top brands like Signia, Widex & Phonak.",
+      "Custom-moulded CIC hearing aids that sit deep in the ear canal — nearly invisible. Signia, Widex & Phonak. Prices from ₹40,000.",
     url: "https://www.insonohearing.com/hearing-aids/cic",
     type: "website",
   },
@@ -107,7 +107,7 @@ export default function SigniaPage() {
       <section className="max-w-7xl mx-auto px-4 mt-30 md:px-20 flex flex-col md:flex-row items-center gap-6">
         <div className="flex-1 text-center md:text-left">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-snug mb-3">
-            Ultra-Discreet “Completely-in-the-Canal” Devices for Clear Hearing
+            Ultra-Discreet "Completely-in-the-Canal" Devices for Clear Hearing
           </h1>
           <p className="text-gray-700 mb-5 text-sm sm:text-base">
            Explore premium CIC hearing aids in India: custom-moulded, 

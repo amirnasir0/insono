@@ -9,16 +9,16 @@ import ImageShowcaseSection from "@/components/ImageShowcaseSection";
 
 // ✅ SEO Meta Tags
 export const metadata: Metadata = {
-  title: "Top Rechargeable Digital Hearing Aids from Signia,Phonak, Widex & Oticon",
+  title: "Rechargeable Hearing Aids in India — No Batteries, Charge Overnight | Insono Hearing",
   description:
-    "Explore Signia hearing aids — rechargeable, Bluetooth & invisible models. Compare features & prices, book free consultation or download price list. 100% genuine with warranty.",
+    "Rechargeable hearing aids charge overnight and last a full day — no fumbling with tiny batteries. Compare Signia Charge&Go, Phonak Lumity & Widex Moment rechargeable models. Prices from ₹30,000. Free trial available.",
   alternates: {
     canonical: "https://www.insonohearing.com/hearing-aids/rechargeable",
   },
   openGraph: {
-    title: "Top Rechargeable Digital Hearing Aids from Signia,Phonak, Widex & Oticon",
+    title: "Rechargeable Hearing Aids India — Charge & Go | Insono Hearing",
     description:
-      "Explore rechargeable hearing aids — rechargeable, Bluetooth & invisible models. Compare features & prices, book free consultation or download price list.",
+      "No batteries needed — charge overnight, hear all day. Signia Charge&Go, Phonak Lumity & Widex Moment. Prices from ₹30,000.",
     url: "https://www.insonohearing.com/hearing-aids/rechargeable",
     type: "website",
   },

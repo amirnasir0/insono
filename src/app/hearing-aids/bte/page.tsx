@@ -9,16 +9,16 @@ import ImageShowcaseSection from "@/components/ImageShowcaseSection";
 
 // ✅ SEO Meta Tags
 export const metadata: Metadata = {
-  title: "BTE Hearing Aids – Prices, Models & Features in India",
+  title: "BTE Hearing Aids in India — Prices, Models & Features | Insono Hearing",
   description:
-    "BTE Behind the ear hearing aids — rechargeable, Bluetooth models. Compare features & prices, book free consultation or download price list. 100% genuine with warranty.",
+    "BTE (Behind-the-Ear) hearing aids are India's most durable choice for moderate to severe hearing loss. Compare Signia, Phonak & Oticon BTE models. Prices from ₹18,000. 100% genuine with manufacturer warranty.",
   alternates: {
     canonical: "https://www.insonohearing.com/hearing-aids/bte",
   },
   openGraph: {
-    title: "BTE  Hearing Aids – Prices, Models & Features in India",
+    title: "BTE Hearing Aids India — Prices & Models | Insono Hearing",
     description:
-      "Explore BTE hearing aids — rechargeable, Bluetooth models. Compare features & prices, book free consultation or download price list.",
+      "Durable behind-the-ear hearing aids for moderate to severe loss. Signia, Phonak & Oticon BTE models. Prices from ₹18,000.",
     url: "https://www.insonohearing.com/hearing-aids/bte",
     type: "website",
   },
