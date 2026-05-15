@@ -47,6 +47,16 @@ const signiaFaqs = [
   { q: "Do Signia hearing aids come with a warranty?", a: "Yes, all Signia devices include a 2-year international warranty, extendable in India." },
 ];
 
+const signiaFaqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: signiaFaqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
 // 🦴 Skeleton Loader for Product Grid
 function ProductSkeleton() {
   return (
@@ -69,6 +79,11 @@ export default function SigniaPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      {/* ✅ FAQPage JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(signiaFaqSchema) }}
       />
 
       {/* 🟦 HERO SECTION */}

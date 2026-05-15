@@ -1,350 +1,283 @@
 "use client";
 
-import Image from "next/image";
+import { useState } from "react";
 import Link from "next/link";
-import React from "react";
+import Image from "next/image";
+import {
+  MapPin,
+  Clock,
+  Star,
+  Calendar,
+  Phone,
+  CheckCircle2,
+  XCircle,
+  ChevronRight,
+  MessageCircle,
+} from "lucide-react";
+import { clinics } from "./clinics-data";
 
-/* ---------- Types ---------- */
-interface Clinic {
-  id: string;
-  name: string;
-  locationLine: string;
-  address: string;
-  hours: string;
-  tag?: string;
-  catSlug?: string;
-  placeId?: string;
+/* ---------- Region ---------- */
+function getRegion(id: string, locationLine: string): string {
+  const l = locationLine.toLowerCase();
+  if (id === "andheri-mumbai") return "Maharashtra";
+  if (l.includes("delhi") || l.includes("noida") || l.includes("gurugram") || l.includes("gurgaon")) return "Delhi NCR";
+  if (l.includes("bihar")) return "Bihar";
+  if (l.includes("jharkhand")) return "Jharkhand";
+  if (l.includes("west bengal") || l.includes("kolkata") || l.includes("garia") || l.includes("asansol")) return "West Bengal";
+  if (l.includes("punjab") || l.includes("chandigarh") || l.includes("ludhiana") || l.includes("jalandhar") || l.includes("ambala")) return "Punjab";
+  if (l.includes("maharashtra") || l.includes("mumbai")) return "Maharashtra";
+  return "Others";
 }
 
-/* ---------- Data ---------- */
-const clinics: Clinic[] = [
-  {
-    id: "vinod-nagar",
-    name: "Hearing Aid Clinic in Vinod Nagar",
-    locationLine: "Vinod Nagar — Delhi",
-    address:
-      "D-251, Ground Floor, D Block, West Vinod Nagar, New Delhi - 110092",
-    hours: "Open, Closes by 7 pm",
-    tag: "Clinic",
-    placeId: "ChIJhYM9dWzlDDkRYd_B7lw9FNU",
-  },
-  {
-    id: "Dhanbad",
-    name: "Insono Hearing Solutions Pvt.Ltd. Dhanbad",
-    locationLine: "Dhanbad — Jharkhand",
-    address:
-      "Infront Of Zonal Office Bank Of India Roof 709 Building, SHOP NO:- FF4 Newtech Grand 3, Dhanbad, Saraidhella, Jharkhand 826007",
-    hours: "Open, Closes by 7 pm",
-    tag: "Clinic",
-    placeId: "ChIJh6MeOPy99jkRACHi3aOsBiM",
-  },
-  {
-    id: "banka",
-    name: "Hearing Aid Clinic in Banka",
-    locationLine: "Banka — Bihar",
-    address:
-      "Enjoy Better Hearing In, Navjyoti Nursing Home, near Indian Petrol Pump, Jagatpur, Banka, Bihar - 813102, India",
-    hours: "Open, Closes by 7 pm",
-    tag: "Clinic",
-    placeId: "ChIJ_UUO4CH_8DkRtIOVjYr5eGk",
-  },
-  {
-    id: "deoghar",
-    name: "Hearing Aid Clinic in Deoghar",
-    locationLine: "Deoghar — Jharkhand",
-    address:
-      "First Floor House No 349 A, Purnima Height, Ambedkar Chowk, near Krishna ENT, Barmasia, Deoghar, Jharkhand 814112, India",
-    hours: "Open, Closes by 7 pm",
-    tag: "Clinic",
-    placeId: "ChIJa0Lte_wX8TkRAOO9p8fzWgY",
-  },
-  {
-    id: "bhagalpur",
-    name: "Hearing Aid Clinic in Bhagalpur",
-    locationLine: "Bhagalpur — Bihar",
-    address:
-      "Kalpana Oro Dental & Implant Centre, near Hatiya Rd, Tilkamanjhi, Bhagalpur, Bihar 812001, India",
-    hours: "Open, Closes by 7 pm",
-    tag: "Clinic",
-    placeId: "ChIJC8CLllJL8DkRx3loHLy7qaw",
-  },
-  {
-    id: "noida",
-    name: "Hearing Aid Clinic in Noida",
-    locationLine: "Noida — Uttar Pradesh",
-    address:
-      "E-142, Ground Floor, Sector 20, Noida, Near Kerala Ayurveda, Uttar Pradesh - 201301",
-    hours: "Open, Closes by 7 pm",
-    tag: "Clinic",
-    placeId: "ChIJAfTkBADlDDkRAO95N7UQRFQ",
-  },
-  {
-    id: "asansol",
-    name: "Hearing Aid Clinic in Asansol",
-    locationLine: "Asansol — West Bengal",
-    address: "GT Road, Asansol",
-    hours: "Open, Closes by 7 pm",
-    tag: "Clinic",
-    placeId: "ChIJAfTkBADlDDkRAO95N7UQRFQ",
-  },
-  {
-    id: "dehradun",
-    name: "Hearing Aid Clinic in Dehradun",
-    locationLine: "Dehradun — Uttarakhand",
-    address: "Dehradun",
-    hours: "Open, Closes by 7 pm",
-    tag: "Clinic",
-    placeId: "ChIJH2SisK8pCTkRBsz4y5kNE2Y",
-  },
-  {
-    id: "gurgaon",
-    name: "Hearing Aid Clinic in Gurgaon",
-    locationLine: "Gurgaon — Haryana",
-    address:
-      "Shop No 232, First Floor, Central Arcade, Mehrauli Gurgaon Rd, Opposite Sahara Mall, A Block, DLF Phase 2, Sector 25, Gurugram, Haryana 122008",
-    hours: "Open, Closes by 7 pm",
-    tag: "Clinic",
-    placeId: "ChIJi0EKPSQZDTkRUEBiyh0-VXw",
-  },
-  {
-    id: "giridih",
-    name: "Hearing Aid Clinic in Giridih",
-    locationLine: "Giridih — Jharkhand",
-    address:
-      "Basement, Under Bata Showroom, A & S Building, Court Rd, Opposite Old Telephone Exchange, Giridih, Jharkhand 815301, India",
-    hours: "Open, Closes by 7 pm",
-    tag: "Clinic",
-    placeId: "ChIJC2eHau9V8TkRBEoBoGUXfWo",
-  },
-  {
-    id: "lajpat-nagar",
-    name: "Hearing Aid Clinic in Lajpat Nagar",
-    locationLine: "Lajpat Nagar — Delhi",
-    address:
-      "3/59, Old Story, Lajpat Nagar 4, Lajpat Nagar, New Delhi, Delhi 110024",
-    hours: "Open, Closes by 7 pm",
-    tag: "Clinic",
-    placeId: "ChIJGQuhawDlDDkRcuXRFQaYEbA",
-  },
-  {
-    id: "jamshedpur",
-    name: "Hearing Aid Clinic in Jamshedpur",
-    locationLine: "Jamshedpur — Jharkhand",
-    address: "Jamshedpur",
-    hours: "Open, Closes by 7 pm",
-    tag: "Clinic",
-    placeId: "ChIJAfTkBADlDDkRAO95N7UQRFQ",
-  },
-  {
-    id: "lucknow",
-    name: "Hearing Aid Clinic in Lucknow",
-    locationLine: "Lucknow — Uttar Pradesh",
-    address:
-      "10/36, Tedhi Pulia Ring Rd, near Narayan Automobile, behind Mahendra Agency, Shekhupura, Vikas Nagar, Lucknow, Uttar Pradesh 226022",
-    hours: "Open, Closes by 7 pm",
-    tag: "Clinic",
-    placeId: "ChIJzWAWfZFXmTkREIOqkh4urOY",
-  },
-  {
-    id: "ranchi",
-    name: "Hearing Aid Clinic in Ranchi",
-    locationLine: "Ranchi — Jharkhand",
-    address: "Online Service Available",
-    hours: "Open, Closes by 7 pm",
-    tag: "Clinic",
-    placeId: "ChIJAfTkBADlDDkRAO95N7UQRFQ",
-  },
-  {
-    id: "jalandhar",
-    name: "Hearing Aid Clinic in Jalandhar",
-    locationLine: "Jalandhar — Punjab",
-    address: "Service Available",
-    hours: "Open, Closes by 7 pm",
-    tag: "Clinic",
-    placeId: "ChIJAfTkBADlDDkRAO95N7UQRFQ",
-  },
-  {
-    id: "jammu",
-    name: "Hearing Aid Clinic in Jammu",
-    locationLine: "Jammu — Jammu & Kashmir",
-    address: "Service Available",
-    hours: "Open, Closes by 7 pm",
-    tag: "Clinic",
-    placeId: "ChIJAfTkBADlDDkRAO95N7UQRFQ",
-  },
-  {
-    id: "garia-kolkata",
-    name: "Hearing Aid Clinic in Garia Kolkata",
-    locationLine: "Garia — West Bengal",
-    address:
-      "ACOUSTIC HEARING SOLUTION, P-515, Raja S C Mullick Road, Garia Kolkata - 700084, Opp. Sreeleathers",
-    hours: "Open, Closes by 7 pm",
-    tag: "Clinic",
-    placeId: "ChIJjUYoG49xAjoRK75wxbdHB2E",
-  },
-  {
-    id: "chandigarh",
-    name: "Hearing Aid Clinic in Chandigarh",
-    locationLine: "Chandigarh — Punjab",
-    address: "Service Available",
-    hours: "Open, Closes by 7 pm",
-    tag: "Clinic",
-    placeId: "ChIJAfTkBADlDDkRAO95N7UQRFQ",
-  },
-  {
-    id: "ambala",
-    name: "Hearing Aid Clinic in Ambala",
-    locationLine: "Ambala — Punjab",
-    address: "Service Available",
-    hours: "Open, Closes by 7 pm",
-    tag: "Clinic",
-    placeId: "ChIJAfTkBADlDDkRAO95N7UQRFQ",
-  },
-  {
-    id: "patna",
-    name: "Hearing Aid Clinic in Patna",
-    locationLine: "Patna — Bihar",
-    address: "Service Available",
-    hours: "Open, Closes by 7 pm",
-    tag: "Clinic",
-    placeId: "ChIJAfTkBADlDDkRAO95N7UQRFQ",
-  },
-  {
-    id: "ludhiana",
-    name: "Hearing Aid Clinic in Ludhiana",
-    locationLine: "Ludhiana — Punjab",
-    address: "Service Available",
-    hours: "Open, Closes by 7 pm",
-    tag: "Clinic",
-    placeId: "ChIJAfTkBADlDDkRAO95N7UQRFQ",
-  },
-  {
-    id: "hyderabad",
-    name: "Hearing Aid Clinic in Hyderabad",
-    locationLine: "Hyderabad — Telangana",
-    address: "Service Available",
-    hours: "Open, Closes by 7 pm",
-    tag: "Clinic",
-    placeId: "ChIJAfTkBADlDDkRAO95N7UQRFQ",
-  },
-  {
-    id: "kolkata",
-    name: "Hearing Aid Clinic in Kolkata",
-    locationLine: "Kolkata — West Bengal",
-    address:
-      "13 Ram Mohan Dutta Road, (Near Northern Park) Bhawanipur, Kolkata - 700020",
-    hours: "Open, Closes by 7 pm",
-    tag: "Clinic",
-    placeId: "ChIJjUYoG49xAjoRK75wxbdHB2E",
-  },
+const REGIONS = ["All", "Delhi NCR", "Maharashtra", "Bihar", "Jharkhand", "West Bengal", "Punjab", "Others"];
+
+/* ---------- Stats ---------- */
+const stats = [
+  { value: "15+", label: "Cities" },
+  { value: "2,00,000+", label: "Patients Served" },
+  { value: "4.9★", label: "Google Rating" },
+  { value: "Free", label: "Hearing Test" },
 ];
 
-/* ---------- Comparison Items ---------- */
-const comparisonItems: string[] = [
-  "Booking for an appointment at hearing clinics is quick and easy",
-  "Free hearing checkup at any time and anywhere",
-  "Generating free preliminary hearing report",
-  "Visiting a hearing clinic is mandatory",
-  "Home visits by the hearing experts",
-  "Live interaction with hearing experts at any time",
-  "Many choices for hearing aids",
-  "Clinic visit for the purchase of hearing aid accessories is compulsory",
-  "Reminder for the service and warranty of the hearing aid",
-  "Transparency while selecting the hearing aid by using Latest Hii5 technology is available",
-  "Hassle-free hearing care experience at your fingertips",
+/* ---------- Trust strip ---------- */
+const trustFeatures = [
+  { emoji: "🎧", label: "Free Hearing Test" },
+  { emoji: "🏠", label: "3-Day Home Trial" },
+  { emoji: "💳", label: "0% EMI Available" },
+  { emoji: "🛡️", label: "Up to 4-Year Warranty" },
+  { emoji: "✅", label: "100% Genuine Devices" },
+  { emoji: "📞", label: "Lifetime Aftercare" },
 ];
 
-/* ------------------ Component ------------------ */
+/* ---------- Comparison ---------- */
+const comparisonRows: { text: string; insono: boolean; others: boolean }[] = [
+  { text: "Quick and easy appointment booking", insono: true, others: false },
+  { text: "Free hearing test, anytime", insono: true, others: false },
+  { text: "Free preliminary hearing report", insono: true, others: false },
+  { text: "Home visits by audiologists", insono: true, others: false },
+  { text: "3-day home trial before purchase", insono: true, others: false },
+  { text: "Live expert consultation anytime", insono: true, others: false },
+  { text: "Multiple brand choices (5+ brands)", insono: true, others: false },
+  { text: "Service & warranty reminders", insono: true, others: false },
+  { text: "Hassle-free aftercare & fine-tuning", insono: true, others: false },
+  { text: "Clinic visit mandatory for everything", insono: false, others: true },
+  { text: "Clinic visit required for accessories", insono: false, others: true },
+];
+
+/* ---------- WhatsApp SVG ---------- */
+function WhatsAppIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    </svg>
+  );
+}
+
+/* ========== Main Component ========== */
 export default function ClinicsList() {
+  const [activeRegion, setActiveRegion] = useState("All");
+
+  const enriched = clinics.map((c) => ({
+    ...c,
+    region: getRegion(c.id, c.locationLine),
+    isNew: c.id === "andheri-mumbai",
+  }));
+
+  const filtered =
+    activeRegion === "All"
+      ? enriched
+      : enriched.filter((c) => c.region === activeRegion);
+
+  const regionCount = (r: string) =>
+    r === "All" ? enriched.length : enriched.filter((c) => c.region === r).length;
+
   return (
     <>
-      {/* Breadcrumb area */}
-      <section className="py-12 pt-24">
-        <div className="max-w-6xl mx-auto px-4">
-          <h1 className="text-3xl lg:text-4xl font-bold text-[#112f70]">
-            Find a Hearing Aid Clinic Near You
+      {/* ── Hero ── */}
+      <section className="bg-gradient-to-br from-[#012d66] via-[#023784] to-[#1a56b0] text-white pt-28 pb-16 px-4">
+        <div className="max-w-6xl mx-auto text-center">
+          <span className="inline-block text-xs font-semibold tracking-widest uppercase bg-white/15 border border-white/20 px-3 py-1 rounded-full mb-4">
+            15+ Locations Across India
+          </span>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-4">
+            Find a Hearing Aid Clinic<br className="hidden sm:block" /> Near You
           </h1>
-          <p className="mt-2 text-[#112f70]">
-            Best hearing experiences at Insono Hearing Clinics. Trusted by 1
-            Million+ satisfied customers.
+          <p className="text-blue-100 text-base sm:text-lg max-w-2xl mx-auto mb-8">
+            Certified audiologists, free hearing tests, and the world's best hearing aid brands — all under one roof. Walk in or book online.
           </p>
+
+          <div className="flex flex-wrap justify-center gap-3 mb-12">
+            <Link
+              href="/appointment"
+              className="bg-white text-[#023784] font-bold px-6 py-3 rounded-xl hover:bg-blue-50 transition shadow-lg text-sm sm:text-base inline-flex items-center gap-2"
+            >
+              <Calendar className="w-4 h-4" /> Book Free Appointment
+            </Link>
+            <a
+              href="tel:+916204260510"
+              className="border border-white/40 text-white font-semibold px-6 py-3 rounded-xl hover:bg-white/10 transition text-sm sm:text-base inline-flex items-center gap-2"
+            >
+              <Phone className="w-4 h-4" /> Call +91 62042 60510
+            </a>
+          </div>
+
+          {/* Stats */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto">
+            {stats.map((s) => (
+              <div key={s.label} className="bg-white/10 border border-white/20 rounded-2xl px-4 py-4 backdrop-blur-sm">
+                <p className="text-2xl font-extrabold text-white">{s.value}</p>
+                <p className="text-blue-200 text-xs mt-0.5">{s.label}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Clinics grid */}
-      <section className="py-10">
+      {/* ── Trust Strip ── */}
+      <section className="bg-white border-b border-gray-100 py-4 px-4 overflow-x-auto">
+        <div className="max-w-6xl mx-auto flex items-center justify-center gap-6 sm:gap-10 flex-wrap">
+          {trustFeatures.map((f) => (
+            <div key={f.label} className="flex items-center gap-2 whitespace-nowrap text-sm text-gray-700 font-medium">
+              <span className="text-lg">{f.emoji}</span> {f.label}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Region Filter Tabs ── */}
+      <section className="sticky top-[64px] z-20 bg-white border-b border-gray-200 shadow-sm">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {clinics.map((c) => (
+          <div className="flex gap-1 overflow-x-auto py-3 scrollbar-hide">
+            {REGIONS.map((r) => (
+              <button
+                key={r}
+                onClick={() => setActiveRegion(r)}
+                className={`flex-shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
+                  activeRegion === r
+                    ? "bg-[#023784] text-white shadow-md"
+                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                }`}
+              >
+                {r}
+                <span className={`text-xs px-1.5 py-0.5 rounded-full font-bold ${
+                  activeRegion === r ? "bg-white/25 text-white" : "bg-gray-200 text-gray-500"
+                }`}>
+                  {regionCount(r)}
+                </span>
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Clinics Grid ── */}
+      <section className="py-10 px-4">
+        <div className="max-w-6xl mx-auto">
+          {/* Result count */}
+          <p className="text-sm text-gray-500 mb-6">
+            Showing <span className="font-semibold text-gray-800">{filtered.length}</span> clinic{filtered.length !== 1 ? "s" : ""}
+            {activeRegion !== "All" && <> in <span className="font-semibold text-[#023784]">{activeRegion}</span></>}
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {filtered.map((c) => (
               <article
                 key={c.id}
-                className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col h-full"
+                className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col overflow-hidden"
               >
-                <div className="bg-[#e9f2ff] p-3">
-                  <Link
-                    href={`/our-clinic/${c.id}`}
-                    className="text-[#023784] font-semibold hover:underline"
-                  >
-                    <h2 className="text-[#023784] font-semibold">{c.name}</h2>
+                {/* Card top bar */}
+                <div className="flex items-center justify-between px-5 pt-5 mb-3">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-100">
+                      {c.region}
+                    </span>
+                    {c.isNew && (
+                      <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 animate-pulse">
+                        New ✨
+                      </span>
+                    )}
+                  </div>
+                  <div className="flex items-center gap-1 text-amber-500">
+                    <Star className="w-3.5 h-3.5 fill-amber-400" />
+                    <span className="text-xs font-bold text-gray-700">4.9</span>
+                  </div>
+                </div>
+
+                {/* Clinic name */}
+                <div className="px-5">
+                  <Link href={`/our-clinic/${c.id}`}>
+                    <h2 className="font-bold text-gray-900 text-[15px] leading-snug group-hover:text-[#023784] transition-colors">
+                      {c.name}
+                    </h2>
                   </Link>
-                  {c.tag && (
-                    <p className="text-xs text-gray-600 mt-1">{c.tag}</p>
+                  <p className="text-xs text-gray-500 mt-0.5 font-medium">{c.locationLine}</p>
+                </div>
+
+                {/* Address + hours */}
+                <div className="px-5 pt-4 flex-1 space-y-2.5">
+                  <div className="flex gap-2.5">
+                    <MapPin className="w-4 h-4 flex-shrink-0 text-gray-400 mt-0.5" />
+                    <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed">{c.address}</p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Clock className="w-3.5 h-3.5 text-green-600 flex-shrink-0" />
+                    <span className="text-sm font-semibold text-green-600">Open</span>
+                    <span className="text-sm text-gray-400">· Mon–Sun, 10 AM – 7 PM</span>
+                  </div>
+                </div>
+
+                {/* Links row */}
+                <div className="px-5 pt-3 flex items-center gap-4 text-xs">
+                  <a
+                    href={
+                      c.placeId
+                        ? `https://www.google.com/maps/place/?q=place_id:${c.placeId}`
+                        : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(c.address)}`
+                    }
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:underline font-medium inline-flex items-center gap-1"
+                  >
+                    <MapPin className="w-3 h-3" /> Get Directions
+                  </a>
+                  {c.placeId && (
+                    <>
+                      <span className="text-gray-200">|</span>
+                      <a
+                        href={`https://search.google.com/local/writereview?placeid=${c.placeId}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 hover:underline font-medium inline-flex items-center gap-1"
+                      >
+                        <Star className="w-3 h-3" /> Write Review
+                      </a>
+                    </>
                   )}
                 </div>
 
-                <div className="p-4 flex-1">
-                  <p className="text-sm font-semibold text-[#023784]">
-                    {c.locationLine}
-                  </p>
-                  <p className="mt-2 text-sm text-gray-700 whitespace-pre-line">
-                    {c.address}
-                  </p>
-                  <div className="flex items-center gap-2 mt-3">
-                    <span className="text-green-600 font-bold text-sm">
-                      {c.hours.includes("Open") ? "Open" : c.hours}
-                    </span>
-                    <span className="text-gray-500 text-sm">
-                      {c.hours.includes("Closes") ? "· " + c.hours : ""}
-                    </span>
-                  </div>
-                  {/* Google Maps directions */}
-                  <div className="flex items-center gap-4 mt-2">
-                    <a
-                      href={
-                        c.placeId
-                          ? `https://www.google.com/maps/place/?q=place_id:${c.placeId}`
-                          : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                              c.address,
-                            )}`
-                      }
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm text-blue-600 hover:underline"
-                    >
-                      Get Directions
-                    </a>
-
-                    <span className="text-gray-400">|</span>
-
-                    <a
-                      href={`https://search.google.com/local/writereview?placeid=${c.placeId}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm text-blue-600 hover:underline capitalize"
-                    >
-                      Write Review
-                    </a>
-                  </div>
-                </div>
-
-                <div className="p-4 border-t bg-white">
+                {/* CTA row */}
+                <div className="px-5 py-4 mt-4 border-t border-gray-100 flex gap-2">
                   <Link
-                    href={`/appointment?cat=${encodeURIComponent(
-                      c.catSlug || c.id,
-                    )}&slug=${encodeURIComponent(c.id)}`}
-                    className="block text-center bg-[#023784] text-white py-2 rounded-md font-semibold"
+                    href={`/appointment?cat=${encodeURIComponent(c.catSlug || c.id)}&slug=${encodeURIComponent(c.id)}`}
+                    className="flex-1 text-center bg-[#023784] text-white py-2.5 rounded-xl text-sm font-bold hover:bg-[#012d66] transition inline-flex items-center justify-center gap-1.5"
                   >
-                    Book Appointment
+                    <Calendar className="w-3.5 h-3.5" /> Book Appointment
+                  </Link>
+                  <a
+                    href={`https://wa.me/916204260510?text=${encodeURIComponent(`Hi, I want to book an appointment at ${c.name}`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="Chat on WhatsApp"
+                    className="flex-shrink-0 p-2.5 border border-gray-200 rounded-xl text-gray-400 hover:border-green-500 hover:text-green-600 hover:bg-green-50 transition"
+                  >
+                    <WhatsAppIcon className="w-4 h-4" />
+                  </a>
+                  <Link
+                    href={`/our-clinic/${c.id}`}
+                    title="View clinic details"
+                    className="flex-shrink-0 p-2.5 border border-gray-200 rounded-xl text-gray-400 hover:border-[#023784] hover:text-[#023784] hover:bg-blue-50 transition"
+                  >
+                    <ChevronRight className="w-4 h-4" />
                   </Link>
                 </div>
               </article>
@@ -353,83 +286,134 @@ export default function ClinicsList() {
         </div>
       </section>
 
-      {/* Comparison Table */}
-      <section className="py-8 bg-gradient-to-r from-[#4b72b5] to-[#023784]">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="mb-4">
-            <h3 className="text-2xl font-bold text-white">
-              Insono Vs Other Providers
-            </h3>
-            <p className="text-white">
-              How we excel compared to other providers
+      {/* ── Mid CTA Banner ── */}
+      <section className="my-6 px-4">
+        <div className="max-w-6xl mx-auto bg-gradient-to-r from-[#023784] to-[#1a56b0] rounded-2xl px-6 py-8 sm:py-10 text-center text-white">
+          <h2 className="text-xl sm:text-2xl font-extrabold mb-2">
+            Not sure which clinic is closest to you?
+          </h2>
+          <p className="text-blue-100 text-sm mb-6 max-w-md mx-auto">
+            Call us or WhatsApp — we'll help you find the nearest Insono clinic and book your free hearing test in minutes.
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            <a
+              href="tel:+916204260510"
+              className="bg-white text-[#023784] font-bold px-6 py-3 rounded-xl text-sm hover:bg-blue-50 transition inline-flex items-center gap-2 shadow"
+            >
+              <Phone className="w-4 h-4" /> Call Now
+            </a>
+            <a
+              href="https://wa.me/916204260510?text=Hi%2C%20I%20want%20to%20find%20the%20nearest%20Insono%20clinic"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-green-500 text-white font-bold px-6 py-3 rounded-xl text-sm hover:bg-green-600 transition inline-flex items-center gap-2 shadow"
+            >
+              <WhatsAppIcon className="w-4 h-4" /> WhatsApp Us
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Comparison Table ── */}
+      <section className="py-12 px-4 bg-gradient-to-r from-[#4b72b5] to-[#023784]">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-8 text-center">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-2">
+              Why Choose Insono?
+            </h2>
+            <p className="text-blue-200 text-sm">
+              See how we compare to other hearing aid providers
             </p>
           </div>
 
-          <div className="overflow-x-auto">
-            <table className="min-w-full bg-white rounded-xl overflow-hidden">
-              <tbody>
-                <tr className="border-b">
-                  <td className="p-4 w-1/2"></td>
-                  <td className="p-4 text-center bg-[#eaf2ff] w-1/4">
-                    <div className="mx-auto w-36">
-                      <Image
-                        src="/logo.webp"
-                        alt="Insono"
-                        width={200}
-                        height={80}
-                        className="mx-auto"
-                      />
-                    </div>
-                  </td>
-                  <td className="p-4 text-center font-bold w-1/4">Others</td>
+          <div className="overflow-x-auto rounded-2xl shadow-xl">
+            <table className="min-w-full bg-white overflow-hidden">
+              <thead>
+                <tr className="border-b border-gray-100">
+                  <th className="p-5 text-left text-sm font-semibold text-gray-500 w-1/2">Feature</th>
+                  <th className="p-5 text-center bg-[#eaf2ff] w-1/4">
+                    <Image src="/logo.webp" alt="Insono Hearing" width={120} height={48} className="mx-auto" />
+                  </th>
+                  <th className="p-5 text-center text-sm font-bold text-gray-500 w-1/4">Others</th>
                 </tr>
-
-                {comparisonItems.map((row, idx) => {
-                  const othersTickExceptions = [
-                    "Visiting a hearing clinic is mandatory",
-                    "Clinic visit for the purchase of hearing aid accessories is compulsory",
-                  ];
-                  const othersHasTick = othersTickExceptions.includes(row);
-
-                  return (
-                    <tr key={idx} className="border-b">
-                      <td className="p-4 text-sm text-gray-700">{row}</td>
-                      <td className="p-4 text-center bg-[#eaf2ff]">
-                        <Image
-                          src="https://storage.googleapis.com/hz-prd-media/static/hzv0.0.0.150/images/website/hz_greentickroun_icon.svg"
-                          alt="tick"
-                          width={28}
-                          height={28}
-                          className="mx-auto"
-                        />
-                      </td>
-                      <td className="p-4 text-center">
-                        {othersHasTick ? (
-                          <Image
-                            src="https://storage.googleapis.com/hz-prd-media/static/hzv0.0.0.150/images/website/hz_greentickroun_icon.svg"
-                            alt="tick"
-                            width={28}
-                            height={28}
-                            className="mx-auto"
-                          />
-                        ) : (
-                          <Image
-                            src="https://storage.googleapis.com/hz-prd-media/static/hzv0.0.0.150/images/website/hz_cancel_icon.svg"
-                            alt="cross"
-                            width={28}
-                            height={28}
-                            className="mx-auto"
-                          />
-                        )}
-                      </td>
-                    </tr>
-                  );
-                })}
+              </thead>
+              <tbody>
+                {comparisonRows.map((row, idx) => (
+                  <tr key={idx} className={`border-b border-gray-50 ${idx % 2 === 0 ? "" : "bg-gray-50/50"}`}>
+                    <td className="p-4 text-sm text-gray-700">{row.text}</td>
+                    <td className="p-4 text-center bg-[#eaf2ff]/60">
+                      {row.insono ? (
+                        <div className="w-7 h-7 rounded-full bg-green-100 flex items-center justify-center mx-auto">
+                          <CheckCircle2 className="w-4 h-4 text-green-600" strokeWidth={2.5} />
+                        </div>
+                      ) : (
+                        <div className="w-7 h-7 rounded-full bg-red-50 flex items-center justify-center mx-auto">
+                          <XCircle className="w-4 h-4 text-red-400" strokeWidth={2.5} />
+                        </div>
+                      )}
+                    </td>
+                    <td className="p-4 text-center">
+                      {row.others ? (
+                        <div className="w-7 h-7 rounded-full bg-green-100 flex items-center justify-center mx-auto">
+                          <CheckCircle2 className="w-4 h-4 text-green-600" strokeWidth={2.5} />
+                        </div>
+                      ) : (
+                        <div className="w-7 h-7 rounded-full bg-red-50 flex items-center justify-center mx-auto">
+                          <XCircle className="w-4 h-4 text-red-400" strokeWidth={2.5} />
+                        </div>
+                      )}
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
         </div>
       </section>
+
+      {/* ── Bottom CTA ── */}
+      <section className="py-16 px-4 text-center bg-gray-50">
+        <div className="max-w-2xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-3">
+            Ready to Hear Better?
+          </h2>
+          <p className="text-gray-500 mb-8 text-sm sm:text-base">
+            Book a free hearing test at any Insono clinic. No obligation, no cost. Our audiologists will guide you to the best solution.
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            <Link
+              href="/appointment"
+              className="bg-[#023784] text-white font-bold px-8 py-3.5 rounded-xl hover:bg-[#012d66] transition shadow-md text-sm sm:text-base inline-flex items-center gap-2"
+            >
+              <Calendar className="w-4 h-4" /> Book Free Hearing Test
+            </Link>
+            <Link
+              href="/hearing-aid-price"
+              className="border border-gray-300 text-gray-700 font-semibold px-8 py-3.5 rounded-xl hover:border-[#023784] hover:text-[#023784] transition text-sm sm:text-base"
+            >
+              View Price List →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Mobile Sticky Bar ── */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 sm:hidden bg-white border-t border-gray-200 shadow-2xl px-4 py-3 flex gap-3">
+        <a
+          href="tel:+916204260510"
+          className="flex-1 text-center border border-[#023784] text-[#023784] font-bold py-3 rounded-xl text-sm inline-flex items-center justify-center gap-1.5"
+        >
+          <Phone className="w-4 h-4" /> Call Now
+        </a>
+        <Link
+          href="/appointment"
+          className="flex-1 text-center bg-[#023784] text-white font-bold py-3 rounded-xl text-sm inline-flex items-center justify-center gap-1.5"
+        >
+          <Calendar className="w-4 h-4" /> Book Free Test
+        </Link>
+      </div>
+      {/* Bottom padding for mobile sticky bar */}
+      <div className="sm:hidden h-20" />
     </>
   );
 }

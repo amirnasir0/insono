@@ -44,6 +44,16 @@ const oticonFaqs = [
   },
 ];
 
+const oticonFaqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: oticonFaqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
 // ✅ Breadcrumb structured data
 const breadcrumbSchema = {
   "@context": "https://schema.org",
@@ -77,6 +87,11 @@ export default function OticonPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      {/* ✅ FAQPage JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(oticonFaqSchema) }}
       />
 
       {/* 🟦 HERO SECTION */}

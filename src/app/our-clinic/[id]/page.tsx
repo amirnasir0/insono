@@ -15,9 +15,27 @@ export async function generateMetadata({
   const clinic = clinics.find((c) => c.id === id);
   if (!clinic) return {};
 
+  const title = `${clinic.name} | Insono Hearing Solutions`;
+  const description = `Visit ${clinic.name} — certified audiologists, free hearing test, and top brands like Signia, Phonak & Widex. Address: ${clinic.address}. Open Mon–Sun, 10 AM–7 PM.`;
+  const url = `https://www.insonohearing.com/our-clinic/${id}`;
+
   return {
-    title: `${clinic.name} | Insono Hearing Solutions`,
-    description: `Visit ${clinic.name}. Address: ${clinic.address}. Open daily till 7 PM. Book your appointment today.`,
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName: "Insono Hearing Solutions",
+      locale: "en_IN",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
   };
 }
 
@@ -27,15 +45,56 @@ export default async function ClinicDetailPage({ params }: ClinicPageParams) {
 
   if (!clinic) return notFound();
 
-  const faqs = defaultFaqs.map((f) => {
+  const generatedFaqs = defaultFaqs.map((f) => {
     const q = f.question(clinic.name, clinic.address);
     const a =
       typeof f.answer === "function" ? f.answer(clinic.address) : f.answer;
     return { question: q, answer: a };
   });
 
+  const faqs = [...(clinic.faqs ?? []), ...generatedFaqs];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: { "@type": "Answer", text: faq.answer },
+    })),
+  };
+
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "HearingImpairedClinic",
+    name: clinic.name,
+    url: `https://www.insonohearing.com/our-clinic/${id}`,
+    telephone: "+916204260510",
+    openingHours: "Mo-Su 10:00-19:00",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: clinic.address,
+      addressCountry: "IN",
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.9",
+      reviewCount: "1200",
+      bestRating: "5",
+      worstRating: "1",
+    },
+  };
+
   return (
     <main className="max-w-6xl mx-auto py-12 sm:py-16 md:py-20 lg:py-24 px-4 mt-14 sm:mt-10 md:mt-6   sm:px-8 lg:px-8 text-gray-900">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       {/* ✅ Two-Column Layout */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
         {/* ✅ Left = Slider */}
@@ -79,14 +138,16 @@ export default async function ClinicDetailPage({ params }: ClinicPageParams) {
               Book Appointment
             </a>
 
-            <a
-              href={`https://www.google.com/maps/place/?q=place_id:${clinic.placeId}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-3 bg-gray-100 text-[#023784] border border-[#023784] rounded-md font-semibold hover:bg-gray-200"
-            >
-              📍 Get Directions
-            </a>
+            {clinic.placeId && (
+              <a
+                href={`https://www.google.com/maps/place/?q=place_id:${clinic.placeId}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3 bg-gray-100 text-[#023784] border border-[#023784] rounded-md font-semibold hover:bg-gray-200"
+              >
+                📍 Get Directions
+              </a>
+            )}
           </div>
         </div>
         {/* ✅ Right = Clinic Details */}

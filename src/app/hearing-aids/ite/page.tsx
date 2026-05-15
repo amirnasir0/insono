@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description:
     "Explore In the ear hearing aids — rechargeable, Bluetooth & invisible models. Compare features & prices, book free consultation or download price list. 100% genuine with warranty.",
   alternates: {
-    canonical: "https://www.insononhearing.com/hearing-aids/ite",
+    canonical: "https://www.insonohearing.com/hearing-aids/ite",
   },
   openGraph: {
     title: "ITE Hearing Aids – Prices, Models & Features in India",

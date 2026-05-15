@@ -8,13 +8,13 @@ export const metadata: Metadata = {
   description:
     "Learn about Insono Hearing Solutions — trusted hearing care in India, led by Mr. Manoj Kumar with 10+ years of audiology experience.",
   alternates: {
-    canonical: "https://www.insonohearing.com/about",
+    canonical: "https://www.insonohearing.com/about-us",
   },
   openGraph: {
     title: "About Us | Insono Hearing Solutions",
     description:
       "Learn about Insono Hearing Solutions — trusted hearing care in India.",
-    url: "https://www.insonohearing.com/about",
+    url: "https://www.insonohearing.com/about-us",
     siteName: "Insono Hearing Solutions",
     images: [
       {
@@ -34,6 +34,39 @@ export const metadata: Metadata = {
       "Learn about Insono Hearing Solutions — trusted hearing care in India.",
     images: ["https://www.insonohearing.com/image/about-hero-new.jpeg"],
   },
+};
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Insono Hearing Solutions",
+  url: "https://www.insonohearing.com",
+  logo: "https://www.insonohearing.com/logo.webp",
+  foundingDate: "2015",
+  description:
+    "Insono Hearing Solutions is India's trusted hearing aid clinic offering certified audiologists, free hearing tests, and premium hearing aids from Signia, Phonak, Widex, and Oticon.",
+  telephone: "+916204260510",
+  email: "contact@insonohearing.com",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Ground Floor, E-142, next to Kerala Ayurveda, E Block, Pocket E",
+    addressLocality: "Noida",
+    addressRegion: "Uttar Pradesh",
+    postalCode: "201301",
+    addressCountry: "IN",
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+916204260510",
+    contactType: "customer service",
+    availableLanguage: ["English", "Hindi"],
+  },
+  sameAs: [
+    "https://youtube.com/@insonohearing",
+    "https://www.instagram.com/insono_hearing_solutions",
+    "https://www.facebook.com/insonohearingsolution",
+    "https://www.linkedin.com/company/insonohearing",
+  ],
 };
 
 export default function AboutPage() {
@@ -73,6 +106,10 @@ Driven by a patient-first approach, Mr. Manoj Kumar ensures every individual rec
 
   return (
     <main className="max-w-7xl mx-auto pt-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
       {/* 🧭 About Section */}
       <section className="py-12 px-6 lg:px-12 space-y-8">
         <div className="flex flex-col lg:flex-row items-center gap-10">

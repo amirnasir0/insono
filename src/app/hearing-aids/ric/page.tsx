@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description:
     "Explore RIC hearing aids — rechargeable, Bluetooth & invisible models. Compare features & prices, book free consultation or download price list. 100% genuine with warranty.",
   alternates: {
-    canonical: "https://www.insononhearing.com/hearing-aids/ric",
+    canonical: "https://www.insonohearing.com/hearing-aids/ric",
   },
   openGraph: {
     title: "Reciever in Canal (RIC) Digital Hearing Aids",

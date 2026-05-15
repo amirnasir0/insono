@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description:
     "Explore IIC hearing aids — rechargeable, Bluetooth & invisible models. Compare features & prices, book free consultation or download price list. 100% genuine with warranty.",
   alternates: {
-    canonical: "https://www.insononhearing.com/hearing-aids/iic",
+    canonical: "https://www.insonohearing.com/hearing-aids/iic",
   },
   openGraph: {
     title: "IIC Hearing Aids – Prices, Models & Features in India",

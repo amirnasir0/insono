@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description:
     "Explore Signia hearing aids — rechargeable, Bluetooth & invisible models. Compare features & prices, book free consultation or download price list. 100% genuine with warranty.",
   alternates: {
-    canonical: "https://www.insononhearing.com/hearing-aids/rechargeable",
+    canonical: "https://www.insonohearing.com/hearing-aids/rechargeable",
   },
   openGraph: {
     title: "Top Rechargeable Digital Hearing Aids from Signia,Phonak, Widex & Oticon",

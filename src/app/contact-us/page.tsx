@@ -1,5 +1,18 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { MapPin, Phone, Mail, Building2 } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Contact Us | Insono Hearing Solutions",
+  description:
+    "Get in touch with Insono Hearing. Visit our clinics in Noida & Delhi, call +91 6204260510, or fill the form. Free hearing test available at all locations.",
+  alternates: { canonical: "https://www.insonohearing.com/contact-us" },
+  openGraph: {
+    title: "Contact Insono Hearing | Clinics in Noida & Delhi",
+    description: "Call, visit or message Insono Hearing. Expert audiologists, free hearing tests, open daily 10 AM – 7 PM.",
+    url: "https://www.insonohearing.com/contact-us",
+  },
+};
 
 export default function ContactUsPage() {
   return (

@@ -44,6 +44,16 @@ const phonakFaqs = [
   },
 ];
 
+const phonakFaqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: phonakFaqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
 // ✅ Breadcrumb structured data
 const breadcrumbSchema = {
   "@context": "https://schema.org",
@@ -77,6 +87,11 @@ export default function PhonakPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      {/* ✅ FAQPage JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(phonakFaqSchema) }}
       />
 
       {/* 🟦 HERO SECTION */}

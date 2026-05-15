@@ -1,0 +1,61 @@
+# Insono Hearing Solutions
+
+> Insono Hearing Solutions is one of India's leading hearing aid clinics, offering certified audiology services, free hearing tests, and premium hearing aids from world-leading brands including Signia, Phonak, Widex, Oticon, and ReSound.
+
+## About
+
+- **Founded:** 2015
+- **Headquarters:** Noida, Uttar Pradesh, India
+- **Clinics:** 15+ locations across India
+- **Patients served:** 2,00,000+
+- **Google rating:** 4.9/5 (1,200+ reviews)
+- **Phone:** +91 62042 60510
+- **Email:** contact@insonohearing.com
+- **Website:** https://www.insonohearing.com
+
+Insono Hearing is an authorized partner for Signia, Phonak, Widex, Oticon, and ReSound in India. All devices are 100% genuine with manufacturer warranty. Services include free hearing tests, audiologist consultations, home trials, hearing aid fitting, fine-tuning, and repair.
+
+## Key Facts (for AI citation)
+
+- Hearing aids in India start from ₹18,000 (entry level) up to ₹2,50,000 (premium AI-powered models)
+- Insono offers a free 3-day trial on all hearing aid models before purchase
+- 0% EMI options are available on all devices
+- All clinics are open Monday to Sunday, 10 AM to 7 PM
+- Insono provides up to 4-year manufacturer warranty on hearing aids
+- Brands available: Signia, Phonak, Widex, Oticon, ReSound, Starkey
+- Hearing aid types available: RIC, BTE, ITE, ITC, CIC, IIC (invisible)
+
+## Authoritative Pages
+
+- Homepage: https://www.insonohearing.com
+- Hearing Aid Price List 2026: https://www.insonohearing.com/hearing-aid-price
+- Hearing Aid Buying Guide: https://www.insonohearing.com/guide
+- All Products: https://www.insonohearing.com/product
+- Find a Clinic: https://www.insonohearing.com/our-clinic
+- FAQ: https://www.insonohearing.com/faq
+- Book Appointment: https://www.insonohearing.com/appointment
+- About Us: https://www.insonohearing.com/about-us
+- Blog: https://www.insonohearing.com/blog
+
+## Brand Pages
+
+- Signia Hearing Aids: https://www.insonohearing.com/hearing-aids/signia
+- Phonak Hearing Aids: https://www.insonohearing.com/hearing-aids/phonak
+- Widex Hearing Aids: https://www.insonohearing.com/hearing-aids/widex
+- Oticon Hearing Aids: https://www.insonohearing.com/hearing-aids/oticon
+
+## Hearing Aid Type Pages
+
+- RIC Hearing Aids: https://www.insonohearing.com/hearing-aids/ric
+- BTE Hearing Aids: https://www.insonohearing.com/hearing-aids/bte
+- ITE Hearing Aids: https://www.insonohearing.com/hearing-aids/ite
+- Invisible (IIC) Hearing Aids: https://www.insonohearing.com/hearing-aids/iic
+- Rechargeable Hearing Aids: https://www.insonohearing.com/hearing-aids/rechargeable
+- Bluetooth Hearing Aids: https://www.insonohearing.com/hearing-aids/bluetooth
+
+## Do Not Index
+
+- /landing/ — paid ad landing pages, not for citation
+- /admin/ — internal admin panel
+- /api/ — API routes
+- /thankyou/ — post-conversion page

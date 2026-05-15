@@ -122,6 +122,10 @@ async function getBestSellerProducts(): Promise<Product[]> {
   }
 }
 
+function stripHtml(html: string): string {
+  return html.replace(/<[^>]*>/g, "").replace(/\s+/g, " ").trim();
+}
+
 // ✅ Metadata (async params)
 export async function generateMetadata(
   { params }: BlogPageProps,
@@ -132,14 +136,28 @@ export async function generateMetadata(
 
   if (!post) return { title: "Post not found" };
 
+  const description = post.excerpt
+    ? stripHtml(post.excerpt).slice(0, 160)
+    : post.title;
+
   return {
     title: post.title,
-    description: post.excerpt || post.title,
+    description,
+    alternates: {
+      canonical: `https://www.insonohearing.com/blog/${slug}`,
+    },
     openGraph: {
       title: post.title,
-      description: post.excerpt || post.title,
-      url: `https://insonohearing.com/blog/${slug}`,
+      description,
+      url: `https://www.insonohearing.com/blog/${slug}`,
       type: "article",
+      images: [{ url: "https://www.insonohearing.com/logo.webp", width: 800, height: 400 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description,
+      images: ["https://www.insonohearing.com/logo.webp"],
     },
   };
 }
@@ -275,8 +293,38 @@ export default async function BlogPage({ params }: BlogPageProps) {
   const post = await getPostCached(slug);
   if (!post) return <p className="text-center py-10">Post not found</p>;
 
+  const blogPostingSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt ? stripHtml(post.excerpt).slice(0, 160) : post.title,
+    url: `https://www.insonohearing.com/blog/${slug}`,
+    datePublished: post.date,
+    dateModified: post.date,
+    author: {
+      "@type": "Person",
+      name: post.author?.node?.name || "Insono Hearing",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Insono Hearing",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://www.insonohearing.com/logo.webp",
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://www.insonohearing.com/blog/${slug}`,
+    },
+  };
+
   return (
     <div className="max-w-7xl mx-auto pt-24 px-4 py-10">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingSchema) }}
+      />
       <div className="flex flex-col lg:flex-row gap-10">
         <div className="lg:w-2/3 w-full">
           <Suspense fallback={<BlogSkeleton />}>

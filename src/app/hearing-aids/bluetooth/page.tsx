@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description:
     "Hearing Aids with Bluetooth connectivity with mobile, tv and other devices. Top brand hearing aids with bluetooth connectivity on mobile phones.",
   alternates: {
-    canonical: "https://www.insononhearing.com/hearing-aids/bluetooth",
+    canonical: "https://www.insonohearing.com/hearing-aids/bluetooth",
   },
   openGraph: {
     title: "Bluetooth Powered Digital Hearing Aids from Signia Phonak Widex",

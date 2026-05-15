@@ -6,16 +6,41 @@ const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://insonohearing.com"
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const routes: MetadataRoute.Sitemap = [
+        // Core pages
         { url: `${BASE_URL}`, lastModified: new Date(), changeFrequency: "daily", priority: 1.0 },
-        { url: `${BASE_URL}/about-us`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
+        { url: `${BASE_URL}/about-us`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
         { url: `${BASE_URL}/contact-us`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
         { url: `${BASE_URL}/faq`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
-        { url: `${BASE_URL}/guide`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
+        { url: `${BASE_URL}/guide`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+        { url: `${BASE_URL}/appointment`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+        { url: `${BASE_URL}/testimonial`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
+        { url: `${BASE_URL}/awards`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
+
+        // High-value commercial pages
         { url: `${BASE_URL}/hearing-aid-price`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
         { url: `${BASE_URL}/our-clinic`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
         { url: `${BASE_URL}/product`, lastModified: new Date(), changeFrequency: "daily", priority: 0.9 },
         { url: `${BASE_URL}/blog`, lastModified: new Date(), changeFrequency: "daily", priority: 0.9 },
-        { url: `${BASE_URL}/appointment`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+
+        // Hearing aid brand pages
+        { url: `${BASE_URL}/hearing-aids/signia`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
+        { url: `${BASE_URL}/hearing-aids/phonak`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
+        { url: `${BASE_URL}/hearing-aids/widex`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
+        { url: `${BASE_URL}/hearing-aids/oticon`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
+
+        // Hearing aid type pages
+        { url: `${BASE_URL}/hearing-aids/ric`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+        { url: `${BASE_URL}/hearing-aids/bte`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+        { url: `${BASE_URL}/hearing-aids/ite`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+        { url: `${BASE_URL}/hearing-aids/itc`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
+        { url: `${BASE_URL}/hearing-aids/cic`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
+        { url: `${BASE_URL}/hearing-aids/iic`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
+        { url: `${BASE_URL}/hearing-aids/invisible`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+        { url: `${BASE_URL}/hearing-aids/bluetooth`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
+        { url: `${BASE_URL}/hearing-aids/rechargeable`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
+
+        // Clinic location pages
+        { url: `${BASE_URL}/our-clinic/andheri-mumbai`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     ];
 
     // Fetch dynamic products from Prisma

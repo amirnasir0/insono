@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description:
     "premium CIC hearing aids in India: custom-moulded, ultra-discreet devices that sit deep inside the ear canal and deliver natural sound. Ideal for mild to moderate hearing loss, available from top brands like Signia, Widex & Phonak.",
   alternates: {
-    canonical: "https://www.insononhearing.com/hearing-aids/cic",
+    canonical: "https://www.insonohearing.com/hearing-aids/cic",
   },
   openGraph: {
     title: "CIC Hearing Aids India | Ultra-Discreet “Completely-in-the-Canal” Devices for Clear Hearing",

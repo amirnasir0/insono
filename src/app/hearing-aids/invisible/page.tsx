@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description:
     "Discover the latest invisible hearing aids in India — custom-moulded, nearly invisible devices from leading brands for clearer hearing, comfort and confidence. See price ranges (₹ 20K +), expert fitting and after-care support at Insono Hearing.",
   alternates: {
-    canonical: "https://www.insononhearing.com/hearing-aids/invisible",
+    canonical: "https://www.insonohearing.com/hearing-aids/invisible",
   },
   openGraph: {
     title: "Invisible Hearing Aids in India | Discreet, Custom-Fit & Top Brands",

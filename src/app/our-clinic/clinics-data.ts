@@ -61,6 +61,37 @@ export const defaultFaqs = [
 
 export const clinics: Clinic[] = [
   {
+    id: "andheri-mumbai",
+    name: "Hearing Aid Clinic in Andheri Mumbai",
+    locationLine: "Andheri West — Mumbai, Maharashtra",
+    address: "Unit No: 111, Palmspring Apartment, Lokhandwala Complex, Andheri West, Mumbai, Maharashtra 400053",
+    hours: "Open, Closes by 7 pm",
+    tag: "Clinic",
+    images: [
+      "/clinics/noida-1.webp",
+      "/clinics/noida-2.webp",
+      "/clinics/lajpat-1.jpg",
+    ],
+    faqs: [
+      {
+        question: "Where is Insono Hearing located in Andheri Mumbai?",
+        answer: "Our Andheri clinic is located at Unit No: 111, Palmspring Apartment, Lokhandwala Complex, Andheri West, Mumbai, Maharashtra 400053 — easily accessible from the Andheri metro station.",
+      },
+      {
+        question: "Is there a hearing aid clinic near Lokhandwala Complex Mumbai?",
+        answer: "Yes, Insono Hearing Solutions is located inside Palmspring Apartment, Lokhandwala Complex, Andheri West — one of Mumbai's most central and accessible locations.",
+      },
+      {
+        question: "Can I get a free hearing test at the Mumbai clinic?",
+        answer: "Absolutely. We offer free hearing tests at our Andheri Mumbai clinic conducted by certified audiologist Mr. Kundan Kumar. No appointment required, walk-ins welcome.",
+      },
+      {
+        question: "Which hearing aid brands are available in Mumbai?",
+        answer: "Our Andheri clinic carries the full range of Signia, Phonak, Widex, Oticon, and Starkey hearing aids — all 100% genuine with manufacturer warranty.",
+      },
+    ],
+  },
+  {
     id: "vinod-nagar",
     name: "Hearing Aid Clinic in Vinod Nagar",
     locationLine: "Vinod Nagar — Delhi",

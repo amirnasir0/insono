@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description:
     "BTE Behind the ear hearing aids — rechargeable, Bluetooth models. Compare features & prices, book free consultation or download price list. 100% genuine with warranty.",
   alternates: {
-    canonical: "https://www.insononhearing.com/hearing-aids/bte",
+    canonical: "https://www.insonohearing.com/hearing-aids/bte",
   },
   openGraph: {
     title: "BTE  Hearing Aids – Prices, Models & Features in India",
