@@ -15,87 +15,87 @@ function formatCity(slug: string) {
     .join(" ");
 }
 
-const SIGNIA_MODELS = [
+const PHONAK_MODELS = [
   {
     rank: 1,
-    badge: "Best Seller",
+    badge: "AI Powered",
     badgeColor: "bg-[#184A99] text-white",
-    title: "Signia Fun SP",
-    brand: "Signia",
-    brandLogo: "/brands/signia.svg",
-    image: "https://an7bjwndlmaemx4x.public.blob.vercel-storage.com/products/1773219362292-SIGNIA-FAST-P-IMG-1.png",
-    features: ["Super Power BTE", "Noise Reduction", "Tinnitus Therapy", "Wireless Streaming"],
-    channels: "16 Channels",
-    style: "BTE",
-    highlight: "Powerful BTE for moderate to severe hearing loss",
+    title: "Phonak Audeo Sphere I90",
+    brand: "Phonak",
+    brandLogo: "/brands/phonaklogo.svg",
+    image: "https://an7bjwndlmaemx4x.public.blob.vercel-storage.com/products/1773054606126-IMG-1.png",
+    features: ["Dual AI Engines", "Speech from Noise", "Universal Bluetooth", "Rechargeable"],
+    channels: "48 Channels",
+    style: "RIC",
+    highlight: "World's first hearing aid with a dedicated AI chip for speech clarity",
   },
   {
     rank: 2,
-    badge: "Top Rated",
+    badge: "Ultra Stylish",
     badgeColor: "bg-emerald-600 text-white",
-    title: "Signia Orion C&G",
-    brand: "Signia",
-    brandLogo: "/brands/signia.svg",
-    image: "https://an7bjwndlmaemx4x.public.blob.vercel-storage.com/products/1772781326903-Signia-Orion-C%26G-200%40.jpg",
-    features: ["Rechargeable", "Bluetooth Streaming", "Speech Clarity", "App Control"],
-    channels: "24 Channels",
+    title: "Phonak Slim L90-R",
+    brand: "Phonak",
+    brandLogo: "/brands/phonaklogo.svg",
+    image: "https://an7bjwndlmaemx4x.public.blob.vercel-storage.com/products/1774002227903-Untitled-design---2026-03-20T155340.689.png",
+    features: ["Ergonomic Slim Design", "AutoSense OS 5.0", "Direct Streaming", "Fast Charging"],
+    channels: "32 Channels",
     style: "RIC",
-    highlight: "Best entry-level rechargeable hearing aid by Signia",
+    highlight: "Award-winning design that follows the natural curve of your head",
   },
   {
     rank: 3,
-    badge: "Nearly Invisible",
+    badge: "Best Seller",
     badgeColor: "bg-purple-600 text-white",
-    title: "Signia Silk",
-    brand: "Signia",
-    brandLogo: "/brands/signia.svg",
-    image: "https://an7bjwndlmaemx4x.public.blob.vercel-storage.com/products/1775551490244-Untitled-design---2026-04-07T141048.093.png",
-    features: ["Invisible In-Canal", "Ready-to-Wear", "Own Voice Processing", "Tinnitus Therapy"],
-    channels: "32 Channels",
-    style: "IIC",
-    highlight: "Smallest invisible hearing aid — fits instantly, no custom mold",
+    title: "Phonak Audeo Lumity",
+    brand: "Phonak",
+    brandLogo: "/brands/phonaklogo.svg",
+    image: "/lp/phonak1.png",
+    features: ["SmartSpeech Tech", "Universal Connectivity", "Health Tracking", "Waterproof Option"],
+    channels: "24 Channels",
+    style: "RIC",
+    highlight: "Most popular Phonak model for active social lifestyles",
   },
   {
     rank: 4,
-    badge: "Ultra Stylish",
+    badge: "Super Power",
     badgeColor: "bg-rose-600 text-white",
-    title: "Signia Styletto",
-    brand: "Signia",
-    brandLogo: "/brands/signia.svg",
-    image: "https://an7bjwndlmaemx4x.public.blob.vercel-storage.com/products/1772794609852-cosmic-blue_rose-gold_double_dd4310ec-bb18-403c-a7c9-05467ff34b3b-%281%29.webp",
-    features: ["Slim Elegant Design", "Rechargeable", "Bluetooth 5.0", "IX Platform AI"],
-    channels: "48 Channels",
-    style: "RIC",
-    highlight: "Fashion-forward hearing aid with premium sound quality",
+    title: "Phonak Naida Lumity",
+    brand: "Phonak",
+    brandLogo: "/brands/phonaklogo.svg",
+    image: "/lp/phonak4.png",
+    features: ["Ultimate Speech Clarity", "Power BTE", "Roger Connectivity", "App Control"],
+    channels: "20 Channels",
+    style: "BTE",
+    highlight: "High-power hearing aid for severe to profound hearing loss",
   },
   {
     rank: 5,
-    badge: "Doctor's Choice",
+    badge: "Great Value",
     badgeColor: "bg-amber-500 text-white",
-    title: "Signia Pure Charge&Go",
-    brand: "Signia",
-    brandLogo: "/brands/signia.svg",
-    image: "https://an7bjwndlmaemx4x.public.blob.vercel-storage.com/products/1772792684301-Signia-Pure-Charge%26Go-7IX%40%40%40.webp",
-    features: ["IX Platform AI", "Own Voice Processing", "Rechargeable", "Tinnitus Therapy"],
-    channels: "48 Channels",
-    style: "RIC",
-    highlight: "India's most sold hearing aid — clinically proven performance",
+    title: "Phonak Terra",
+    brand: "Phonak",
+    brandLogo: "/brands/phonaklogo.svg",
+    image: "/lp/phonak3.png",
+    features: ["Digital Sound", "Feedback Cancellation", "Comfort Fit", "Affordable"],
+    channels: "12 Channels",
+    style: "BTE/RIC",
+    highlight: "Reliable Swiss quality at an entry-level price point",
   },
 ];
 
 const BRAND_LOGOS = [
+  "/brands/phonaklogo.svg",
   "/brands/signia.svg",
   "/brands/widex.svg",
-  "/brands/phonaklogo.svg",
   "/brands/oticon.svg",
   "/brands/resound.svg",
 ];
 
 const REVIEWS_BASE = [
-  { name: "Vikram Sharma",   initials: "VS", avatarColor: "bg-[#184A99]",    time: "1 month ago" },
-  { name: "Anita Rao",       initials: "AR", avatarColor: "bg-emerald-600",   time: "2 months ago" },
-  { name: "Kuldeep Dhillon", initials: "KD", avatarColor: "bg-purple-600",    time: "3 months ago" },
-  { name: "Meena Verma",     initials: "MV", avatarColor: "bg-rose-600",      time: "2 weeks ago" },
+  { name: "Rajesh Ahluwalia", initials: "RA", avatarColor: "bg-[#184A99]",   time: "2 weeks ago" },
+  { name: "Gurpreet Singh",   initials: "GS", avatarColor: "bg-emerald-600", time: "1 month ago" },
+  { name: "Suman Lata",       initials: "SL", avatarColor: "bg-purple-600",  time: "3 months ago" },
+  { name: "Vikram Duggal",    initials: "VD", avatarColor: "bg-rose-600",    time: "1 week ago" },
 ];
 
 const COMPARISON_ROWS = [
@@ -109,7 +109,7 @@ const COMPARISON_ROWS = [
   { feature: "Price Transparency",    others: false },
 ] as const;
 
-export default async function SigniaCityPage({
+export default async function PhonakCityPage({
   params,
 }: {
   params: Promise<{ city: string }>;
@@ -121,22 +121,22 @@ export default async function SigniaCityPage({
     {
       ...REVIEWS_BASE[0],
       location: city,
-      text: `Excellent service at Insono ${city}. The audiologist was very patient in explaining which Signia model suited my hearing loss. Got fitted the same day. Highly recommend!`,
+      text: `Switched to Phonak Lumity after using other brands. The speech clarity in noisy restaurants is unmatched. Excellent service by Insono audiologists in ${city}.`,
     },
     {
       ...REVIEWS_BASE[1],
       location: city,
-      text: "I was confused between multiple brands but the team at Insono helped me choose Signia Pure Charge&Go. Sound quality is amazing and the price was transparent — no hidden charges.",
+      text: "The Phonak Slim looks like a Bluetooth headset, not a hearing aid. Very happy with the design and the seamless connectivity with my Android phone.",
     },
     {
       ...REVIEWS_BASE[2],
       location: city,
-      text: "Free hearing test was done professionally. Got a 7-day trial before I bought. Cash on delivery made it easy. Very happy with my Signia Styletto — looks great too!",
+      text: `Got my father fitted with Phonak Naida at Insono ${city}. He can finally hear the grandkids clearly. The free home trial was a blessing. Highly recommend.`,
     },
     {
       ...REVIEWS_BASE[3],
       location: city,
-      text: `My mother got her Signia hearing aid from Insono ${city}. The home delivery was on time and the after-sales support has been wonderful. Will recommend to everyone.`,
+      text: `Best price for Phonak in ${city}. Transparent pricing and genuine products with warranty. The free hearing test was very professional.`,
     },
   ];
 
@@ -150,25 +150,25 @@ export default async function SigniaCityPage({
             .md\\:hidden.fixed.bottom-0:not(.custom-bottom-bar) { display: none !important; }
             body { padding-top: 0 !important; }
           }
-          @keyframes si-up {
+          @keyframes ph-up {
             from { opacity: 0; transform: translateY(20px); }
             to   { opacity: 1; transform: translateY(0); }
           }
-          @keyframes si-left {
+          @keyframes ph-left {
             from { opacity: 0; transform: translateX(-20px); }
             to   { opacity: 1; transform: translateX(0); }
           }
-          @keyframes si-scale {
+          @keyframes ph-scale {
             from { opacity: 0; transform: scale(0.9); }
             to   { opacity: 1; transform: scale(1); }
           }
-          .si-up            { animation: si-up    0.5s ease both; }
-          .si-up.d1         { animation-delay: 0.1s; }
-          .si-up.d2         { animation-delay: 0.2s; }
-          .si-up.d3         { animation-delay: 0.3s; }
-          .si-up.d4         { animation-delay: 0.4s; }
-          .si-left          { animation: si-left  0.5s ease both; }
-          .si-scale         { animation: si-scale 0.8s 0.5s ease both; }
+          .ph-up            { animation: ph-up    0.5s ease both; }
+          .ph-up.d1         { animation-delay: 0.1s; }
+          .ph-up.d2         { animation-delay: 0.2s; }
+          .ph-up.d3         { animation-delay: 0.3s; }
+          .ph-up.d4         { animation-delay: 0.4s; }
+          .ph-left          { animation: ph-left  0.5s ease both; }
+          .ph-scale         { animation: ph-scale 0.8s 0.5s ease both; }
         `
       }} />
 
@@ -202,17 +202,17 @@ export default async function SigniaCityPage({
         {/* Hero */}
         <section className="bg-gradient-to-b from-[#eaf5ff] to-white relative overflow-hidden">
           <div className="px-4 pt-3 pb-10 relative z-10 text-center">
-            <h1 className="si-up text-[22px] font-black leading-[1.15] mb-5 tracking-tight">
+            <h1 className="ph-up text-[22px] font-black leading-[1.15] mb-5 tracking-tight">
               <span className="bg-gradient-to-r from-[#E83D6D] via-[#0D2240] to-[#7C7C7C] bg-clip-text text-transparent">
-                Signia Hearing Aids Price in {city} 2026
+                Phonak Hearing Aids Price in {city} 2026
               </span>
             </h1>
 
-            <div className="si-up d1 relative w-full mb-5 flex flex-col items-center justify-center">
+            <div className="ph-up d1 relative w-full mb-5 flex flex-col items-center justify-center">
               <div className="absolute w-[140px] h-[140px] bg-[#184A99]/8 rounded-full blur-[40px]" />
               <Image
-                src="/signia_bct2.png"
-                alt="Signia Digital Hearing Aid"
+                src="/lp/phonak1.png"
+                alt="Phonak Digital Hearing Aid"
                 width={180}
                 height={180}
                 className="relative z-10 object-contain drop-shadow-[0_10px_24px_rgba(0,0,0,0.12)]"
@@ -220,11 +220,11 @@ export default async function SigniaCityPage({
               />
             </div>
 
-            <ul className="si-up d2 space-y-3 mb-6 text-left">
+            <ul className="ph-up d2 space-y-3 mb-6 text-left">
               {[
-                { icon: "🎧", text: "Bluetooth & Rechargeable Models" },
+                { icon: "🎧", text: "Universal Bluetooth Connectivity" },
                 { icon: "🏥", text: `Free Hearing Test at ${city} Clinic` },
-                { icon: "💰", text: "Save upto ₹31,500 on Signia Aids" },
+                { icon: "💰", text: "Save upto ₹31,500 on Phonak Aids" },
               ].map((b) => (
                 <li key={b.text} className="flex items-center gap-3">
                   <span className="text-lg flex-shrink-0">{b.icon}</span>
@@ -233,10 +233,10 @@ export default async function SigniaCityPage({
               ))}
             </ul>
 
-            <div className="si-up d3 w-full">
+            <div className="ph-up d3 w-full">
               <PopupTrigger className="w-full h-[50px] bg-[#184A99] text-white flex items-center justify-center gap-2 rounded-xl text-[14px] font-bold shadow-lg shadow-[#184A99]/20 active:scale-[0.97] transition-all">
                 <FileText className="w-4 h-4" />
-                Download Signia Price List
+                Download Phonak Price List
               </PopupTrigger>
             </div>
           </div>
@@ -245,11 +245,11 @@ export default async function SigniaCityPage({
         {/* Product showcase */}
         <section className="py-8 px-4 bg-white">
           <div className="text-center mb-5">
-            <h2 className="text-lg font-black text-slate-900">Best Selling Signia Hearing Aids</h2>
+            <h2 className="text-lg font-black text-slate-900">Best Selling Phonak Hearing Aids</h2>
             <p className="text-[11px] text-slate-400 mt-1">Tap any model to get the full price list</p>
           </div>
           <div className="space-y-3">
-            {SIGNIA_MODELS.map((p) => (
+            {PHONAK_MODELS.map((p) => (
               <div key={p.rank} className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden flex">
                 <div className="relative w-[110px] flex-shrink-0 bg-slate-50 flex items-center justify-center p-3">
                   <Image
@@ -383,7 +383,7 @@ export default async function SigniaCityPage({
         {/* Sticky bottom bar */}
         <div className="fixed bottom-0 left-0 right-0 z-[9999] bg-white shadow-[0_-4px_20px_rgba(0,0,0,0.1)] border-t border-slate-100 custom-bottom-bar flex">
           <a
-            href={`https://wa.me/916204260510?text=Hi, I want to chat with an audiologist about Signia hearing aids in ${city}`}
+            href={`https://wa.me/916204260510?text=Hi, I want to chat with an audiologist about Phonak hearing aids in ${city}`}
             target="_blank"
             rel="noopener noreferrer"
             className="flex-1 bg-[#25D366] text-white flex flex-col items-center justify-center py-2.5 gap-0.5"
@@ -414,18 +414,18 @@ export default async function SigniaCityPage({
 
               {/* Col 1: Text */}
               <div className="flex-[1.6] pt-8">
-                <div className="si-left hidden lg:inline-flex items-center gap-2 bg-[#184A99]/10 rounded-full px-5 py-2 text-[11px] font-bold text-[#184A99] mb-8 border border-[#184A99]/20">
+                <div className="ph-left hidden lg:inline-flex items-center gap-2 bg-[#184A99]/10 rounded-full px-5 py-2 text-[11px] font-bold text-[#184A99] mb-8 border border-[#184A99]/20">
                   <span className="w-2 h-2 bg-[#184A99] rounded-full animate-pulse" />
                   Authorized Partner · Expert Audiologists in {city}
                 </div>
 
-                <h1 className="si-up d1 text-5xl lg:text-[52px] font-black leading-[1.15] mb-8 text-[#0D2240] tracking-tight">
+                <h1 className="ph-up d1 text-5xl lg:text-[52px] font-black leading-[1.15] mb-8 text-[#0D2240] tracking-tight">
                   <span className="bg-gradient-to-r from-[#E83D6D] via-[#0D2240] to-[#7C7C7C] bg-clip-text text-transparent">
-                    Signia Hearing Aids Price in {city} 2026
+                    Phonak Hearing Aids Price in {city} 2026
                   </span>
                 </h1>
 
-                <p className="si-up d2 text-slate-500 text-xl mb-12 max-w-xl leading-relaxed font-medium">
+                <p className="ph-up d2 text-slate-500 text-xl mb-12 max-w-xl leading-relaxed font-medium">
                   Discover the{" "}
                   <span className="text-[#184A99] font-bold underline decoration-4 decoration-[#184A99]/10 underline-offset-8">
                     2026 Elite Collection
@@ -434,7 +434,7 @@ export default async function SigniaCityPage({
                   <span className="text-[#184A99] font-bold">Free Clinical Trial</span> at {city}&apos;s most trusted center.
                 </p>
 
-                <div className="si-up d3 grid grid-cols-3 gap-8 pt-10 border-t border-slate-100 mb-12">
+                <div className="ph-up d3 grid grid-cols-3 gap-8 pt-10 border-t border-slate-100 mb-12">
                   {[
                     { icon: <Users className="w-6 h-6" />, label: "2 Lakh+", sub: "Happy Customers" },
                     { icon: <MapPin className="w-6 h-6" />, label: "15+",     sub: "Clinics Across India" },
@@ -448,7 +448,7 @@ export default async function SigniaCityPage({
                   ))}
                 </div>
 
-                <div className="si-up d4 pt-8 border-t border-slate-100 opacity-60">
+                <div className="ph-up d4 pt-8 border-t border-slate-100 opacity-60">
                   <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-6">Official Partner of leading brands</p>
                   <div className="flex items-center gap-10 grayscale">
                     {BRAND_LOGOS.map((logo, i) => (
@@ -459,11 +459,11 @@ export default async function SigniaCityPage({
               </div>
 
               {/* Col 2: Hero image */}
-              <div className="si-scale hidden xl:flex flex-1 justify-center relative group py-20">
+              <div className="ph-scale hidden xl:flex flex-1 justify-center relative group py-20">
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#184A99]/10 via-transparent to-[#E83D6D]/10 rounded-full blur-[100px] animate-pulse" />
                 <Image
-                  src="/signia_bct2.png"
-                  alt="Premium Signia Hearing Aids"
+                  src="/lp/phonak1.png"
+                  alt="Premium Phonak Hearing Aids"
                   width={500}
                   height={500}
                   sizes="500px"
@@ -473,13 +473,13 @@ export default async function SigniaCityPage({
               </div>
 
               {/* Col 3: Lead form */}
-              <div className="si-up d4 w-full lg:w-[380px] flex-shrink-0 pt-8">
+              <div className="ph-up d4 w-full lg:w-[380px] flex-shrink-0 pt-8">
                 <div id="lead-form" className="bg-white rounded-[2.5rem] shadow-2xl p-10 text-slate-900 relative overflow-hidden border border-slate-50">
                   <div className="absolute top-0 right-0 bg-[#E83D6D] text-white text-[10px] font-bold px-5 py-2 rounded-bl-2xl uppercase tracking-widest">
                     Free Consultation
                   </div>
-                  <h2 className="text-2xl font-bold mb-3 pt-4 text-[#0D2240]">Download Signia Prices &amp; Claim Free Trial</h2>
-                  <p className="text-slate-500 text-xs mb-8 leading-relaxed">Get the full 2026 Signia Price List instantly on WhatsApp.</p>
+                  <h2 className="text-2xl font-bold mb-3 pt-4 text-[#0D2240]">Download Phonak Prices &amp; Claim Free Trial</h2>
+                  <p className="text-slate-500 text-xs mb-8 leading-relaxed">Get the full 2026 Phonak Price List instantly on WhatsApp.</p>
                   <LeadForm city={citySlug} />
                 </div>
               </div>
@@ -492,7 +492,7 @@ export default async function SigniaCityPage({
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8">
             <div className="text-left">
               <h2 className="text-[10px] font-black text-[#184A99] uppercase tracking-[0.4em] mb-4">Premium Collection</h2>
-              <h3 className="text-5xl font-bold text-slate-900 tracking-tight">2026&apos;s Top Signia Models</h3>
+              <h3 className="text-5xl font-bold text-slate-900 tracking-tight">2026&apos;s Top Phonak Models</h3>
             </div>
             <p className="text-slate-500 max-w-sm font-medium leading-relaxed text-lg">
               Individually selected by our experts for the active lifestyles of {city} residents.
@@ -500,7 +500,7 @@ export default async function SigniaCityPage({
           </div>
 
           <div className="grid gap-12">
-            {SIGNIA_MODELS.map((p) => (
+            {PHONAK_MODELS.map((p) => (
               <div
                 key={p.rank}
                 className="bg-white border border-slate-100 rounded-[4rem] overflow-hidden hover:shadow-[0_40px_80px_-30px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-700 flex flex-col lg:flex-row group"
@@ -645,7 +645,7 @@ export default async function SigniaCityPage({
           <div className="max-w-6xl mx-auto px-6">
             <Image src="/logo.webp" alt="Insono" width={140} height={40} className="h-9 w-auto mx-auto mb-8 grayscale opacity-50" />
             <p className="text-[11px] text-slate-400 font-bold uppercase tracking-[0.4em]">
-              © 2026 Insono Hearing · Signia Specialist Center · {city}
+              © 2026 Insono Hearing · Phonak Specialist Center · {city}
             </p>
           </div>
         </footer>

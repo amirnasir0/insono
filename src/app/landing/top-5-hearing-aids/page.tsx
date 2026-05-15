@@ -146,7 +146,7 @@ export default function Top5LandingPage() {
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-blue-100 selection:text-blue-900">
 
-      {/* suppress global nav on mobile */}
+      {/* Page-scoped styles: suppress global nav on mobile + entry animations */}
       <style dangerouslySetInnerHTML={{
         __html: `
           @media (max-width: 768px) {
@@ -154,6 +154,25 @@ export default function Top5LandingPage() {
             .sticky.top-0:not(.top5-mobile-header-wrapper) { display: none !important; }
             body { padding-top: 0 !important; }
           }
+          @keyframes t5-up {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+          }
+          @keyframes t5-left {
+            from { opacity: 0; transform: translateX(-20px); }
+            to   { opacity: 1; transform: translateX(0); }
+          }
+          @keyframes t5-scale {
+            from { opacity: 0; transform: scale(0.9); }
+            to   { opacity: 1; transform: scale(1); }
+          }
+          .t5-up            { animation: t5-up    0.5s ease both; }
+          .t5-up.d1         { animation-delay: 0.1s; }
+          .t5-up.d2         { animation-delay: 0.2s; }
+          .t5-up.d3         { animation-delay: 0.3s; }
+          .t5-up.d4         { animation-delay: 0.4s; }
+          .t5-left          { animation: t5-left  0.5s ease both; }
+          .t5-scale         { animation: t5-scale 0.8s 0.5s ease both; }
         `
       }} />
 
@@ -189,13 +208,13 @@ export default function Top5LandingPage() {
         {/* Hero */}
         <section className="bg-gradient-to-b from-[#eaf5ff] to-white px-4 pt-4 pb-10 text-center">
 
-          <h1 className="text-[22px] font-black leading-[1.15] mb-5 tracking-tight">
+          <h1 className="t5-up text-[22px] font-black leading-[1.15] mb-5 tracking-tight">
             <span className="bg-gradient-to-r from-[#E83D6D] via-[#0D2240] to-[#7C7C7C] bg-clip-text text-transparent">
               Top 5 Hearing Aids<br />in India 2026
             </span>
           </h1>
 
-          <div className="relative w-full mb-5 flex items-center justify-center">
+          <div className="t5-up d1 relative w-full mb-5 flex items-center justify-center">
             <div className="absolute w-[160px] h-[160px] bg-[#184A99]/8 rounded-full blur-[40px]"></div>
             <Image
               src="/hero3.png"
@@ -208,7 +227,7 @@ export default function Top5LandingPage() {
           </div>
 
           {/* Styled bullets */}
-          <div className="space-y-2.5 mb-6 text-left">
+          <div className="t5-up d2 space-y-2.5 mb-6 text-left">
             <div className="flex items-center gap-3 bg-slate-50 border border-slate-100 rounded-2xl px-4 py-3">
               <div className="w-9 h-9 rounded-xl bg-[#184A99]/10 flex items-center justify-center flex-shrink-0 text-lg">🏆</div>
               <span className="text-[13px] font-semibold text-slate-700 leading-snug">Lowest price guaranteed</span>
@@ -225,15 +244,17 @@ export default function Top5LandingPage() {
             </div>
           </div>
 
-          <a
-            href="#mobile-form"
-            className="w-full h-[50px] bg-[#184A99] text-white flex items-center justify-center gap-2 rounded-xl text-[14px] font-bold shadow-lg shadow-[#184A99]/20 active:scale-[0.97] transition-all"
-          >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-            </svg>
-            Download Full Price List
-          </a>
+          <div className="t5-up d3 w-full">
+            <a
+              href="#mobile-form"
+              className="w-full h-[50px] bg-[#184A99] text-white flex items-center justify-center gap-2 rounded-xl text-[14px] font-bold shadow-lg shadow-[#184A99]/20 active:scale-[0.97] transition-all"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+              Download Full Price List
+            </a>
+          </div>
         </section>
 
         {/* Mobile inline form */}
@@ -283,23 +304,23 @@ export default function Top5LandingPage() {
 
             {/* Column 1 — Text */}
             <div className="flex-[1.6] pt-8">
-              <div className="hidden lg:inline-flex items-center gap-2 bg-[#184A99]/10 rounded-full px-5 py-2 text-[11px] font-bold text-[#184A99] mb-8 border border-[#184A99]/20">
+              <div className="t5-left hidden lg:inline-flex items-center gap-2 bg-[#184A99]/10 rounded-full px-5 py-2 text-[11px] font-bold text-[#184A99] mb-8 border border-[#184A99]/20">
                 <span className="w-2 h-2 bg-[#184A99] rounded-full animate-pulse"></span>
                 Authorized Partner · Trusted by 4 Million+ Indians
               </div>
 
-              <h1 className="text-5xl lg:text-[52px] font-black leading-[1.15] mb-8 tracking-tight">
+              <h1 className="t5-up d1 text-5xl lg:text-[52px] font-black leading-[1.15] mb-8 tracking-tight">
                 <span className="bg-gradient-to-r from-[#E83D6D] via-[#0D2240] to-[#7C7C7C] bg-clip-text text-transparent">
                   Top 5 Hearing Aids in India 2026
                 </span>
               </h1>
 
-              <p className="text-slate-500 text-xl mb-12 max-w-xl leading-relaxed font-medium">
+              <p className="t5-up d2 text-slate-500 text-xl mb-12 max-w-xl leading-relaxed font-medium">
                 Compare Signia, Phonak, Widex & more — AI-powered, rechargeable, and virtually invisible. Get a{" "}
                 <span className="text-[#184A99] font-bold">Free Clinical Trial</span> at India&apos;s most trusted hearing aid center.
               </p>
 
-              <div className="grid grid-cols-3 gap-8 pt-10 border-t border-slate-100 mb-12">
+              <div className="t5-up d3 grid grid-cols-3 gap-8 pt-10 border-t border-slate-100 mb-12">
                 {[
                   { label: "2 Lakh+", sub: "Happy Customers" },
                   { label: "15+",     sub: "Clinics Across India" },
@@ -312,18 +333,18 @@ export default function Top5LandingPage() {
                 ))}
               </div>
 
-              <div className="pt-8 border-t border-slate-100 opacity-60">
+              <div className="t5-up d4 pt-8 border-t border-slate-100 opacity-60">
                 <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-6">Official Partner of leading brands</p>
                 <div className="flex items-center gap-10 grayscale">
                   {["/brands/signia.svg","/brands/phonaklogo.svg","/brands/widex.svg","/brands/oticon.svg","/brands/resound.svg"].map((logo, i) => (
-                    <img key={i} src={logo} alt="brand" className="h-4 w-auto object-contain" />
+                    <Image key={i} src={logo} alt="brand" width={64} height={16} className="h-4 w-auto object-contain" loading="lazy" />
                   ))}
                 </div>
               </div>
             </div>
 
             {/* Column 2 — Hero image */}
-            <div className="hidden xl:flex flex-1 justify-center relative py-20">
+            <div className="t5-scale hidden xl:flex flex-1 justify-center relative py-20">
               <div className="absolute inset-0 bg-gradient-to-tr from-[#184A99]/10 via-transparent to-[#E83D6D]/10 rounded-full blur-[100px]"></div>
               <Image
                 src="/hero3.png"
@@ -336,7 +357,7 @@ export default function Top5LandingPage() {
             </div>
 
             {/* Column 3 — Form */}
-            <div className="w-full lg:w-[380px] flex-shrink-0 pt-8" id="lead-form">
+            <div className="t5-up d4 w-full lg:w-[380px] flex-shrink-0 pt-8" id="lead-form">
               <div className="bg-white rounded-[2.5rem] shadow-2xl p-10 text-slate-900 relative overflow-hidden border border-slate-50">
                 <div className="absolute top-0 right-0 bg-[#E83D6D] text-white text-[10px] font-bold px-5 py-2 rounded-bl-2xl uppercase tracking-widest">
                   Free Trial
@@ -377,7 +398,7 @@ export default function Top5LandingPage() {
                       </span>
                     </div>
                     <div className="relative w-full aspect-square transition-transform duration-700 group-hover:scale-110">
-                      <Image src={product.image} alt={product.title} fill className="object-contain" />
+                      <Image src={product.image} alt={product.title} fill className="object-contain" loading="lazy" sizes="(max-width: 768px) 100vw, 40vw" />
                     </div>
                     <div className={`absolute top-6 right-6 px-3 py-1.5 rounded-xl text-[10px] font-black uppercase tracking-wider shadow-sm ${product.badgeColor}`}>
                       {product.badge}
@@ -387,12 +408,12 @@ export default function Top5LandingPage() {
                   {/* Product Content */}
                   <div className="md:col-span-7 p-8 md:p-12 flex flex-col justify-center">
                     <div className="flex items-center gap-4 mb-6">
-                      <img src={product.brandLogo} alt={product.brand} className="h-6 w-auto grayscale group-hover:grayscale-0 transition-all" />
+                      <Image src={product.brandLogo} alt={product.brand} width={72} height={24} className="h-6 w-auto grayscale group-hover:grayscale-0 transition-all" loading="lazy" />
                       <span className="w-px h-4 bg-slate-200"></span>
                       <h3 className="text-2xl font-black text-slate-900">{product.title}</h3>
                     </div>
 
-                    <p className="text-blue-600 font-bold text-sm mb-8 italic">"{product.highlight}"</p>
+                    <p className="text-blue-600 font-bold text-sm mb-8 italic">&ldquo;{product.highlight}&rdquo;</p>
 
                     <div className="space-y-4 mb-10">
                       <p className="text-xs font-black text-slate-400 uppercase tracking-widest mb-4">Key Performance Features</p>
@@ -442,6 +463,7 @@ export default function Top5LandingPage() {
                 width={1200}
                 height={400}
                 className="w-full h-auto"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent"></div>
             </div>
@@ -449,8 +471,8 @@ export default function Top5LandingPage() {
 
           <div className="grid lg:grid-cols-3 gap-8">
             {REVIEWS.map((review, i) => (
-              <div key={i} className="bg-white/5 border border-white/10 p-10 rounded-[2.5rem] relative">
-                <div className="text-blue-500 text-6xl font-serif absolute top-6 right-10 opacity-20">“</div>
+              <div key={i} className="bg-white/5 border border-white/10 p-10 rounded-[2.5rem] relative hover:-translate-y-1 transition-transform duration-700">
+                <div className="text-blue-500 text-6xl font-serif absolute top-6 right-10 opacity-20">&ldquo;</div>
                 <p className="text-lg font-medium leading-relaxed mb-8 relative z-10 italic">
                   {review.quote}
                 </p>
@@ -491,7 +513,7 @@ export default function Top5LandingPage() {
       <footer className="bg-slate-50 py-12 border-t border-slate-200">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-8">
-            <Image src="/logo.webp" alt="Insono Hearing" width={100} height={30} className="h-6 w-auto grayscale opacity-50" />
+            <Image src="/logo.webp" alt="Insono Hearing" width={100} height={30} className="h-6 w-auto grayscale opacity-50" loading="lazy" />
             <div className="flex gap-6 text-xs font-black text-slate-400 uppercase tracking-widest">
               <Link href="/landing/top-5-hearing-aids/privacy" className="hover:text-blue-600">Privacy Policy</Link>
               <Link href="/landing/top-5-hearing-aids/terms" className="hover:text-blue-600">Terms of Use</Link>

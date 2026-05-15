@@ -83,7 +83,7 @@ export default function TinnitusLandingPage() {
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-blue-100 selection:text-blue-900">
 
-      {/* suppress global nav on mobile */}
+      {/* Page-scoped styles: suppress global nav on mobile + entry animations */}
       <style dangerouslySetInnerHTML={{
         __html: `
           @media (max-width: 768px) {
@@ -91,6 +91,25 @@ export default function TinnitusLandingPage() {
             .sticky.top-0:not(.tinnitus-mobile-header-wrapper) { display: none !important; }
             body { padding-top: 0 !important; }
           }
+          @keyframes ti-up {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+          }
+          @keyframes ti-left {
+            from { opacity: 0; transform: translateX(-20px); }
+            to   { opacity: 1; transform: translateX(0); }
+          }
+          @keyframes ti-scale {
+            from { opacity: 0; transform: scale(0.9); }
+            to   { opacity: 1; transform: scale(1); }
+          }
+          .ti-up            { animation: ti-up    0.5s ease both; }
+          .ti-up.d1         { animation-delay: 0.1s; }
+          .ti-up.d2         { animation-delay: 0.2s; }
+          .ti-up.d3         { animation-delay: 0.3s; }
+          .ti-up.d4         { animation-delay: 0.4s; }
+          .ti-left          { animation: ti-left  0.5s ease both; }
+          .ti-scale         { animation: ti-scale 0.8s 0.5s ease both; }
         `
       }} />
 
@@ -126,13 +145,13 @@ export default function TinnitusLandingPage() {
         {/* Hero */}
         <section className="bg-gradient-to-b from-[#eaf5ff] to-white px-4 pt-4 pb-10 text-center">
 
-          <h1 className="text-[22px] font-black leading-[1.15] mb-5 tracking-tight">
+          <h1 className="ti-up text-[22px] font-black leading-[1.15] mb-5 tracking-tight">
             <span className="bg-gradient-to-r from-[#E83D6D] via-[#0D2240] to-[#7C7C7C] bg-clip-text text-transparent">
               Hearing Aids for Tinnitus Relief
             </span>
           </h1>
 
-          <div className="relative w-full mb-5 flex items-center justify-center">
+          <div className="ti-up d1 relative w-full mb-5 flex items-center justify-center">
             <div className="absolute w-[160px] h-[160px] bg-[#184A99]/8 rounded-full blur-[40px]"></div>
             <Image
               src="/ric-signia.png"
@@ -145,7 +164,7 @@ export default function TinnitusLandingPage() {
           </div>
 
           {/* Styled bullets */}
-          <div className="space-y-2.5 mb-6 text-left">
+          <div className="ti-up d2 space-y-2.5 mb-6 text-left">
             <div className="flex items-center gap-3 bg-slate-50 border border-slate-100 rounded-2xl px-4 py-3">
               <div className="w-9 h-9 rounded-xl bg-[#184A99]/10 flex items-center justify-center flex-shrink-0 text-lg">🏆</div>
               <span className="text-[13px] font-semibold text-slate-700 leading-snug">Lowest price guaranteed</span>
@@ -162,17 +181,19 @@ export default function TinnitusLandingPage() {
             </div>
           </div>
 
-          <a
-            href="https://wa.me/916204260510?text=Hi, I want to know about hearing aids for tinnitus relief and pricing"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full h-[50px] bg-[#184A99] text-white flex items-center justify-center gap-2 rounded-xl text-[14px] font-bold shadow-lg shadow-[#184A99]/20 active:scale-[0.97] transition-all"
-          >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
-            Download Full Price List
-          </a>
+          <div className="ti-up d3 w-full">
+            <a
+              href="https://wa.me/916204260510?text=Hi, I want to know about hearing aids for tinnitus relief and pricing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full h-[50px] bg-[#184A99] text-white flex items-center justify-center gap-2 rounded-xl text-[14px] font-bold shadow-lg shadow-[#184A99]/20 active:scale-[0.97] transition-all"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              Download Full Price List
+            </a>
+          </div>
         </section>
 
         {/* Sticky bottom bar */}
@@ -210,22 +231,22 @@ export default function TinnitusLandingPage() {
 
             {/* Column 1 — Text */}
             <div className="flex-[1.6] pt-8">
-              <div className="hidden lg:inline-flex items-center gap-2 bg-[#184A99]/10 rounded-full px-5 py-2 text-[11px] font-bold text-[#184A99] mb-8 border border-[#184A99]/20">
+              <div className="ti-left hidden lg:inline-flex items-center gap-2 bg-[#184A99]/10 rounded-full px-5 py-2 text-[11px] font-bold text-[#184A99] mb-8 border border-[#184A99]/20">
                 <span className="w-2 h-2 bg-[#184A99] rounded-full animate-pulse"></span>
                 Tinnitus Relief Specialist · Authorized Partner
               </div>
 
-              <h1 className="text-5xl lg:text-[52px] font-black leading-[1.15] mb-8 tracking-tight">
+              <h1 className="ti-up d1 text-5xl lg:text-[52px] font-black leading-[1.15] mb-8 tracking-tight">
                 <span className="bg-gradient-to-r from-[#E83D6D] via-[#0D2240] to-[#7C7C7C] bg-clip-text text-transparent">
                   Hearing Aids for Tinnitus & Ringing Relief
                 </span>
               </h1>
 
-              <p className="text-slate-500 text-xl mb-12 max-w-xl leading-relaxed font-medium">
+              <p className="ti-up d2 text-slate-500 text-xl mb-12 max-w-xl leading-relaxed font-medium">
                 End the constant ringing with clinically proven <span className="text-[#184A99] font-bold">Tinnitus Masking Hearing Aids</span> — Signia Notch Therapy, Widex Zen Tones & Phonak Tinnitus Balance. Book a Free Trial today.
               </p>
 
-              <div className="grid grid-cols-3 gap-8 pt-10 border-t border-slate-100 mb-12">
+              <div className="ti-up d3 grid grid-cols-3 gap-8 pt-10 border-t border-slate-100 mb-12">
                 {[
                   { label: "2 Lakh+", sub: "Happy Customers" },
                   { label: "15+", sub: "Clinics Pan India" },
@@ -238,18 +259,18 @@ export default function TinnitusLandingPage() {
                 ))}
               </div>
 
-              <div className="pt-8 border-t border-slate-100 opacity-60">
+              <div className="ti-up d4 pt-8 border-t border-slate-100 opacity-60">
                 <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-6">Official Partner of leading brands</p>
                 <div className="flex items-center gap-10 grayscale">
                   {["/brands/signia.svg", "/brands/phonaklogo.svg", "/brands/widex.svg", "/brands/oticon.svg", "/brands/resound.svg"].map((logo, i) => (
-                    <img key={i} src={logo} alt="brand" className="h-4 w-auto object-contain" />
+                    <Image key={i} src={logo} alt="brand" width={64} height={16} className="h-4 w-auto object-contain" loading="lazy" />
                   ))}
                 </div>
               </div>
             </div>
 
             {/* Column 2 — Hero image */}
-            <div className="hidden xl:flex flex-1 justify-center relative py-20">
+            <div className="ti-scale hidden xl:flex flex-1 justify-center relative py-20">
               <div className="absolute inset-0 bg-gradient-to-tr from-[#184A99]/10 via-transparent to-[#E83D6D]/10 rounded-full blur-[100px]"></div>
               <Image
                 src="/ric-signia.png"
@@ -262,7 +283,7 @@ export default function TinnitusLandingPage() {
             </div>
 
             {/* Column 3 — Form */}
-            <div className="w-full lg:w-[380px] flex-shrink-0 pt-8" id="lead-form">
+            <div className="ti-up d4 w-full lg:w-[380px] flex-shrink-0 pt-8" id="lead-form">
               <div className="bg-white rounded-[2.5rem] shadow-2xl p-10 text-slate-900 relative overflow-hidden border border-slate-50">
                 <div className="absolute top-0 right-0 bg-[#E83D6D] text-white text-[10px] font-bold px-5 py-2 rounded-bl-2xl uppercase tracking-widest">
                   Free Trial
@@ -289,9 +310,9 @@ export default function TinnitusLandingPage() {
 
         <div className="grid gap-6">
           {TINNITUS_MODELS.map((p) => (
-            <div key={p.rank} className="bg-white border border-gray-200 rounded-3xl overflow-hidden hover:shadow-xl transition-shadow flex flex-col sm:flex-row">
+            <div key={p.rank} className="bg-white border border-gray-200 rounded-3xl overflow-hidden hover:shadow-xl transition-shadow flex flex-col sm:flex-row hover:-translate-y-1 transition-transform duration-700">
               <div className="sm:w-64 bg-gray-50 relative min-h-[200px]">
-                <Image src={p.image} alt={p.title} fill className="object-contain p-6" />
+                <Image src={p.image} alt={p.title} fill className="object-contain p-6" loading="lazy" sizes="(max-width: 640px) 100vw, 256px" />
                 <div className={`absolute top-4 left-4 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${p.badgeColor}`}>
                   {p.badge}
                 </div>
@@ -299,7 +320,7 @@ export default function TinnitusLandingPage() {
               <div className="flex-1 p-6 sm:p-8 flex flex-col justify-between">
                 <div>
                   <div className="flex items-center gap-3 mb-3">
-                    <img src={p.brandLogo} alt={p.brand} className="h-6 w-auto grayscale" />
+                    <Image src={p.brandLogo} alt={p.brand} width={72} height={24} className="h-6 w-auto grayscale" loading="lazy" />
                     <span className="text-xs text-gray-400 font-semibold uppercase tracking-widest">{p.brand} Technology</span>
                   </div>
                   <h3 className="text-xl font-black text-gray-800 mb-1">{p.title}</h3>
@@ -356,7 +377,7 @@ export default function TinnitusLandingPage() {
       <footer className="bg-slate-50 py-12 border-t border-slate-200">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-8">
-            <Image src="/logo.webp" alt="Insono Hearing" width={100} height={30} className="h-6 w-auto grayscale opacity-50" />
+            <Image src="/logo.webp" alt="Insono Hearing" width={100} height={30} className="h-6 w-auto grayscale opacity-50" loading="lazy" />
             <div className="flex gap-6 text-xs font-black text-slate-400 uppercase tracking-widest">
               <Link href="/landing/tinnitus-hearing-aids/privacy" className="hover:text-blue-600">Privacy Policy</Link>
               <Link href="/landing/tinnitus-hearing-aids/terms" className="hover:text-blue-600">Terms of Use</Link>

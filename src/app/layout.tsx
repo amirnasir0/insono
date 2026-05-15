@@ -64,6 +64,14 @@ export default function RootLayout({
           name="google-site-verification"
           content="_w3rNIazk1WMe-urSCcrtpzyAcqTeopxMU1qqLd0p6k"
         />
+        {/* Preload primary font so it's fetched in parallel with CSS */}
+        <link
+          rel="preload"
+          href="/fonts/Webspecia-Regular.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
 
         <Script
           id="gtm-head"

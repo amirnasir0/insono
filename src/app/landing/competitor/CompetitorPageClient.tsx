@@ -289,7 +289,7 @@ export default function CompetitorPageClient() {
                   {/* Product Content */}
                   <div className="md:col-span-7 p-8 md:p-12 flex flex-col justify-center">
                     <div className="flex items-center gap-4 mb-6">
-                      <img src={product.brandLogo} alt={product.brand} className="h-6 w-auto grayscale group-hover:grayscale-0 transition-all" />
+                      <Image src={product.brandLogo} alt={product.brand} width={72} height={24} className="h-6 w-auto grayscale group-hover:grayscale-0 transition-all" />
                       <span className="w-px h-4 bg-slate-200"></span>
                       <h3 className="text-2xl font-black text-slate-900">{product.title}</h3>
                     </div>
