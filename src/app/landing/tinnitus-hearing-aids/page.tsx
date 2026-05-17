@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import LeadForm from "./LeadForm";
+import FAQAccordion from "./FAQAccordion";
+import { PopupTrigger } from "./PopupTrigger";
+import PopupModal from "./PopupModal";
 
 export const metadata: Metadata = {
   title: "Hearing Aids for Tinnitus & Ringing in the Ear Relief | Insono Hearing",
@@ -13,13 +16,15 @@ const TINNITUS_MODELS = [
   {
     rank: 1,
     badge: "Best for Tinnitus",
-    badgeColor: "bg-blue-600 text-white",
+    badgeColor: "bg-[#184A99] text-white",
     title: "Signia Pure Charge&Go IX",
     brand: "Signia",
     brandLogo: "/brands/signia.svg",
     image: "https://an7bjwndlmaemx4x.public.blob.vercel-storage.com/products/1772781326903-Signia-Orion-C%26G-200%40.jpg",
     features: ["Notch Therapy", "Bluetooth Streaming", "Rechargeable", "AI Speech Enhancement", "Ultra-Discrete"],
-    highlight: "Exclusive Notch Therapy clinically proven to reduce tinnitus",
+    channels: "48 Channels",
+    style: "RIC",
+    highlight: "Exclusive Notch Therapy clinically proven to reduce tinnitus perception",
   },
   {
     rank: 2,
@@ -30,28 +35,34 @@ const TINNITUS_MODELS = [
     brandLogo: "/brands/widex.svg",
     image: "/lp/widex1.png",
     features: ["Zen Tones (Fractal Sounds)", "Natural Sound", "Smartphone Control", "Rechargeable", "IP68 Water Resistant"],
+    channels: "15 Channels",
+    style: "RIC",
     highlight: "Uses fractal 'Zen' tones to mask tinnitus and reduce stress",
   },
   {
     rank: 3,
     badge: "Smart Masking",
-    badgeColor: "bg-green-600 text-white",
+    badgeColor: "bg-emerald-600 text-white",
     title: "Phonak Audeo Lumity",
     brand: "Phonak",
     brandLogo: "/brands/phonaklogo.svg",
     image: "/lp/phonak1.png",
     features: ["Tinnitus Balance App", "Universal Connectivity", "AutoSense OS 5.0", "Clear Speech", "Dynamic Noise Cancellation"],
-    highlight: "Customizable masking sounds via Tinnitus Balance App",
+    channels: "32 Channels",
+    style: "RIC",
+    highlight: "Customizable masking sounds via the Tinnitus Balance app",
   },
   {
     rank: 4,
     badge: "Maximum Control",
-    badgeColor: "bg-red-600 text-white",
+    badgeColor: "bg-rose-600 text-white",
     title: "Resound Nexia",
     brand: "Resound",
     brandLogo: "/brands/resound.svg",
     image: "/lp/signia2.png",
     features: ["Tinnitus SoundGenerator", "Resound Relief App", "Auracast Ready", "Smallest RIC", "All-Day Battery"],
+    channels: "32 Channels",
+    style: "RIC",
     highlight: "Advanced sound therapy with the Resound Relief app",
   },
 ];
@@ -67,28 +78,82 @@ const FAQS = [
   },
   {
     q: "How long does it take for hearing aids to help tinnitus?",
-    a: "While many feel instant relief due to the masking effect, it typically takes 2-4 weeks of consistent use for the brain to fully adapt and significantly reduce the perception of ringing.",
+    a: "While many feel instant relief due to the masking effect, it typically takes 2–4 weeks of consistent use for the brain to fully adapt and significantly reduce the perception of ringing.",
   },
   {
-    q: "Are there any hearing aids that help with tinnitus?",
-    a: "Absolutely. Brands like Signia (Notch Therapy), Widex (Zen), and Phonak (Tinnitus Balance) have dedicated hardware and software specifically designed to suppress tinnitus sounds.",
+    q: "Are there any hearing aids specifically made for tinnitus?",
+    a: "Absolutely. Brands like Signia (Notch Therapy), Widex (Zen Tones), and Phonak (Tinnitus Balance) have dedicated hardware and software specifically designed to suppress tinnitus sounds.",
   },
   {
     q: "Do you offer Tinnitus Retraining Therapy (TRT)?",
-    a: "Yes, our clinics offer comprehensive Tinnitus management including Tinnitus Retraining Therapy (TRT). Our certified audiologists combine sound therapy with counseling to help you habituate to the sound.",
+    a: "Yes, our clinics offer comprehensive tinnitus management including Tinnitus Retraining Therapy (TRT). Our certified audiologists combine sound therapy with counseling to help you habituate to the sound.",
   },
+];
+
+const REVIEWS = [
+  {
+    name: "Ramesh Gupta",
+    initials: "RG",
+    avatarColor: "bg-[#184A99]",
+    location: "Delhi",
+    time: "3 weeks ago",
+    text: "The Signia Notch Therapy completely changed my life. The constant ringing has reduced by nearly 80%. The audiologist at Insono was the first one who properly explained what tinnitus is.",
+  },
+  {
+    name: "Sunita Kapoor",
+    initials: "SK",
+    avatarColor: "bg-purple-600",
+    location: "Gurgaon",
+    time: "1 month ago",
+    text: "I was sceptical but the Widex Zen tones actually work. Within 3 weeks the ringing became much more manageable. The free trial was a game changer — no pressure to buy.",
+  },
+  {
+    name: "Dr. Pradeep Mehta",
+    initials: "PM",
+    avatarColor: "bg-emerald-600",
+    location: "Mumbai",
+    time: "2 months ago",
+    text: "Professionally done audiogram and tinnitus assessment. The Phonak Tinnitus Balance app was set up perfectly for my needs. I sleep so much better now. Highly recommend Insono.",
+  },
+  {
+    name: "Kavita Nair",
+    initials: "KN",
+    avatarColor: "bg-rose-600",
+    location: "Bangalore",
+    time: "2 weeks ago",
+    text: "My tinnitus was affecting my sleep and concentration at work. With Insono's expert guidance, I found the right sound therapy. The difference in just 4 weeks is remarkable.",
+  },
+];
+
+const COMPARISON_ROWS = [
+  { feature: "Free Hearing Test",    others: false },
+  { feature: "7-Day Free Trial",      others: false },
+  { feature: "Genuine Products",      others: "Sometimes" },
+  { feature: "EMI / 0% Finance",      others: false },
+  { feature: "Home Delivery (COD)",   others: false },
+  { feature: "Lifetime Servicing",    others: false },
+  { feature: "Certified Audiologist", others: "Varies" },
+  { feature: "Price Transparency",    others: false },
+] as const;
+
+const BRAND_LOGOS = [
+  "/brands/signia.svg",
+  "/brands/widex.svg",
+  "/brands/phonaklogo.svg",
+  "/brands/oticon.svg",
+  "/brands/resound.svg",
 ];
 
 export default function TinnitusLandingPage() {
   return (
-    <div className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-blue-100 selection:text-blue-900">
+    <div className="min-h-screen bg-white font-sans overflow-x-hidden selection:bg-[#eaf5ff]">
 
-      {/* Page-scoped styles: suppress global nav on mobile + entry animations */}
       <style dangerouslySetInnerHTML={{
         __html: `
           @media (max-width: 768px) {
             header:not(.tinnitus-mobile-header),
-            .sticky.top-0:not(.tinnitus-mobile-header-wrapper) { display: none !important; }
+            .sticky.top-0:not(.tinnitus-mobile-header-wrapper),
+            .md\\:hidden.fixed.bottom-0:not(.tinnitus-bottom-bar) { display: none !important; }
             body { padding-top: 0 !important; }
           }
           @keyframes ti-up {
@@ -103,293 +168,559 @@ export default function TinnitusLandingPage() {
             from { opacity: 0; transform: scale(0.9); }
             to   { opacity: 1; transform: scale(1); }
           }
-          .ti-up            { animation: ti-up    0.5s ease both; }
-          .ti-up.d1         { animation-delay: 0.1s; }
-          .ti-up.d2         { animation-delay: 0.2s; }
-          .ti-up.d3         { animation-delay: 0.3s; }
-          .ti-up.d4         { animation-delay: 0.4s; }
-          .ti-left          { animation: ti-left  0.5s ease both; }
-          .ti-scale         { animation: ti-scale 0.8s 0.5s ease both; }
+          .ti-up       { animation: ti-up   0.5s ease both; }
+          .ti-up.d1    { animation-delay: 0.1s; }
+          .ti-up.d2    { animation-delay: 0.2s; }
+          .ti-up.d3    { animation-delay: 0.3s; }
+          .ti-up.d4    { animation-delay: 0.4s; }
+          .ti-left     { animation: ti-left  0.5s ease both; }
+          .ti-scale    { animation: ti-scale 0.8s 0.5s ease both; }
         `
       }} />
 
-      {/* ════════════════════════════════════════
-          MOBILE HERO  (hidden on md+)
-      ════════════════════════════════════════ */}
+      {/* ══════════════════════════════════════════════
+          MOBILE  (hidden on md+)
+      ══════════════════════════════════════════════ */}
       <div className="block md:hidden pb-20">
 
         {/* Urgency bar */}
-        <div className="bg-[#0D2240] text-white py-2.5 px-4 text-center text-[10px] font-bold uppercase tracking-[0.2em]">
-          <span className="inline-block w-2 h-2 bg-rose-500 rounded-full animate-pulse mr-2"></span>
-          A call can save you upto ₹31,500 on hearing aids
+        <div className="bg-[#0D2240] text-white py-2.5 px-4 text-center text-[10px] font-bold uppercase tracking-[0.2em] relative z-[60]">
+          <span className="inline-block w-2 h-2 bg-rose-500 rounded-full animate-pulse mr-2" />
+          Limited tinnitus assessment slots available — Book your free test now
         </div>
 
         {/* Sticky header */}
-        <div className="sticky top-0 z-50 tinnitus-mobile-header-wrapper">
+        <div className="sticky top-0 z-50 bg-transparent tinnitus-mobile-header-wrapper">
           <header className="tinnitus-mobile-header px-4 py-3 flex items-center justify-between bg-white/90 backdrop-blur-sm border-b border-slate-100">
             <Link href="/">
               <Image src="/logo.webp" alt="Insono Hearing" width={100} height={32} className="h-8 w-auto object-contain" />
             </Link>
             <a
               href="tel:+916204260510"
-              className="bg-[#184A99] text-white px-4 py-2.5 rounded-full text-[12px] font-bold flex items-center gap-2 active:scale-95 transition"
+              className="bg-[#184A99] text-white px-5 py-2.5 rounded-full text-[10px] font-bold flex items-center gap-2 active:scale-95 transition uppercase tracking-widest"
             >
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.948V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
-              +91 62042 60510
+              Call Expert
             </a>
           </header>
         </div>
 
         {/* Hero */}
-        <section className="bg-gradient-to-b from-[#eaf5ff] to-white px-4 pt-4 pb-10 text-center">
+        <section className="bg-gradient-to-b from-[#eaf5ff] to-white relative overflow-hidden">
+          <div className="px-4 pt-4 pb-8 relative z-10 text-center">
 
-          <h1 className="ti-up text-[22px] font-black leading-[1.15] mb-5 tracking-tight">
-            <span className="bg-gradient-to-r from-[#E83D6D] via-[#0D2240] to-[#7C7C7C] bg-clip-text text-transparent">
-              Hearing Aids for Tinnitus Relief
-            </span>
-          </h1>
-
-          <div className="ti-up d1 relative w-full mb-5 flex items-center justify-center">
-            <div className="absolute w-[160px] h-[160px] bg-[#184A99]/8 rounded-full blur-[40px]"></div>
-            <Image
-              src="/ric-signia.png"
-              alt="Hearing Aids for Tinnitus Relief"
-              width={220}
-              height={200}
-              className="relative z-10 object-contain drop-shadow-[0_10px_24px_rgba(0,0,0,0.12)]"
-              priority
-            />
-          </div>
-
-          {/* Styled bullets */}
-          <div className="ti-up d2 space-y-2.5 mb-6 text-left">
-            <div className="flex items-center gap-3 bg-slate-50 border border-slate-100 rounded-2xl px-4 py-3">
-              <div className="w-9 h-9 rounded-xl bg-[#184A99]/10 flex items-center justify-center flex-shrink-0 text-lg">🏆</div>
-              <span className="text-[13px] font-semibold text-slate-700 leading-snug">Lowest price guaranteed</span>
+            {/* 1. Social proof — first thing they see */}
+            <div className="ti-up flex items-center justify-center gap-2 mb-4">
+              <Image src="/badge/google.webp" alt="Google" width={52} height={18} className="h-[18px] w-auto" />
+              <div className="flex gap-0.5">
+                {[1, 2, 3, 4, 5].map((s) => <span key={s} className="text-yellow-400 text-sm">★</span>)}
+              </div>
+              <span className="text-[11px] font-bold text-slate-500">4.9 · 1,200+ Reviews</span>
             </div>
-            <div className="flex items-center gap-3 bg-slate-50 border border-slate-100 rounded-2xl px-4 py-3">
-              <div className="w-9 h-9 rounded-xl bg-[#184A99]/10 flex items-center justify-center flex-shrink-0 text-lg">💳</div>
-              <span className="text-[13px] font-semibold text-slate-700 leading-snug">0% EMI options, prices start from <span className="text-[#184A99] font-black">₹18,000</span></span>
-            </div>
-            <div className="flex items-center gap-3 bg-slate-50 border border-slate-100 rounded-2xl px-4 py-3">
-              <div className="w-9 h-9 rounded-xl bg-[#184A99]/10 flex items-center justify-center flex-shrink-0 text-lg">💰</div>
-              <span className="text-[13px] font-semibold text-slate-700 leading-snug">
-                Save upto <span className="text-emerald-600 font-black text-[16px]">₹31,500</span> on hearing aids
-              </span>
-            </div>
-          </div>
 
-          <div className="ti-up d3 w-full">
-            <a
-              href="https://wa.me/916204260510?text=Hi, I want to know about hearing aids for tinnitus relief and pricing"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full h-[50px] bg-[#184A99] text-white flex items-center justify-center gap-2 rounded-xl text-[14px] font-bold shadow-lg shadow-[#184A99]/20 active:scale-[0.97] transition-all"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
-              Download Full Price List
-            </a>
+            {/* 2. Benefit-first headline — speaks directly to the pain */}
+            <h1 className="ti-up d1 font-black leading-[1.1] mb-2 tracking-tight">
+              <span className="text-[28px] text-[#0D2240] block">Finally, Silence the</span>
+              <span className="text-[28px] text-[#0D2240] block">Ringing in Your Ears</span>
+            </h1>
+            <p className="ti-up d1 text-[11px] text-slate-400 font-bold uppercase tracking-wider mb-5">
+              Tinnitus Masking Hearing Aids · Expert Assessed · 2026
+            </p>
+
+            {/* 3. CTA — above the fold, rose color pops on blue gradient */}
+            <div className="ti-up d2 w-full mb-2">
+              <PopupTrigger className="w-full h-[52px] bg-[#E83D6D] text-white flex items-center justify-center gap-2 rounded-xl text-[15px] font-black shadow-lg shadow-[#E83D6D]/30 active:scale-[0.97] transition-all">
+                Get Free Tinnitus Price List on WhatsApp
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
+                </svg>
+              </PopupTrigger>
+            </div>
+            <p className="ti-up d2 text-[10px] text-slate-400 font-medium mb-5">
+              Free · Instant · No spam · Zero obligation
+            </p>
+
+            {/* 4. Brand trust strip */}
+            <div className="ti-up d3 flex items-center justify-center gap-5 mb-7 grayscale opacity-40">
+              <Image src="/brands/signia.svg" alt="Signia" width={52} height={14} className="h-3.5 w-auto" />
+              <span className="w-px h-3 bg-slate-300" />
+              <Image src="/brands/widex.svg" alt="Widex" width={52} height={14} className="h-3.5 w-auto" />
+              <span className="w-px h-3 bg-slate-300" />
+              <Image src="/brands/phonaklogo.svg" alt="Phonak" width={52} height={14} className="h-3.5 w-auto" />
+            </div>
+
+            {/* 5. Product image — below fold, for scrollers */}
+            <div className="relative w-full mb-6 flex flex-col items-center justify-center">
+              <div className="absolute w-[120px] h-[120px] bg-[#184A99]/8 rounded-full blur-[40px]" />
+              <Image
+                src="/ric-signia.png"
+                alt="Hearing Aids for Tinnitus Relief"
+                width={180}
+                height={160}
+                className="relative z-10 object-contain drop-shadow-[0_10px_24px_rgba(0,0,0,0.12)]"
+                priority
+                fetchPriority="high"
+              />
+            </div>
+
+            {/* 6. Rewritten bullets — outcome · care · price */}
+            <ul className="space-y-2.5 text-left">
+              <li className="flex items-center gap-3 bg-slate-50 border border-slate-100 rounded-2xl px-4 py-3">
+                <div className="w-9 h-9 rounded-xl bg-[#184A99]/10 flex items-center justify-center flex-shrink-0 text-lg">🔕</div>
+                <span className="text-[13px] font-semibold text-slate-700 leading-snug">80% of tinnitus patients find significant relief within 2–4 weeks</span>
+              </li>
+              <li className="flex items-center gap-3 bg-slate-50 border border-slate-100 rounded-2xl px-4 py-3">
+                <div className="w-9 h-9 rounded-xl bg-[#184A99]/10 flex items-center justify-center flex-shrink-0 text-lg">🏥</div>
+                <span className="text-[13px] font-semibold text-slate-700 leading-snug">Free tinnitus assessment by certified audiologist — no obligation</span>
+              </li>
+              <li className="flex items-center gap-3 bg-slate-50 border border-slate-100 rounded-2xl px-4 py-3">
+                <div className="w-9 h-9 rounded-xl bg-[#184A99]/10 flex items-center justify-center flex-shrink-0 text-lg">💰</div>
+                <span className="text-[13px] font-semibold text-slate-700 leading-snug">Save up to <span className="text-emerald-600 font-black">₹31,500</span> · 0% EMI · Signia, Widex &amp; Phonak</span>
+              </li>
+            </ul>
           </div>
         </section>
 
+        {/* Product showcase */}
+        <section className="py-8 px-4 bg-white">
+          <div className="text-center mb-5">
+            <h2 className="text-lg font-black text-slate-900">Best Tinnitus Masking Hearing Aids</h2>
+            <p className="text-[11px] text-slate-400 mt-1">Tap any model to get the full price list</p>
+          </div>
+          <div className="space-y-3">
+            {TINNITUS_MODELS.map((p) => (
+              <div key={p.rank} className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden flex">
+                <div className="relative w-[110px] flex-shrink-0 bg-slate-50 flex items-center justify-center p-3">
+                  <Image src={p.image} alt={p.title} width={90} height={90} loading="lazy" className="object-contain" />
+                  <span className={`absolute top-2 left-2 text-[8px] font-bold px-2 py-0.5 rounded-full leading-tight ${p.badgeColor}`}>
+                    {p.badge}
+                  </span>
+                </div>
+                <div className="flex-1 p-3 flex flex-col justify-between min-w-0">
+                  <div>
+                    <div className="flex items-center gap-1.5 mb-1">
+                      <Image src={p.brandLogo} alt={p.brand} width={60} height={12} className="h-3 w-auto grayscale opacity-50" loading="lazy" />
+                      <span className="text-[10px] text-slate-400 font-medium">{p.brand}</span>
+                    </div>
+                    <h3 className="text-[14px] font-bold text-slate-900 leading-tight mb-1.5">{p.title}</h3>
+                    <div className="flex flex-wrap gap-1 mb-1.5">
+                      {p.features.slice(0, 3).map((f) => (
+                        <span key={f} className="text-[9px] bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full font-semibold leading-tight">{f}</span>
+                      ))}
+                    </div>
+                    <p className="text-[9px] text-slate-500 font-medium mb-1">{p.style} · {p.channels}</p>
+                  </div>
+                  <div className="flex items-center justify-between gap-2">
+                    <div>
+                      <p className="text-[9px] text-slate-400 leading-none mb-0.5">Starting from</p>
+                      <p className="text-[11px] font-bold text-[#184A99]">Price on Request</p>
+                    </div>
+                    <PopupTrigger className="flex items-center gap-1 bg-[#184A99] text-white text-[10px] font-bold px-3 py-2 rounded-xl active:scale-95 transition flex-shrink-0">
+                      See Price
+                      <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </PopupTrigger>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Comparison */}
+        <section className="py-8 px-4 bg-slate-50">
+          <div className="text-center mb-5">
+            <h2 className="text-lg font-black text-slate-900">Insono Hearing vs Others</h2>
+            <p className="text-[11px] text-slate-400 mt-1">Why thousands choose Insono for tinnitus relief</p>
+          </div>
+          <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
+            <div className="grid grid-cols-3 bg-[#184A99] text-white text-[11px] font-bold">
+              <div className="py-3 px-3">Feature</div>
+              <div className="py-3 px-2 text-center border-l border-white/20 bg-white/10 text-yellow-300">Insono</div>
+              <div className="py-3 px-2 text-center border-l border-white/20 text-white/70">Others</div>
+            </div>
+            {COMPARISON_ROWS.map((row, i) => (
+              <div key={row.feature} className={`grid grid-cols-3 text-[11px] border-t border-slate-100 ${i % 2 === 0 ? "bg-white" : "bg-slate-50/60"}`}>
+                <div className="py-3 px-3 font-medium text-slate-700 leading-snug">{row.feature}</div>
+                <div className="py-3 px-2 flex items-center justify-center border-l border-slate-100 bg-blue-50/40">
+                  <span className="text-emerald-500 text-base font-black">✓</span>
+                </div>
+                <div className="py-3 px-2 flex items-center justify-center border-l border-slate-100">
+                  {row.others === false ? (
+                    <span className="text-red-400 text-base font-black">✗</span>
+                  ) : (
+                    <span className="text-amber-500 text-[9px] font-bold leading-tight text-center">{row.others}</span>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+          <PopupTrigger className="w-full mt-4 h-[46px] bg-[#184A99] text-white flex items-center justify-center gap-2 rounded-xl text-[13px] font-bold active:scale-[0.97] transition shadow-md shadow-[#184A99]/20">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            Download &amp; Compare Prices
+          </PopupTrigger>
+        </section>
+
+        {/* Reviews */}
+        <section className="py-8 px-4 bg-white">
+          <div className="text-center mb-5">
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <Image src="/badge/google.webp" alt="Google" width={60} height={20} className="h-5 w-auto" />
+              <span className="text-[11px] font-bold text-slate-500">Google Reviews</span>
+            </div>
+            <div className="flex items-center justify-center gap-1 mb-1">
+              {[1,2,3,4,5].map(s => <span key={s} className="text-yellow-400 text-lg">★</span>)}
+            </div>
+            <p className="text-[13px] font-black text-slate-800">4.9 / 5</p>
+            <p className="text-[10px] text-slate-400 font-medium">Based on 1,200+ verified reviews</p>
+          </div>
+          <div className="space-y-3">
+            {REVIEWS.map((r) => (
+              <div key={r.name} className="bg-slate-50 rounded-2xl border border-slate-100 p-4">
+                <div className="flex items-start gap-3 mb-2">
+                  <div className={`w-9 h-9 rounded-full flex items-center justify-center text-white text-[11px] font-black flex-shrink-0 ${r.avatarColor}`}>
+                    {r.initials}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between">
+                      <p className="text-[12px] font-bold text-slate-800 leading-none">{r.name}</p>
+                      <span className="text-[9px] text-slate-400">{r.time}</span>
+                    </div>
+                    <p className="text-[9px] text-slate-400 mt-0.5">{r.location} · <span className="text-emerald-500 font-semibold">✓ Verified</span></p>
+                    <div className="flex gap-0.5 mt-1">
+                      {[1,2,3,4,5].map(s => <span key={s} className="text-yellow-400 text-[10px]">★</span>)}
+                    </div>
+                  </div>
+                </div>
+                <p className="text-[11px] text-slate-600 leading-relaxed">&ldquo;{r.text}&rdquo;</p>
+              </div>
+            ))}
+          </div>
+          <a
+            href="https://share.google/RDuVMbenuWSAEEqLt"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-1.5 mt-4 text-[11px] font-bold text-[#184A99]"
+          >
+            Read all 1,200+ reviews on Google →
+          </a>
+        </section>
+
+        {/* FAQ */}
+        <section className="py-20 px-6 bg-white mb-20">
+          <h2 className="text-2xl font-bold text-slate-900 mb-12 text-center">Tinnitus FAQ</h2>
+          <FAQAccordion />
+        </section>
+
         {/* Sticky bottom bar */}
-        <div className="fixed bottom-0 left-0 right-0 z-[9999] bg-white shadow-[0_-4px_20px_rgba(0,0,0,0.1)] border-t border-slate-100 flex">
+        <div className="fixed bottom-0 left-0 right-0 z-[9999] bg-white shadow-[0_-4px_20px_rgba(0,0,0,0.1)] border-t border-slate-100 tinnitus-bottom-bar flex">
           <a
             href="https://wa.me/916204260510?text=Hi, I want to know about hearing aids for tinnitus relief and pricing"
             target="_blank"
             rel="noopener noreferrer"
             className="flex-1 bg-[#25D366] text-white flex flex-col items-center justify-center py-2.5 gap-0.5"
           >
-            <svg className="w-4 h-4 fill-white" viewBox="0 0 24 24">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.115.549 4.1 1.51 5.833L.057 23.057a.75.75 0 00.921.921l5.224-1.453A11.953 11.953 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.724 9.724 0 01-4.962-1.354l-.356-.212-3.697 1.029 1.029-3.697-.212-.356A9.724 9.724 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z" />
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
             </svg>
             <span className="text-[10px] font-black leading-none">Chat with Audiologist</span>
           </a>
-          <div className="w-px bg-slate-100" />
+          <div className="w-px bg-white/20" />
           <a
             href="tel:+916204260510"
             className="flex-1 bg-[#184A99] text-white flex flex-col items-center justify-center py-2.5 gap-0.5 px-2"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.948V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.948V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
             </svg>
             <span className="text-[10px] font-black leading-none text-center">A Call Can Save ₹31,500</span>
           </a>
         </div>
       </div>
 
-      {/* ════════════════════════════════════════
-          DESKTOP HERO  (hidden on mobile)
-      ════════════════════════════════════════ */}
-      <section className="hidden md:block relative pt-2 pb-20 bg-gradient-to-b from-[#eaf5ff] to-white overflow-hidden">
-        <div className="max-w-6xl mx-auto px-6 pt-10">
-          <div className="flex flex-col lg:flex-row gap-16 items-start">
+      {/* ══════════════════════════════════════════════
+          DESKTOP  (hidden on mobile)
+      ══════════════════════════════════════════════ */}
+      <div className="hidden md:block">
 
-            {/* Column 1 — Text */}
-            <div className="flex-[1.6] pt-8">
-              <div className="ti-left hidden lg:inline-flex items-center gap-2 bg-[#184A99]/10 rounded-full px-5 py-2 text-[11px] font-bold text-[#184A99] mb-8 border border-[#184A99]/20">
-                <span className="w-2 h-2 bg-[#184A99] rounded-full animate-pulse"></span>
-                Tinnitus Relief Specialist · Authorized Partner
-              </div>
+        {/* Hero */}
+        <section className="relative pt-2 pb-20 bg-gradient-to-b from-[#eaf5ff] to-white overflow-hidden">
+          <div className="max-w-6xl mx-auto px-6 pt-10">
+            <div className="flex flex-col lg:flex-row gap-16 items-start">
 
-              <h1 className="ti-up d1 text-5xl lg:text-[52px] font-black leading-[1.15] mb-8 tracking-tight">
-                <span className="bg-gradient-to-r from-[#E83D6D] via-[#0D2240] to-[#7C7C7C] bg-clip-text text-transparent">
-                  Hearing Aids for Tinnitus & Ringing Relief
-                </span>
-              </h1>
-
-              <p className="ti-up d2 text-slate-500 text-xl mb-12 max-w-xl leading-relaxed font-medium">
-                End the constant ringing with clinically proven <span className="text-[#184A99] font-bold">Tinnitus Masking Hearing Aids</span> — Signia Notch Therapy, Widex Zen Tones & Phonak Tinnitus Balance. Book a Free Trial today.
-              </p>
-
-              <div className="ti-up d3 grid grid-cols-3 gap-8 pt-10 border-t border-slate-100 mb-12">
-                {[
-                  { label: "2 Lakh+", sub: "Happy Customers" },
-                  { label: "15+", sub: "Clinics Pan India" },
-                  { label: "100+", sub: "Audiologists" },
-                ].map((s) => (
-                  <div key={s.label}>
-                    <p className="text-xl font-bold text-slate-900">{s.label}</p>
-                    <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">{s.sub}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="ti-up d4 pt-8 border-t border-slate-100 opacity-60">
-                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-6">Official Partner of leading brands</p>
-                <div className="flex items-center gap-10 grayscale">
-                  {["/brands/signia.svg", "/brands/phonaklogo.svg", "/brands/widex.svg", "/brands/oticon.svg", "/brands/resound.svg"].map((logo, i) => (
-                    <Image key={i} src={logo} alt="brand" width={64} height={16} className="h-4 w-auto object-contain" loading="lazy" />
-                  ))}
+              {/* Col 1: Text */}
+              <div className="flex-[1.6] pt-8">
+                <div className="ti-left hidden lg:inline-flex items-center gap-2 bg-[#184A99]/10 rounded-full px-5 py-2 text-[11px] font-bold text-[#184A99] mb-8 border border-[#184A99]/20">
+                  <span className="w-2 h-2 bg-[#184A99] rounded-full animate-pulse" />
+                  Tinnitus Relief Specialist · Authorized Partner
                 </div>
-              </div>
-            </div>
 
-            {/* Column 2 — Hero image */}
-            <div className="ti-scale hidden xl:flex flex-1 justify-center relative py-20">
-              <div className="absolute inset-0 bg-gradient-to-tr from-[#184A99]/10 via-transparent to-[#E83D6D]/10 rounded-full blur-[100px]"></div>
-              <Image
-                src="/ric-signia.png"
-                alt="Hearing Aids for Tinnitus Relief"
-                width={420}
-                height={380}
-                className="object-contain drop-shadow-[0_20px_60px_rgba(0,0,0,0.15)] relative z-10 hover:scale-105 transition-transform duration-700"
-                priority
-                fetchPriority="high"
-              />
-            </div>
+                <h1 className="ti-up d1 text-5xl lg:text-[52px] font-black leading-[1.15] mb-8 text-[#0D2240] tracking-tight">
+                  <span className="bg-gradient-to-r from-[#E83D6D] via-[#0D2240] to-[#7C7C7C] bg-clip-text text-transparent">
+                    Hearing Aids for Tinnitus &amp; Ringing Relief
+                  </span>
+                </h1>
 
-            {/* Column 3 — Form */}
-            <div className="ti-up d4 w-full lg:w-[380px] flex-shrink-0 pt-8" id="lead-form">
-              <div className="bg-white rounded-[2.5rem] shadow-2xl p-10 text-slate-900 relative overflow-hidden border border-slate-50">
-                <div className="absolute top-0 right-0 bg-[#E83D6D] text-white text-[10px] font-bold px-5 py-2 rounded-bl-2xl uppercase tracking-widest">
-                  Free Trial
-                </div>
-                <h2 className="text-2xl font-bold mb-3 pt-4 text-[#0D2240]">Get Tinnitus Relief Guide & Prices</h2>
-                <p className="text-slate-500 text-xs mb-8 leading-relaxed">Get the full 2026 tinnitus model price list instantly on WhatsApp.</p>
-                <LeadForm />
-                <p className="text-center text-[10px] text-slate-400 mt-6 uppercase tracking-widest font-bold">
-                  🔐 256-bit Secure · 100% Private
+                <p className="ti-up d2 text-slate-500 text-xl mb-12 max-w-xl leading-relaxed font-medium">
+                  End the constant ringing with clinically proven{" "}
+                  <span className="text-[#184A99] font-bold">Tinnitus Masking Hearing Aids</span> — Signia Notch Therapy, Widex Zen Tones &amp; Phonak Tinnitus Balance. Book a{" "}
+                  <span className="text-[#184A99] font-bold">Free Trial</span> today.
                 </p>
-              </div>
-            </div>
 
-          </div>
-        </div>
-      </section>
-
-      {/* ── Top Tinnitus Models ── */}
-      <section className="max-w-5xl mx-auto px-4 py-16">
-        <div className="text-center mb-12">
-          <h2 className="text-2xl sm:text-3xl font-black text-gray-800">Best Tinnitus Masking Hearing Aids 2026</h2>
-          <p className="text-gray-500 mt-2">Recommended by our expert audiologists for maximum relief.</p>
-        </div>
-
-        <div className="grid gap-6">
-          {TINNITUS_MODELS.map((p) => (
-            <div key={p.rank} className="bg-white border border-gray-200 rounded-3xl overflow-hidden hover:shadow-xl transition-shadow flex flex-col sm:flex-row hover:-translate-y-1 transition-transform duration-700">
-              <div className="sm:w-64 bg-gray-50 relative min-h-[200px]">
-                <Image src={p.image} alt={p.title} fill className="object-contain p-6" loading="lazy" sizes="(max-width: 640px) 100vw, 256px" />
-                <div className={`absolute top-4 left-4 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${p.badgeColor}`}>
-                  {p.badge}
-                </div>
-              </div>
-              <div className="flex-1 p-6 sm:p-8 flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center gap-3 mb-3">
-                    <Image src={p.brandLogo} alt={p.brand} width={72} height={24} className="h-6 w-auto grayscale" loading="lazy" />
-                    <span className="text-xs text-gray-400 font-semibold uppercase tracking-widest">{p.brand} Technology</span>
+                <div className="ti-up d3 grid grid-cols-3 gap-8 pt-10 border-t border-slate-100 mb-12">
+                  <div>
+                    <div className="text-[#184A99] mb-2">
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                      </svg>
+                    </div>
+                    <p className="text-xl font-bold text-slate-900">2 Lakh+</p>
+                    <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Happy Customers</p>
                   </div>
-                  <h3 className="text-xl font-black text-gray-800 mb-1">{p.title}</h3>
-                  <p className="text-blue-600 text-sm font-semibold mb-4 italic">&quot;{p.highlight}&quot;</p>
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {p.features.map((f) => (
-                      <span key={f} className="bg-blue-50 text-blue-700 px-3 py-1 rounded-lg text-xs font-bold border border-blue-100">
-                        {f}
-                      </span>
+                  <div>
+                    <div className="text-[#184A99] mb-2">
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                    </div>
+                    <p className="text-xl font-bold text-slate-900">15+</p>
+                    <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Clinics Across India</p>
+                  </div>
+                  <div>
+                    <div className="text-[#184A99] mb-2">
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                      </svg>
+                    </div>
+                    <p className="text-xl font-bold text-slate-900">100+</p>
+                    <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Audiologists</p>
+                  </div>
+                </div>
+
+                <div className="ti-up d4 pt-8 border-t border-slate-100 opacity-60">
+                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-6">Official Partner of leading brands</p>
+                  <div className="flex items-center gap-10 grayscale">
+                    {BRAND_LOGOS.map((logo, i) => (
+                      <Image key={i} src={logo} alt="brand" width={64} height={16} className="h-4 w-auto object-contain" loading="lazy" />
                     ))}
                   </div>
                 </div>
-                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pt-6 border-t border-gray-100">
-                  <div className="flex flex-col gap-3">
-                    <div>
-                      <p className="text-lg font-black text-[#023784]">Get Expert Advice</p>
-                    </div>
-                    <a
-                      href={`https://wa.me/916204260510?text=Hi, I want to consult an audiologist about ${p.title} for tinnitus relief.`}
-                      className="inline-flex items-center gap-2 bg-[#25D366] text-white px-4 py-2 rounded-lg text-xs font-bold hover:bg-[#128C7E] transition shadow-sm w-fit"
-                    >
-                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.634 1.437h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                      </svg>
-                      Chat with Audiologist
-                    </a>
+              </div>
+
+              {/* Col 2: Hero image */}
+              <div className="ti-scale hidden xl:flex flex-1 justify-center relative group py-20">
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#184A99]/10 via-transparent to-[#E83D6D]/10 rounded-full blur-[100px] animate-pulse" />
+                <Image
+                  src="/ric-signia.png"
+                  alt="Hearing Aids for Tinnitus Relief"
+                  width={420}
+                  height={380}
+                  className="object-contain drop-shadow-[0_20px_60px_rgba(0,0,0,0.15)] relative z-10 hover:scale-105 transition-transform duration-700"
+                  priority
+                  fetchPriority="high"
+                />
+              </div>
+
+              {/* Col 3: Lead form */}
+              <div className="ti-up d4 w-full lg:w-[380px] flex-shrink-0 pt-8">
+                <div id="lead-form" className="bg-white rounded-[2.5rem] shadow-2xl p-10 text-slate-900 relative overflow-hidden border border-slate-50">
+                  <div className="absolute top-0 right-0 bg-[#E83D6D] text-white text-[10px] font-bold px-5 py-2 rounded-bl-2xl uppercase tracking-widest">
+                    Free Trial
                   </div>
-                  <a href="#lead-form" className="w-full sm:w-auto bg-[#023784] text-white px-8 py-3 rounded-xl font-bold text-sm text-center hover:bg-[#012d66] transition">
-                    Download Price List
-                  </a>
+                  <h2 className="text-2xl font-bold mb-3 pt-4 text-[#0D2240]">Get Tinnitus Relief Guide &amp; Prices</h2>
+                  <p className="text-slate-500 text-xs mb-8 leading-relaxed">Get the full 2026 tinnitus model price list instantly on WhatsApp.</p>
+                  <LeadForm />
                 </div>
               </div>
             </div>
-          ))}
-        </div>
-      </section>
+          </div>
+        </section>
 
-      {/* ── FAQ ── */}
-      <section className="bg-slate-900 py-16 text-white">
-        <div className="max-w-3xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-black text-center mb-12">Tinnitus & Ringing in Ear — FAQs</h2>
-          <div className="space-y-8">
-            {FAQS.map((faq, i) => (
-              <div key={i} className="bg-white/5 border border-white/10 p-6 rounded-2xl">
-                <h3 className="text-lg font-bold mb-3 text-yellow-300">Q: {faq.q}</h3>
-                <p className="text-blue-100 text-sm leading-relaxed">{faq.a}</p>
+        {/* Product section */}
+        <section className="max-w-6xl mx-auto px-6 py-32" id="models">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8">
+            <div className="text-left">
+              <h2 className="text-[10px] font-black text-[#184A99] uppercase tracking-[0.4em] mb-4">Specialist Collection</h2>
+              <h3 className="text-5xl font-bold text-slate-900 tracking-tight">Best Tinnitus Masking Aids 2026</h3>
+            </div>
+            <p className="text-slate-500 max-w-sm font-medium leading-relaxed text-lg">
+              Individually selected by our audiologists for maximum tinnitus relief.
+            </p>
+          </div>
+
+          <div className="grid gap-12">
+            {TINNITUS_MODELS.map((p) => (
+              <div
+                key={p.rank}
+                className="bg-white border border-slate-100 rounded-[4rem] overflow-hidden hover:shadow-[0_40px_80px_-30px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-700 flex flex-col lg:flex-row group"
+              >
+                <div className="lg:w-[420px] bg-slate-50 relative min-h-[400px] flex items-center justify-center p-12">
+                  <Image
+                    src={p.image}
+                    alt={p.title}
+                    fill
+                    loading="lazy"
+                    sizes="(max-width: 1024px) 100vw, 420px"
+                    className="object-contain p-16 group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className={`absolute top-10 left-10 px-6 py-2.5 rounded-full text-[11px] font-bold uppercase tracking-[0.2em] shadow-lg ${p.badgeColor}`}>
+                    {p.badge}
+                  </div>
+                </div>
+                <div className="flex-1 p-12 lg:p-20 flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center gap-5 mb-10">
+                      <Image src={p.brandLogo} alt={p.brand} width={72} height={24} className="h-6 w-auto grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition duration-500" loading="lazy" />
+                      <div className="h-5 w-[1px] bg-slate-200" />
+                      <span className="text-[10px] text-slate-400 font-bold uppercase tracking-[0.2em]">{p.style} · {p.channels}</span>
+                    </div>
+                    <h3 className="text-5xl font-bold text-slate-950 mb-6 tracking-tight">{p.title}</h3>
+                    <p className="text-[#184A99] text-2xl font-bold mb-12 italic leading-relaxed">&ldquo;{p.highlight}&rdquo;</p>
+                    <div className="flex flex-wrap gap-4 mb-12">
+                      {p.features.map((f) => (
+                        <span key={f} className="bg-slate-50 text-slate-500 px-6 py-3 rounded-2xl text-[11px] font-bold border border-slate-100 uppercase tracking-widest">
+                          {f}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="flex flex-col sm:flex-row items-center justify-start gap-10 pt-12 border-t border-slate-50">
+                    <PopupTrigger className="w-full sm:w-auto flex items-center justify-center gap-3 bg-[#184A99] text-white px-12 py-6 rounded-[2rem] font-bold text-sm hover:bg-[#13366e] transition border border-slate-200 uppercase tracking-widest shadow-xl shadow-blue-100">
+                      Get Full Price List
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </PopupTrigger>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ── Footer ── */}
-      <footer className="bg-slate-50 py-12 border-t border-slate-200">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-8">
-            <Image src="/logo.webp" alt="Insono Hearing" width={100} height={30} className="h-6 w-auto grayscale opacity-50" loading="lazy" />
-            <div className="flex gap-6 text-xs font-black text-slate-400 uppercase tracking-widest">
-              <Link href="/landing/tinnitus-hearing-aids/privacy" className="hover:text-blue-600">Privacy Policy</Link>
-              <Link href="/landing/tinnitus-hearing-aids/terms" className="hover:text-blue-600">Terms of Use</Link>
+        {/* Comparison */}
+        <section className="py-20 bg-slate-50">
+          <div className="max-w-3xl mx-auto px-6">
+            <div className="text-center mb-10">
+              <h2 className="text-[10px] font-black text-[#184A99] uppercase tracking-[0.4em] mb-4">The Difference</h2>
+              <h3 className="text-4xl font-bold text-slate-900 tracking-tight">Insono Hearing vs Others</h3>
+              <p className="text-slate-500 mt-3 text-base">Why thousands choose Insono for tinnitus relief</p>
+            </div>
+            <div className="rounded-3xl overflow-hidden border border-slate-200 shadow-sm">
+              <div className="grid grid-cols-3 bg-[#184A99] text-white text-sm font-bold">
+                <div className="py-4 px-6">Feature</div>
+                <div className="py-4 px-4 text-center border-l border-white/20 bg-white/10 text-yellow-300">Insono</div>
+                <div className="py-4 px-4 text-center border-l border-white/20 text-white/70">Others</div>
+              </div>
+              {COMPARISON_ROWS.map((row, i) => (
+                <div key={row.feature} className={`grid grid-cols-3 text-sm border-t border-slate-100 ${i % 2 === 0 ? "bg-white" : "bg-slate-50/60"}`}>
+                  <div className="py-4 px-6 font-medium text-slate-700">{row.feature}</div>
+                  <div className="py-4 px-4 flex items-center justify-center border-l border-slate-100 bg-blue-50/40">
+                    <span className="text-emerald-500 text-lg font-black">✓</span>
+                  </div>
+                  <div className="py-4 px-4 flex items-center justify-center border-l border-slate-100">
+                    {row.others === false ? (
+                      <span className="text-red-400 text-lg font-black">✗</span>
+                    ) : (
+                      <span className="text-amber-500 text-xs font-bold">{row.others}</span>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="mt-8 text-center">
+              <PopupTrigger className="inline-flex items-center gap-3 bg-[#184A99] text-white px-10 py-5 rounded-2xl font-bold text-sm hover:bg-[#13366e] transition shadow-xl shadow-blue-100 uppercase tracking-widest">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                Download &amp; Compare Prices
+              </PopupTrigger>
             </div>
           </div>
-          <p className="text-center text-[10px] text-slate-400 max-w-2xl mx-auto leading-relaxed">
-            © 2026 Insono Hearing. All rights reserved. Our hearing aids are medical devices and should be fitted by certified professionals. Tinnitus relief results may vary by individual. Authorized partner for Signia, Phonak, and Widex.
-          </p>
-        </div>
-      </footer>
+        </section>
 
+        {/* Reviews */}
+        <section className="py-20 bg-white">
+          <div className="max-w-5xl mx-auto px-6">
+            <div className="text-center mb-12">
+              <div className="flex items-center justify-center gap-3 mb-3">
+                <Image src="/badge/google.webp" alt="Google" width={72} height={24} className="h-6 w-auto" />
+                <span className="text-sm font-bold text-slate-500">Google Reviews</span>
+              </div>
+              <div className="flex items-center justify-center gap-1 mb-2">
+                {[1,2,3,4,5].map(s => <span key={s} className="text-yellow-400 text-2xl">★</span>)}
+              </div>
+              <p className="text-2xl font-black text-slate-800">4.9 / 5</p>
+              <p className="text-sm text-slate-400 font-medium mt-1">Based on 1,200+ verified Google reviews</p>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {REVIEWS.map((r) => (
+                <div key={r.name} className="bg-slate-50 rounded-2xl border border-slate-100 p-5 flex flex-col gap-3">
+                  <div className="flex items-center gap-3">
+                    <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white text-xs font-black flex-shrink-0 ${r.avatarColor}`}>
+                      {r.initials}
+                    </div>
+                    <div>
+                      <p className="text-sm font-bold text-slate-800 leading-none">{r.name}</p>
+                      <p className="text-[10px] text-slate-400 mt-0.5">{r.location} · <span className="text-emerald-500 font-semibold">✓ Verified</span></p>
+                    </div>
+                  </div>
+                  <div className="flex gap-0.5">
+                    {[1,2,3,4,5].map(s => <span key={s} className="text-yellow-400 text-sm">★</span>)}
+                    <span className="text-[10px] text-slate-400 ml-1 self-center">{r.time}</span>
+                  </div>
+                  <p className="text-xs text-slate-600 leading-relaxed flex-1">&ldquo;{r.text}&rdquo;</p>
+                </div>
+              ))}
+            </div>
+            <div className="text-center mt-8">
+              <a
+                href="https://share.google/RDuVMbenuWSAEEqLt"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-bold text-[#184A99] hover:underline"
+              >
+                Read all 1,200+ reviews on Google →
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="bg-[#0D2240] py-32 text-white">
+          <div className="max-w-4xl mx-auto px-6">
+            <h2 className="text-4xl font-bold text-center mb-24">Tinnitus &amp; Ringing in Ear — FAQs</h2>
+            <div className="space-y-8">
+              {FAQS.map((faq, i) => (
+                <div key={i} className="bg-white/5 border border-white/10 p-10 rounded-[2.5rem]">
+                  <h3 className="text-2xl font-bold mb-4 text-[#eaf5ff]">Q. {faq.q}</h3>
+                  <p className="text-slate-300 text-lg leading-relaxed">{faq.a}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="py-20 border-t border-slate-100 text-center bg-slate-50">
+          <div className="max-w-6xl mx-auto px-6">
+            <Image src="/logo.webp" alt="Insono" width={140} height={40} className="h-9 w-auto mx-auto mb-8 grayscale opacity-50" loading="lazy" />
+            <div className="flex gap-6 justify-center text-xs font-black text-slate-400 uppercase tracking-widest mb-6">
+              <Link href="/landing/tinnitus-hearing-aids/privacy" className="hover:text-[#184A99]">Privacy Policy</Link>
+              <Link href="/landing/tinnitus-hearing-aids/terms" className="hover:text-[#184A99]">Terms of Use</Link>
+            </div>
+            <p className="text-[11px] text-slate-400 font-bold uppercase tracking-[0.4em]">© 2026 Insono Hearing · Tinnitus Relief Specialist</p>
+          </div>
+        </footer>
+      </div>
+
+      <PopupModal />
     </div>
   );
 }
