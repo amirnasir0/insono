@@ -16,6 +16,7 @@ import {
     Rss,
     ShoppingBag,
     Tag,
+    CornerDownRight,
 } from "lucide-react";
 
 const navLinks = [
@@ -23,6 +24,7 @@ const navLinks = [
     { href: "/admin/products", label: "Products", icon: Package },
     { href: "/admin/orders", label: "Orders", icon: ShoppingBag },
     { href: "/admin/offers", label: "Offers", icon: Tag },
+    { href: "/admin/blog-redirects", label: "Blog Redirects", icon: CornerDownRight },
     { href: "/admin/settings", label: "Settings", icon: Settings },
 ];
 

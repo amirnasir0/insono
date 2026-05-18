@@ -63,6 +63,13 @@ model Offer {
   updatedAt DateTime @updatedAt
 }
 
+model BlogRedirect {
+  id        String   @id @default(cuid())
+  oldSlug   String   @unique
+  newSlug   String
+  createdAt DateTime @default(now())
+}
+
 model Order {
   id            String   @id @default(cuid())
   productSlug   String

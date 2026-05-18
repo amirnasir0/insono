@@ -2,8 +2,10 @@ import { Suspense } from "react";
 import type { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import { cache } from "react";
+import { redirect } from "next/navigation";
 import { gql } from "graphql-request";
 import { graphQLClient, GET_POST_BY_SLUG } from "@/lib/graphql";
+import { prisma } from "@/lib/prisma";
 
 export const revalidate = 60;
 
@@ -291,7 +293,12 @@ async function SidebarContent() {
 export default async function BlogPage({ params }: BlogPageProps) {
   const { slug } = await params;
   const post = await getPostCached(slug);
-  if (!post) return <p className="text-center py-10">Post not found</p>;
+
+  if (!post) {
+    const blogRedirect = await prisma.blogRedirect.findUnique({ where: { oldSlug: slug } });
+    if (blogRedirect) redirect(`/blog/${blogRedirect.newSlug}`);
+    return <p className="text-center py-10">Post not found</p>;
+  }
 
   const blogPostingSchema = {
     "@context": "https://schema.org",
