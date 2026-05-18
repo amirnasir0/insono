@@ -97,6 +97,14 @@ export default function RootLayout({
       </head>
 
       <body className="font-museo text-gray-900 antialiased bg-gradient-to-b from-[#eaf5ff] to-white min-h-screen">
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-T3FWLWC8"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
         <NavigationWrapper>{children}</NavigationWrapper>
 
         {/* ✅ Global chat widget – loads once, after hydration */}

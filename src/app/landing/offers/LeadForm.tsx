@@ -6,14 +6,14 @@ import { useUtmParams } from "@/app/landing/_hooks/useUtmParams";
 export default function LeadForm({
   compact = false,
   isMobile = false,
-  city = "",
+  offerName = "",
 }: {
   compact?: boolean;
   isMobile?: boolean;
-  city?: string;
+  offerName?: string;
 }) {
   const { gclid, utm_source, utm_medium, utm_campaign, utm_term, utm_content } = useUtmParams({
-    utm_campaign: `phonak-${city}`,
+    utm_campaign: "hearing-aid-offers",
   });
 
   return (
@@ -27,7 +27,6 @@ export default function LeadForm({
       <input type="hidden" name="zf_referrer_name" value="" />
       <input type="hidden" name="zf_redirect_url" value="https://www.insonohearing.com/thankyou" />
       <input type="hidden" id="zc_gad" name="zc_gad" value={gclid} />
-
       <input type="hidden" name="utm_source" value={utm_source} />
       <input type="hidden" name="utm_medium" value={utm_medium} />
       <input type="hidden" name="utm_campaign" value={utm_campaign} />
@@ -82,20 +81,14 @@ export default function LeadForm({
         }`}
       >
         <span className="relative z-10 flex items-center gap-2">
-          {isMobile
-            ? "Get Price List on WhatsApp"
-            : compact
-            ? "Get Brand Price List"
-            : "Download Prices & Claim Free Trial"}
+          {isMobile ? "Claim Offer on WhatsApp" : compact ? "Claim This Offer" : "Claim Offer & Get Price List"}
           <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
         </span>
       </button>
 
       <div className="flex items-center justify-center gap-2 opacity-60">
         <ShieldCheck className="w-4 h-4 text-emerald-500" />
-        <p className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">
-          Privacy Secured · No Spam
-        </p>
+        <p className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Privacy Secured · No Spam</p>
       </div>
     </form>
   );

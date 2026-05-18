@@ -1,6 +1,12 @@
 "use client";
 
+import { useUtmParams } from "@/app/landing/_hooks/useUtmParams";
+
 export default function LeadForm({ compact = false }: { compact?: boolean }) {
+  const { gclid, utm_source, utm_medium, utm_campaign, utm_term, utm_content } = useUtmParams({
+    utm_campaign: "top5-hearing-aids",
+  });
+
   return (
     <form
       acceptCharset="UTF-8"
@@ -12,12 +18,12 @@ export default function LeadForm({ compact = false }: { compact?: boolean }) {
       {/* Zoho hidden fields */}
       <input type="hidden" name="zf_referrer_name" value="" />
       <input type="hidden" name="zf_redirect_url" value="https://www.insonohearing.com/thankyou" />
-      <input type="hidden" id="zc_gad" name="zc_gad" value="" />
-      <input type="hidden" name="utm_source" value="top-5-landing" />
-      <input type="hidden" name="utm_medium" value="landing-page" />
-      <input type="hidden" name="utm_campaign" value="top5hearingaids" />
-      <input type="hidden" name="utm_term" value="" />
-      <input type="hidden" name="utm_content" value="price download" />
+      <input type="hidden" id="zc_gad" name="zc_gad" value={gclid} />
+      <input type="hidden" name="utm_source" value={utm_source} />
+      <input type="hidden" name="utm_medium" value={utm_medium} />
+      <input type="hidden" name="utm_campaign" value={utm_campaign} />
+      <input type="hidden" name="utm_term" value={utm_term} />
+      <input type="hidden" name="utm_content" value={utm_content} />
 
       {/* Name */}
       <input

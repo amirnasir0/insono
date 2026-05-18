@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { User, MessageSquare, ChevronRight, ShieldCheck } from "lucide-react";
+import { useUtmParams } from "@/app/landing/_hooks/useUtmParams";
 
 export default function LeadForm({
   compact = false,
@@ -10,13 +10,9 @@ export default function LeadForm({
   compact?: boolean;
   isMobile?: boolean;
 }) {
-  const [gclid, setGclid] = useState("");
-
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const val = params.get("gclid") || "";
-    setGclid(val);
-  }, []);
+  const { gclid, utm_source, utm_medium, utm_campaign, utm_term, utm_content } = useUtmParams({
+    utm_campaign: "phonak-mumbai",
+  });
 
   return (
     <form
@@ -32,11 +28,11 @@ export default function LeadForm({
       <input type="hidden" id="zc_gad" name="zc_gad" value={gclid} />
       
       {/* UTM tracking */}
-      <input type="hidden" name="utm_source" value={isMobile ? "phonak-mumbai-mobile" : "phonak-mumbai-landing"} />
-      <input type="hidden" name="utm_medium" value={isMobile ? "Mobile" : "google-ads"} />
-      <input type="hidden" name="utm_campaign" value="phonak-mumbai-hearing-aids" />
-      <input type="hidden" name="utm_term" value="" />
-      <input type="hidden" name="utm_content" value={isMobile ? "mobile rebuild" : "mumbai rebuild"} />
+      <input type="hidden" name="utm_source" value={utm_source} />
+      <input type="hidden" name="utm_medium" value={utm_medium} />
+      <input type="hidden" name="utm_campaign" value={utm_campaign} />
+      <input type="hidden" name="utm_term" value={utm_term} />
+      <input type="hidden" name="utm_content" value={utm_content} />
 
 
       {/* Name Field */}

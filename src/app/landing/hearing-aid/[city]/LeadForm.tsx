@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { User, MessageSquare, ChevronRight, ShieldCheck } from "lucide-react";
+import { useUtmParams } from "@/app/landing/_hooks/useUtmParams";
 
 export default function LeadForm({
   compact = false,
@@ -12,13 +12,9 @@ export default function LeadForm({
   isMobile?: boolean;
   city?: string;
 }) {
-  const [gclid, setGclid] = useState("");
-
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const val = params.get("gclid") || "";
-    setGclid(val);
-  }, []);
+  const { gclid, utm_source, utm_medium, utm_campaign, utm_term, utm_content } = useUtmParams({
+    utm_campaign: `hearing-aid-${city}`,
+  });
 
   return (
     <form
@@ -32,11 +28,11 @@ export default function LeadForm({
       <input type="hidden" name="zf_redirect_url" value="https://www.insonohearing.com/thankyou" />
       <input type="hidden" id="zc_gad" name="zc_gad" value={gclid} />
 
-      <input type="hidden" name="utm_source" value={isMobile ? `hearing-aid-${city}-mobile` : `hearing-aid-${city}-landing`} />
-      <input type="hidden" name="utm_medium" value={isMobile ? "Mobile" : "google-ads"} />
-      <input type="hidden" name="utm_campaign" value={`hearing-aid-${city}`} />
-      <input type="hidden" name="utm_term" value="" />
-      <input type="hidden" name="utm_content" value={isMobile ? `${city}-mobile` : `${city}-landing`} />
+      <input type="hidden" name="utm_source" value={utm_source} />
+      <input type="hidden" name="utm_medium" value={utm_medium} />
+      <input type="hidden" name="utm_campaign" value={utm_campaign} />
+      <input type="hidden" name="utm_term" value={utm_term} />
+      <input type="hidden" name="utm_content" value={utm_content} />
 
       <div className="relative">
         <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">
