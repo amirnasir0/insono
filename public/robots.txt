@@ -1,11 +1,10 @@
 User-agent: *
-Disallow: /landing/
+
 Disallow: /admin/
 Disallow: /api/
-Disallow: /thankyou/
+
 Disallow: /order/
 Disallow: /campaigns/
-Disallow: /price-download/
 Disallow: /src/
 
 Allow: /
