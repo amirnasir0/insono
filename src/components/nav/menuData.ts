@@ -14,6 +14,8 @@ export const sections: MenuSection[] = [
       { label: "Phonak Hearing Aids", href: "/hearing-aids/phonak" },
       { label: "Widex Hearing Aids", href: "/hearing-aids/widex" },
       { label: "Oticon Hearing Aids", href: "/hearing-aids/oticon" },
+      { label: "Starkey Hearing Aids", href: "/hearing-aids/starkey" },
+      { label: "ReSound Hearing Aids", href: "/hearing-aids/resound" },
     ],
   },
   {

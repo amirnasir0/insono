@@ -189,11 +189,12 @@ export default function OticonPage() {
             Compare other leading global brands and advanced hearing technologies.
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
             <LinkCard href="/hearing-aids/signia" title="Signia Hearing Aids" desc="German innovation and precision." icon={<Waves className="w-7 h-7 text-[#184A99]" />} />
             <LinkCard href="/hearing-aids/phonak" title="Phonak Hearing Aids" desc="Swiss precision for clarity." icon={<Headphones className="w-7 h-7 text-[#184A99]" />} />
             <LinkCard href="/hearing-aids/widex" title="Widex Hearing Aids" desc="Natural Danish sound innovation." icon={<Waves className="w-7 h-7 text-[#184A99]" />} />
-            <LinkCard href="/hearing-aids/bluetooth" title="Bluetooth Hearing Aids" desc="Seamless wireless connectivity." icon={<Bluetooth className="w-7 h-7 text-[#184A99]" />} />
+            <LinkCard href="/hearing-aids/starkey" title="Starkey Hearing Aids" desc="AI health tracking & monitoring." icon={<Bluetooth className="w-7 h-7 text-[#184A99]" />} />
+            <LinkCard href="/hearing-aids/resound" title="ReSound Hearing Aids" desc="Organic Hearing & premium sound." icon={<BatteryCharging className="w-7 h-7 text-[#184A99]" />} />
           </div>
         </div>
       </section>

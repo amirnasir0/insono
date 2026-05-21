@@ -1,7 +1,7 @@
 import CategoryProductSection from "@/components/CategoryProductSection";
 import Image from "next/image";
 import Link from "next/link";
-import { Headphones, Bluetooth, BatteryCharging, Waves } from "lucide-react";
+import { Headphones, Bluetooth, BatteryCharging, Heart, Shield, Activity, Waves } from "lucide-react";
 import { Metadata } from "next";
 import Whychoose from "@/components/whychoose";
 import FAQ from "@/components/FAQ";
@@ -9,50 +9,40 @@ import ImageShowcaseSection from "@/components/ImageShowcaseSection";
 
 // ✅ SEO Meta Tags
 export const metadata: Metadata = {
-  title: "Phonak Hearing Aids in India — Lumity, Audeo Sphere & More | Insono Hearing",
+  title: "Starkey Hearing Aids – Prices, Models & Features in India | Insono Hearing Solutions",
   description:
-    "Explore Phonak hearing aids — Audeo Lumity, Audeo Sphere, Paradise, Slim & Naida. Rechargeable, Bluetooth & Roger-compatible. Prices from ₹30,000. Authorized Phonak partner. Free trial at Insono Hearing.",
+    "Discover Starkey hearing aids featuring advanced health tracking, AI noise reduction, fall alerts, and crystal-clear sound. Book a free consultation, download price list, or trial a model.",
   alternates: {
-    canonical: "https://www.insonohearing.com/hearing-aids/phonak",
+    canonical: "https://www.insonohearing.com/hearing-aids/starkey",
   },
   openGraph: {
-    title: "Phonak Hearing Aids – Prices, Models & Features in India",
+    title: "Starkey Hearing Aids – Prices, Models & Features in India",
     description:
-      "Explore Phonak hearing aids — rechargeable, Bluetooth & invisible models. Compare features & prices, book free consultation or download price list.",
-    url: "https://www.insonohearing.com/hearing-aids/phonak",
+      "Explore Starkey hearing aids — featuring AI health monitoring, direct Bluetooth streaming, and robust waterproofing. Check models & prices.",
+    url: "https://www.insonohearing.com/hearing-aids/starkey",
     type: "website",
   },
 };
 
-// ✅ Phonak FAQ Data
-const phonakFaqs = [
+// ✅ Starkey FAQ Data
+const starkeyFaqs = [
   {
-    q: "What is the price of Phonak hearing aids in India?",
-    a: "Phonak hearing aids start from ₹24,999 and vary based on model and technology. Download our latest price list for offers.",
+    q: "What is the price of Starkey hearing aids in India?",
+    a: "Starkey hearing aids start from ₹18,500 and go up based on technology levels and custom models. Get our latest catalog for detailed pricing.",
   },
   {
-    q: "Are Phonak hearing aids rechargeable?",
-    a: "Yes, most modern Phonak models come with rechargeable batteries offering a full day of use on a single charge.",
+    q: "What makes Starkey hearing aids unique?",
+    a: "Starkey is a pioneer in integrating health sensors into hearing aids, providing health monitoring, fitness tracking, and fall alerts directly through the device.",
   },
   {
-    q: "Do Phonak hearing aids support Bluetooth?",
-    a: "Yes, Phonak Bluetooth hearing aids allow direct streaming from smartphones, TVs, and other Bluetooth devices.",
+    q: "Do Starkey hearing aids have rechargeable batteries?",
+    a: "Yes, Starkey rechargeable models provide up to 24-30 hours of continuous use on a single overnight charge.",
   },
   {
-    q: "Do Phonak hearing aids come with a warranty?",
-    a: "Yes, all Phonak devices include a standard 2-year international warranty, extendable in India.",
+    q: "Do Starkey hearing aids support Bluetooth streaming?",
+    a: "Yes, Starkey hearing aids support seamless Bluetooth streaming for music, calls, and TV audio on both iOS and Android via the My Starkey app.",
   },
 ];
-
-const phonakFaqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: phonakFaqs.map((f) => ({
-    "@type": "Question",
-    name: f.q,
-    acceptedAnswer: { "@type": "Answer", text: f.a },
-  })),
-};
 
 // ✅ Breadcrumb structured data
 const breadcrumbSchema = {
@@ -74,13 +64,13 @@ const breadcrumbSchema = {
     {
       "@type": "ListItem",
       position: 3,
-      name: "Phonak",
-      item: "https://www.insonohearing.com/hearing-aids/phonak",
+      name: "Starkey",
+      item: "https://www.insonohearing.com/hearing-aids/starkey",
     },
   ],
 };
 
-export default function PhonakPage() {
+export default function StarkeyPage() {
   return (
     <>
       {/* ✅ Breadcrumb JSON-LD */}
@@ -88,27 +78,21 @@ export default function PhonakPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      {/* ✅ FAQPage JSON-LD */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(phonakFaqSchema) }}
-      />
 
       {/* 🟦 HERO SECTION */}
       <section className="max-w-7xl mx-auto px-4 mt-30 md:px-20 flex flex-col md:flex-row items-center gap-6">
         <div className="flex-1 text-center md:text-left">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-snug mb-3">
-            Phonak Hearing Aids – Models, Prices & Features in India
+            Starkey Hearing Aids – Models, Prices & Features in India
           </h1>
           <p className="text-gray-700 mb-5 text-sm sm:text-base">
-            Experience the latest <strong>Phonak hearing aids</strong> — from
-            rechargeable & Bluetooth-enabled devices to powerful BTE models.
-            Compare features, check prices, and book a free consultation with
-            certified experts.
+            Experience the next generation of <strong>Starkey hearing aids</strong> — the global leaders in 
+            smart hearing tech with health monitoring, fall detection, and next-level sound processing. 
+            Download the latest price catalog and schedule a free trial at our clinics.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
             <Link
-              href="/price-download?utm_source=phonak-page&utm_medium=hero"
+              href="/price-download?utm_source=starkey-page&utm_medium=hero"
               className="bg-[#184A99] text-white px-5 py-2.5 rounded-md text-sm font-semibold hover:bg-[#0f3a7e] transition text-center"
             >
               Download Price List
@@ -124,8 +108,8 @@ export default function PhonakPage() {
 
         <div className="flex-1 flex justify-center">
           <video
-            className="rounded-lg w-full max-w-[500px] h-auto object-cover"
-            src="/video/phonak.mp4"
+            className="rounded-lg w-full max-w-[500px] h-auto object-cover shadow-md border border-gray-200"
+            src="/video/starkey.mp4"
             autoPlay
             loop
             muted
@@ -136,9 +120,9 @@ export default function PhonakPage() {
 
       {/* 🟨 PRODUCT SECTION */}
       <CategoryProductSection
-        category="Phonak"
-        title="Top Phonak Digital Hearing Aids"
-        description="Explore our best-selling Phonak hearing aids — engineered for clarity, comfort, and connectivity."
+        category="Starkey"
+        title="Top Starkey Digital Hearing Aids"
+        description="Discover best-selling Starkey hearing aids featuring industry-first integrated health sensors and clear sound clarity."
         limit={4}
       />
 
@@ -150,36 +134,36 @@ export default function PhonakPage() {
 
         <div className="relative max-w-7xl mx-auto text-center">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold mb-3 sm:mb-4">
-            Why Choose <span className="text-[#184A99]">Phonak Hearing Aids?</span>
+            Why Choose <span className="text-[#184A99]">Starkey Hearing Aids?</span>
           </h2>
           <p className="text-gray-700 text-sm sm:text-base max-w-2xl mx-auto mb-10">
-            <strong>Phonak</strong> brings Swiss precision and cutting-edge technology for
-            crystal-clear hearing in every environment.
+            <strong>Starkey</strong> stands at the forefront of digital sound engineering, integrating 
+            cutting-edge AI technology with advanced health monitoring to enrich daily life.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            <FeatureCard icon={<Headphones className="w-8 h-8 text-[#184A99]" />} title="Exceptional Clarity" desc="Hear conversations naturally even in noisy spaces." />
-            <FeatureCard icon={<Bluetooth className="w-8 h-8 text-[#184A99]" />} title="Bluetooth Streaming" desc="Connect easily to your phone, TV, and other devices." />
-            <FeatureCard icon={<BatteryCharging className="w-8 h-8 text-[#184A99]" />} title="Rechargeable Power" desc="All-day battery life with convenient charging." />
-            <FeatureCard icon={<Waves className="w-8 h-8 text-[#184A99]" />} title="Proven Swiss Engineering" desc="Decades of innovation trusted worldwide." />
+            <FeatureCard icon={<Activity className="w-8 h-8 text-[#184A99]" />} title="Health Monitoring" desc="Track physical fitness, mental tracking, and secure fall detection alerts." />
+            <FeatureCard icon={<Bluetooth className="w-8 h-8 text-[#184A99]" />} title="Thrive App Connectivity" desc="Stream calls, high-quality audio, and customize settings instantly." />
+            <FeatureCard icon={<Heart className="w-8 h-8 text-[#184A99]" />} title="Genesis AI Tech" desc="Advanced sound processors adjust sound up to 80 million times per hour." />
+            <FeatureCard icon={<Shield className="w-8 h-8 text-[#184A99]" />} title="Waterproof Protection" desc="ProShield protective coatings guard against sweat and water." />
           </div>
         </div>
       </section>
-      <Whychoose/>
+      <Whychoose />
 
       {/* 🟪 CERTIFICATIONS */}
       <ImageShowcaseSection
-        title="Official Certifications from Phonak, Signia & Widex"
-        description="Insono Hearing Solutions is an authorized partner for leading global hearing aid brands including Phonak, Signia, Widex, and Oticon. These certifications reflect our trusted expertise and commitment to world-class hearing care in India."
+        title="Official Certifications from Starkey, Signia & Widex"
+        description="Insono Hearing Solutions is an authorized partner for global hearing aid manufacturers. Our official partner certifications reflect our clinical excellence and technical credentials in offering authentic, warranty-backed hearing aids in India."
         images={[
-          { src: "/images/certifications/phonak.jpeg", alt: "Phonak Certification" },
+          { src: "/images/certifications/phonak.jpeg", alt: "Phonak & Starkey Partner Certification" },
           { src: "/images/certifications/signia.jpg", alt: "Signia Authorized Partner" },
           { src: "/images/certifications/widex.png", alt: "Widex Partner Certification" },
         ]}
       />
 
       {/* 🟧 FAQ SECTION */}
-      <FAQ faqs={phonakFaqs} heading="Phonak Hearing Aids : FAQs" />
+      <FAQ faqs={starkeyFaqs} heading="Starkey Hearing Aids : FAQs" />
 
       {/* 🟤 RELATED LINKS */}
       <section className="bg-gradient-to-br from-[#F7F9FC] to-[#E8EEFB] py-12 px-4">
@@ -188,16 +172,14 @@ export default function PhonakPage() {
             Explore More Hearing Solutions
           </h2>
           <p className="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto mb-10">
-            Discover advanced hearing aid technologies and top global brands
-            trusted across India.
+            Compare premium brands and cutting-edge hearing aids trusted all over India.
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
-            <LinkCard href="/hearing-aids/signia" title="Signia Hearing Aids" desc="German innovation and precision." icon={<Waves className="w-7 h-7 text-[#184A99]" />} />
-            <LinkCard href="/hearing-aids/widex" title="Widex Hearing Aids" desc="Danish natural sound." icon={<Headphones className="w-7 h-7 text-[#184A99]" />} />
-            <LinkCard href="/hearing-aids/oticon" title="Oticon Hearing Aids" desc="Advanced BrainHearing™ tech." icon={<Waves className="w-7 h-7 text-[#184A99]" />} />
-            <LinkCard href="/hearing-aids/starkey" title="Starkey Hearing Aids" desc="AI health tracking & monitoring." icon={<Bluetooth className="w-7 h-7 text-[#184A99]" />} />
-            <LinkCard href="/hearing-aids/resound" title="ReSound Hearing Aids" desc="Organic Hearing & premium sound." icon={<BatteryCharging className="w-7 h-7 text-[#184A99]" />} />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <LinkCard href="/hearing-aids/signia" title="Signia Hearing Aids" desc="German engineering and clarity." icon={<Waves className="w-7 h-7 text-[#184A99]" />} />
+            <LinkCard href="/hearing-aids/phonak" title="Phonak Hearing Aids" desc="Swiss precision and clarity." icon={<Headphones className="w-7 h-7 text-[#184A99]" />} />
+            <LinkCard href="/hearing-aids/widex" title="Widex Hearing Aids" desc="Danish natural sound technology." icon={<Waves className="w-7 h-7 text-[#184A99]" />} />
+            <LinkCard href="/hearing-aids/resound" title="ReSound Hearing Aids" desc="Organic Hearing & robust power." icon={<Bluetooth className="w-7 h-7 text-[#184A99]" />} />
           </div>
         </div>
       </section>

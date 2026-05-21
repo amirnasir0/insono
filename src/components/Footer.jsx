@@ -94,7 +94,7 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="/hearing-aids/signia" className="hover:text-white">
+                <a href="/hearing-aids/invisible" className="hover:text-white">
                   Invisible Hearing Aids
                 </a>
               </li>
@@ -111,6 +111,16 @@ export default function Footer() {
               <li>
                 <a href="/hearing-aids/oticon" className="hover:text-white">
                   Oticon Hearing Aids
+                </a>
+              </li>
+              <li>
+                <a href="/hearing-aids/starkey" className="hover:text-white">
+                  Starkey Hearing Aids
+                </a>
+              </li>
+              <li>
+                <a href="/hearing-aids/resound" className="hover:text-white">
+                  ReSound Hearing Aids
                 </a>
               </li>
             </ul>

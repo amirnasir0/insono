@@ -55,6 +55,8 @@ const allPages: PageEntry[] = [
   { title: "Phonak Hearing Aids", href: "/hearing-aids/phonak", description: "Phonak Lumity, Paradise, Marvel — rechargeable & Bluetooth", keywords: ["phonak", "marvel", "lumity", "paradise", "audeo", "bolero", "brand"], category: "brand" },
   { title: "Widex Hearing Aids", href: "/hearing-aids/widex", description: "Widex Moment, Evoke — natural sound, AI-powered", keywords: ["widex", "moment", "evoke", "beyond", "brand"], category: "brand" },
   { title: "Oticon Hearing Aids", href: "/hearing-aids/oticon", description: "Oticon More, Real, Intent — 360° sound processing", keywords: ["oticon", "more", "real", "intent", "opn", "brand"], category: "brand" },
+  { title: "Starkey Hearing Aids", href: "/hearing-aids/starkey", description: "Starkey Genesis AI, Evolv AI — rechargeable, health sensors", keywords: ["starkey", "genesis", "evolv", "brand", "health", "sensors", "fall"], category: "brand" },
+  { title: "ReSound Hearing Aids", href: "/hearing-aids/resound", description: "ReSound Nexia, Omnia, One — Organic Hearing & bluetooth", keywords: ["resound", "nexia", "omnia", "one", "brand", "organic", "danish"], category: "brand" },
 
   // Types
   { title: "RIC Hearing Aids", href: "/hearing-aids/ric", description: "Receiver-in-canal — small, powerful, barely visible", keywords: ["ric", "receiver", "canal", "type", "slim", "small"], category: "product" },
@@ -101,6 +103,8 @@ const brands = [
   { name: "Widex", logo: "/brands/widexlogo.svg", href: "/hearing-aids/widex", bg: "bg-blue-50 border-blue-100 hover:border-blue-300" },
   { name: "Phonak", logo: "/brands/phonaklogo.svg", href: "/hearing-aids/phonak", bg: "bg-rose-50 border-rose-100 hover:border-rose-300" },
   { name: "Oticon", logo: "/brands/oticon.svg", href: "/hearing-aids/oticon", bg: "bg-orange-50 border-orange-100 hover:border-orange-300" },
+  { name: "Starkey", logo: "/brands/starkey.svg", href: "/hearing-aids/starkey", bg: "bg-green-50 border-green-100 hover:border-green-300" },
+  { name: "ReSound", logo: "/brands/resound.svg", href: "/hearing-aids/resound", bg: "bg-teal-50 border-teal-100 hover:border-teal-300" },
 ];
 
 const quickLinks = [
@@ -253,7 +257,7 @@ export default function NotFoundClient() {
             </p>
             <div className="h-px flex-1 bg-gray-200" />
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
             {brands.map((brand) => (
               <Link
                 key={brand.name}

@@ -10,6 +10,8 @@ const products = [
   { name: "Invisible Hearing Aid", slug: "/hearing-aids/invisible" },
   { name: "Rechargeable Hearing Aid", slug: "/hearing-aids/rechargeable" },
   { name: "Bluetooth Hearing Aid", slug: "/hearing-aids/bluetooth" },
+  { name: "Starkey Hearing Aid", slug: "/hearing-aids/starkey" },
+  { name: "ReSound Hearing Aid", slug: "/hearing-aids/resound" },
 ];
 
 export default function SearchBox() {

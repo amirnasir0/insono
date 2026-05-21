@@ -175,29 +175,35 @@ export default function SigniaPage() {
             Discover advanced hearing aid technologies and top global brands trusted across India.
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
             <Link href="/hearing-aids/phonak" className="group flex flex-col items-center bg-white p-6 rounded-xl shadow-sm hover:shadow-md hover:-translate-y-1 transition">
               <div className="mb-3 bg-[#184A99]/10 p-3 rounded-full"><Headphones className="w-7 h-7 text-[#184A99]" /></div>
               <h3 className="font-semibold text-gray-900 mb-1 group-hover:text-[#184A99]">Phonak Hearing Aids</h3>
-              <p className="text-xs text-gray-600 text-center">Swiss precision for exceptional hearing clarity.</p>
+              <p className="text-xs text-gray-600 text-center">Swiss precision for clarity.</p>
             </Link>
 
             <Link href="/hearing-aids/widex" className="group flex flex-col items-center bg-white p-6 rounded-xl shadow-sm hover:shadow-md hover:-translate-y-1 transition">
               <div className="mb-3 bg-[#184A99]/10 p-3 rounded-full"><Waves className="w-7 h-7 text-[#184A99]" /></div>
               <h3 className="font-semibold text-gray-900 mb-1 group-hover:text-[#184A99]">Widex Hearing Aids</h3>
-              <p className="text-xs text-gray-600 text-center">Natural sound quality with Danish innovation.</p>
+              <p className="text-xs text-gray-600 text-center">Danish natural sound.</p>
             </Link>
 
-            <Link href="/hearing-aids/bluetooth" className="group flex flex-col items-center bg-white p-6 rounded-xl shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+            <Link href="/hearing-aids/oticon" className="group flex flex-col items-center bg-white p-6 rounded-xl shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+              <div className="mb-3 bg-[#184A99]/10 p-3 rounded-full"><Waves className="w-7 h-7 text-[#184A99]" /></div>
+              <h3 className="font-semibold text-gray-900 mb-1 group-hover:text-[#184A99]">Oticon Hearing Aids</h3>
+              <p className="text-xs text-gray-600 text-center">BrainHearing™ technology.</p>
+            </Link>
+
+            <Link href="/hearing-aids/starkey" className="group flex flex-col items-center bg-white p-6 rounded-xl shadow-sm hover:shadow-md hover:-translate-y-1 transition">
               <div className="mb-3 bg-[#184A99]/10 p-3 rounded-full"><Bluetooth className="w-7 h-7 text-[#184A99]" /></div>
-              <h3 className="font-semibold text-gray-900 mb-1 group-hover:text-[#184A99]">Bluetooth Hearing Aids</h3>
-              <p className="text-xs text-gray-600 text-center">Seamlessly connect to phones, TVs, and more.</p>
+              <h3 className="font-semibold text-gray-900 mb-1 group-hover:text-[#184A99]">Starkey Hearing Aids</h3>
+              <p className="text-xs text-gray-600 text-center">AI health tracking & monitoring.</p>
             </Link>
 
-            <Link href="/hearing-aids/rechargeable" className="group flex flex-col items-center bg-white p-6 rounded-xl shadow-sm hover:shadow-md hover:-translate-y-1 transition">
+            <Link href="/hearing-aids/resound" className="group flex flex-col items-center bg-white p-6 rounded-xl shadow-sm hover:shadow-md hover:-translate-y-1 transition">
               <div className="mb-3 bg-[#184A99]/10 p-3 rounded-full"><BatteryCharging className="w-7 h-7 text-[#184A99]" /></div>
-              <h3 className="font-semibold text-gray-900 mb-1 group-hover:text-[#184A99]">Rechargeable Hearing Aids</h3>
-              <p className="text-xs text-gray-600 text-center">All-day power with fast and easy charging.</p>
+              <h3 className="font-semibold text-gray-900 mb-1 group-hover:text-[#184A99]">ReSound Hearing Aids</h3>
+              <p className="text-xs text-gray-600 text-center">Organic Hearing & premium sound.</p>
             </Link>
           </div>
         </div>
