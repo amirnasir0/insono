@@ -3,7 +3,6 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 fb-landnnn
 First, run the development server:
 
-
 ```b
 npm run dev
 # o
