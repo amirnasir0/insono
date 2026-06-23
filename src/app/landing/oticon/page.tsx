@@ -13,7 +13,12 @@ export const metadata = brandSEO(
 );
 
 export default function Page() {
-  const heroImages = ["/oticon1.png", "/oticon2.png"];
+  const heroImages = [
+    "/lp/oticon1.png",
+    "/lp/oticon2.png",
+    "/lp/oticon3.png",
+    "/lp/oticon4.png",
+  ];
 
   const statsList = [
     { label: "Happy Oticon Users", value: "1 Lakh+", icon: "users" as const },

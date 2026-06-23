@@ -3,13 +3,12 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 fb-landnnn
 First, run the development server:
 
-
 ```b
 npm run dev
 # o
 yarn dev
 # or
-pnpm dev
+pnpm de
 # or
 bun dev
 ```

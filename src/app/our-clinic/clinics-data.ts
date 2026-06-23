@@ -7,7 +7,7 @@ export interface Clinic {
   tag?: string;
   catSlug?: string;
   placeId?: string;
-  images: string[]; 
+  images: string[];
   faqs?: { question: string; answer: string }[]; // ✅ NEW
 }
 
@@ -68,9 +68,9 @@ export const clinics: Clinic[] = [
     hours: "Open, Closes by 7 pm",
     tag: "Clinic",
     images: [
-      "/clinics/noida-1.webp",
-      "/clinics/noida-2.webp",
-      "/clinics/lajpat-1.jpg",
+      "/clinics/mumbai1.jpeg",
+      "/clinics/mumbai2.jpeg",
+      "/clinics/mumbai3.jpeg",
     ],
     faqs: [
       {
@@ -99,7 +99,7 @@ export const clinics: Clinic[] = [
     hours: "Open, Closes by 7 pm",
     tag: "Clinic",
     placeId: "ChIJhYM9dWzlDDkRYd_B7lw9FNU",
-   images: [
+    images: [
       "/clinics/noida-1.webp",
       "/clinics/noida-2.webp",
       "/clinics/lajpat-1.jpg",
@@ -352,7 +352,7 @@ export const clinics: Clinic[] = [
     tag: "Clinic",
     placeId: "ChIJAfTkBADlDDkRAO95N7UQRFQ",
     images: [
-     "/clinics/noida-1.webp",
+      "/clinics/noida-1.webp",
       "/clinics/noida-2.webp",
       "/clinics/lajpat-1.jpg",
     ],
