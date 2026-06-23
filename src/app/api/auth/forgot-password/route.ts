@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
 
     const resetUrl = `${process.env.NEXTAUTH_URL}/admin/login/reset-password?token=${token}`;
 
-    await resend.emails.send({
+    const emailResult = await resend.emails.send({
       from: "Insono Hearing Admin <noreply@webspecia.in>",
       to: user.email,
       subject: "Reset Your Insono Admin Password",
@@ -61,6 +61,7 @@ export async function POST(req: NextRequest) {
       `,
     });
 
+    console.log("Resend result:", emailResult);
     return NextResponse.json({ message: "If that email exists, a reset link has been sent." });
   } catch (error) {
     console.error("Forgot password error:", error);
