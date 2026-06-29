@@ -1,5 +1,6 @@
 import ProductCard from "./ProductCard";
 import { graphQLClient, GET_PRODUCTS } from "@/lib/graphql";
+import { PRODUCT_PRICES } from "@/lib/productPrices";
 
 // Types
 interface Product {
@@ -131,6 +132,7 @@ export default async function CategoryProductSection({
               product.featuredImage?.node?.sourceUrl || "/placeholder.png"
             }
             slug={product.slug}
+            mrp={PRODUCT_PRICES[product.slug] ?? null}
           />
         ))}
       </div>

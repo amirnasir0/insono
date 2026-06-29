@@ -86,12 +86,14 @@ interface ProductCardProps {
   title: string;
   imageUrl: string;
   slug: string;
+  mrp?: number | null;
 }
 
 export default function ProductCard({
   title,
   imageUrl,
   slug,
+  mrp,
 }: ProductCardProps) {
   return (
     <div className="w-full rounded-xl shadow-md bg-white overflow-hidden border border-gray-200 flex flex-col h-full min-h-[380px] sm:min-h-[430px]">
@@ -134,6 +136,22 @@ export default function ProductCard({
           <li>Easy smartphone control via app</li>
           <li>Nearly invisible design</li>
         </ul>
+
+        {/* MRP Price */}
+        <div className="mb-3 text-center">
+          {mrp ? (
+            <div>
+              <p className="text-[10px] text-gray-400 uppercase tracking-wider font-semibold mb-0.5">
+                2026 MRP starting from
+              </p>
+              <p className="text-xl font-bold text-[#184A99]">
+                ₹{mrp.toLocaleString("en-IN")}
+              </p>
+            </div>
+          ) : (
+            <p className="text-sm text-gray-400 italic">Price on request</p>
+          )}
+        </div>
 
         {/* CTA */}
         <a

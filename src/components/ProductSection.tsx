@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { GET_PRODUCTS, graphQLClient } from "@/lib/graphql";
 import ProductCard from "./ProductCard";
+import { PRODUCT_PRICES } from "@/lib/productPrices";
 
 interface Product {
   id: string;
@@ -15,6 +16,13 @@ interface Product {
     node?: { sourceUrl?: string | null };
   };
   createdAt?: string;
+  mrp?: number | null;
+}
+
+interface PrismaProduct {
+  slug: string;
+  mrp: number | null;
+  category: string;
 }
 
 interface ProductNode {
@@ -82,13 +90,32 @@ export default function ProductSection({ heading }: ProductSectionProps) {
   useEffect(() => {
     async function fetchProducts() {
       try {
-        const data = await graphQLClient.request<GraphQLResponse>(GET_PRODUCTS);
+        const [wpData, priceRes] = await Promise.all([
+          graphQLClient.request<GraphQLResponse>(GET_PRODUCTS),
+          fetch("/api/products").then((r) => r.json() as Promise<PrismaProduct[]>).catch(() => [] as PrismaProduct[]),
+        ]);
 
-        const mapped = data.products.nodes.map((p, i) => {
+        // Build slug→mrp and brand→min-mrp maps from Prisma
+        const slugToMrp: Record<string, number> = {};
+        const brandToMinMrp: Record<string, number> = {};
+        for (const pp of priceRes) {
+          if (pp.mrp != null) {
+            slugToMrp[pp.slug] = pp.mrp;
+            const brand = pp.category.toLowerCase();
+            if (brandToMinMrp[brand] == null || pp.mrp < brandToMinMrp[brand]) {
+              brandToMinMrp[brand] = pp.mrp;
+            }
+          }
+        }
+
+        const mapped = wpData.products.nodes.map((p, i) => {
           const cats = p.categories?.nodes ?? [];
           const category = cats.flatMap(
             (n) => [n?.name, n?.slug].filter(Boolean) as string[],
           );
+
+          const brandKey = category.map((c) => c.toLowerCase()).find((c) => brandToMinMrp[c] != null);
+          const mrp = PRODUCT_PRICES[p.slug] ?? slugToMrp[p.slug] ?? (brandKey ? brandToMinMrp[brandKey] : null);
 
           return {
             id: p.id,
@@ -99,6 +126,7 @@ export default function ProductSection({ heading }: ProductSectionProps) {
             category,
             featuredImage: p.featuredImage ?? undefined,
             createdAt: p.date ?? String(i),
+            mrp,
           };
         });
 
@@ -208,6 +236,7 @@ export default function ProductSection({ heading }: ProductSectionProps) {
             title={p.title}
             slug={p.slug}
             imageUrl={p.featuredImage?.node?.sourceUrl || "/placeholder.png"}
+            mrp={p.mrp}
           />
         ))}
       </div>
