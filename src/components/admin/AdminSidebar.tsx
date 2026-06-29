@@ -18,12 +18,14 @@ import {
     Tag,
     CornerDownRight,
     MapPin,
+    BookOpen,
 } from "lucide-react";
 
 const navLinks = [
     { href: "/admin", label: "Dashboard", icon: LayoutDashboard, exact: true },
     { href: "/admin/products", label: "Products", icon: Package },
     { href: "/admin/clinics", label: "Clinics", icon: MapPin },
+    { href: "/admin/latest", label: "Stories", icon: BookOpen },
     { href: "/admin/orders", label: "Orders", icon: ShoppingBag },
     { href: "/admin/offers", label: "Offers", icon: Tag },
     { href: "/admin/blog-redirects", label: "Blog Redirects", icon: CornerDownRight },
