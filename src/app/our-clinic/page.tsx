@@ -1,4 +1,6 @@
 import ClinicsList from "./ClinicsList";
+import { clinics as staticClinics, type Clinic } from "./clinics-data";
+import { prisma } from "@/lib/prisma";
 
 export const metadata = {
   title: "Hearing Aid Clinics Across India | Insono Hearing Solutions",
@@ -62,14 +64,43 @@ const localBusinessSchema = {
   },
 };
 
-export default function ClinicPage() {
+export default async function ClinicPage() {
+  let dbClinics: Clinic[] = [];
+  try {
+    const rows = await prisma.clinic.findMany({
+      where: { isActive: true },
+      orderBy: { createdAt: "desc" },
+    });
+    dbClinics = rows.map((c) => ({
+      id: c.id,
+      name: c.name,
+      locationLine: c.locationLine,
+      address: c.address,
+      hours: c.hours,
+      tag: c.tag,
+      placeId: c.placeId ?? undefined,
+      images: c.images,
+      faqs: (c.faqs as { question: string; answer: string }[]) ?? [],
+      city: c.city,
+      state: c.state,
+    }));
+  } catch {
+    // DB unavailable — fall back to static only
+  }
+
+  const dbIds = new Set(dbClinics.map((c) => c.id));
+  const allClinics = [
+    ...dbClinics,
+    ...staticClinics.filter((c) => !dbIds.has(c.id)),
+  ];
+
   return (
     <main className="bg-gradient-to-b from-[#eaf5ff] to-white text-gray-900">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
       />
-      <ClinicsList />
+      <ClinicsList clinics={allClinics} />
     </main>
   );
 }

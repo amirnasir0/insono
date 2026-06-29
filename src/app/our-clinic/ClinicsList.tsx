@@ -14,10 +14,19 @@ import {
   ChevronRight,
   MessageCircle,
 } from "lucide-react";
-import { clinics } from "./clinics-data";
+import { type Clinic } from "./clinics-data";
 
 /* ---------- Region ---------- */
-function getRegion(id: string, locationLine: string): string {
+function getRegion(id: string, locationLine: string, state?: string): string {
+  if (state) {
+    if (state === "Delhi" || state === "Uttar Pradesh" || state === "Haryana") return "Delhi NCR";
+    if (state === "Maharashtra") return "Maharashtra";
+    if (state === "Bihar") return "Bihar";
+    if (state === "Jharkhand") return "Jharkhand";
+    if (state === "West Bengal") return "West Bengal";
+    if (state === "Punjab" || state === "Chandigarh" || state === "Himachal Pradesh") return "Punjab";
+    return "Others";
+  }
   const l = locationLine.toLowerCase();
   if (id === "andheri-mumbai") return "Maharashtra";
   if (l.includes("delhi") || l.includes("noida") || l.includes("gurugram") || l.includes("gurgaon")) return "Delhi NCR";
@@ -74,12 +83,12 @@ function WhatsAppIcon({ className }: { className?: string }) {
 }
 
 /* ========== Main Component ========== */
-export default function ClinicsList() {
+export default function ClinicsList({ clinics }: { clinics: Clinic[] }) {
   const [activeRegion, setActiveRegion] = useState("All");
 
   const enriched = clinics.map((c) => ({
     ...c,
-    region: getRegion(c.id, c.locationLine),
+    region: getRegion(c.id, c.locationLine, c.state),
     isNew: c.id === "andheri-mumbai",
   }));
 

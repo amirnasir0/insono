@@ -1,8 +1,31 @@
 import { notFound } from "next/navigation";
-import { clinics, defaultFaqs } from "../clinics-data";
+import { clinics as staticClinics, defaultFaqs, type Clinic } from "../clinics-data";
 import HearingAidTypes from "@/components/HearingaidType";
 import type { Metadata } from "next";
 import ClinicSlider from "@/components/slider/ClinicSlider";
+import { prisma } from "@/lib/prisma";
+
+async function getClinic(id: string): Promise<Clinic | null> {
+  try {
+    const row = await prisma.clinic.findUnique({ where: { id } });
+    if (row) {
+      return {
+        id: row.id,
+        name: row.name,
+        locationLine: row.locationLine,
+        address: row.address,
+        hours: row.hours,
+        tag: row.tag,
+        placeId: row.placeId ?? undefined,
+        images: row.images,
+        faqs: (row.faqs as { question: string; answer: string }[]) ?? [],
+        city: row.city,
+        state: row.state,
+      };
+    }
+  } catch { /* fall through to static */ }
+  return staticClinics.find((c) => c.id === id) ?? null;
+}
 
 type ClinicPageParams = {
   params: Promise<{ id: string }>;
@@ -12,7 +35,7 @@ export async function generateMetadata({
   params,
 }: ClinicPageParams): Promise<Metadata> {
   const { id } = await params;
-  const clinic = clinics.find((c) => c.id === id);
+  const clinic = await getClinic(id);
   if (!clinic) return {};
 
   const title = `${clinic.name} | Insono Hearing Solutions`;
@@ -41,7 +64,7 @@ export async function generateMetadata({
 
 export default async function ClinicDetailPage({ params }: ClinicPageParams) {
   const { id } = await params;
-  const clinic = clinics.find((c) => c.id === id);
+  const clinic = await getClinic(id);
 
   if (!clinic) return notFound();
 

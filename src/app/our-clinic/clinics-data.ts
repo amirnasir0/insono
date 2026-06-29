@@ -8,7 +8,9 @@ export interface Clinic {
   catSlug?: string;
   placeId?: string;
   images: string[];
-  faqs?: { question: string; answer: string }[]; // ✅ NEW
+  faqs?: { question: string; answer: string }[];
+  city?: string;
+  state?: string;
 }
 
 export const defaultFaqs = [

@@ -70,6 +70,23 @@ model BlogRedirect {
   createdAt DateTime @default(now())
 }
 
+model Clinic {
+  id           String   @id
+  name         String
+  city         String
+  state        String
+  locationLine String
+  address      String
+  hours        String   @default("Open, Closes by 7 pm")
+  tag          String   @default("Clinic")
+  placeId      String?
+  images       String[] @default([])
+  faqs         Json     @default("[]")
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
 model Order {
   id            String   @id @default(cuid())
   productSlug   String
