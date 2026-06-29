@@ -81,6 +81,11 @@ export default function Footer() {
                   Official Blog
                 </a>
               </li>
+              <li>
+                <a href="/stories" className="hover:text-white">
+                  Insono Stories
+                </a>
+              </li>
             </ul>
           </div>
 
