@@ -50,7 +50,7 @@ const FEATURED_MODELS = [
     title: "Phonak Lumity",
     brand: "Phonak",
     brandLogo: "/brands/phonaklogo.svg",
-    image: "https://an7bjwndlmaemx4x.public.blob.vercel-storage.com/products/1773218810424-phonak-audeo-lumity-hearing-aid.jpg",
+    image: "/Phonak-Audeo-Lumity-Slim-hero-webp.webp",
     features: ["StereoSelect", "AutoSense OS 5.0", "Rechargeable", "Bluetooth"],
     channels: "48 Channels",
     style: "RIC",
@@ -78,22 +78,27 @@ const COMPARISON_ROWS = [
 ] as const;
 
 const REVIEWS = [
-  { name: "Vikram Sharma",   initials: "VS", avatarColor: "bg-[#184A99]",  location: "Delhi",      time: "1 month ago",  text: "Got the Diwali offer on Signia Pure — saved over ₹25,000. The audiologist was excellent and fitted me on the same day. Highly recommend Insono!" },
-  { name: "Anita Rao",       initials: "AR", avatarColor: "bg-emerald-600", location: "Mumbai",    time: "2 months ago", text: "Claimed the Mother's Day offer for my mom. They gave a 7-day trial before we committed. The Widex MOMENT sounds incredibly natural. Thank you Insono!" },
+  { name: "Vikram Sharma",   initials: "VS", avatarColor: "bg-[#184A99]",  location: "Delhi",      time: "1 month ago",  text: "Got the seasonal offer on Signia Pure — saved over ₹25,000. The audiologist was excellent and fitted me on the same day. Highly recommend Insono!" },
+  { name: "Anita Rao",       initials: "AR", avatarColor: "bg-emerald-600", location: "Mumbai",    time: "2 months ago", text: "Got the seasonal discount for my mom. They gave a 7-day trial before we committed. The Widex MOMENT sounds incredibly natural. Thank you Insono!" },
   { name: "Kuldeep Dhillon", initials: "KD", avatarColor: "bg-purple-600",  location: "Chandigarh", time: "3 weeks ago",  text: "The seasonal offer included free home delivery and 0% EMI. I got the Phonak Lumity at a price I couldn't find anywhere else. After-sales support is great." },
   { name: "Meena Verma",     initials: "MV", avatarColor: "bg-rose-600",    location: "Noida",     time: "2 weeks ago",  text: "Didn't know what to expect but the free hearing test was thorough and the offer price was genuinely lower than other stores. Very happy with my purchase." },
 ];
 
 const DEFAULT_OFFER = {
-  name: "Limited Time Hearing Aid Offer",
-  badge: "Special Offer",
-  tagline: "Best prices of the year on all major hearing aid brands",
+  name: "Big Discounts on Hearing Aids",
+  badge: "Exclusive 2026 Deals",
+  tagline: "Best prices of the year on all major hearing aid brands — Signia, Phonak, Widex & more",
   discount: "Save up to ₹31,500",
-  endsAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
+  endsAt: new Date(Date.now() + 2 * 60 * 60 * 1000).toISOString(),
 };
 
 export default async function OffersLandingPage() {
-  const dbOffer = await prisma.offer.findFirst({ where: { isActive: true } });
+  let dbOffer = null;
+  try {
+    dbOffer = await prisma.offer.findFirst({ where: { isActive: true } });
+  } catch (e) {
+    console.error("Failed to fetch offer from DB:", e);
+  }
   const offer = dbOffer
     ? { ...dbOffer, endsAt: dbOffer.endsAt.toISOString() }
     : DEFAULT_OFFER;
@@ -116,12 +121,17 @@ export default async function OffersLandingPage() {
             from { opacity: 0; transform: scale(0.9); }
             to   { opacity: 1; transform: scale(1); }
           }
+          @keyframes of-pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+          }
           .of-up    { animation: of-up   0.5s ease both; }
           .of-up.d1 { animation-delay: 0.1s; }
           .of-up.d2 { animation-delay: 0.2s; }
           .of-up.d3 { animation-delay: 0.3s; }
           .of-up.d4 { animation-delay: 0.4s; }
           .of-scale { animation: of-scale 0.7s 0.4s ease both; }
+          .of-viewing-dot { animation: of-pulse-dot 1.5s ease-in-out infinite; }
         `
       }} />
 
@@ -168,6 +178,28 @@ export default async function OffersLandingPage() {
 
             <p className="of-up d1 text-[13px] text-slate-500 font-medium mb-4 leading-snug">{offer.tagline}</p>
 
+            {/* Trust pills */}
+            <div className="of-up d1 flex flex-wrap justify-center gap-2 mb-4">
+              {["✓ Free Hearing Test", "✓ 7-Day Trial", "✓ 0% EMI"].map((t) => (
+                <span key={t} className="text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-100 rounded-full px-3 py-1">{t}</span>
+              ))}
+            </div>
+
+            {/* Product image strip */}
+            <div className="of-up d1 flex justify-center items-center gap-3 mb-4">
+              {FEATURED_MODELS.map((p) => (
+                <div key={p.rank} className="w-[72px] h-[72px] bg-white rounded-2xl border border-slate-100 shadow-sm flex items-center justify-center p-1.5">
+                  <Image src={p.image} alt={p.title} width={60} height={60} className="object-contain" />
+                </div>
+              ))}
+            </div>
+
+            {/* Social proof */}
+            <div className="of-up d2 flex items-center justify-center gap-1.5 mb-4">
+              <span className="w-2 h-2 bg-emerald-500 rounded-full of-viewing-dot" />
+              <span className="text-[11px] text-slate-500 font-medium"><span className="font-black text-slate-800">47 people</span> are viewing this offer right now</span>
+            </div>
+
             {/* Countdown */}
             <div className="of-up d2 flex flex-col items-center gap-2 mb-5">
               <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Offer ends in</p>
@@ -177,12 +209,13 @@ export default async function OffersLandingPage() {
             {/* Discount pill */}
             <div className="of-up d2 inline-flex items-center gap-2 bg-[#184A99]/10 rounded-full px-5 py-2 mb-5">
               <span className="text-[13px] font-black text-[#184A99]">{offer.discount}</span>
+              <span className="text-[11px] text-slate-400 font-medium">· EMI from ₹799/mo</span>
             </div>
 
-            <div className="of-up d3 w-full">
+            <div className="of-up d3 w-full flex flex-col gap-2">
               <PopupTrigger className="w-full h-[50px] bg-[#184A99] text-white flex items-center justify-center gap-2 rounded-xl text-[14px] font-bold shadow-lg shadow-[#184A99]/20 active:scale-[0.97] transition-all">
                 <FileText className="w-4 h-4" />
-                Claim This Offer
+                Get Offer Price on WhatsApp
               </PopupTrigger>
             </div>
           </div>
@@ -318,7 +351,7 @@ export default async function OffersLandingPage() {
           <div className="w-px bg-white/20" />
           <a href="tel:+916204260510" className="flex-1 bg-[#184A99] text-white flex flex-col items-center justify-center py-2.5 gap-0.5 px-2">
             <Phone className="w-4 h-4" />
-            <span className="text-[10px] font-black leading-none text-center">A Call Can Save ₹31,500</span>
+            <span className="text-[10px] font-black leading-none text-center">Call & Save up to ₹31,500</span>
           </a>
         </div>
       </div>
@@ -344,13 +377,27 @@ export default async function OffersLandingPage() {
                   </span>
                 </h1>
 
-                <p className="of-up d2 text-slate-500 text-xl mb-8 max-w-xl leading-relaxed font-medium">{offer.tagline}</p>
+                <p className="of-up d2 text-slate-500 text-xl mb-6 max-w-xl leading-relaxed font-medium">{offer.tagline}</p>
+
+                {/* Trust pills */}
+                <div className="of-up d2 flex flex-wrap gap-3 mb-8">
+                  {["✓ Free Hearing Test", "✓ 7-Day Free Trial", "✓ 0% EMI Available", "✓ Certified Audiologist"].map((t) => (
+                    <span key={t} className="text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-100 rounded-full px-4 py-1.5">{t}</span>
+                  ))}
+                </div>
+
+                {/* Social proof */}
+                <div className="of-up d2 flex items-center gap-2 mb-8">
+                  <span className="w-2.5 h-2.5 bg-emerald-500 rounded-full of-viewing-dot" />
+                  <span className="text-sm text-slate-500"><span className="font-black text-slate-800">47 people</span> are viewing this offer right now</span>
+                </div>
 
                 {/* Discount + Countdown side by side */}
                 <div className="of-up d2 flex flex-wrap items-center gap-8 mb-10">
                   <div>
                     <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">You Save</p>
                     <p className="text-3xl font-black text-[#E83D6D]">{offer.discount}</p>
+                    <p className="text-xs text-slate-400 mt-1">EMI starting ₹799/month</p>
                   </div>
                   <div>
                     <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Offer Ends In</p>
