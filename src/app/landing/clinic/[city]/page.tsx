@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Phone, MapPin, Clock, ArrowRight, Users, Stethoscope, Star, Check, Award, Ear, HeartHandshake, ShieldCheck, Zap, MessageSquare, FileText } from "lucide-react";
-import { clinics, defaultFaqs } from "@/app/our-clinic/clinics-data";
+import { clinics, defaultFaqs, type Clinic } from "@/app/our-clinic/clinics-data";
 import { PopupTrigger } from "../PopupTrigger";
 import PopupModal from "../PopupModal";
 import LeadForm from "../LeadForm";
@@ -10,7 +10,11 @@ import FAQAccordion from "../FAQAccordion";
 import { Metadata } from "next";
 import { FaFacebook, FaInstagram, FaYoutube, FaLinkedin } from "react-icons/fa";
 
-const campaignClinics = [
+interface LandingClinic extends Clinic {
+  noGmb?: boolean;
+}
+
+const campaignClinics: LandingClinic[] = [
   {
     id: "bangalore",
     name: "Insono Hearing Solutions Pvt Ltd. Koramangala Bangalore",
@@ -52,7 +56,7 @@ const campaignClinics = [
   }
 ];
 
-const allClinics = [...clinics, ...campaignClinics];
+const allClinics: LandingClinic[] = [...clinics, ...campaignClinics];
 
 function formatCity(slug: string) {
   return slug
