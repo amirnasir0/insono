@@ -1,29 +1,30 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Phone, MessageSquare, ArrowRight, Users, MapPin, Stethoscope, FileText, Lock } from "lucide-react";
+import {
+  Phone, MessageSquare, Award, Check, Lock,
+  Zap, Ear, Battery, Bluetooth, BadgePercent,
+  EyeOff, HeartHandshake, Volume2, ShieldCheck,
+} from "lucide-react";
 import LeadForm from "./LeadForm";
 import FAQAccordion from "./FAQAccordion";
 import { PopupTrigger } from "./PopupTrigger";
 import PopupModal from "./PopupModal";
+import HeroCarousel from "./HeroCarousel";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { FaFacebook, FaInstagram, FaYoutube, FaLinkedin } from "react-icons/fa";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 type BrandKey = "generic" | "signia" | "phonak" | "widex";
 
-interface Model {
-  rank: number;
-  badge: string;
-  badgeColor: string;
-  title: string;
-  brand: string;
-  brandLogo: string;
+interface TableProduct {
+  name: string;
   image: string;
-  features: string[];
-  channels: string;
-  style: string;
-  highlight: string;
+  bestFor: string;
+  features: string;
+  tech: string;
+  techColor: string;
 }
 
 interface BrandConfig {
@@ -33,95 +34,53 @@ interface BrandConfig {
   heroH1: string;
   heroSubtitle: string;
   urgencyBar: string;
-  heroBullets: { icon: string; text: string }[];
+  heroBullets: { icon: React.ReactNode; text: string; iconBg: string }[];
   ctaText: string;
-  priceListLabel: string;
-  heroImage: string;
+  heroImages: { src: string; alt: string }[];
   formHeading: string;
   formSubtitle: string;
   productSectionHeading: string;
-  productSectionSub: string;
-  models: Model[];
+  tableProducts: TableProduct[];
   reviewTexts: string[];
   waText: string;
   footerLabel: string;
 }
 
-// ─── Models ───────────────────────────────────────────────────────────────────
-
-const GENERIC_MODELS: Model[] = [
-  { rank: 1, badge: "Best Seller", badgeColor: "bg-[#184A99] text-white", title: "Signia Orion C&G", brand: "Signia", brandLogo: "/brands/signia.svg", image: "https://an7bjwndlmaemx4x.public.blob.vercel-storage.com/products/1772781326903-Signia-Orion-C%26G-200%40.jpg", features: ["Rechargeable", "Bluetooth Streaming", "Speech Clarity", "App Control"], channels: "24 Channels", style: "RIC", highlight: "Best entry-level rechargeable hearing aid — great for first-time users" },
-  { rank: 2, badge: "Ultra Stylish", badgeColor: "bg-rose-600 text-white", title: "Signia Styletto", brand: "Signia", brandLogo: "/brands/signia.svg", image: "https://an7bjwndlmaemx4x.public.blob.vercel-storage.com/products/1772794609852-cosmic-blue_rose-gold_double_dd4310ec-bb18-403c-a7c9-05467ff34b3b-%281%29.webp", features: ["Slim Elegant Design", "Rechargeable", "Bluetooth 5.0", "IX Platform AI"], channels: "48 Channels", style: "RIC", highlight: "Fashion-forward hearing aid with premium AI sound quality" },
-  { rank: 3, badge: "AI Powered", badgeColor: "bg-emerald-600 text-white", title: "Phonak Audeo Sphere I90", brand: "Phonak", brandLogo: "/brands/phonaklogo.svg", image: "https://an7bjwndlmaemx4x.public.blob.vercel-storage.com/products/1773054606126-IMG-1.png", features: ["Dual AI Engines", "Speech from Noise", "Universal Bluetooth", "Rechargeable"], channels: "48 Channels", style: "RIC", highlight: "World's first hearing aid with a dedicated AI chip for speech clarity" },
-  { rank: 4, badge: "Doctor's Choice", badgeColor: "bg-amber-500 text-white", title: "Phonak Audeo Lumity", brand: "Phonak", brandLogo: "/brands/phonaklogo.svg", image: "/lp/phonak1.png", features: ["SmartSpeech Tech", "Universal Connectivity", "Health Tracking", "Waterproof"], channels: "24 Channels", style: "RIC", highlight: "Most popular Phonak model for active social lifestyles" },
-  { rank: 5, badge: "Crystal Sound", badgeColor: "bg-purple-600 text-white", title: "Widex MOMENT 440", brand: "Widex", brandLogo: "/brands/widex.svg", image: "/lp/widex1.png", features: ["Pure Sound", "True Input Technology", "ZeroDelay", "App Control"], channels: "44 Channels", style: "RIC", highlight: "Widex's flagship — the world's fastest signal processing" },
-  { rank: 6, badge: "Smart AI", badgeColor: "bg-teal-600 text-white", title: "Oticon Intent", brand: "Oticon", brandLogo: "/brands/oticon.svg", image: "/lp/oticon1.png", features: ["4D Sensor", "Intent Detection", "BrainHearing", "Rechargeable"], channels: "64 Channels", style: "RIC", highlight: "First hearing aid that senses user intent to automatically adjust" },
-];
-
-const SIGNIA_MODELS: Model[] = [
-  { rank: 1, badge: "Best Seller", badgeColor: "bg-[#184A99] text-white", title: "Signia Fun SP", brand: "Signia", brandLogo: "/brands/signia.svg", image: "https://an7bjwndlmaemx4x.public.blob.vercel-storage.com/products/1773219362292-SIGNIA-FAST-P-IMG-1.png", features: ["Super Power BTE", "Noise Reduction", "Tinnitus Therapy", "Wireless Streaming"], channels: "16 Channels", style: "BTE", highlight: "Powerful BTE for moderate to severe hearing loss" },
-  { rank: 2, badge: "Top Rated", badgeColor: "bg-emerald-600 text-white", title: "Signia Orion C&G", brand: "Signia", brandLogo: "/brands/signia.svg", image: "https://an7bjwndlmaemx4x.public.blob.vercel-storage.com/products/1772781326903-Signia-Orion-C%26G-200%40.jpg", features: ["Rechargeable", "Bluetooth Streaming", "Speech Clarity", "App Control"], channels: "24 Channels", style: "RIC", highlight: "Best entry-level rechargeable hearing aid by Signia" },
-  { rank: 3, badge: "Nearly Invisible", badgeColor: "bg-purple-600 text-white", title: "Signia Silk", brand: "Signia", brandLogo: "/brands/signia.svg", image: "https://an7bjwndlmaemx4x.public.blob.vercel-storage.com/products/1775551490244-Untitled-design---2026-04-07T141048.093.png", features: ["Invisible In-Canal", "Ready-to-Wear", "Own Voice Processing", "Tinnitus Therapy"], channels: "32 Channels", style: "IIC", highlight: "Smallest invisible hearing aid — fits instantly, no custom mold" },
-  { rank: 4, badge: "Ultra Stylish", badgeColor: "bg-rose-600 text-white", title: "Signia Styletto", brand: "Signia", brandLogo: "/brands/signia.svg", image: "https://an7bjwndlmaemx4x.public.blob.vercel-storage.com/products/1772794609852-cosmic-blue_rose-gold_double_dd4310ec-bb18-403c-a7c9-05467ff34b3b-%281%29.webp", features: ["Slim Elegant Design", "Rechargeable", "Bluetooth 5.0", "IX Platform AI"], channels: "48 Channels", style: "RIC", highlight: "Fashion-forward hearing aid with premium sound quality" },
-  { rank: 5, badge: "Doctor's Choice", badgeColor: "bg-amber-500 text-white", title: "Signia Pure Charge&Go", brand: "Signia", brandLogo: "/brands/signia.svg", image: "https://an7bjwndlmaemx4x.public.blob.vercel-storage.com/products/1772792684301-Signia-Pure-Charge%26Go-7IX%40%40%40.webp", features: ["IX Platform AI", "Own Voice Processing", "Rechargeable", "Tinnitus Therapy"], channels: "48 Channels", style: "RIC", highlight: "India's most sold hearing aid — clinically proven performance" },
-];
-
-const PHONAK_MODELS: Model[] = [
-  { rank: 1, badge: "Best Seller", badgeColor: "bg-[#184A99] text-white", title: "Phonak Audeo Lumity", brand: "Phonak", brandLogo: "/brands/phonaklogo.svg", image: "/lp/phonak1.png", features: ["SmartSpeech Tech", "Universal Bluetooth", "Health Tracking", "Waterproof"], channels: "24 Channels", style: "RIC", highlight: "Most popular Phonak model for active social lifestyles" },
-  { rank: 2, badge: "AI Powered", badgeColor: "bg-emerald-600 text-white", title: "Phonak Audeo Sphere I90", brand: "Phonak", brandLogo: "/brands/phonaklogo.svg", image: "https://an7bjwndlmaemx4x.public.blob.vercel-storage.com/products/1773054606126-IMG-1.png", features: ["Dual AI Engines", "Speech from Noise", "Universal Bluetooth", "Rechargeable"], channels: "48 Channels", style: "RIC", highlight: "World's first hearing aid with a dedicated AI chip for speech clarity" },
-  { rank: 3, badge: "Premium", badgeColor: "bg-rose-600 text-white", title: "Phonak Audeo Paradise", brand: "Phonak", brandLogo: "/brands/phonaklogo.svg", image: "/lp/phonak2.png", features: ["AutoSense OS 4.0", "Tap Control", "Bluetooth Multi-Connect", "Rechargeable"], channels: "24 Channels", style: "RIC", highlight: "Connect to 2 Bluetooth devices simultaneously" },
-  { rank: 4, badge: "Powerful", badgeColor: "bg-amber-500 text-white", title: "Phonak Naída Paradise", brand: "Phonak", brandLogo: "/brands/phonaklogo.svg", image: "/lp/phonak3.png", features: ["Ultra Power", "Roger Ready", "Binaural VoiceStream", "IP68 Waterproof"], channels: "16 Channels", style: "BTE", highlight: "For severe-to-profound hearing loss with full connectivity" },
-  { rank: 5, badge: "Compact", badgeColor: "bg-purple-600 text-white", title: "Phonak Audeo Fit", brand: "Phonak", brandLogo: "/brands/phonaklogo.svg", image: "/lp/phonak4.png", features: ["Health Data Tracking", "Activity Tracker", "Falls Detection", "Hearing Score"], channels: "16 Channels", style: "RIC", highlight: "The first hearing aid with integrated health tracking" },
-];
-
-const WIDEX_MODELS: Model[] = [
-  { rank: 1, badge: "Purest Sound", badgeColor: "bg-[#184A99] text-white", title: "Widex MOMENT Sheer", brand: "Widex", brandLogo: "/brands/widex.svg", image: "/lp/widex1.png", features: ["ZeroDelay Tech", "Natural Sound", "Rechargeable", "AI Personalization"], channels: "15 Channels", style: "RIC", highlight: "The most natural-sounding digital hearing aid ever made" },
-  { rank: 2, badge: "AI Powered", badgeColor: "bg-emerald-600 text-white", title: "Widex EVOKE 440", brand: "Widex", brandLogo: "/brands/widex.svg", image: "/lp/widex2.png", features: ["Machine Learning", "Fluid Sound", "Direct Streaming", "App Control"], channels: "15 Channels", style: "RIC", highlight: "The first smart hearing aid that learns from your preferences" },
-  { rank: 3, badge: "Discreet Fit", badgeColor: "bg-purple-600 text-white", title: "Widex MOMENT IIC", brand: "Widex", brandLogo: "/brands/widex.svg", image: "/lp/widex3.png", features: ["Invisible In-Canal", "Custom Fit", "PureSound Tech", "Tinnitus Masker"], channels: "15 Channels", style: "IIC", highlight: "Maximum discretion without compromising on Widex sound quality" },
-  { rank: 4, badge: "Great Value", badgeColor: "bg-rose-600 text-white", title: "Widex Magnify", brand: "Widex", brandLogo: "/brands/widex.svg", image: "/lp/widex4.png", features: ["Rechargeable", "Smartphone Streaming", "Comfort Fit", "Clear Speech"], channels: "10 Channels", style: "RIC", highlight: "Premium features and rechargeability at an accessible price" },
-  { rank: 5, badge: "Essential", badgeColor: "bg-amber-500 text-white", title: "Widex Enjoy", brand: "Widex", brandLogo: "/brands/widex.svg", image: "/lp/widex1.png", features: ["Stable Connection", "Speech Enhancement", "Durable Build", "Reliable Tech"], channels: "6 Channels", style: "BTE", highlight: "Widex quality and reliability for everyday hearing needs" },
-];
-
-// ─── Comparison rows (same for all brands) ────────────────────────────────────
-
-const COMPARISON_ROWS = [
-  { feature: "Free Hearing Test",    others: false },
-  { feature: "7-Day Free Trial",     others: false },
-  { feature: "Genuine Products",     others: "Sometimes" },
-  { feature: "EMI / 0% Finance",     others: false },
-  { feature: "Home Delivery (COD)",  others: false },
-  { feature: "Lifetime Servicing",   others: false },
-  { feature: "Certified Audiologist",others: "Varies" },
-  { feature: "Price Transparency",   others: false },
-] as const;
-
-// ─── Brand config ─────────────────────────────────────────────────────────────
+// ─── Brand configs ─────────────────────────────────────────────────────────────
 
 const BRANDS: Record<BrandKey, BrandConfig> = {
   generic: {
     name: "Hearing Aid",
-    seoTitle: "Hearing Aid Near Me | Best Price, Free Test & Authorized Clinic – Insono",
+    seoTitle: "Hearing Aid Near You | Best Price, Free Test & Authorized Clinic – Insono",
     seoDescription: "Find the best hearing aid near you. Free diagnostic hearing test, all top brands — Signia, Phonak, Widex & more. Prices from ₹9,999. Book free appointment today.",
-    heroH1: "Hearing Aid Price & Clinic Near Me 2026",
-    heroSubtitle: "Compare top brands — Signia, Phonak, Widex, ReSound & more. Get a Free Clinical Trial at your nearest Insono authorized hearing aid center.",
-    urgencyBar: "A call can save you upto ₹31,500 on hearing aids",
+    heroH1: "Hearing Aid Price List Near You 2026",
+    heroSubtitle: "Compare top brands — Signia, Phonak, Widex, ReSound & more. Free Clinical Trial at your nearest Insono authorized center.",
+    urgencyBar: "A call can save you up to ₹31,500 on hearing aids",
     heroBullets: [
-      { icon: "🏆", text: "Lowest price guaranteed" },
-      { icon: "💳", text: "0% EMI options, prices start from ₹9,999 only" },
-      { icon: "💰", text: "Save upto ₹31,500 on hearing aids" },
+      { icon: <BadgePercent className="w-4 h-4 text-green-600" />, iconBg: "bg-green-100", text: `Save up to <span class="text-green-600 font-bold">₹31,500</span> on top brands` },
+      { icon: <EyeOff className="w-4 h-4 text-blue-600" />, iconBg: "bg-blue-100", text: "Invisible but Powerful Designs" },
+      { icon: <HeartHandshake className="w-4 h-4 text-purple-600" />, iconBg: "bg-purple-100", text: "Senior Citizen Discounts & 0% EMI" },
     ],
-    ctaText: "Download Hearing Aid Price List",
-    priceListLabel: "Download Hearing Aid Prices & Claim Free Trial",
-    heroImage: "/signia_bct2.png",
-    formHeading: "Download Hearing Aid Prices & Claim Free Trial",
-    formSubtitle: "Get the full 2026 Price List for all major brands instantly on WhatsApp.",
-    productSectionHeading: "Top 5 Hearing Aids Near Me",
-    productSectionSub: "Individually selected by our audiologists — best models across all major brands.",
-    models: GENERIC_MODELS,
+    ctaText: "Get July Prices & Best Offers",
+    heroImages: [
+      { src: "/hearwave/styletto.png", alt: "Signia Styletto Hearing Aid" },
+      { src: "/hearwave/audeo-lumity.png", alt: "Phonak Audeo Lumity Hearing Aid" },
+      { src: "/hearwave/oticon-intent.png", alt: "Oticon Intent Hearing Aid" },
+    ],
+    formHeading: "Download Hearing Aid Price List",
+    formSubtitle: "Get the full 2026 Price List for all major brands — free callback within minutes.",
+    productSectionHeading: "2026 Hearing Aid Model Comparison",
+    tableProducts: [
+      { name: "Signia Silk IX", image: "/signia-silk-ix-hero.png", bestFor: "Invisibility", features: "Invisible Fit, Instant Fit, Rechargeable", tech: "Essential", techColor: "bg-blue-50 text-blue-700 border-blue-100" },
+      { name: "Signia Styletto IX", image: "/signia_bct2.png", bestFor: "Style & Design", features: "SlimRIC Design, Rechargeable, Bluetooth", tech: "Advanced", techColor: "bg-blue-50 text-blue-700 border-blue-100" },
+      { name: "Phonak Audeo Lumity", image: "/Phonak-Audeo-Lumity-Slim-hero-webp.webp", bestFor: "Versatility", features: "SmartSpeech Tech, Health Tracking, Waterproof", tech: "Advanced", techColor: "bg-blue-50 text-blue-700 border-blue-100" },
+      { name: "Phonak Infinio", image: "/phonak-infinio-hero.webp", bestFor: "Maximum Power", features: "Chip-based AI, Rechargeable, Tinnitus Support", tech: "Premium AI", techColor: "bg-purple-50 text-purple-700 border-purple-100" },
+      { name: "Phonak Audeo P", image: "/phonak-audeo-p-hero.webp", bestFor: "Smart AI Sound", features: "AutoSense OS, Universal Bluetooth, App Control", tech: "Premium AI", techColor: "bg-purple-50 text-purple-700 border-purple-100" },
+    ],
     reviewTexts: [
       "Excellent service at Insono. The audiologist was very patient in explaining which model suited my hearing loss. Got fitted the same day. Highly recommend!",
       "I was confused between multiple brands but the team at Insono helped me choose the right hearing aid. Sound quality is amazing and the price was transparent — no hidden charges.",
-      "Free hearing test was done professionally. Got a 7-day trial before I bought. Cash on delivery made it easy. Very happy with my hearing aid!",
+      "Free hearing test was done professionally. Got a 7-day trial before I bought. Very happy with my hearing aid!",
       "My mother got her hearing aid from Insono. The home delivery was on time and the after-sales support has been wonderful. Will recommend to everyone.",
     ],
     waText: "Hi, I want to know about hearing aids near me",
@@ -129,57 +88,70 @@ const BRANDS: Record<BrandKey, BrandConfig> = {
   },
   signia: {
     name: "Signia",
-    seoTitle: "Signia Hearing Aid Near Me | Authorized Clinic – Free Test & Best Price",
+    seoTitle: "Signia Hearing Aid Near You | Authorized Clinic – Free Test & Best Price",
     seoDescription: "Find the nearest authorized Signia hearing aid clinic. Free hearing test, certified audiologists & best price. Signia prices from ₹15,000. Book free appointment today.",
-    heroH1: "Signia Hearing Aids Price Near Me 2026",
+    heroH1: "Signia Hearing Aids Price List 2026",
     heroSubtitle: "Discover the 2026 Elite Collection. Experience digital clarity with a Free Clinical Trial at your nearest authorized Signia center.",
     urgencyBar: "Limited Trial Slots Available — Authorized Signia Partner",
     heroBullets: [
-      { icon: "🎧", text: "Bluetooth & Rechargeable Signia Models" },
-      { icon: "🏥", text: "Free Hearing Test at Nearest Clinic" },
-      { icon: "💰", text: "Save upto ₹31,500 on Signia Aids" },
+      { icon: <BadgePercent className="w-4 h-4 text-green-600" />, iconBg: "bg-green-100", text: `Save up to <span class="text-green-600 font-bold">₹31,500</span> on Signia aids` },
+      { icon: <EyeOff className="w-4 h-4 text-blue-600" />, iconBg: "bg-blue-100", text: "Bluetooth & Rechargeable Signia Models" },
+      { icon: <HeartHandshake className="w-4 h-4 text-purple-600" />, iconBg: "bg-purple-100", text: "Free Hearing Test at Nearest Clinic" },
     ],
     ctaText: "Download Signia Price List",
-    priceListLabel: "Download Signia Prices & Claim Free Trial",
-    heroImage: "/signia_bct2.png",
+    heroImages: [
+      { src: "/signia-silk-ix-hero.png", alt: "Signia Silk IX" },
+      { src: "/ric-signia.png", alt: "Signia RIC" },
+      { src: "/signia_bct.png", alt: "Signia Hearing Aid" },
+    ],
     formHeading: "Download Signia Prices & Claim Free Trial",
-    formSubtitle: "Get the full 2026 Signia Price List instantly on WhatsApp.",
-    productSectionHeading: "2026's Top Signia Models",
-    productSectionSub: "Individually selected by our experts — best Signia models for every lifestyle.",
-    models: SIGNIA_MODELS,
+    formSubtitle: "Get the full 2026 Signia Price List instantly — free callback within minutes.",
+    productSectionHeading: "2026 Signia Model Comparison",
+    tableProducts: [
+      { name: "Signia Silk IX", image: "/signia-silk-ix-hero.png", bestFor: "Invisibility", features: "Invisible Fit, Instant Fit, Rechargeable", tech: "Essential", techColor: "bg-blue-50 text-blue-700 border-blue-100" },
+      { name: "Signia Styletto IX", image: "/signia_bct2.png", bestFor: "Style & Design", features: "SlimRIC Design, Rechargeable, Bluetooth 5.0", tech: "Advanced", techColor: "bg-blue-50 text-blue-700 border-blue-100" },
+      { name: "Signia Pure C&G IX", image: "/signia_bct2.png", bestFor: "Versatility", features: "IX Platform AI, Own Voice Processing, Rechargeable", tech: "Advanced", techColor: "bg-blue-50 text-blue-700 border-blue-100" },
+      { name: "Signia Active Pro", image: "/brands/signia active pro.png", bestFor: "Active Lifestyle", features: "Earphone Design, Rechargeable, App Control", tech: "Essential", techColor: "bg-green-50 text-green-700 border-green-100" },
+    ],
     reviewTexts: [
       "Excellent service at Insono. The audiologist was very patient in explaining which Signia model suited my hearing loss. Got fitted the same day. Highly recommend!",
       "I was confused between multiple brands but the team at Insono helped me choose Signia Pure Charge&Go. Sound quality is amazing and the price was transparent — no hidden charges.",
-      "Free hearing test was done professionally. Got a 7-day trial before I bought. Very happy with my Signia Styletto — looks great too!",
-      "My mother got her Signia hearing aid from Insono. The home delivery was on time and the after-sales support has been wonderful. Will recommend to everyone.",
+      "Free hearing test done professionally. Got a 7-day trial before I bought. Very happy with my Signia Styletto — looks great too!",
+      "My mother got her Signia hearing aid from Insono. The home delivery was on time and after-sales support has been wonderful. Will recommend to everyone.",
     ],
     waText: "Hi, I want to chat with an audiologist about Signia hearing aids near me",
     footerLabel: "Signia Specialist Center",
   },
   phonak: {
     name: "Phonak",
-    seoTitle: "Phonak Hearing Aid Near Me | Authorized Clinic – Free Test & Best Price",
+    seoTitle: "Phonak Hearing Aid Near You | Authorized Clinic – Free Test & Best Price",
     seoDescription: "Find the nearest authorized Phonak hearing aid clinic. Free hearing test, certified audiologists & best price. Phonak prices from ₹18,000. Book free appointment today.",
-    heroH1: "Phonak Hearing Aids Price Near Me 2026",
+    heroH1: "Phonak Hearing Aids Price List 2026",
     heroSubtitle: "Discover the 2026 Phonak Collection. Experience Swiss precision with a Free Clinical Trial at your nearest authorized Phonak center.",
     urgencyBar: "Limited Trial Slots Available — Authorized Phonak Partner",
     heroBullets: [
-      { icon: "🎯", text: "Ultra clear sound with Phonak AutoSense AI" },
-      { icon: "🏥", text: "Free Hearing Test at Nearest Clinic" },
-      { icon: "💰", text: "Save upto ₹31,500 on Phonak Aids" },
+      { icon: <BadgePercent className="w-4 h-4 text-green-600" />, iconBg: "bg-green-100", text: `Save up to <span class="text-green-600 font-bold">₹31,500</span> on Phonak aids` },
+      { icon: <EyeOff className="w-4 h-4 text-blue-600" />, iconBg: "bg-blue-100", text: "Ultra clear sound with Phonak AutoSense AI" },
+      { icon: <HeartHandshake className="w-4 h-4 text-purple-600" />, iconBg: "bg-purple-100", text: "Free Hearing Test at Nearest Clinic" },
     ],
     ctaText: "Download Phonak Price List",
-    priceListLabel: "Download Phonak Prices & Claim Free Trial",
-    heroImage: "/lp/phonak1.png",
+    heroImages: [
+      { src: "/Phonak-Audeo-Lumity-Slim-hero-webp.webp", alt: "Phonak Audeo Lumity" },
+      { src: "/phonak-infinio-hero.webp", alt: "Phonak Infinio" },
+      { src: "/phonak-audeo-p-hero.webp", alt: "Phonak Audeo P" },
+    ],
     formHeading: "Download Phonak Prices & Claim Free Trial",
-    formSubtitle: "Get the full 2026 Phonak Price List instantly on WhatsApp.",
-    productSectionHeading: "2026's Top Phonak Models",
-    productSectionSub: "Individually selected by our experts — best Phonak models for every lifestyle.",
-    models: PHONAK_MODELS,
+    formSubtitle: "Get the full 2026 Phonak Price List instantly — free callback within minutes.",
+    productSectionHeading: "2026 Phonak Model Comparison",
+    tableProducts: [
+      { name: "Phonak Audeo Lumity", image: "/Phonak-Audeo-Lumity-Slim-hero-webp.webp", bestFor: "Versatility", features: "SmartSpeech Tech, Universal Bluetooth, Waterproof", tech: "Advanced", techColor: "bg-blue-50 text-blue-700 border-blue-100" },
+      { name: "Phonak Infinio", image: "/phonak-infinio-hero.webp", bestFor: "Best Performance", features: "Chip-based AI, Hands-free calls, Slim RIC", tech: "Premium AI", techColor: "bg-purple-50 text-purple-700 border-purple-100" },
+      { name: "Phonak Audeo P", image: "/phonak-audeo-p-hero.webp", bestFor: "Smart Lifestyle", features: "AutoSense OS, Health Tracking, Falls Detection", tech: "Advanced", techColor: "bg-blue-50 text-blue-700 border-blue-100" },
+    ],
     reviewTexts: [
-      "Got my Phonak Audeo fitted at Insono. The AutoSense AI is incredible — adjusts automatically in every environment. The audiologist was very helpful. Highly recommend!",
+      "Got my Phonak Audeo fitted at Insono. The AutoSense AI is incredible — adjusts automatically in every environment. Highly recommend!",
       "Was confused between brands but Insono team recommended Phonak Lumity after my audiogram. Sound quality is amazing and pricing was transparent — no hidden charges.",
-      "Free hearing test done professionally. Got 7-day trial before buying. Very happy with my Phonak Paradise — Bluetooth connectivity works perfectly!",
+      "Free hearing test done professionally. Got 7-day trial before buying. Very happy with my Phonak — Bluetooth connectivity works perfectly!",
       "My father got his Phonak hearing aid from Insono. Home delivery was on time and after-sales support has been wonderful. Will recommend to everyone.",
     ],
     waText: "Hi, I want to chat with an audiologist about Phonak hearing aids near me",
@@ -187,26 +159,29 @@ const BRANDS: Record<BrandKey, BrandConfig> = {
   },
   widex: {
     name: "Widex",
-    seoTitle: "Widex Hearing Aid Near Me | Authorized Clinic – Free Test & Best Price",
+    seoTitle: "Widex Hearing Aid Near You | Authorized Clinic – Free Test & Best Price",
     seoDescription: "Find the nearest authorized Widex hearing aid clinic. Free hearing test, certified audiologists & best price. Widex prices from ₹20,000. Book free appointment today.",
-    heroH1: "Widex Hearing Aids Price Near Me 2026",
+    heroH1: "Widex Hearing Aids Price List 2026",
     heroSubtitle: "Experience the world's most natural hearing technology with a Free Clinical Trial at your nearest authorized Widex center.",
     urgencyBar: "Limited Trial Slots Available — Authorized Widex Partner",
     heroBullets: [
-      { icon: "🎼", text: "Natural sound with Widex PureSound technology" },
-      { icon: "🏥", text: "Free Hearing Test at Nearest Clinic" },
-      { icon: "💰", text: "Save upto ₹31,500 on Widex Aids" },
+      { icon: <BadgePercent className="w-4 h-4 text-green-600" />, iconBg: "bg-green-100", text: `Save up to <span class="text-green-600 font-bold">₹31,500</span> on Widex aids` },
+      { icon: <EyeOff className="w-4 h-4 text-blue-600" />, iconBg: "bg-blue-100", text: "Natural sound with Widex PureSound technology" },
+      { icon: <HeartHandshake className="w-4 h-4 text-purple-600" />, iconBg: "bg-purple-100", text: "Free Hearing Test at Nearest Clinic" },
     ],
     ctaText: "Download Widex Price List",
-    priceListLabel: "Download Widex Prices & Claim Free Trial",
-    heroImage: "/lp/widex1.png",
+    heroImages: [
+      { src: "/signia_bct2.png", alt: "Widex Hearing Aid" },
+    ],
     formHeading: "Download Widex Prices & Claim Free Trial",
-    formSubtitle: "Get the full 2026 Widex Price List instantly on WhatsApp.",
-    productSectionHeading: "2026's Top Widex Models",
-    productSectionSub: "Individually selected by our experts — best Widex models for every lifestyle.",
-    models: WIDEX_MODELS,
+    formSubtitle: "Get the full 2026 Widex Price List instantly — free callback within minutes.",
+    productSectionHeading: "2026 Widex Model Comparison",
+    tableProducts: [
+      { name: "Widex MOMENT Sheer", image: "/signia_bct2.png", bestFor: "Purest Sound", features: "ZeroDelay Tech, Natural Sound, Rechargeable", tech: "Advanced", techColor: "bg-blue-50 text-blue-700 border-blue-100" },
+      { name: "Widex EVOKE 440", image: "/signia_bct2.png", bestFor: "AI Powered", features: "Machine Learning, Fluid Sound, App Control", tech: "Premium AI", techColor: "bg-purple-50 text-purple-700 border-purple-100" },
+    ],
     reviewTexts: [
-      "Got my Widex Moment fitted at Insono. The PureSound technology is incredible — the most natural sound I've ever heard. Audiologist was very patient. Highly recommend!",
+      "Got my Widex Moment fitted at Insono. The PureSound technology is incredible — the most natural sound I've ever heard. Highly recommend!",
       "Was confused between brands but Insono team recommended Widex EVOKE after my audiogram. The AI personalization is amazing and pricing was transparent.",
       "Free hearing test done professionally. Got 7-day trial before buying. Very happy with my Widex MOMENT — sounds completely natural!",
       "My mother got her Widex hearing aid from Insono. The home delivery was on time and lifetime tuning support has been wonderful. Will recommend to everyone.",
@@ -233,7 +208,7 @@ const REVIEWS_BASE = [
   { name: "Meena Verma",     initials: "MV", avatarColor: "bg-rose-600",    time: "2 weeks ago" },
 ];
 
-// ─── Static params & Metadata ─────────────────────────────────────────────────
+// ─── Metadata ─────────────────────────────────────────────────────────────────
 
 export async function generateStaticParams() {
   return VALID_BRANDS.map((brand) => ({ brand }));
@@ -260,474 +235,514 @@ export default async function BrandNearMePage({ params }: { params: Promise<{ br
 
   const config = BRANDS[brandSlug as BrandKey];
   const utmCity = `brand-near-me-${brandSlug}`;
+  const currentMonth = new Date().toLocaleString("en-US", { month: "long" });
 
-  const REVIEWS = REVIEWS_BASE.map((r, i) => ({
-    ...r,
-    text: config.reviewTexts[i],
-  }));
+  const REVIEWS = REVIEWS_BASE.map((r, i) => ({ ...r, text: config.reviewTexts[i] }));
 
   return (
-    <div className="min-h-screen bg-white font-sans overflow-x-hidden selection:bg-[#eaf5ff]">
+    <div className="min-h-screen bg-white font-sans text-slate-900 overflow-x-hidden pb-12 md:pb-0">
       <style dangerouslySetInnerHTML={{
         __html: `
-          @media (max-width: 768px) {
-            header:not(.custom-mobile-header),
-            .sticky.top-0:not(.custom-mobile-header-wrapper),
-            .md\\:hidden.fixed.bottom-0:not(.custom-bottom-bar) { display: none !important; }
-            body { padding-top: 0 !important; }
-          }
-          @keyframes bn-up {
-            from { opacity: 0; transform: translateY(20px); }
+          header.bg-transparent,
+          footer,
+          div.fixed.bottom-0.left-0.right-0:not(.bnm-bottom-bar) { display: none !important; }
+          body { padding-top: 0 !important; }
+          @keyframes bnm-up {
+            from { opacity: 0; transform: translateY(18px); }
             to   { opacity: 1; transform: translateY(0); }
           }
-          @keyframes bn-left {
-            from { opacity: 0; transform: translateX(-20px); }
+          @keyframes bnm-left {
+            from { opacity: 0; transform: translateX(-18px); }
             to   { opacity: 1; transform: translateX(0); }
           }
-          @keyframes bn-scale {
-            from { opacity: 0; transform: scale(0.9); }
+          @keyframes bnm-scale {
+            from { opacity: 0; transform: scale(0.95); }
             to   { opacity: 1; transform: scale(1); }
           }
-          .bn-up            { animation: bn-up    0.5s ease both; }
-          .bn-up.d1         { animation-delay: 0.1s; }
-          .bn-up.d2         { animation-delay: 0.2s; }
-          .bn-up.d3         { animation-delay: 0.3s; }
-          .bn-up.d4         { animation-delay: 0.4s; }
-          .bn-left          { animation: bn-left  0.5s ease both; }
-          .bn-scale         { animation: bn-scale 0.8s 0.5s ease both; }
+          .bnm-up    { animation: bnm-up    0.55s ease both; }
+          .bnm-left  { animation: bnm-left  0.55s ease both; }
+          .bnm-scale { animation: bnm-scale 0.7s ease both; }
+          .bnm-d1 { animation-delay: 0.1s; }
+          .bnm-d2 { animation-delay: 0.2s; }
+          .bnm-d3 { animation-delay: 0.3s; }
         `
       }} />
 
-      {/* ════════════════ MOBILE ════════════════ */}
-      <div className="block md:hidden pb-20">
-
-        {/* Urgency bar */}
-        <div className="bg-[#0D2240] text-white py-2.5 px-4 text-center text-[10px] font-bold uppercase tracking-[0.2em] relative z-[60]">
-          <span className="inline-block w-2 h-2 bg-rose-500 rounded-full animate-pulse mr-2" />
-          {config.urgencyBar}
+      {/* ── HEADER ── */}
+      <header className="py-3 px-4 md:px-6 border-b bg-white/80 backdrop-blur-md sticky top-0 z-50">
+        <div className="max-w-[1180px] mx-auto flex justify-between items-center">
+          <Link href="/">
+            <Image src="/logo.webp" alt="Insono Hearing" width={130} height={42} className="h-12 md:h-14 w-auto object-contain" priority />
+          </Link>
+          <a href="tel:+916204260510" className="flex items-center gap-2 bg-[#184A99] hover:bg-[#13366e] text-white font-semibold rounded-full px-5 py-2.5 text-sm transition-all active:scale-95 shadow-sm">
+            <Phone className="w-4 h-4" /> +91 62042 60510
+          </a>
         </div>
+      </header>
 
-        {/* Header */}
-        <div className="sticky top-0 z-50 bg-transparent custom-mobile-header-wrapper">
-          <header className="px-4 py-3 flex items-center justify-between custom-mobile-header">
-            <Link href="/"><Image src="/logo.webp" alt="Insono Hearing" width={100} height={32} className="h-8 w-auto object-contain" /></Link>
-            <a href="tel:+916204260510" className="bg-[#184A99] text-white px-4 py-2.5 rounded-full text-[12px] font-bold flex items-center gap-2 active:scale-95 transition">
-              <Phone className="w-3.5 h-3.5" /> +91 62042 60510
-            </a>
-          </header>
-        </div>
+      {/* ── HERO ── */}
+      <section className="relative pt-0 pb-12 md:pt-16 md:pb-24 overflow-hidden bg-white">
+        {/* Background blobs */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/90 via-white to-violet-50/50" />
+        <div className="absolute -top-48 -left-48 w-[650px] h-[650px] rounded-full bg-blue-400/20 blur-[120px]" />
+        <div className="absolute -top-20 -right-20 w-[480px] h-[480px] rounded-full bg-indigo-400/15 blur-[100px]" />
+        <div className="absolute -bottom-24 left-[15%] w-[500px] h-[350px] rounded-full bg-cyan-300/20 blur-[100px]" />
+        <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(circle, #94a3b8 1px, transparent 1px)", backgroundSize: "28px 28px", opacity: 0.08 }} />
 
-        {/* Hero */}
-        <section className="bg-gradient-to-b from-[#eaf5ff] to-white relative overflow-hidden">
-          <div className="px-4 pt-3 pb-10 relative z-10 text-center">
-            <h1 className="bn-up text-[22px] font-black leading-[1.15] mb-5 tracking-tight">
-              <span className="bg-gradient-to-r from-[#E83D6D] via-[#0D2240] to-[#7C7C7C] bg-clip-text text-transparent">
-                {config.heroH1}
-              </span>
-            </h1>
+        <div className="max-w-[1180px] mx-auto px-4 md:px-6 relative z-10">
+          {/* Mobile H1 above grid */}
+          <h1 className="lg:hidden text-[26px] font-extrabold leading-tight text-slate-900 text-center mb-4 px-1">Hearing Aid Price List 2026</h1>
 
-            <div className="bn-up d1 relative w-full mb-5 flex flex-col items-center justify-center">
-              <div className="absolute w-[140px] h-[140px] bg-[#184A99]/8 rounded-full blur-[40px]" />
-              <Image src={config.heroImage} alt={`${config.name} Hearing Aid`} width={180} height={180} className="relative z-10 object-contain drop-shadow-[0_10px_24px_rgba(0,0,0,0.12)]" priority fetchPriority="high" />
-            </div>
+          <div className="flex flex-col lg:grid lg:grid-cols-3 gap-6 lg:gap-8 items-center">
 
-            <div className="bn-up d2 space-y-2.5 mb-6 text-left">
-              {config.heroBullets.map((b) => (
-                <div key={b.text} className="flex items-center gap-3 bg-slate-50 border border-slate-100 rounded-2xl px-4 py-3">
-                  <div className="w-9 h-9 rounded-xl bg-[#184A99]/10 flex items-center justify-center flex-shrink-0 text-lg">{b.icon}</div>
-                  <span className="text-[13px] font-semibold text-slate-700 leading-snug" dangerouslySetInnerHTML={{ __html: b.text }} />
-                </div>
-              ))}
-            </div>
-
-            <div className="bn-up d3">
-              <PopupTrigger className="w-full h-[50px] bg-[#184A99] text-white flex items-center justify-center gap-2 rounded-xl text-[14px] font-bold shadow-lg shadow-[#184A99]/20 active:scale-[0.97] transition-all">
-                <FileText className="w-4 h-4" />
-                {config.ctaText}
-              </PopupTrigger>
-            </div>
-          </div>
-        </section>
-
-        {/* Products */}
-        <section className="py-8 px-4 bg-white">
-          <div className="text-center mb-5">
-            <h2 className="text-lg font-black text-slate-900">{config.productSectionHeading}</h2>
-            <p className="text-[11px] text-slate-400 mt-1">Tap any model to get the full price list</p>
-          </div>
-          <div className="space-y-3">
-            {config.models.slice(0, 5).map((p) => (
-              <div key={p.rank} className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden flex">
-                <div className="relative w-[110px] flex-shrink-0 bg-slate-50 flex items-center justify-center p-3">
-                  <Image src={p.image} alt={p.title} width={90} height={90} loading="lazy" className="object-contain" />
-                  <span className={`absolute top-2 left-2 text-[8px] font-bold px-2 py-0.5 rounded-full leading-tight ${p.badgeColor}`}>{p.badge}</span>
-                </div>
-                <div className="flex-1 p-3 flex flex-col justify-between min-w-0">
-                  <div>
-                    <div className="flex items-center gap-1.5 mb-1">
-                      <Image src={p.brandLogo} alt={p.brand} width={60} height={12} className="h-3 w-auto grayscale opacity-50" />
-                      <span className="text-[10px] text-slate-400 font-medium">{p.brand}</span>
-                    </div>
-                    <h3 className="text-[14px] font-bold text-slate-900 leading-tight mb-1.5">{p.title}</h3>
-                    <div className="flex flex-wrap gap-1 mb-1.5">
-                      {p.features.slice(0, 3).map((f) => <span key={f} className="text-[9px] bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full font-semibold leading-tight">{f}</span>)}
-                    </div>
-                    <p className="text-[9px] text-slate-500 font-medium mb-1">{p.style} · {p.channels}</p>
-                  </div>
-                  <div className="flex items-center justify-between gap-2">
-                    <div>
-                      <p className="text-[9px] text-slate-400 leading-none mb-0.5">Starting from</p>
-                      <p className="text-[11px] font-bold text-[#184A99]">Price on Request</p>
-                    </div>
-                    <PopupTrigger className="flex items-center gap-1 bg-[#184A99] text-white text-[10px] font-bold px-3 py-2 rounded-xl active:scale-95 transition flex-shrink-0">
-                      See Price <ArrowRight className="w-3 h-3" />
-                    </PopupTrigger>
-                  </div>
-                </div>
+            {/* ── Col 1: Text ── */}
+            <div className="order-2 lg:order-1 text-left w-full bnm-left">
+              <div className="hidden lg:inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-bold mb-3">
+                <Award className="w-3.5 h-3.5" /> India&apos;s Trusted Multi-Brand Partner
               </div>
-            ))}
-          </div>
+              <h1 className="hidden lg:block text-3xl lg:text-[40px] font-black leading-[1.14] text-slate-900 mb-4 tracking-tight">
+                <span className="block">Hearing Aid Price</span>
+                <span className="block">List 2026</span>
+              </h1>
 
-          {/* Lock teaser */}
-          <div className="relative mt-3">
-            <div className="space-y-3 pointer-events-none select-none" aria-hidden>
-              {[1, 2].map((i) => (
-                <div key={i} className={`bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden flex h-24 ${i === 2 ? "opacity-40" : "opacity-70"}`}>
-                  <div className="w-[110px] flex-shrink-0 bg-slate-100" />
-                  <div className="flex-1 p-3 space-y-2">
-                    <div className="h-3 bg-slate-100 rounded-full w-3/4" />
-                    <div className="h-2 bg-slate-100 rounded-full w-1/2" />
-                    <div className="h-2 bg-slate-100 rounded-full w-2/3" />
+              <ul className="space-y-3 mb-5 text-left">
+                {config.heroBullets.map((b, i) => (
+                  <li key={i} className="flex items-center gap-3">
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${b.iconBg}`}>
+                      {b.icon}
+                    </div>
+                    <span className="text-sm lg:text-base font-semibold text-slate-700" dangerouslySetInnerHTML={{ __html: b.text }} />
+                  </li>
+                ))}
+              </ul>
+
+              {/* Mobile price box + CTA */}
+              <div className="lg:hidden mb-5 space-y-3">
+                <div className="bg-white/80 backdrop-blur-sm border border-blue-100 rounded-2xl p-3.5 shadow-sm flex items-center gap-3 w-fit">
+                  <div className="w-9 h-9 bg-blue-100 rounded-full flex items-center justify-center text-blue-600">
+                    <Zap className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <div className="text-[10px] text-slate-500 uppercase font-bold tracking-wider">Prices start from</div>
+                    <div className="font-bold text-base text-slate-900">₹15,000 | 0% EMI Offers</div>
                   </div>
                 </div>
-              ))}
-            </div>
-            <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/75 backdrop-blur-[3px] rounded-2xl">
-              <div className="text-center px-6">
-                <div className="w-11 h-11 bg-[#184A99] rounded-full flex items-center justify-center mx-auto mb-2.5 shadow-lg shadow-[#184A99]/30">
-                  <Lock className="w-5 h-5 text-white" />
-                </div>
-                <h3 className="text-[14px] font-black text-slate-900 mb-1">10+ More Models Available</h3>
-                <p className="text-[11px] text-slate-500 mb-3">Download the full price list to compare all brands &amp; models</p>
-                <PopupTrigger className="bg-[#184A99] text-white text-[12px] font-bold px-6 py-2.5 rounded-xl active:scale-95 transition shadow-md">
-                  Download Full Price List
+                <PopupTrigger className="inline-flex items-center justify-center bg-orange-500 hover:bg-orange-600 text-white text-base font-semibold py-3.5 px-8 h-auto rounded-full shadow-lg gap-2 transition-all active:scale-95">
+                  🔥 {config.ctaText} →
                 </PopupTrigger>
               </div>
-            </div>
-          </div>
-        </section>
 
-        {/* Comparison */}
-        <section className="py-8 px-4 bg-slate-50">
-          <div className="text-center mb-5">
-            <h2 className="text-lg font-black text-slate-900">Insono Hearing vs Others</h2>
-            <p className="text-[11px] text-slate-400 mt-1">Why thousands choose Insono Hearing</p>
-          </div>
-          <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
-            <div className="grid grid-cols-3 bg-[#184A99] text-white text-[11px] font-bold">
-              <div className="py-3 px-3">Feature</div>
-              <div className="py-3 px-2 text-center border-l border-white/20 bg-white/10 text-yellow-300">Insono</div>
-              <div className="py-3 px-2 text-center border-l border-white/20 text-white/70">Others</div>
-            </div>
-            {COMPARISON_ROWS.map((row, i) => (
-              <div key={row.feature} className={`grid grid-cols-3 text-[11px] border-t border-slate-100 ${i % 2 === 0 ? "bg-white" : "bg-slate-50/60"}`}>
-                <div className="py-3 px-3 font-medium text-slate-700 leading-snug">{row.feature}</div>
-                <div className="py-3 px-2 flex items-center justify-center border-l border-slate-100 bg-blue-50/40">
-                  <span className="text-emerald-500 text-base font-black">✓</span>
-                </div>
-                <div className="py-3 px-2 flex items-center justify-center border-l border-slate-100">
-                  {row.others === false ? <span className="text-red-400 text-base font-black">✗</span> : <span className="text-amber-500 text-[9px] font-bold leading-tight text-center">{row.others}</span>}
-                </div>
-              </div>
-            ))}
-          </div>
-          <PopupTrigger className="w-full mt-4 h-[46px] bg-[#184A99] text-white flex items-center justify-center gap-2 rounded-xl text-[13px] font-bold active:scale-[0.97] transition shadow-md shadow-[#184A99]/20">
-            <FileText className="w-4 h-4" />
-            Download &amp; Compare Prices
-          </PopupTrigger>
-        </section>
-
-        {/* Reviews */}
-        <section className="py-8 px-4 bg-white">
-          <div className="text-center mb-5">
-            <div className="flex items-center justify-center gap-2 mb-2">
-              <Image src="/badge/google.webp" alt="Google" width={60} height={20} className="h-5 w-auto" />
-              <span className="text-[11px] font-bold text-slate-500">Google Reviews</span>
-            </div>
-            <div className="flex items-center justify-center gap-1 mb-1">{[1,2,3,4,5].map((s) => <span key={s} className="text-yellow-400 text-lg">★</span>)}</div>
-            <p className="text-[13px] font-black text-slate-800">4.9 / 5</p>
-            <p className="text-[10px] text-slate-400 font-medium">Based on 1,200+ verified reviews</p>
-          </div>
-          <div className="space-y-3">
-            {REVIEWS.map((r) => (
-              <div key={r.name} className="bg-slate-50 rounded-2xl border border-slate-100 p-4">
-                <div className="flex items-start gap-3 mb-2">
-                  <div className={`w-9 h-9 rounded-full flex items-center justify-center text-white text-[11px] font-black flex-shrink-0 ${r.avatarColor}`}>{r.initials}</div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center justify-between">
-                      <p className="text-[12px] font-bold text-slate-800 leading-none">{r.name}</p>
-                      <span className="text-[9px] text-slate-400">{r.time}</span>
-                    </div>
-                    <p className="text-[9px] text-slate-400 mt-0.5"><span className="text-emerald-500 font-semibold">✓ Verified</span></p>
-                    <div className="flex gap-0.5 mt-1">{[1,2,3,4,5].map((s) => <span key={s} className="text-yellow-400 text-[10px]">★</span>)}</div>
-                  </div>
-                </div>
-                <p className="text-[11px] text-slate-600 leading-relaxed">&ldquo;{r.text}&rdquo;</p>
-              </div>
-            ))}
-          </div>
-          <a href="https://share.google/RDuVMbenuWSAEEqLt" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-1.5 mt-4 text-[11px] font-bold text-[#184A99]">
-            Read all 1,200+ reviews on Google →
-          </a>
-        </section>
-
-        {/* FAQ */}
-        <section className="py-20 px-6 bg-white mb-20">
-          <h2 className="text-2xl font-bold text-slate-900 mb-12 text-center">{config.name} Hearing Aid FAQ</h2>
-          <FAQAccordion brand={brandSlug} />
-        </section>
-
-        {/* Sticky bottom bar */}
-        <div className="fixed bottom-0 left-0 right-0 z-[9999] bg-white shadow-[0_-4px_20px_rgba(0,0,0,0.1)] border-t border-slate-100 custom-bottom-bar flex">
-          <a href={`https://wa.me/916204260510?text=${encodeURIComponent(config.waText)}`} target="_blank" rel="noopener noreferrer" className="flex-1 bg-[#25D366] text-white flex flex-col items-center justify-center py-2.5 gap-0.5">
-            <MessageSquare className="w-4 h-4" />
-            <span className="text-[10px] font-black leading-none">Chat with Audiologist</span>
-          </a>
-          <div className="w-px bg-white/20" />
-          <a href="tel:+916204260510" className="flex-1 bg-[#184A99] text-white flex flex-col items-center justify-center py-2.5 gap-0.5 px-2">
-            <Phone className="w-4 h-4" />
-            <span className="text-[10px] font-black leading-none text-center">A Call Can Save ₹31,500</span>
-          </a>
-        </div>
-      </div>
-
-      {/* ════════════════ DESKTOP ════════════════ */}
-      <div className="hidden md:block">
-
-        {/* Hero */}
-        <section className="relative pt-2 pb-20 bg-gradient-to-b from-[#eaf5ff] to-white overflow-hidden">
-          <div className="max-w-6xl mx-auto px-6 pt-10">
-            <div className="flex flex-col lg:flex-row gap-16 items-start">
-
-              {/* Col 1: Text */}
-              <div className="flex-[1.6] pt-8">
-                <div className="bn-left hidden lg:inline-flex items-center gap-2 bg-[#184A99]/10 rounded-full px-5 py-2 text-[11px] font-bold text-[#184A99] mb-8 border border-[#184A99]/20">
-                  <span className="w-2 h-2 bg-[#184A99] rounded-full animate-pulse" />
-                  Authorized {config.name} Partner · Expert Audiologists
-                </div>
-
-                <h1 className="bn-up d1 text-5xl lg:text-[52px] font-black leading-[1.15] mb-8 tracking-tight">
-                  <span className="bg-gradient-to-r from-[#E83D6D] via-[#0D2240] to-[#7C7C7C] bg-clip-text text-transparent">
-                    {config.heroH1}
-                  </span>
-                </h1>
-
-                <p className="bn-up d2 text-slate-500 text-xl mb-12 max-w-xl leading-relaxed font-medium">
-                  {config.heroSubtitle}
-                </p>
-
-                <div className="bn-up d3 grid grid-cols-3 gap-8 pt-10 border-t border-slate-100 mb-12">
+              {/* Mobile stats strip */}
+              <div className="lg:hidden border-y border-slate-100 py-3 mb-5">
+                <div className="grid grid-cols-4 gap-1">
                   {[
-                    { icon: <Users className="w-6 h-6" />, label: "2 Lakh+", sub: "Happy Customers" },
-                    { icon: <MapPin className="w-6 h-6" />, label: "15+",     sub: "Clinics Across India" },
-                    { icon: <Stethoscope className="w-6 h-6" />, label: "100+", sub: "Audiologists" },
-                  ].map((s) => (
-                    <div key={s.label}>
-                      <div className="text-[#184A99] mb-2">{s.icon}</div>
-                      <p className="text-xl font-bold text-slate-900">{s.label}</p>
-                      <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">{s.sub}</p>
+                    { val: "10k+", label: "Happy Users" },
+                    { val: "15+", label: "Years Exp." },
+                    { val: "50+", label: "Audiologists" },
+                    { val: "98%", label: "Happy Rate" },
+                  ].map((s, i) => (
+                    <div key={i} className={`text-center ${i > 0 ? "border-l border-slate-100" : ""}`}>
+                      <div className="text-lg font-bold text-[#184A99] leading-none mb-1">{s.val}</div>
+                      <div className="text-xs text-slate-400 font-semibold leading-tight">{s.label}</div>
                     </div>
                   ))}
                 </div>
+              </div>
 
-                <div className="bn-up d4 pt-8 border-t border-slate-100 opacity-60">
-                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-6">Official Partner of leading brands</p>
-                  <div className="flex items-center gap-10 grayscale">
-                    {BRAND_LOGOS.map((logo, i) => <Image key={i} src={logo} alt="brand" width={64} height={16} className="h-4 w-auto object-contain" />)}
+              {/* Desktop: price box + CTA */}
+              <div className="hidden lg:block">
+                <div className="bg-white/80 backdrop-blur-sm border border-blue-100 rounded-2xl p-4 shadow-sm flex items-center gap-3 mb-6 w-fit">
+                  <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600">
+                    <Zap className="w-5 h-5" />
                   </div>
-                </div>
-              </div>
-
-              {/* Col 2: Hero image */}
-              <div className="bn-scale hidden xl:flex flex-1 justify-center relative group py-20">
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#184A99]/10 via-transparent to-[#E83D6D]/10 rounded-full blur-[100px] animate-pulse" />
-                <Image src={config.heroImage} alt={`Premium ${config.name} Hearing Aids`} width={500} height={500} sizes="500px" className="object-contain drop-shadow-[0_20px_60px_rgba(0,0,0,0.15)] relative z-10 hover:scale-105 transition-transform duration-700 rounded-3xl" priority fetchPriority="high" />
-              </div>
-
-              {/* Col 3: Lead form */}
-              <div className="bn-up d4 w-full lg:w-[380px] flex-shrink-0 pt-8">
-                <div id="lead-form" className="bg-white rounded-[2.5rem] shadow-2xl p-10 text-slate-900 relative overflow-hidden border border-slate-50">
-                  <div className="absolute top-0 right-0 bg-[#E83D6D] text-white text-[10px] font-bold px-5 py-2 rounded-bl-2xl uppercase tracking-widest">
-                    Free Consultation
-                  </div>
-                  <h2 className="text-2xl font-bold mb-3 pt-4 text-[#0D2240]">{config.formHeading}</h2>
-                  <p className="text-slate-500 text-xs mb-8 leading-relaxed">{config.formSubtitle}</p>
-                  <LeadForm city={utmCity} />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Products */}
-        <section className="max-w-6xl mx-auto px-6 py-32" id="models">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8">
-            <div>
-              <h2 className="text-[10px] font-black text-[#184A99] uppercase tracking-[0.4em] mb-4">Premium Collection</h2>
-              <h3 className="text-5xl font-bold text-slate-900 tracking-tight">{config.productSectionHeading}</h3>
-            </div>
-            <p className="text-slate-500 max-w-sm font-medium leading-relaxed text-lg">{config.productSectionSub}</p>
-          </div>
-
-          <div className="grid gap-12">
-            {config.models.slice(0, 5).map((p) => (
-              <div key={p.rank} className="bg-white border border-slate-100 rounded-[4rem] overflow-hidden hover:shadow-[0_40px_80px_-30px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-700 flex flex-col lg:flex-row group">
-                <div className="lg:w-[420px] bg-slate-50 relative min-h-[400px] flex items-center justify-center p-12">
-                  <Image src={p.image} alt={p.title} fill loading="lazy" sizes="(max-width: 1024px) 100vw, 420px" className="object-contain p-16 group-hover:scale-105 transition-transform duration-700" />
-                  <div className={`absolute top-10 left-10 px-6 py-2.5 rounded-full text-[11px] font-bold uppercase tracking-[0.2em] shadow-lg ${p.badgeColor}`}>{p.badge}</div>
-                </div>
-                <div className="flex-1 p-12 lg:p-20 flex flex-col justify-between">
                   <div>
-                    <div className="flex items-center gap-5 mb-10">
-                      <Image src={p.brandLogo} alt={p.brand} width={72} height={24} className="h-6 w-auto grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition duration-500" />
-                      <div className="h-5 w-[1px] bg-slate-200" />
-                      <span className="text-[10px] text-slate-400 font-bold uppercase tracking-[0.2em]">{p.style} · {p.channels}</span>
-                    </div>
-                    <h3 className="text-5xl font-bold text-slate-950 mb-6 tracking-tight">{p.title}</h3>
-                    <p className="text-[#184A99] text-2xl font-bold mb-12 italic leading-relaxed">&ldquo;{p.highlight}&rdquo;</p>
-                    <div className="flex flex-wrap gap-4 mb-12">
-                      {p.features.map((f) => <span key={f} className="bg-slate-50 text-slate-500 px-6 py-3 rounded-2xl text-[11px] font-bold border border-slate-100 uppercase tracking-widest">{f}</span>)}
-                    </div>
+                    <div className="text-xs text-slate-500 uppercase font-bold tracking-wider">Prices start from</div>
+                    <div className="font-bold text-lg text-slate-900">₹15,000 | 0% EMI Offers</div>
                   </div>
-                  <div className="flex flex-col sm:flex-row items-center justify-start gap-10 pt-12 border-t border-slate-50">
-                    <PopupTrigger className="w-full sm:w-auto flex items-center justify-center gap-3 bg-[#184A99] text-white px-12 py-6 rounded-[2rem] font-bold text-sm hover:bg-[#13366e] transition border border-slate-200 uppercase tracking-widest shadow-xl shadow-blue-100">
-                      Get Full Price List <ArrowRight className="w-4 h-4" />
+                </div>
+                <PopupTrigger className="inline-flex items-center justify-center bg-orange-500 hover:bg-orange-600 text-white text-lg h-14 px-10 rounded-full shadow-lg shadow-orange-100 transition-all active:scale-95">
+                  🔥 {config.ctaText} →
+                </PopupTrigger>
+              </div>
+            </div>
+
+            {/* ── Col 2: Hero Carousel ── */}
+            <HeroCarousel images={config.heroImages} />
+
+            {/* ── Col 3: Lead Form (desktop only) ── */}
+            <div className="hidden lg:block order-3 w-full bnm-up bnm-d2" id="lead-section">
+              <div className="max-w-md mx-auto lg:ml-auto lg:mr-0">
+                <div className="bg-orange-500 text-white text-xs font-bold text-center py-2.5 rounded-t-3xl shadow-sm">
+                  ⚡ Limited Free Trial Slots This Week — Unlock Price &amp; Book Yours Now
+                </div>
+                <div className="bg-white rounded-b-3xl shadow-xl p-6 md:p-7 border border-slate-100">
+                <h3 className="text-xl md:text-2xl font-bold text-center mb-4 text-slate-800 tracking-tight">{config.formHeading}</h3>
+                <div className="flex justify-between items-center text-xs mb-3">
+                  <span className="text-slate-400 font-medium">Enter your details below</span>
+                  <span className="text-red-600 font-bold bg-red-50 px-2.5 py-1 rounded-xl border border-red-100 text-xs">Price starts from ₹15,000</span>
+                </div>
+                <LeadForm city={utmCity} />
+                <p className="text-[11px] text-slate-400 text-center leading-snug mt-3">
+                  💡 Please provide the correct WhatsApp number to receive the price list.
+                </p>
+                <div className="flex justify-center gap-3 text-xs text-slate-400 font-bold uppercase tracking-widest mt-4">
+                  <span className="flex items-center gap-1"><Check className="w-3 h-3 text-green-500" /> Instant Callback</span>
+                  <span className="flex items-center gap-1"><Check className="w-3 h-3 text-green-500" /> No Spam</span>
+                  <span className="flex items-center gap-1"><Check className="w-3 h-3 text-green-500" /> 100% Free</span>
+                </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ── STATS BAR (desktop) ── */}
+      <section className="py-8 bg-slate-100 hidden md:block border-t border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
+          <div className="grid grid-cols-4 gap-6 text-center">
+            {[
+              { val: "10,000+", label: "Happy Customers" },
+              { val: "15+", label: "Years Experience" },
+              { val: "50+", label: "Expert Audiologists" },
+              { val: "98%", label: "Satisfaction Rate" },
+            ].map((s, i) => (
+              <div key={i}>
+                <div className="text-2xl md:text-3xl font-bold text-[#184A99]">{s.val}</div>
+                <div className="text-slate-500 text-sm mt-1">{s.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── PRODUCTS TABLE ── */}
+      <section className="py-12 md:py-20 bg-slate-50 border-t border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
+          <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 text-slate-900">{config.productSectionHeading}</h2>
+            <p className="text-slate-500 text-base md:text-lg">Multi-brand comparison at one place. Try before you buy — no pressure.</p>
+          </div>
+
+          {/* Desktop table */}
+          <div className="hidden md:block bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-100">
+            <table className="w-full text-left border-collapse">
+              <thead>
+                <tr className="bg-slate-900 text-white">
+                  {["Product", "Best For", "Key Features", "Technology", "Price"].map((h) => (
+                    <th key={h} className="p-6 font-bold uppercase tracking-wider text-sm">{h}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100">
+                {config.tableProducts.map((p) => (
+                  <tr key={p.name} className="hover:bg-slate-50 transition-colors">
+                    <td className="p-6">
+                      <div className="flex items-center gap-4">
+                        <div className="relative w-16 h-16 bg-slate-50 rounded-xl p-1 shrink-0 flex items-center justify-center border border-slate-100">
+                          <Image src={p.image} alt={p.name} width={56} height={56} loading="lazy" className="max-w-full max-h-full object-contain" />
+                        </div>
+                        <div className="font-bold text-slate-900">{p.name}</div>
+                      </div>
+                    </td>
+                    <td className="p-6 text-slate-600 text-sm">{p.bestFor}</td>
+                    <td className="p-6 text-slate-600 text-sm">{p.features}</td>
+                    <td className="p-6">
+                      <span className={`px-3 py-1 rounded-full text-xs font-bold border ${p.techColor}`}>{p.tech}</span>
+                    </td>
+                    <td className="p-6">
+                      <div className="flex flex-col items-start gap-1">
+                        <div className="flex items-center gap-1 text-slate-400">
+                          <Lock className="w-3 h-3" />
+                          <span className="blur-[4px] select-none text-slate-300 font-bold tracking-widest">₹XX,XXX</span>
+                        </div>
+                        <PopupTrigger className="text-[#184A99] text-xs font-bold hover:underline cursor-pointer">
+                          See {currentMonth} Price →
+                        </PopupTrigger>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Mobile cards */}
+          <div className="md:hidden space-y-3">
+            {config.tableProducts.map((p) => (
+              <div key={p.name} className="bg-white rounded-3xl shadow-md border border-slate-100 overflow-hidden">
+                <div className="flex items-center gap-4 px-4 pt-4 pb-3">
+                  <div className="relative w-16 h-16 bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl p-2 shrink-0 flex items-center justify-center border border-slate-100">
+                    <Image src={p.image} alt={p.name} width={56} height={56} loading="lazy" className="max-w-full max-h-full object-contain" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-bold text-slate-900 text-sm leading-snug mb-1.5">{p.name}</h3>
+                    <span className={`inline-block px-2.5 py-0.5 rounded-full text-xs font-bold border uppercase tracking-wider ${p.techColor}`}>{p.tech}</span>
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 divide-x divide-slate-100 border-t border-slate-100">
+                  <div className="p-3.5">
+                    <div className="text-[10px] uppercase font-black text-slate-400 tracking-widest mb-1">Best For</div>
+                    <div className="text-sm text-slate-700 font-semibold">{p.bestFor}</div>
+                  </div>
+                  <div className="p-3.5">
+                    <div className="text-[10px] uppercase font-black text-slate-400 tracking-widest mb-1">Key Features</div>
+                    <div className="text-xs text-slate-600 leading-relaxed">{p.features}</div>
+                  </div>
+                </div>
+                <div className="px-4 pb-4 pt-3">
+                  <div className="rounded-2xl bg-slate-50 border border-slate-100 p-4 text-center">
+                    <div className="flex items-center justify-center gap-1.5 mb-1.5">
+                      <Lock className="w-3 h-3 text-slate-400" />
+                      <span className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Price Hidden</span>
+                    </div>
+                    <div className="text-2xl font-black tracking-widest text-slate-300 blur-[7px] select-none mb-3 leading-none">₹XX,XXX</div>
+                    <PopupTrigger className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-xl h-10 text-sm transition-all active:scale-95 flex items-center justify-center">
+                      🔥 Get {currentMonth} Price List
                     </PopupTrigger>
                   </div>
                 </div>
               </div>
             ))}
+
+            {/* Mobile all-models CTA */}
+            <div className="rounded-3xl p-5 text-center bg-[#1d4ed8] text-white shadow-lg">
+              <p className="font-bold text-sm mb-1">📋 Compare All Models at Once</p>
+              <p className="text-blue-100 text-xs mb-4">Submit your details once to unlock all prices instantly</p>
+              <PopupTrigger className="w-full bg-white text-[#1d4ed8] hover:bg-blue-50 font-bold rounded-xl h-11 text-sm transition-all active:scale-95 flex items-center justify-center">
+                🔥 Download {currentMonth} Prices — Free
+              </PopupTrigger>
+            </div>
           </div>
 
-          {/* Lock teaser desktop */}
-          <div className="relative mt-12">
-            <div className="grid gap-12 pointer-events-none select-none" aria-hidden>
-              {[1, 2].map((i) => (
-                <div key={i} className={`bg-white border border-slate-100 rounded-[4rem] overflow-hidden flex flex-col lg:flex-row h-[180px] ${i === 2 ? "opacity-30" : "opacity-60"}`}>
-                  <div className="lg:w-[420px] bg-slate-100 flex-shrink-0" />
-                  <div className="flex-1 p-12 space-y-4">
-                    <div className="h-5 bg-slate-100 rounded-full w-1/3" />
-                    <div className="h-8 bg-slate-100 rounded-full w-2/3" />
-                    <div className="h-4 bg-slate-100 rounded-full w-1/2" />
+          {/* Bottom info bar */}
+          <div className="mt-8 bg-blue-50 border border-blue-100 rounded-2xl p-5 md:p-8 text-center">
+            <p className="text-slate-800 font-bold text-sm md:text-xl leading-relaxed">
+              📌 Prices start from <span className="text-[#184A99] font-black">₹15,000</span> —{" "}
+              <PopupTrigger className="text-[#184A99] underline font-bold cursor-pointer inline">see {currentMonth.toLowerCase()} prices</PopupTrigger>
+              {" "}+ get your free trial slot.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── WHY INSONO (5-card grid) ── */}
+      <section className="py-12 md:py-20 bg-white border-t border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
+          <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 text-slate-900">
+              Why Insono is the Best Choice Near You
+            </h2>
+            <p className="text-slate-600 text-base md:text-lg">
+              Certified audiologists, premium brands, transparent pricing — all under one roof.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-8">
+            {[
+              { icon: <Volume2 className="w-6 h-6 md:w-8 md:h-8" />, title: "Free Hearing Test", desc: "Comprehensive audiometry in soundproof setup at no cost." },
+              { icon: <Battery className="w-6 h-6 md:w-8 md:h-8" />, title: "Rechargeable Models", desc: "No more battery hassle. All-day charge in hours." },
+              { icon: <Bluetooth className="w-6 h-6 md:w-8 md:h-8" />, title: "Bluetooth & App", desc: "Stream calls & music directly to your hearing aid." },
+              { icon: <Ear className="w-6 h-6 md:w-8 md:h-8" />, title: "Invisible & Comfy", desc: "Ultra-discreet designs you'll forget you're wearing." },
+              { icon: <ShieldCheck className="w-6 h-6 md:w-8 md:h-8" />, title: "Lifetime Tuning", desc: "Free lifetime adjustments & software updates included." },
+            ].map((card, i) => (
+              <div
+                key={i}
+                className={`text-center p-4 md:p-6 rounded-2xl bg-blue-50/50 border border-transparent hover:border-blue-100 hover:bg-white hover:shadow-xl transition-all ${i === 4 ? "col-span-2 md:col-span-1 max-w-xs md:max-w-none mx-auto w-full" : ""}`}
+              >
+                <div className="w-12 h-12 md:w-16 md:h-16 bg-white rounded-2xl flex items-center justify-center mx-auto mb-4 md:mb-6 shadow-md text-[#184A99]">
+                  {card.icon}
+                </div>
+                <h3 className="font-bold text-sm md:text-base mb-2 text-slate-900">{card.title}</h3>
+                <p className="text-slate-500 text-xs md:text-sm leading-relaxed">{card.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── OUR GUARANTEE (Comparison Table) ── */}
+      <section className="py-12 md:py-20 bg-white border-t border-slate-100">
+        <div className="max-w-3xl mx-auto px-4">
+          <h2 className="text-3xl md:text-5xl font-bold text-center mb-10 md:mb-14 text-slate-900">
+            Our <span className="text-[#184A99]">Guarantee</span>
+          </h2>
+          <div className="rounded-3xl overflow-hidden border border-slate-200 shadow-lg">
+            {/* Header */}
+            <div className="grid grid-cols-3 bg-[#184A99] text-white">
+              <div className="py-4 px-5 font-bold text-sm">Features</div>
+              <div className="py-4 px-4 text-center border-l border-white/20 font-bold text-sm text-yellow-300">Insono</div>
+              <div className="py-4 px-4 text-center border-l border-white/20 font-bold text-sm text-white/70">Others</div>
+            </div>
+            {/* Rows */}
+            {[
+              { feature: "Free Hearing Check-Ups",     insono: true,  others: true },
+              { feature: "Experienced Audiologists",   insono: true,  others: false },
+              { feature: "Free Device Trials",         insono: true,  others: false },
+              { feature: "Free Fine-Tunings",          insono: true,  others: false },
+              { feature: "Extended Warranty",          insono: true,  others: false },
+              { feature: "Top Brand Availability",     insono: true,  others: false },
+              { feature: "0% EMI Options",             insono: true,  others: false },
+              { feature: "Price Transparency",         insono: true,  others: false },
+            ].map((row, i) => (
+              <div key={row.feature} className={`grid grid-cols-3 border-t border-slate-100 ${i % 2 === 0 ? "bg-white" : "bg-slate-50/50"}`}>
+                <div className="py-4 px-5 text-sm font-medium text-slate-700">{row.feature}</div>
+                <div className="py-4 px-4 flex items-center justify-center border-l border-slate-100 bg-blue-50/40">
+                  <span className="text-emerald-500 text-lg font-black">✓</span>
+                </div>
+                <div className="py-4 px-4 flex items-center justify-center border-l border-slate-100">
+                  {row.others
+                    ? <span className="text-emerald-500 text-lg font-black">✓</span>
+                    : <span className="text-red-400 text-lg font-black">✗</span>
+                  }
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-6 text-center">
+            <PopupTrigger className="inline-flex items-center justify-center gap-2 bg-[#184A99] hover:bg-[#13366e] text-white font-bold px-8 py-4 rounded-full text-sm transition-all active:scale-95 shadow-md shadow-blue-100">
+              Book Free Appointment →
+            </PopupTrigger>
+          </div>
+        </div>
+      </section>
+
+
+      <section className="py-12 md:py-20 bg-[#0D2240] text-white overflow-hidden relative border-t border-blue-900">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl -mr-20 -mt-20" />
+        <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left: checklist */}
+            <div>
+              <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-8">Trusted by Thousands Across India</h2>
+              <div className="grid gap-4 md:gap-6">
+                {[
+                  { title: "Multi-Brand Authorized Center", desc: "Signia, Phonak, Widex, Oticon — all genuine with official warranty." },
+                  { title: "Free Trial & Hearing Test", desc: "Experience the sound before you commit. No obligation." },
+                  { title: "0% EMI & Senior Discounts", desc: "Flexible payment options starting from ₹2,500/month." },
+                  { title: "Lifetime Free Tuning", desc: "Ongoing adjustments & software updates at zero cost." },
+                ].map((item, i) => (
+                  <div key={i} className="flex gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                    <div className="w-10 h-10 md:w-12 md:h-12 bg-[#184A99] rounded-full flex items-center justify-center shrink-0">
+                      <Check className="w-5 h-5 md:w-6 md:h-6 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-base md:text-xl mb-1">{item.title}</h4>
+                      <p className="text-blue-100/70 text-sm md:text-base">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right: Stats card (Hearwave style) */}
+            <div className="flex flex-col gap-6">
+              <div className="bg-white/10 backdrop-blur rounded-3xl p-8 md:p-10 border border-white/10 text-center">
+                <div className="text-5xl md:text-6xl font-black text-white mb-1">15+</div>
+                <div className="text-xs font-bold uppercase tracking-[0.25em] text-blue-200/70 mb-8">Years of Clinical Excellence</div>
+                <div className="grid grid-cols-2 gap-6 mb-8">
+                  <div>
+                    <div className="text-3xl md:text-4xl font-black text-white">10k+</div>
+                    <div className="text-xs text-blue-200/70 font-semibold mt-1 uppercase tracking-wider">Happy Patients</div>
+                  </div>
+                  <div className="border-l border-white/10">
+                    <div className="text-3xl md:text-4xl font-black text-white">50k+</div>
+                    <div className="text-xs text-blue-200/70 font-semibold mt-1 uppercase tracking-wider">Lives Changed</div>
                   </div>
                 </div>
-              ))}
-            </div>
-            <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/75 backdrop-blur-[4px] rounded-[4rem]">
-              <div className="text-center px-6">
-                <div className="w-16 h-16 bg-[#184A99] rounded-full flex items-center justify-center mx-auto mb-4 shadow-xl shadow-[#184A99]/30">
-                  <Lock className="w-7 h-7 text-white" />
-                </div>
-                <h3 className="text-2xl font-black text-slate-900 mb-2">10+ More Models Available</h3>
-                <p className="text-slate-500 text-sm mb-6 max-w-sm mx-auto">Download the complete price list to compare all brands, models &amp; features — free on WhatsApp.</p>
-                <PopupTrigger className="inline-flex items-center gap-2 bg-[#184A99] text-white px-10 py-4 rounded-2xl font-bold text-sm hover:bg-[#13366e] transition shadow-xl shadow-blue-100 uppercase tracking-widest">
-                  <FileText className="w-4 h-4" />
-                  Download Full Price List
+                <PopupTrigger className="w-full bg-white hover:bg-blue-50 text-[#0D2240] font-bold rounded-2xl py-4 text-sm transition-all active:scale-95 flex items-center justify-center">
+                  Book Free Appointment
                 </PopupTrigger>
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Comparison */}
-        <section className="py-20 bg-slate-50">
-          <div className="max-w-3xl mx-auto px-6">
-            <div className="text-center mb-10">
-              <h2 className="text-[10px] font-black text-[#184A99] uppercase tracking-[0.4em] mb-4">The Difference</h2>
-              <h3 className="text-4xl font-bold text-slate-900 tracking-tight">Insono Hearing vs Others</h3>
-              <p className="text-slate-500 mt-3 text-base">Why thousands choose Insono for {config.name}</p>
+      {/* ── REVIEWS ── */}
+      <section className="py-12 md:py-20 bg-slate-50 border-t border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center gap-3 mb-3">
+              <Image src="/badge/google.webp" alt="Google" width={72} height={24} className="h-6 w-auto" />
+              <span className="text-sm font-bold text-slate-500">Google Reviews</span>
             </div>
-            <div className="rounded-3xl overflow-hidden border border-slate-200 shadow-sm">
-              <div className="grid grid-cols-3 bg-[#184A99] text-white text-sm font-bold">
-                <div className="py-4 px-6">Feature</div>
-                <div className="py-4 px-4 text-center border-l border-white/20 bg-white/10 text-yellow-300">Insono</div>
-                <div className="py-4 px-4 text-center border-l border-white/20 text-white/70">Others</div>
-              </div>
-              {COMPARISON_ROWS.map((row, i) => (
-                <div key={row.feature} className={`grid grid-cols-3 text-sm border-t border-slate-100 ${i % 2 === 0 ? "bg-white" : "bg-slate-50/60"}`}>
-                  <div className="py-4 px-6 font-medium text-slate-700">{row.feature}</div>
-                  <div className="py-4 px-4 flex items-center justify-center border-l border-slate-100 bg-blue-50/40"><span className="text-emerald-500 text-lg font-black">✓</span></div>
-                  <div className="py-4 px-4 flex items-center justify-center border-l border-slate-100">
-                    {row.others === false ? <span className="text-red-400 text-lg font-black">✗</span> : <span className="text-amber-500 text-xs font-bold">{row.others}</span>}
+            <div className="flex items-center justify-center gap-1 mb-2">
+              {[1,2,3,4,5].map((s) => <span key={s} className="text-yellow-400 text-2xl">★</span>)}
+            </div>
+            <p className="text-2xl font-black text-slate-800">4.9 / 5</p>
+            <p className="text-sm text-slate-400 font-medium mt-1">Based on 1,200+ verified Google reviews</p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {REVIEWS.map((r) => (
+              <div key={r.name} className="bg-white rounded-2xl border border-slate-100 p-5 flex flex-col gap-3 shadow-sm hover:shadow-md transition-shadow">
+                <div className="flex items-center gap-3">
+                  <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white text-xs font-black flex-shrink-0 ${r.avatarColor}`}>{r.initials}</div>
+                  <div>
+                    <p className="text-sm font-bold text-slate-800 leading-none">{r.name}</p>
+                    <p className="text-[10px] text-slate-400 mt-0.5"><span className="text-emerald-500 font-semibold">✓ Verified</span></p>
                   </div>
                 </div>
-              ))}
-            </div>
-            <div className="mt-8 text-center">
-              <PopupTrigger className="inline-flex items-center gap-3 bg-[#184A99] text-white px-10 py-5 rounded-2xl font-bold text-sm hover:bg-[#13366e] transition shadow-xl shadow-blue-100 uppercase tracking-widest">
-                <FileText className="w-5 h-5" />
-                Download &amp; Compare Prices
-              </PopupTrigger>
-            </div>
-          </div>
-        </section>
-
-        {/* Reviews */}
-        <section className="py-20 bg-white">
-          <div className="max-w-5xl mx-auto px-6">
-            <div className="text-center mb-12">
-              <div className="flex items-center justify-center gap-3 mb-3">
-                <Image src="/badge/google.webp" alt="Google" width={72} height={24} className="h-6 w-auto" />
-                <span className="text-sm font-bold text-slate-500">Google Reviews</span>
-              </div>
-              <div className="flex items-center justify-center gap-1 mb-2">{[1,2,3,4,5].map((s) => <span key={s} className="text-yellow-400 text-2xl">★</span>)}</div>
-              <p className="text-2xl font-black text-slate-800">4.9 / 5</p>
-              <p className="text-sm text-slate-400 font-medium mt-1">Based on 1,200+ verified Google reviews</p>
-            </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {REVIEWS.map((r) => (
-                <div key={r.name} className="bg-slate-50 rounded-2xl border border-slate-100 p-5 flex flex-col gap-3">
-                  <div className="flex items-center gap-3">
-                    <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white text-xs font-black flex-shrink-0 ${r.avatarColor}`}>{r.initials}</div>
-                    <div>
-                      <p className="text-sm font-bold text-slate-800 leading-none">{r.name}</p>
-                      <p className="text-[10px] text-slate-400 mt-0.5"><span className="text-emerald-500 font-semibold">✓ Verified</span></p>
-                    </div>
-                  </div>
-                  <div className="flex gap-0.5">{[1,2,3,4,5].map((s) => <span key={s} className="text-yellow-400 text-sm">★</span>)}<span className="text-[10px] text-slate-400 ml-1 self-center">{r.time}</span></div>
-                  <p className="text-xs text-slate-600 leading-relaxed flex-1">&ldquo;{r.text}&rdquo;</p>
+                <div className="flex gap-0.5">
+                  {[1,2,3,4,5].map((s) => <span key={s} className="text-yellow-400 text-sm">★</span>)}
+                  <span className="text-[10px] text-slate-400 ml-1 self-center">{r.time}</span>
                 </div>
-              ))}
-            </div>
-            <div className="text-center mt-8">
-              <a href="https://share.google/RDuVMbenuWSAEEqLt" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-[#184A99] hover:underline">
-                Read all 1,200+ reviews on Google →
-              </a>
-            </div>
+                <p className="text-xs text-slate-600 leading-relaxed flex-1">&ldquo;{r.text}&rdquo;</p>
+              </div>
+            ))}
           </div>
-        </section>
+          <div className="text-center mt-6">
+            <a href="https://share.google/RDuVMbenuWSAEEqLt" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-[#184A99] hover:underline">
+              Read all 1,200+ reviews on Google →
+            </a>
+          </div>
+        </div>
+      </section>
 
-        {/* FAQ */}
-        <section className="bg-[#0D2240] py-32 text-white">
-          <div className="max-w-4xl mx-auto px-6">
-            <h2 className="text-4xl font-bold text-center mb-24">{config.name} Hearing Aid — FAQs</h2>
-            <FAQAccordion brand={brandSlug} />
-          </div>
-        </section>
+      {/* ── FAQ ── */}
+      <section className="py-12 md:py-20 bg-white border-t border-slate-100">
+        <div className="max-w-3xl mx-auto px-4">
+          <h2 className="text-2xl md:text-4xl font-bold text-slate-900 mb-12 text-center">
+            {config.name} Hearing Aid FAQ
+          </h2>
+          <FAQAccordion brand={brandSlug} />
+        </div>
+      </section>
 
-        {/* Footer */}
-        <footer className="py-20 border-t border-slate-100 text-center bg-slate-50">
-          <div className="max-w-6xl mx-auto px-6">
-            <Image src="/logo.webp" alt="Insono" width={140} height={40} className="h-9 w-auto mx-auto mb-8 grayscale opacity-50" />
-            <p className="text-[11px] text-slate-400 font-bold uppercase tracking-[0.4em]">
-              © 2026 Insono Hearing · {config.footerLabel} · Near Me
-            </p>
+      {/* ── FOOTER ── */}
+      <footer className="py-12 md:py-16 bg-white border-t border-slate-100 text-center">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 flex flex-col items-center">
+          <Image src="/logo.webp" alt="Insono Logo" width={130} height={42} className="h-10 w-auto object-contain mb-6" />
+          <div className="flex space-x-6 mb-6 text-slate-400">
+            <a href="https://youtube.com/@insonohearing" target="_blank" rel="noopener noreferrer" className="hover:text-[#184A99] transition-colors"><FaYoutube size={20} /></a>
+            <a href="https://www.instagram.com/insono_hearing_solutions" target="_blank" rel="noopener noreferrer" className="hover:text-[#184A99] transition-colors"><FaInstagram size={20} /></a>
+            <a href="https://www.facebook.com/insonohearingsolution" target="_blank" rel="noopener noreferrer" className="hover:text-[#184A99] transition-colors"><FaFacebook size={20} /></a>
+            <a href="https://www.linkedin.com/company/insonohearing" target="_blank" rel="noopener noreferrer" className="hover:text-[#184A99] transition-colors"><FaLinkedin size={20} /></a>
           </div>
-        </footer>
+          <p className="text-slate-400 text-sm font-medium">
+            © 2026 Insono Hearing Solutions · {config.footerLabel}. All rights reserved.
+          </p>
+        </div>
+      </footer>
+
+      {/* ── MOBILE STICKY BOTTOM BAR ── */}
+      <div className="bnm-bottom-bar md:hidden fixed bottom-0 left-0 right-0 z-[9999] bg-white shadow-[0_-4px_20px_rgba(0,0,0,0.1)] border-t border-slate-100 flex">
+        <a
+          href={`https://wa.me/916204260510?text=${encodeURIComponent(config.waText)}`}
+          target="_blank" rel="noopener noreferrer"
+          className="flex-1 bg-[#25D366] text-white flex flex-col items-center justify-center py-2.5 gap-0.5"
+        >
+          <MessageSquare className="w-4 h-4" />
+          <span className="text-[10px] font-black leading-none">Chat with Audiologist</span>
+        </a>
+        <div className="w-px bg-white/20" />
+        <a href="tel:+916204260510" className="flex-1 bg-[#184A99] text-white flex flex-col items-center justify-center py-2.5 gap-0.5 px-2">
+          <Phone className="w-4 h-4" />
+          <span className="text-[10px] font-black leading-none text-center">Call &amp; Save up to ₹31,500</span>
+        </a>
       </div>
 
-      {/* Popup modal */}
-      <PopupModal city={`your nearest ${config.name} clinic`} citySlug={utmCity} />
+      <PopupModal city={config.name} citySlug={utmCity} />
     </div>
   );
 }

@@ -78,16 +78,13 @@ export default function LeadForm({
         className={`w-full font-bold flex items-center justify-center gap-2 transition-all active:scale-[0.98] group overflow-hidden relative shadow-lg ${
           isMobile
             ? "h-16 bg-[#25D366] text-white text-lg rounded-xl shadow-green-200"
-            : "h-14 bg-[#184A99] text-white text-base rounded-xl hover:bg-[#13366e] shadow-blue-100"
+            : "h-14 bg-orange-500 hover:bg-orange-600 text-white text-base rounded-xl shadow-orange-200"
         }`}
       >
         <span className="relative z-10 flex items-center gap-2">
           {isMobile
             ? "Get Price List on WhatsApp"
-            : compact
-            ? "Get Hearing Aid Price List"
-            : "Download Prices & Claim Free Trial"}
-          <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            : "Download Price List →"}
         </span>
       </button>
 
