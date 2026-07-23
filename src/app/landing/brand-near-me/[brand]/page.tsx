@@ -88,30 +88,30 @@ const BRANDS: Record<BrandKey, BrandConfig> = {
   },
   signia: {
     name: "Signia",
-    seoTitle: "Signia Hearing Aid Near You | Authorized Clinic – Free Test & Best Price",
-    seoDescription: "Find the nearest authorized Signia hearing aid clinic. Free hearing test, certified audiologists & best price. Signia prices from ₹15,000. Book free appointment today.",
-    heroH1: "Signia Hearing Aids Price List 2026",
-    heroSubtitle: "Discover the 2026 Elite Collection. Experience digital clarity with a Free Clinical Trial at your nearest authorized Signia center.",
+    seoTitle: "Signia Hearing Aid Price India 2026 | Free Trial & EMI – Insono",
+    seoDescription: "Explore Signia hearing aids in India. Invisible & rechargeable models from ₹15,000. Certified Signia Partner, free hearing test & 0% EMI available.",
+    heroH1: "Signia Hearing Aid Price List 2026",
+    heroSubtitle: "Discover the 2026 Elite Signia Collection. Experience German digital sound clarity with a Free Clinical Trial at your nearest Insono center.",
     urgencyBar: "Limited Trial Slots Available — Authorized Signia Partner",
     heroBullets: [
-      { icon: <BadgePercent className="w-4 h-4 text-green-600" />, iconBg: "bg-green-100", text: `Save up to <span class="text-green-600 font-bold">₹31,500</span> on Signia aids` },
-      { icon: <EyeOff className="w-4 h-4 text-blue-600" />, iconBg: "bg-blue-100", text: "Bluetooth & Rechargeable Signia Models" },
-      { icon: <HeartHandshake className="w-4 h-4 text-purple-600" />, iconBg: "bg-purple-100", text: "Free Hearing Test at Nearest Clinic" },
+      { icon: <BadgePercent className="w-4 h-4 text-green-600" />, iconBg: "bg-green-100", text: `Save up to <span class="text-green-600 font-bold">₹31,500</span>` },
+      { icon: <EyeOff className="w-4 h-4 text-blue-600" />, iconBg: "bg-blue-100", text: "Invisible but Powerful Design" },
+      { icon: <HeartHandshake className="w-4 h-4 text-purple-600" />, iconBg: "bg-purple-100", text: "Senior Citizen Discounts & 0% EMI" },
     ],
-    ctaText: "Download Signia Price List",
+    ctaText: "Get July Prices & Best Offers",
     heroImages: [
-      { src: "/signia-silk-ix-hero.png", alt: "Signia Silk IX" },
-      { src: "/ric-signia.png", alt: "Signia RIC" },
-      { src: "/signia_bct.png", alt: "Signia Hearing Aid" },
+      { src: "/hearwave/signia-hero.png", alt: "Signia Pure C&Go IX Hearing Aid" },
+      { src: "/hearwave/signia-styletto.png", alt: "Signia Styletto IX Hearing Aid" },
+      { src: "/hearwave/signia-silk-charge.png", alt: "Signia Silk Charge&Go Hearing Aid" },
     ],
-    formHeading: "Download Signia Prices & Claim Free Trial",
+    formHeading: "Download Signia Price List",
     formSubtitle: "Get the full 2026 Signia Price List instantly — free callback within minutes.",
-    productSectionHeading: "2026 Signia Model Comparison",
+    productSectionHeading: "Signia 2026 Model Comparison",
     tableProducts: [
-      { name: "Signia Silk IX", image: "/signia-silk-ix-hero.png", bestFor: "Invisibility", features: "Invisible Fit, Instant Fit, Rechargeable", tech: "Essential", techColor: "bg-blue-50 text-blue-700 border-blue-100" },
-      { name: "Signia Styletto IX", image: "/signia_bct2.png", bestFor: "Style & Design", features: "SlimRIC Design, Rechargeable, Bluetooth 5.0", tech: "Advanced", techColor: "bg-blue-50 text-blue-700 border-blue-100" },
-      { name: "Signia Pure C&G IX", image: "/signia_bct2.png", bestFor: "Versatility", features: "IX Platform AI, Own Voice Processing, Rechargeable", tech: "Advanced", techColor: "bg-blue-50 text-blue-700 border-blue-100" },
-      { name: "Signia Active Pro", image: "/brands/signia active pro.png", bestFor: "Active Lifestyle", features: "Earphone Design, Rechargeable, App Control", tech: "Essential", techColor: "bg-green-50 text-green-700 border-green-100" },
+      { name: "Signia Silk Charge&Go", image: "/hearwave/signia-silk-charge.png", bestFor: "Invisibility", features: "Invisible Fit, Instant Fit, Rechargeable", tech: "Essential", techColor: "bg-blue-50 text-blue-700 border-blue-100" },
+      { name: "Signia Styletto IX", image: "/hearwave/signia-styletto.png", bestFor: "Style & Design", features: "SlimRIC Design, Rechargeable, Bluetooth", tech: "Advanced", techColor: "bg-blue-50 text-blue-700 border-blue-100" },
+      { name: "Signia Pure Charge&Go", image: "/hearwave/signia-pure-charge.png", bestFor: "Versatility", features: "Speech Isolation, All-day Battery, iOS/Android", tech: "Advanced", techColor: "bg-blue-50 text-blue-700 border-blue-100" },
+      { name: "Signia Motion IX", image: "/hearwave/signia-motion.png", bestFor: "Maximum Power", features: "High Power, Robust BTE, Smart Sound", tech: "Premium AI", techColor: "bg-purple-50 text-purple-700 border-purple-100" },
     ],
     reviewTexts: [
       "Excellent service at Insono. The audiologist was very patient in explaining which Signia model suited my hearing loss. Got fitted the same day. Highly recommend!",
@@ -291,18 +291,18 @@ export default async function BrandNearMePage({ params }: { params: Promise<{ br
 
         <div className="max-w-[1180px] mx-auto px-4 md:px-6 relative z-10">
           {/* Mobile H1 above grid */}
-          <h1 className="lg:hidden text-[26px] font-extrabold leading-tight text-slate-900 text-center mb-4 px-1">Hearing Aid Price List 2026</h1>
+          <h1 className="lg:hidden text-[26px] font-extrabold leading-tight text-slate-900 text-center mb-4 px-1">{config.heroH1}</h1>
 
           <div className="flex flex-col lg:grid lg:grid-cols-3 gap-6 lg:gap-8 items-center">
 
             {/* ── Col 1: Text ── */}
             <div className="order-2 lg:order-1 text-left w-full bnm-left">
               <div className="hidden lg:inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-bold mb-3">
-                <Award className="w-3.5 h-3.5" /> India&apos;s Trusted Multi-Brand Partner
+                <Award className="w-3.5 h-3.5" /> {brandSlug === "generic" ? "India's Trusted Multi-Brand Partner" : `India's Certified ${config.name} Partner`}
               </div>
               <h1 className="hidden lg:block text-3xl lg:text-[40px] font-black leading-[1.14] text-slate-900 mb-4 tracking-tight">
-                <span className="block">Hearing Aid Price</span>
-                <span className="block">List 2026</span>
+                <span className="block">{brandSlug === "generic" ? "Hearing Aid Price" : `${config.name} Hearing Aid`}</span>
+                <span className="block">Price List 2026</span>
               </h1>
 
               <ul className="space-y-3 mb-5 text-left">
@@ -532,7 +532,7 @@ export default async function BrandNearMePage({ params }: { params: Promise<{ br
         <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
           <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
             <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 text-slate-900">
-              Why Insono is the Best Choice Near You
+              {brandSlug === "generic" ? "Why Insono is the Best Choice Near You" : `Why ${config.name} is the World's Best`}
             </h2>
             <p className="text-slate-600 text-base md:text-lg">
               Certified audiologists, premium brands, transparent pricing — all under one roof.
