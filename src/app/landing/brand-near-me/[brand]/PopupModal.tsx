@@ -58,7 +58,7 @@ export default function PopupModal({
                     <span className="text-[9px] font-bold text-green-700 uppercase tracking-wider">Free · Instant on WhatsApp</span>
                   </div>
                   <h2 className="text-[18px] font-black text-[#0D2240] leading-tight">
-                    Hearing Aid Price List<br />{city} 2026
+                    {city !== "Hearing Aid" && city !== "generic" ? `${city} Hearing Aid` : "Hearing Aid"}<br />Price List 2026
                   </h2>
                 </div>
               </div>
@@ -66,12 +66,20 @@ export default function PopupModal({
               <div className="bg-slate-50 rounded-2xl p-4 mb-5 border border-slate-100">
                 <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">What&apos;s included</p>
                 <ul className="space-y-2">
-                  {[
-                    "Signia, Phonak, Widex, ReSound & more",
-                    "All model prices with EMI breakdown",
-                    "Side-by-side feature comparison chart",
-                    `Exclusive ${city} clinic discount`,
-                  ].map((item) => (
+                  {(city !== "Hearing Aid" && city !== "generic"
+                    ? [
+                        `All ${city} models (Silk, Styletto, Pure & Motion)`,
+                        `Official ${city} prices with EMI breakdown`,
+                        `Side-by-side ${city} feature comparison chart`,
+                        `Exclusive ${city} clinic discount`,
+                      ]
+                    : [
+                        "Signia, Phonak, Widex, ReSound & more",
+                        "All model prices with EMI breakdown",
+                        "Side-by-side feature comparison chart",
+                        "Exclusive clinic trial & discounts",
+                      ]
+                  ).map((item) => (
                     <li key={item} className="flex items-start gap-2 text-[12px] text-slate-700 font-medium">
                       <span className="text-emerald-500 font-black text-sm leading-none mt-0.5">✓</span>
                       {item}

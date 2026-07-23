@@ -269,7 +269,7 @@ export default async function BrandNearMePage({ params }: { params: Promise<{ br
       }} />
 
       {/* ── HEADER ── */}
-      <header className="py-3 px-4 md:px-6 border-b bg-white/80 backdrop-blur-md sticky top-0 z-50">
+      <header className="py-3 px-4 md:px-6 border-b border-blue-100/40 bg-blue-50/80 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-[1180px] mx-auto flex justify-between items-center">
           <Link href="/">
             <Image src="/logo.webp" alt="Insono Hearing" width={130} height={42} className="h-12 md:h-14 w-auto object-contain" priority />
@@ -283,10 +283,7 @@ export default async function BrandNearMePage({ params }: { params: Promise<{ br
       {/* ── HERO ── */}
       <section className="relative pt-0 pb-12 md:pt-16 md:pb-24 overflow-hidden bg-white">
         {/* Background blobs */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/90 via-white to-violet-50/50" />
-        <div className="absolute -top-48 -left-48 w-[650px] h-[650px] rounded-full bg-blue-400/20 blur-[120px]" />
-        <div className="absolute -top-20 -right-20 w-[480px] h-[480px] rounded-full bg-indigo-400/15 blur-[100px]" />
-        <div className="absolute -bottom-24 left-[15%] w-[500px] h-[350px] rounded-full bg-cyan-300/20 blur-[100px]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-50/80 via-blue-50/30 to-white" />
         <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(circle, #94a3b8 1px, transparent 1px)", backgroundSize: "28px 28px", opacity: 0.08 }} />
 
         <div className="max-w-[1180px] mx-auto px-4 md:px-6 relative z-10">
@@ -617,7 +614,7 @@ export default async function BrandNearMePage({ params }: { params: Promise<{ br
               <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-8">Trusted by Thousands Across India</h2>
               <div className="grid gap-4 md:gap-6">
                 {[
-                  { title: "Multi-Brand Authorized Center", desc: "Signia, Phonak, Widex, Oticon — all genuine with official warranty." },
+                  { title: brandSlug === "generic" ? "Multi-Brand Authorized Center" : `Authorized ${config.name} Partner`, desc: brandSlug === "generic" ? "Signia, Phonak, Widex, Oticon — all genuine with official warranty." : `100% genuine ${config.name} hearing aids with official warranty.` },
                   { title: "Free Trial & Hearing Test", desc: "Experience the sound before you commit. No obligation." },
                   { title: "0% EMI & Senior Discounts", desc: "Flexible payment options starting from ₹2,500/month." },
                   { title: "Lifetime Free Tuning", desc: "Ongoing adjustments & software updates at zero cost." },
