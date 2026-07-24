@@ -100,8 +100,8 @@ export default function HeroSectionMeerut() {
 
           <div className="flex flex-col items-center">
             <MapPin className="w-5 h-5 text-black mb-1" />
-            <p className="text-xl font-bold text-black">15+</p>
-            <p className="text-xs text-gray-600">Clinics Across India</p>
+            <p className="text-xl font-bold text-black">100+</p>
+            <p className="text-xs text-gray-600">Pan-India Cities</p>
           </div>
 
           <div className="flex flex-col items-center">

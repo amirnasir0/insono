@@ -58,10 +58,10 @@ export default function HeroSection() {
               <div className="flex flex-col items-center lg:items-start">
                 <MapPin className="w-5 h-5 text-[#E83D6D] mb-1" />
                 <span className="text-lg md:text-xl font-bold text-[#0D2240]">
-                  15+
+                  100+
                 </span>
                 <span className="text-[10px] md:text-xs text-gray-500 uppercase tracking-wider">
-                  Clinics
+                  Cities
                 </span>
               </div>
               <div className="flex flex-col items-center lg:items-start">

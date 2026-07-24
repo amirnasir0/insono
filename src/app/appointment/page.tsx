@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import AppointmentFormClient from "./AppointmentFormClient";
 
 export const metadata: Metadata = {
-  title: "Book a Free Hearing Test — 15+ Clinics Across India | Insono Hearing",
+  title: "Book a Free Hearing Test — Pan-India Presence — 100+ Cities | Insono Hearing",
   description:
     "Book a free hearing test with a certified audiologist at any Insono clinic. No obligation, no cost. Available Mon–Sun, 10 AM–7 PM across 15+ cities including Delhi, Mumbai, Noida, Lucknow & more.",
   alternates: {
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Book a Free Hearing Test | Insono Hearing",
     description:
-      "Free hearing test with certified audiologists. 15+ clinics across India — Delhi, Mumbai, Noida & more. Open Mon–Sun, 10 AM–7 PM.",
+      "Free hearing test with certified audiologists. pan-India presence across 100+ cities — Delhi, Mumbai, Noida & more. Open Mon–Sun, 10 AM–7 PM.",
     url: "https://www.insonohearing.com/appointment",
     siteName: "Insono Hearing Solutions",
     locale: "en_IN",

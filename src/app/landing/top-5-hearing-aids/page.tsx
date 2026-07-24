@@ -496,8 +496,8 @@ export default function Top5LandingPage() {
                     <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Happy Customers</p>
                   </div>
                   <div>
-                    <p className="text-xl font-bold text-slate-900">15+</p>
-                    <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Clinics Across India</p>
+                    <p className="text-xl font-bold text-slate-900">100+</p>
+                    <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Pan-India Cities</p>
                   </div>
                   <div>
                     <p className="text-xl font-bold text-slate-900">100+</p>

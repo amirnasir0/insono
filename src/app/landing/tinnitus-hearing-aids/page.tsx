@@ -489,8 +489,8 @@ export default function TinnitusLandingPage() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                       </svg>
                     </div>
-                    <p className="text-xl font-bold text-slate-900">15+</p>
-                    <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Clinics Across India</p>
+                    <p className="text-xl font-bold text-slate-900">100+</p>
+                    <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Pan-India Cities</p>
                   </div>
                   <div>
                     <div className="text-[#184A99] mb-2">

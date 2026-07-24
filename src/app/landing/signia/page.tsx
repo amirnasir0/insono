@@ -24,7 +24,7 @@ export default function Page() {
 
   const statsList = [
     { label: "Happy Signia Users", value: "2 Lakh+", icon: "users" as const },
-    { label: "Authorized Clinics", value: "15+", icon: "map" as const },
+    { label: "Pan-India Cities", value: "100+", icon: "map" as const },
     {
       label: "Certified Audiologists",
       value: "100+",

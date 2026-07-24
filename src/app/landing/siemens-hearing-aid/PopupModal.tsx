@@ -65,7 +65,7 @@ export default function PopupModal() {
                   {[
                     "All Siemens & Signia models with 2026 prices & EMI",
                     "German invisible, rechargeable & AI models guide",
-                    "Free trial booking at 15+ authorized clinics",
+                    "Free trial booking across 100+ cities in India",
                     "Expert advice & audiologist support included",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2 text-[12px] text-slate-700 font-medium">

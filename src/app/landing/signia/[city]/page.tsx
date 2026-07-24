@@ -438,7 +438,7 @@ export default async function SigniaCityPage({
                 <div className="si-up d3 grid grid-cols-3 gap-8 pt-10 border-t border-slate-100 mb-12">
                   {[
                     { icon: <Users className="w-6 h-6" />, label: "2 Lakh+", sub: "Happy Customers" },
-                    { icon: <MapPin className="w-6 h-6" />, label: "15+",     sub: "Clinics Across India" },
+                    { icon: <MapPin className="w-6 h-6" />, label: "100+",    sub: "Pan-India Cities" },
                     { icon: <Stethoscope className="w-6 h-6" />, label: "100+", sub: "Audiologists" },
                   ].map((s) => (
                     <div key={s.label}>

@@ -176,7 +176,7 @@ export default function ClinicListingPage() {
       <div className="block md:hidden sticky top-0 z-50 bg-white border-b border-slate-100">
         <div className="bg-[#0D2240] text-white py-2.5 px-4 text-center text-[10px] font-bold uppercase tracking-[0.2em]">
           <span className="inline-block w-2 h-2 bg-rose-500 rounded-full animate-pulse mr-2" />
-          15+ Clinics · Free Hearing Test · Same-Day Fitting
+          Pan-India · 100+ Cities · Free Hearing Test · Same-Day Fitting
         </div>
         <div className="px-4 py-3 flex items-center justify-between">
           <Link href="/">

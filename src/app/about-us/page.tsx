@@ -6,14 +6,14 @@ import { Target, Users, Shield, CheckCircle2 } from "lucide-react";
 export const metadata: Metadata = {
   title: "About Insono Hearing — India's Trusted Hearing Aid Clinic Since 2015",
   description:
-    "Insono Hearing Solutions is one of India's leading hearing aid clinic chains — 15+ locations, 2,00,000+ patients, 4.9★ rating. Founded in 2015 by Mr. Manoj Kumar (DHLS). Authorized partner of Signia, Phonak, Widex & Oticon.",
+    "Insono Hearing Solutions is one of India's leading hearing aid clinic chains — 100+ cities, 2,00,000+ patients, 4.9★ rating. Founded in 2015 by Mr. Manoj Kumar (DHLS). Authorized partner of Signia, Phonak, Widex & Oticon.",
   alternates: {
     canonical: "https://www.insonohearing.com/about-us",
   },
   openGraph: {
     title: "About Insono Hearing — India's Trusted Hearing Aid Clinic Since 2015",
     description:
-      "15+ clinics, 2,00,000+ patients, 4.9★ rating. Founded 2015 by Mr. Manoj Kumar. Authorized partner of Signia, Phonak, Widex & Oticon.",
+      "100+ cities, 2,00,000+ patients, 4.9★ rating. Founded 2015 by Mr. Manoj Kumar. Authorized partner of Signia, Phonak, Widex & Oticon.",
     url: "https://www.insonohearing.com/about-us",
     siteName: "Insono Hearing Solutions",
     images: [
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "About Insono Hearing — India's Trusted Hearing Aid Clinic Since 2015",
     description:
-      "15+ clinics, 2,00,000+ patients, 4.9★ rating. Founded 2015. Authorized Signia, Phonak, Widex & Oticon partner.",
+      "100+ cities, 2,00,000+ patients, 4.9★ rating. Founded 2015. Authorized Signia, Phonak, Widex & Oticon partner.",
     images: ["https://www.insonohearing.com/image/about-hero-new.jpeg"],
   },
 };

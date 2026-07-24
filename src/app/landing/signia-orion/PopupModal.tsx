@@ -65,7 +65,7 @@ export default function PopupModal() {
                   {[
                     "Orion C&G 200 and Orion 2 series 2026 pricing",
                     "Detailed Bluetooth & Rechargeable specifications",
-                    "Free trial booking at 15+ authorized clinics",
+                    "Free trial booking across 100+ cities in India",
                     "Expert advice & audiologist support included",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2 text-[12px] text-slate-700 font-medium">

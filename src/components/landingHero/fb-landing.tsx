@@ -75,8 +75,8 @@ export default function HearingAidLandingPage() {
 
           <div className="flex flex-col items-center">
             <MapPin className="w-5 h-5 mb-1" />
-            <p className="text-xl font-bold">15+</p>
-            <p className="text-xs text-gray-600">Clinics</p>
+            <p className="text-xl font-bold">100+</p>
+            <p className="text-xs text-gray-600">Cities</p>
           </div>
 
           <div className="flex flex-col items-center">
@@ -139,8 +139,8 @@ export default function HearingAidLandingPage() {
 
             <div>
               <MapPin className="w-7 h-7 mx-auto mb-2 text-gray-800" />
-              <p className="text-2xl font-bold">15+</p>
-              <p className="text-sm text-gray-500">Clinics</p>
+              <p className="text-2xl font-bold">100+</p>
+              <p className="text-sm text-gray-500">Cities</p>
             </div>
 
             <div>

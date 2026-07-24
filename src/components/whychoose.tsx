@@ -31,9 +31,9 @@ export default function WhyBestSection() {
             className="mb-2"
           />
           <div>
-            <strong className="text-lg">15+</strong>
+            <strong className="text-lg">100+</strong>
             <br />
-            Clinics Across India
+            Pan-India Cities
           </div>
         </div>
 

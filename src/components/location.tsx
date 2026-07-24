@@ -60,7 +60,7 @@ export default function CityListSection() {
         {/* Bottom Contact Section */}
         <div className="mt-16 text-center border-t pt-10">
           <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-            With 15+ locations across India, Insono clinics are always close to
+            With a pan-India presence across 100+ cities, Insono clinics are always close to
             you.
           </p>
 

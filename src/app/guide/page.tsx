@@ -218,7 +218,7 @@ export default function HearingAidGuide() {
           <div className="grid grid-cols-3 gap-6 max-w-lg mx-auto pt-8 border-t border-slate-100">
             {[
               { label: "2 Lakh+", sub: "Patients Helped" },
-              { label: "15+", sub: "Clinics" },
+              { label: "100+", sub: "Cities" },
               { label: "4.9 ★", sub: "Google Rating" },
             ].map((s) => (
               <div key={s.label} className="text-center">

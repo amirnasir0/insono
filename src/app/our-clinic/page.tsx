@@ -12,7 +12,7 @@ export const metadata = {
   openGraph: {
     title: "Hearing Aid Clinics Near You | Insono Hearing Solutions",
     description:
-      "15+ Insono hearing aid clinics across India — Mumbai, Delhi NCR, Kolkata, Lucknow & more. Free hearing test, top brands, open daily.",
+      "pan-India presence across 100+ cities with Insono hearing aid clinics — Mumbai, Delhi NCR, Kolkata, Lucknow & more. Free hearing test, top brands, open daily.",
     url: "https://www.insonohearing.com/our-clinic",
     siteName: "Insono Hearing Solutions",
     locale: "en_IN",

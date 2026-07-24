@@ -9,14 +9,14 @@ export async function generateMetadata() {
   return {
     title: "Hearing Aids in India — Signia, Phonak, Widex, Oticon | Insono Hearing",
     description:
-      "India's trusted hearing aid clinic — free hearing test, 3-day home trial & top brands like Signia, Phonak, Widex & Oticon. 15+ clinics, 2,00,000+ patients served. Open daily 10 AM–7 PM.",
+      "India's trusted hearing aid clinic — free hearing test, 3-day home trial & top brands like Signia, Phonak, Widex & Oticon. 100+ cities, 2,00,000+ patients served. Open daily 10 AM–7 PM.",
     alternates: {
       canonical: "https://www.insonohearing.com",
     },
     openGraph: {
       title: "Hearing Aids in India | Insono Hearing Solutions",
       description:
-        "India's trusted hearing aid clinic — free hearing test, 3-day home trial & top brands like Signia, Phonak, Widex & Oticon. 15+ clinics, 2,00,000+ patients served.",
+        "India's trusted hearing aid clinic — free hearing test, 3-day home trial & top brands like Signia, Phonak, Widex & Oticon. 100+ cities, 2,00,000+ patients served.",
       url: "https://www.insonohearing.com",
       siteName: "Insono Hearing Solutions",
       type: "website",
@@ -27,7 +27,7 @@ export async function generateMetadata() {
       card: "summary_large_image",
       title: "Hearing Aids in India | Insono Hearing Solutions",
       description:
-        "Free hearing test, 3-day home trial, Signia, Phonak & Widex. 15+ clinics, 2,00,000+ patients served.",
+        "Free hearing test, 3-day home trial, Signia, Phonak & Widex. 100+ cities, 2,00,000+ patients served.",
     },
   };
 }

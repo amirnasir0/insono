@@ -134,7 +134,7 @@ export default async function StoryPage({ params }: Params) {
         {/* Footer CTA */}
         <div className="mt-14 bg-gradient-to-r from-[#023784] to-[#1a56b0] rounded-2xl p-6 sm:p-8 text-center text-white">
           <p className="font-bold text-lg mb-1">Experience better hearing with Insono</p>
-          <p className="text-blue-100 text-sm mb-5">Free hearing test · Certified audiologists · 15+ clinics across India</p>
+          <p className="text-blue-100 text-sm mb-5">Free hearing test · Certified audiologists · pan-India presence across 100+ cities</p>
           <div className="flex flex-wrap gap-3 justify-center">
             <Link
               href="/appointment"

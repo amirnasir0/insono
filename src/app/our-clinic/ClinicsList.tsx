@@ -42,7 +42,7 @@ const REGIONS = ["All", "Delhi NCR", "Maharashtra", "Bihar", "Jharkhand", "West 
 
 /* ---------- Stats ---------- */
 const stats = [
-  { value: "15+", label: "Cities" },
+  { value: "100+", label: "Cities" },
   { value: "2,00,000+", label: "Patients Served" },
   { value: "4.9★", label: "Google Rating" },
   { value: "Free", label: "Hearing Test" },
@@ -106,7 +106,7 @@ export default function ClinicsList({ clinics }: { clinics: Clinic[] }) {
       <section className="bg-gradient-to-br from-[#012d66] via-[#023784] to-[#1a56b0] text-white pt-28 pb-16 px-4">
         <div className="max-w-6xl mx-auto text-center">
           <span className="inline-block text-xs font-semibold tracking-widest uppercase bg-white/15 border border-white/20 px-3 py-1 rounded-full mb-4">
-            15+ Locations Across India
+            Pan-India Presence · 100+ Cities
           </span>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-4">
             Find a Hearing Aid Clinic<br className="hidden sm:block" /> Near You

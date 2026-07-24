@@ -280,7 +280,7 @@ export default function SiemensLandingPage() {
               </li>
               <li className="flex items-center gap-3 bg-slate-50 border border-slate-100 rounded-2xl px-4 py-3">
                 <div className="w-9 h-9 rounded-xl bg-[#184A99]/10 flex items-center justify-center flex-shrink-0 text-lg">🩺</div>
-                <span className="text-[13px] font-semibold text-slate-700 leading-snug">Free trials &amp; audiologist tests at 15+ authorized clinics</span>
+                <span className="text-[13px] font-semibold text-slate-700 leading-snug">Free trials &amp; audiologist tests across 100+ cities in India</span>
               </li>
             </ul>
           </div>
@@ -492,8 +492,8 @@ export default function SiemensLandingPage() {
                     <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Happy Users</p>
                   </div>
                   <div>
-                    <p className="text-xl font-bold text-slate-900">15+</p>
-                    <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Clinics Nationwide</p>
+                    <p className="text-xl font-bold text-slate-900">100+</p>
+                    <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Pan-India Cities</p>
                   </div>
                   <div>
                     <p className="text-xl font-bold text-slate-900">100+</p>
