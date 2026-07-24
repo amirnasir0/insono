@@ -54,7 +54,7 @@ const BRANDS: Record<BrandKey, BrandConfig> = {
     name: "Hearing Aid",
     seoTitle: "Hearing Aid Near You | Best Price, Free Test & Authorized Clinic – Insono",
     seoDescription: "Find the best hearing aid near you. Free diagnostic hearing test, all top brands — Signia, Phonak, Widex & more. Prices from ₹9,999. Book free appointment today.",
-    heroH1: "Hearing Aid Price List Near You 2026",
+    heroH1: "Hearing Aid Price List 2026",
     heroSubtitle: "Compare top brands — Signia, Phonak, Widex, ReSound & more. Free Clinical Trial at your nearest Insono authorized center.",
     urgencyBar: "A call can save you up to ₹31,500 on hearing aids",
     heroBullets: [
