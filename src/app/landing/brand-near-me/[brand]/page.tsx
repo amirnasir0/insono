@@ -300,7 +300,7 @@ export default async function BrandNearMePage({ params }: { params: Promise<{ br
                 <Award className="w-3.5 h-3.5" /> {brandSlug === "generic" ? "India's Trusted Multi-Brand Partner" : `India's Certified ${config.name} Partner`}
               </div>
               <h1 className="hidden lg:block text-3xl lg:text-[40px] font-black leading-[1.14] text-slate-900 mb-4 tracking-tight">
-                <span className="block">{brandSlug === "generic" ? "Hearing Aid Price" : `${config.name} Hearing Aid`}</span>
+                <span className="block">{brandSlug === "generic" ? "Hearing Aid" : `${config.name} Hearing Aid`}</span>
                 <span className="block">Price List 2026</span>
               </h1>
 
