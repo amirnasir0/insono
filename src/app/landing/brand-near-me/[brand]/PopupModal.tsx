@@ -68,7 +68,11 @@ export default function PopupModal({
                 <ul className="space-y-2">
                   {(city !== "Hearing Aid" && city !== "generic"
                     ? [
-                        `All ${city} models (Silk, Styletto, Pure & Motion)`,
+                        city.toLowerCase().includes("phonak")
+                          ? "All Phonak models (Lumity, Infinio, Naida & Terra)"
+                          : city.toLowerCase().includes("widex")
+                          ? "All Widex models (Moment, SmartRIC, Evoke & Unique)"
+                          : `All ${city} models (Silk, Styletto, Pure & Motion)`,
                         `Official ${city} prices with EMI breakdown`,
                         `Side-by-side ${city} feature comparison chart`,
                         `Exclusive ${city} clinic discount`,

@@ -10,6 +10,7 @@ import FAQAccordion from "./FAQAccordion";
 import { PopupTrigger } from "./PopupTrigger";
 import PopupModal from "./PopupModal";
 import HeroCarousel from "./HeroCarousel";
+import Footer from "@/components/landingHero/fotern";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { FaFacebook, FaInstagram, FaYoutube, FaLinkedin } from "react-icons/fa";
@@ -125,28 +126,27 @@ const BRANDS: Record<BrandKey, BrandConfig> = {
   phonak: {
     name: "Phonak",
     seoTitle: "Phonak Hearing Aid Near You | Authorized Clinic – Free Test & Best Price",
-    seoDescription: "Find the nearest authorized Phonak hearing aid clinic. Free hearing test, certified audiologists & best price. Phonak prices from ₹18,000. Book free appointment today.",
+    seoDescription: "Find the nearest authorized Phonak hearing aid clinic. Free hearing test, certified audiologists & best price. Phonak prices from ₹15,000. Book free appointment today.",
     heroH1: "Phonak Hearing Aids Price List 2026",
     heroSubtitle: "Discover the 2026 Phonak Collection. Experience Swiss precision with a Free Clinical Trial at your nearest authorized Phonak center.",
-    urgencyBar: "Limited Trial Slots Available — Authorized Phonak Partner",
+    urgencyBar: "Limited Free Trial Slots Available — Authorized Phonak Partner",
     heroBullets: [
       { icon: <BadgePercent className="w-4 h-4 text-green-600" />, iconBg: "bg-green-100", text: `Save up to <span class="text-green-600 font-bold">₹31,500</span> on Phonak aids` },
-      { icon: <EyeOff className="w-4 h-4 text-blue-600" />, iconBg: "bg-blue-100", text: "Ultra clear sound with Phonak AutoSense AI" },
-      { icon: <HeartHandshake className="w-4 h-4 text-purple-600" />, iconBg: "bg-purple-100", text: "Free Hearing Test at Nearest Clinic" },
+      { icon: <EyeOff className="w-4 h-4 text-blue-600" />, iconBg: "bg-blue-100", text: "Universal Bluetooth — Any Phone" },
+      { icon: <HeartHandshake className="w-4 h-4 text-purple-600" />, iconBg: "bg-purple-100", text: "Swiss Engineering — Lifetime Durability" },
     ],
     ctaText: "Download Phonak Price List",
     heroImages: [
-      { src: "/Phonak-Audeo-Lumity-Slim-hero-webp.webp", alt: "Phonak Audeo Lumity" },
-      { src: "/phonak-infinio-hero.webp", alt: "Phonak Infinio" },
-      { src: "/phonak-audeo-p-hero.webp", alt: "Phonak Audeo P" },
+      { src: "/hearwave/phonak-hero-final.png", alt: "Phonak Hearing Aid" },
     ],
     formHeading: "Download Phonak Prices & Claim Free Trial",
     formSubtitle: "Get the full 2026 Phonak Price List instantly — free callback within minutes.",
-    productSectionHeading: "2026 Phonak Model Comparison",
+    productSectionHeading: "Phonak 2026 Model Comparison",
     tableProducts: [
-      { name: "Phonak Audeo Lumity", image: "/Phonak-Audeo-Lumity-Slim-hero-webp.webp", bestFor: "Versatility", features: "SmartSpeech Tech, Universal Bluetooth, Waterproof", tech: "Advanced", techColor: "bg-blue-50 text-blue-700 border-blue-100" },
-      { name: "Phonak Infinio", image: "/phonak-infinio-hero.webp", bestFor: "Best Performance", features: "Chip-based AI, Hands-free calls, Slim RIC", tech: "Premium AI", techColor: "bg-purple-50 text-purple-700 border-purple-100" },
-      { name: "Phonak Audeo P", image: "/phonak-audeo-p-hero.webp", bestFor: "Smart Lifestyle", features: "AutoSense OS, Health Tracking, Falls Detection", tech: "Advanced", techColor: "bg-blue-50 text-blue-700 border-blue-100" },
+      { name: "Phonak Terra+", image: "/hearwave/phonak-terra-plus.png", bestFor: "First-time users", features: "Clear Sound, Swiss Engineering, Lightweight", tech: "Essential", techColor: "bg-green-50 text-green-700 border-green-100" },
+      { name: "Phonak Sky Lumity", image: "/hearwave/phonak-sky-lumity.png", bestFor: "Children", features: "Pediatric Optimised, Rugged Design, Bluetooth", tech: "Advanced", techColor: "bg-blue-50 text-blue-700 border-blue-100" },
+      { name: "Phonak Naída Lumity", image: "/hearwave/phonak-naida-lumity.png", bestFor: "Severe hearing loss", features: "High Power BTE, SmartSpeech, Roger Ready", tech: "Advanced", techColor: "bg-blue-50 text-blue-700 border-blue-100" },
+      { name: "Phonak Audéo Infinio", image: "/hearwave/phonak-audeo-infinio.jpg", bestFor: "Premium users", features: "AutoSense OS 5.0, Dual Bluetooth, Waterproof", tech: "Premium AI", techColor: "bg-purple-50 text-purple-700 border-purple-100" },
     ],
     reviewTexts: [
       "Got my Phonak Audeo fitted at Insono. The AutoSense AI is incredible — adjusts automatically in every environment. Highly recommend!",
@@ -160,10 +160,10 @@ const BRANDS: Record<BrandKey, BrandConfig> = {
   widex: {
     name: "Widex",
     seoTitle: "Widex Hearing Aid Near You | Authorized Clinic – Free Test & Best Price",
-    seoDescription: "Find the nearest authorized Widex hearing aid clinic. Free hearing test, certified audiologists & best price. Widex prices from ₹20,000. Book free appointment today.",
+    seoDescription: "Find the nearest authorized Widex hearing aid clinic. Free hearing test, certified audiologists & best price. Widex prices from ₹15,000. Book free appointment today.",
     heroH1: "Widex Hearing Aids Price List 2026",
     heroSubtitle: "Experience the world's most natural hearing technology with a Free Clinical Trial at your nearest authorized Widex center.",
-    urgencyBar: "Limited Trial Slots Available — Authorized Widex Partner",
+    urgencyBar: "Limited Free Trial Slots Available — Authorized Widex Partner",
     heroBullets: [
       { icon: <BadgePercent className="w-4 h-4 text-green-600" />, iconBg: "bg-green-100", text: `Save up to <span class="text-green-600 font-bold">₹31,500</span> on Widex aids` },
       { icon: <EyeOff className="w-4 h-4 text-blue-600" />, iconBg: "bg-blue-100", text: "Natural sound with Widex PureSound technology" },
@@ -171,14 +171,16 @@ const BRANDS: Record<BrandKey, BrandConfig> = {
     ],
     ctaText: "Download Widex Price List",
     heroImages: [
-      { src: "/signia_bct2.png", alt: "Widex Hearing Aid" },
+      { src: "/hearwave/widex-hero.png", alt: "Widex Hearing Aid" },
     ],
     formHeading: "Download Widex Prices & Claim Free Trial",
     formSubtitle: "Get the full 2026 Widex Price List instantly — free callback within minutes.",
-    productSectionHeading: "2026 Widex Model Comparison",
+    productSectionHeading: "Widex 2026 Model Comparison",
     tableProducts: [
-      { name: "Widex MOMENT Sheer", image: "/signia_bct2.png", bestFor: "Purest Sound", features: "ZeroDelay Tech, Natural Sound, Rechargeable", tech: "Advanced", techColor: "bg-blue-50 text-blue-700 border-blue-100" },
-      { name: "Widex EVOKE 440", image: "/signia_bct2.png", bestFor: "AI Powered", features: "Machine Learning, Fluid Sound, App Control", tech: "Premium AI", techColor: "bg-purple-50 text-purple-700 border-purple-100" },
+      { name: "Widex MOMENT Sheer", image: "/hearwave/widex-hero.png", bestFor: "Purest Sound", features: "ZeroDelay Tech, Natural Sound, Rechargeable", tech: "Advanced", techColor: "bg-blue-50 text-blue-700 border-blue-100" },
+      { name: "Widex EVOKE 440", image: "/lp/widex2.png", bestFor: "AI Powered", features: "Machine Learning, Fluid Sound, App Control", tech: "Premium AI", techColor: "bg-purple-50 text-purple-700 border-purple-100" },
+      { name: "Widex MOMENT IIC", image: "/lp/widex3.png", bestFor: "Discreet Fit", features: "Invisible In-Canal, Custom Fit, PureSound", tech: "Advanced", techColor: "bg-blue-50 text-blue-700 border-blue-100" },
+      { name: "Widex Magnify", image: "/lp/widex4.png", bestFor: "Great Value", features: "Rechargeable, Smartphone Streaming, Comfort", tech: "Essential", techColor: "bg-green-50 text-green-700 border-green-100" },
     ],
     reviewTexts: [
       "Got my Widex Moment fitted at Insono. The PureSound technology is incredible — the most natural sound I've ever heard. Highly recommend!",
@@ -244,7 +246,7 @@ export default async function BrandNearMePage({ params }: { params: Promise<{ br
       <style dangerouslySetInnerHTML={{
         __html: `
           header.bg-transparent,
-          footer,
+          footer:not(.landing-footer),
           div.fixed.bottom-0.left-0.right-0:not(.bnm-bottom-bar) { display: none !important; }
           body { padding-top: 0 !important; }
           @keyframes bnm-up {
@@ -707,20 +709,7 @@ export default async function BrandNearMePage({ params }: { params: Promise<{ br
       </section>
 
       {/* ── FOOTER ── */}
-      <footer className="py-12 md:py-16 bg-white border-t border-slate-100 text-center">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 flex flex-col items-center">
-          <Image src="/logo.webp" alt="Insono Logo" width={130} height={42} className="h-10 w-auto object-contain mb-6" />
-          <div className="flex space-x-6 mb-6 text-slate-400">
-            <a href="https://youtube.com/@insonohearing" target="_blank" rel="noopener noreferrer" className="hover:text-[#184A99] transition-colors"><FaYoutube size={20} /></a>
-            <a href="https://www.instagram.com/insono_hearing_solutions" target="_blank" rel="noopener noreferrer" className="hover:text-[#184A99] transition-colors"><FaInstagram size={20} /></a>
-            <a href="https://www.facebook.com/insonohearingsolution" target="_blank" rel="noopener noreferrer" className="hover:text-[#184A99] transition-colors"><FaFacebook size={20} /></a>
-            <a href="https://www.linkedin.com/company/insonohearing" target="_blank" rel="noopener noreferrer" className="hover:text-[#184A99] transition-colors"><FaLinkedin size={20} /></a>
-          </div>
-          <p className="text-slate-400 text-sm font-medium">
-            © 2026 Insono Hearing Solutions · {config.footerLabel}. All rights reserved.
-          </p>
-        </div>
-      </footer>
+      <Footer />
 
       {/* ── MOBILE STICKY BOTTOM BAR ── */}
       <div className="bnm-bottom-bar md:hidden fixed bottom-0 left-0 right-0 z-[9999] bg-white shadow-[0_-4px_20px_rgba(0,0,0,0.1)] border-t border-slate-100 flex">

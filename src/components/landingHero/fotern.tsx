@@ -3,7 +3,7 @@ import { FaFacebook, FaInstagram, FaYoutube, FaLinkedin } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-300 pt-12 pb-6">
+    <footer className="landing-footer bg-gray-900 text-gray-300 pt-12 pb-6">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="border-gray-700 pt-6 flex flex-col md:flex-row items-center justify-between text-sm space-y-4 md:space-y-0">
           {/* Social Icons */}

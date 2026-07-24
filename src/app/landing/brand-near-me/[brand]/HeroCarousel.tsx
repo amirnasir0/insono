@@ -23,7 +23,7 @@ export default function HeroCarousel({ images }: { images: ImageItem[] }) {
 
   return (
     <div className="-mx-4 lg:mx-0 order-first lg:order-2 lg:col-start-2 flex flex-col justify-center items-center w-full bnm-scale">
-      <div className="relative w-full h-[240px] lg:h-[380px] flex items-center justify-center">
+      <div className="relative w-full max-w-[300px] lg:max-w-[360px] h-[240px] lg:h-[310px] mx-auto flex items-center justify-center">
         {images.map((img, i) => (
           <div
             key={i}
@@ -36,8 +36,7 @@ export default function HeroCarousel({ images }: { images: ImageItem[] }) {
               alt={img.alt}
               fill
               priority={i === 0}
-              sizes="(max-width: 1024px) 100vw, 450px"
-              className="object-contain drop-shadow-xl lg:drop-shadow-[0_20px_50px_rgba(24,74,153,0.15)]"
+              className="object-contain drop-shadow-xl lg:drop-shadow-[0_20px_50px_rgba(24,74,153,0.15)] lg:mix-blend-multiply"
             />
           </div>
         ))}

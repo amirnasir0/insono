@@ -7,8 +7,8 @@ import { PopupTrigger } from "../PopupTrigger";
 import PopupModal from "../PopupModal";
 import LeadForm from "../LeadForm";
 import FAQAccordion from "../FAQAccordion";
+import Footer from "@/components/landingHero/fotern";
 import { Metadata } from "next";
-import { FaFacebook, FaInstagram, FaYoutube, FaLinkedin } from "react-icons/fa";
 
 interface LandingClinic extends Clinic {
   noGmb?: boolean;
@@ -167,7 +167,7 @@ export default async function ClinicCityLandingPage({
         __html: `
           /* Hide global LandingNav elements completely on this page */
           header.bg-transparent,
-          footer,
+          footer:not(.landing-footer),
           div.fixed.bottom-0.left-0.right-0:not(.custom-bottom-bar) {
             display: none !important;
           }
@@ -517,31 +517,8 @@ export default async function ClinicCityLandingPage({
       </section>
 
       {/* ── FOOTER ── */}
-      <footer className="py-12 md:py-16 bg-white border-t border-slate-100 text-center">
-        <div className="max-w-6xl mx-auto px-4 flex flex-col items-center">
-          <Image src="/logo.webp" alt="Insono Logo" width={130} height={42} className="h-10 w-auto object-contain mb-6" />
-          
-          {/* Social Links */}
-          <div className="flex space-x-6 mb-6 text-slate-400">
-            <a href="https://youtube.com/@insonohearing" target="_blank" rel="noopener noreferrer" className="hover:text-[#184A99] transition-colors">
-              <FaYoutube size={20} />
-            </a>
-            <a href="https://www.instagram.com/insono_hearing_solutions" target="_blank" rel="noopener noreferrer" className="hover:text-[#184A99] transition-colors">
-              <FaInstagram size={20} />
-            </a>
-            <a href="https://www.facebook.com/insonohearingsolution" target="_blank" rel="noopener noreferrer" className="hover:text-[#184A99] transition-colors">
-              <FaFacebook size={20} />
-            </a>
-            <a href="https://www.linkedin.com/company/insonohearing" target="_blank" rel="noopener noreferrer" className="hover:text-[#184A99] transition-colors">
-              <FaLinkedin size={20} />
-            </a>
-          </div>
-
-          <p className="text-slate-400 text-sm font-medium">
-            © 2026 Insono Hearing Solutions · {displayName}. All rights reserved.
-          </p>
-        </div>
-      </footer>
+      {/* ── FOOTER ── */}
+      <Footer />
 
       {/* ── CUSTOM STICKY MOBILE BOTTOM BAR ── */}
       <div className="custom-bottom-bar md:hidden fixed bottom-0 left-0 right-0 z-[9999] bg-white shadow-[0_-4px_20px_rgba(0,0,0,0.1)] border-t border-slate-100 flex">
