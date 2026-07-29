@@ -96,7 +96,7 @@ export const STATIC_PRODUCTS: StaticProduct[] = [
     category: ["phonak", "ric", "rechargeable", "bluetooth"],
     featuredImage: {
       node: {
-        sourceUrl: "/products/infinio-sphere.png"
+        sourceUrl: "/products/infinio-sphere.webp"
       }
     },
     mrp: 416000
