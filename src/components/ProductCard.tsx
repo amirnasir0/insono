@@ -73,7 +73,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { Star } from "lucide-react";
 import { Poppins } from "next/font/google";
 
@@ -87,6 +86,8 @@ interface ProductCardProps {
   imageUrl: string;
   slug: string;
   mrp?: number | null;
+  feature?: string;
+  showMrp?: boolean;
 }
 
 export default function ProductCard({
@@ -94,13 +95,15 @@ export default function ProductCard({
   imageUrl,
   slug,
   mrp,
+  feature,
+  showMrp = true,
 }: ProductCardProps) {
   return (
     <div className="w-full rounded-xl shadow-md bg-white overflow-hidden border border-gray-200 flex flex-col h-full min-h-[380px] sm:min-h-[430px]">
       {/* Product Image */}
       <div className="flex items-center justify-center bg-white p-4 sm:p-6 h-[180px] sm:h-[220px]">
         <Link href={`/product/${slug}`} className="block w-full text-center">
-          <Image
+          <img
             src={imageUrl}
             alt={title}
             width={220}
@@ -133,25 +136,33 @@ export default function ProductCard({
 
         {/* Features */}
         <ul className="text-gray-600 text-xs sm:text-sm space-y-1 mb-3 text-center sm:text-left">
-          <li>Easy smartphone control via app</li>
-          <li>Nearly invisible design</li>
+          {feature ? (
+            <li>{feature}</li>
+          ) : (
+            <>
+              <li>Easy smartphone control via app</li>
+              <li>Nearly invisible design</li>
+            </>
+          )}
         </ul>
 
         {/* MRP Price */}
-        <div className="mb-3 text-center">
-          {mrp ? (
-            <div>
-              <p className="text-[10px] text-gray-400 uppercase tracking-wider font-semibold mb-0.5">
-                2026 MRP starting from
-              </p>
-              <p className="text-xl font-bold text-[#184A99]">
-                ₹{mrp.toLocaleString("en-IN")}
-              </p>
-            </div>
-          ) : (
-            <p className="text-sm text-gray-400 italic">Price on request</p>
-          )}
-        </div>
+        {showMrp && (
+          <div className="mb-3 text-center">
+            {mrp ? (
+              <div>
+                <p className="text-[10px] text-gray-400 uppercase tracking-wider font-semibold mb-0.5">
+                  2026 MRP starting from
+                </p>
+                <p className="text-xl font-bold text-[#184A99]">
+                  ₹{mrp.toLocaleString("en-IN")}
+                </p>
+              </div>
+            ) : (
+              <p className="text-sm text-gray-400 italic">Price on request</p>
+            )}
+          </div>
+        )}
 
         {/* CTA */}
         <a

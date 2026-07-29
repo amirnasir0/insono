@@ -1,4 +1,5 @@
 import ProductCard from "./ProductCard";
+import { STATIC_PRODUCTS } from "@/lib/staticProducts";
 import { graphQLClient, GET_PRODUCTS } from "@/lib/graphql";
 import { PRODUCT_PRICES } from "@/lib/productPrices";
 
@@ -12,9 +13,10 @@ interface Product {
   category: string[];
   featuredImage?: {
     node?: {
-      sourceUrl: string;
+      sourceUrl?: string | null;
     };
   };
+  mrp?: number | null;
 }
 
 interface GraphQLProductNode {
@@ -52,44 +54,47 @@ export default async function CategoryProductSection({
   description,
   limit = 4,
 }: CategoryProductSectionProps) {
-  // ✅ Fetch products server-side (SEO friendly)
-  const data = await graphQLClient.request<GraphQLResponse>(GET_PRODUCTS);
-
-  const products: Product[] = data.products.nodes.map((product) => ({
-    id: product.id,
-    title: product.title,
-    slug: product.slug,
-    category: product.categories?.nodes.map((c) => c.name) || [],
-    description: product.description || "No description available",
-    price: product.price || "Contact for price",
-    featuredImage: product.featuredImage,
-  }));
-
   // ✅ Multiple keyword support
   const keywords = category
     .split(",")
     .map((kw) => kw.trim().toLowerCase())
     .filter(Boolean);
 
-  // // ✅ Product filter logic (AND matching for all keywords)
-  // const filteredProducts = products.filter((product) =>
-  //   keywords.every((kw) => {
-  //     const titleMatch = product.title.toLowerCase().includes(kw);
-  //     const categoryMatch = product.category.some((cat) =>
-  //       cat.toLowerCase().includes(kw)
-  //     );
-  //     return titleMatch || categoryMatch;
-  //   })
-  // );
-  // ✅ Product filter logic (AND matching for all keywords)
-  const filteredProducts = products.filter((product) =>
-    keywords.every((kw) => {
-      const categoryMatch = product.category.some((cat) =>
-        cat.toLowerCase().includes(kw)
-      );
-      return categoryMatch;
-    })
+  // 1. Try static products first
+  let filteredProducts: Product[] = STATIC_PRODUCTS.filter((product) =>
+    keywords.every((kw) =>
+      product.category.some((cat) => cat.toLowerCase().includes(kw))
+    )
   );
+
+  // 2. Fallback to WordPress/GraphQL if no static products found for these keywords
+  if (filteredProducts.length === 0) {
+    try {
+      const data = await graphQLClient.request<GraphQLResponse>(GET_PRODUCTS);
+      const wpProducts: Product[] = data.products.nodes.map((product) => ({
+        id: product.id,
+        title: product.title,
+        slug: product.slug,
+        category: product.categories?.nodes.map((c) => c.name) || [],
+        description: product.description || "No description available",
+        price: product.price || "Contact for price",
+        featuredImage: product.featuredImage ? {
+          node: {
+            sourceUrl: product.featuredImage.node?.sourceUrl || ""
+          }
+        } : undefined,
+        mrp: PRODUCT_PRICES[product.slug] ?? null,
+      }));
+
+      filteredProducts = wpProducts.filter((product) =>
+        keywords.every((kw) =>
+          product.category.some((cat) => cat.toLowerCase().includes(kw))
+        )
+      );
+    } catch (e) {
+      console.error("Error fetching fallback products:", e);
+    }
+  }
 
   // ✅ Apply limit
   const limitedProducts = filteredProducts.slice(0, limit);
@@ -132,7 +137,8 @@ export default async function CategoryProductSection({
               product.featuredImage?.node?.sourceUrl || "/placeholder.png"
             }
             slug={product.slug}
-            mrp={PRODUCT_PRICES[product.slug] ?? null}
+            mrp={product.mrp}
+            feature={product.description}
           />
         ))}
       </div>

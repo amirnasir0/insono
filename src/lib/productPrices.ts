@@ -2,7 +2,7 @@
 // Prices are per-ear MRP as listed by authorised distributors in India
 export const PRODUCT_PRICES: Record<string, number> = {
   // Signia
-  "signia-motion-x": 104990,
+  "signia-motion-ix": 104990,
   "insio-ix": 109990,
   "styletto-ix": 129990,
   "pure-cg-bct-ix": 85990,

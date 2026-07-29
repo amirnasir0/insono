@@ -1,9 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { GET_PRODUCTS, graphQLClient } from "@/lib/graphql";
+import { useState } from "react";
 import ProductCard from "./ProductCard";
-import { PRODUCT_PRICES } from "@/lib/productPrices";
 
 interface Product {
   id: string;
@@ -15,184 +13,36 @@ interface Product {
   featuredImage?: {
     node?: { sourceUrl?: string | null };
   };
-  createdAt?: string;
   mrp?: number | null;
-}
-
-interface PrismaProduct {
-  slug: string;
-  mrp: number | null;
-  category: string;
-}
-
-interface ProductNode {
-  id: string;
-  title: string;
-  slug: string;
-  description?: string | null;
-  featuredImage?: { node?: { sourceUrl?: string | null } } | null;
-  date?: string | null;
-  categories?: {
-    nodes?: Array<{ name?: string | null; slug?: string | null }>;
-  } | null;
-}
-
-interface GraphQLResponse {
-  products: {
-    nodes: ProductNode[];
-  };
 }
 
 type ProductSectionProps = {
   heading?: string;
 };
 
-const categories = ["All", "Signia", "Phonak", "Widex", "Oticon", "Bluetooth"];
+const categories = ["All", "Signia", "Phonak", "Widex", "Oticon", "Starkey", "Bluetooth"];
 
-const categoryKeywords: Record<string, string[]> = {
-  All: [],
-  Signia: ["signia"],
-  Phonak: ["phonak"],
-  Widex: ["widex"],
-  Oticon: ["oticon"],
-  Bluetooth: ["bluetooth", "bt"],
-};
-
-const BRAND_KEYWORDS: Record<string, string[]> = {
-  signia: ["signia"],
-  phonak: ["phonak"],
-  oticon: ["oticon"],
-  widex: ["widex"],
-};
-
-const normalize = (text: string) =>
-  (text || "").toLowerCase().replace(/\s+/g, " ").trim();
-
-const titleOrCatsHave = (p: Product, keywords: string[]) => {
-  const title = normalize(p.title);
-  const cats = p.category.map(normalize);
-  return keywords.some((kw) => {
-    const q = normalize(kw);
-    return title.includes(q) || cats.some((c) => c.includes(q));
-  });
-};
-
-const isHighlighted = (p: Product) =>
-  titleOrCatsHave(p, ["highlighted", "featured"]);
-
-const ts = (p: Product) => (p.createdAt ? new Date(p.createdAt).getTime() : 0);
+import { STATIC_PRODUCTS } from "@/lib/staticProducts";
 
 export default function ProductSection({ heading }: ProductSectionProps) {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
   const [activeCategory, setActiveCategory] = useState("All");
 
-  useEffect(() => {
-    async function fetchProducts() {
-      try {
-        const [wpData, priceRes] = await Promise.all([
-          graphQLClient.request<GraphQLResponse>(GET_PRODUCTS),
-          fetch("/api/products").then((r) => r.json() as Promise<PrismaProduct[]>).catch(() => [] as PrismaProduct[]),
-        ]);
-
-        // Build slug→mrp and brand→min-mrp maps from Prisma
-        const slugToMrp: Record<string, number> = {};
-        const brandToMinMrp: Record<string, number> = {};
-        for (const pp of priceRes) {
-          if (pp.mrp != null) {
-            slugToMrp[pp.slug] = pp.mrp;
-            const brand = pp.category.toLowerCase();
-            if (brandToMinMrp[brand] == null || pp.mrp < brandToMinMrp[brand]) {
-              brandToMinMrp[brand] = pp.mrp;
-            }
-          }
-        }
-
-        const mapped = wpData.products.nodes.map((p, i) => {
-          const cats = p.categories?.nodes ?? [];
-          const category = cats.flatMap(
-            (n) => [n?.name, n?.slug].filter(Boolean) as string[],
-          );
-
-          const brandKey = category.map((c) => c.toLowerCase()).find((c) => brandToMinMrp[c] != null);
-          const mrp = PRODUCT_PRICES[p.slug] ?? slugToMrp[p.slug] ?? (brandKey ? brandToMinMrp[brandKey] : null);
-
-          return {
-            id: p.id,
-            title: p.title,
-            slug: p.slug,
-            description: p.description || "",
-            price: "Contact for price",
-            category,
-            featuredImage: p.featuredImage ?? undefined,
-            createdAt: p.date ?? String(i),
-            mrp,
-          };
-        });
-
-        setProducts(mapped);
-      } catch (e) {
-        console.error(e);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchProducts();
-  }, []);
-
-  if (loading) return <p className="text-center py-10">Loading products...</p>;
-
-  if (!products.length)
-    return <p className="text-center py-10">No products found.</p>;
-
-  const brands = ["signia", "phonak", "oticon", "widex"];
   let filteredProducts: Product[] = [];
 
   if (activeCategory === "All") {
-    const picks: Product[] = [];
-
-    brands.forEach((brand) => {
-      const keys = BRAND_KEYWORDS[brand];
-
-      const highlighted = products
-        .filter((p) => isHighlighted(p) && titleOrCatsHave(p, keys))
-        .sort((a, b) => ts(b) - ts(a));
-
-      if (highlighted[0]) {
-        picks.push(highlighted[0]);
-        return;
-      }
-
-      const latest = products
-        .filter((p) => titleOrCatsHave(p, keys))
-        .sort((a, b) => ts(b) - ts(a));
-
-      if (latest[0]) picks.push(latest[0]);
-    });
-
-    filteredProducts =
-      picks.length > 0
-        ? picks.slice(0, 4)
-        : [...products].sort((a, b) => ts(b) - ts(a)).slice(0, 4);
+    // Show the first product of each brand
+    const picks = [
+      STATIC_PRODUCTS.find((p) => p.category.includes("signia")),
+      STATIC_PRODUCTS.find((p) => p.category.includes("phonak")),
+      STATIC_PRODUCTS.find((p) => p.category.includes("widex")),
+      STATIC_PRODUCTS.find((p) => p.category.includes("oticon")),
+      STATIC_PRODUCTS.find((p) => p.category.includes("starkey")),
+    ].filter(Boolean) as Product[];
+    filteredProducts = picks.slice(0, 4);
   } else {
-    const keywords = categoryKeywords[activeCategory] || [activeCategory];
-
-    const highlighted = products
-      .filter((p) => isHighlighted(p) && titleOrCatsHave(p, keywords))
-      .sort((a, b) => ts(b) - ts(a));
-
-    const fallback =
-      highlighted.length > 0
-        ? []
-        : products
-            .filter((p) => titleOrCatsHave(p, keywords))
-            .sort((a, b) => ts(b) - ts(a));
-
-    filteredProducts = (highlighted.length > 0 ? highlighted : fallback).slice(
-      0,
-      4,
-    );
+    filteredProducts = STATIC_PRODUCTS.filter((p) =>
+      p.category.includes(activeCategory.toLowerCase())
+    ).slice(0, 4);
   }
 
   return (
@@ -237,6 +87,7 @@ export default function ProductSection({ heading }: ProductSectionProps) {
             slug={p.slug}
             imageUrl={p.featuredImage?.node?.sourceUrl || "/placeholder.png"}
             mrp={p.mrp}
+            feature={p.description}
           />
         ))}
       </div>
