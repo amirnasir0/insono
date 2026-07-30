@@ -14,6 +14,7 @@ interface Product {
     node?: { sourceUrl?: string | null };
   };
   mrp?: number | null;
+  unit?: string;
 }
 
 type ProductSectionProps = {
@@ -88,6 +89,7 @@ export default function ProductSection({ heading }: ProductSectionProps) {
             imageUrl={p.featuredImage?.node?.sourceUrl || "/placeholder.png"}
             mrp={p.mrp}
             feature={p.description}
+            unit={p.unit}
           />
         ))}
       </div>

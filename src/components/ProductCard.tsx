@@ -88,6 +88,7 @@ interface ProductCardProps {
   mrp?: number | null;
   feature?: string;
   showMrp?: boolean;
+  unit?: string;
 }
 
 export default function ProductCard({
@@ -97,6 +98,7 @@ export default function ProductCard({
   mrp,
   feature,
   showMrp = true,
+  unit,
 }: ProductCardProps) {
   return (
     <div className="w-full rounded-xl shadow-md bg-white overflow-hidden border border-gray-200 flex flex-col h-full min-h-[380px] sm:min-h-[430px]">
@@ -155,7 +157,7 @@ export default function ProductCard({
                   2026 MRP starting from
                 </p>
                 <p className="text-xl font-bold text-[#184A99]">
-                  ₹{mrp.toLocaleString("en-IN")}
+                  ₹{mrp.toLocaleString("en-IN")}{unit ? ` (${unit})` : ""}
                 </p>
               </div>
             ) : (

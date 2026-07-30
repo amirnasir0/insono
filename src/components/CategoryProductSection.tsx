@@ -17,6 +17,7 @@ interface Product {
     };
   };
   mrp?: number | null;
+  unit?: string;
 }
 
 interface GraphQLProductNode {
@@ -71,20 +72,24 @@ export default async function CategoryProductSection({
   if (filteredProducts.length === 0) {
     try {
       const data = await graphQLClient.request<GraphQLResponse>(GET_PRODUCTS);
-      const wpProducts: Product[] = data.products.nodes.map((product) => ({
-        id: product.id,
-        title: product.title,
-        slug: product.slug,
-        category: product.categories?.nodes.map((c) => c.name) || [],
-        description: product.description || "No description available",
-        price: product.price || "Contact for price",
-        featuredImage: product.featuredImage ? {
-          node: {
-            sourceUrl: product.featuredImage.node?.sourceUrl || ""
-          }
-        } : undefined,
-        mrp: PRODUCT_PRICES[product.slug] ?? null,
-      }));
+      const wpProducts: Product[] = data.products.nodes.map((product) => {
+        const isPair = product.slug === "infinio-sphere" || product.slug === "signia-active-pro-ix";
+        return {
+          id: product.id,
+          title: product.title,
+          slug: product.slug,
+          category: product.categories?.nodes.map((c) => c.name) || [],
+          description: product.description || "No description available",
+          price: product.price || "Contact for price",
+          featuredImage: product.featuredImage ? {
+            node: {
+              sourceUrl: product.featuredImage.node?.sourceUrl || ""
+            }
+          } : undefined,
+          mrp: PRODUCT_PRICES[product.slug] ?? null,
+          unit: isPair ? "pr pair" : "per ear",
+        };
+      });
 
       filteredProducts = wpProducts.filter((product) =>
         keywords.every((kw) =>
@@ -139,6 +144,7 @@ export default async function CategoryProductSection({
             slug={product.slug}
             mrp={product.mrp}
             feature={product.description}
+            unit={product.unit}
           />
         ))}
       </div>

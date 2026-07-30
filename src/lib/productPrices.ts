@@ -2,63 +2,63 @@
 // Prices are per-ear MRP as listed by authorised distributors in India
 export const PRODUCT_PRICES: Record<string, number> = {
   // Signia
-  "signia-motion-ix": 104990,
-  "insio-ix": 109990,
-  "styletto-ix": 129990,
-  "pure-cg-bct-ix": 85990,
-  "signia-styletto-7ax": 124990,
-  "signia-styletto-ix": 129990,
-  "signia-pure-chargego-ix": 67990,
-  "signia-active-pro-ix": 299990,
-  "signia-insio-cic-iic-ix": 109990,
-  "signia-silk-charge-go-5ix-itc": 184990,
-  "signia-pure-312-5ax": 239990,
-  "siemens-signia-silk-x": 85990,
-  "signia-motion-chargego-x": 104990,
+  "signia-motion-ix": 104990,                  // per ear
+  "insio-ix": 109990,                          // per ear
+  "styletto-ix": 129990,                       // per ear
+  "pure-cg-bct-ix": 84990,                     // per ear
+  "signia-styletto-7ax": 124990,                // per ear
+  "signia-styletto-ix": 129990,                // per ear
+  "signia-pure-chargego-ix": 67990,            // per ear
+  "signia-active-pro-ix": 299990,              // per pair (kit)
+  "signia-insio-cic-iic-ix": 109990,           // per ear
+  "signia-silk-charge-go-5ix-itc": 184990,     // per ear
+  "signia-pure-312-5ax": 239990,               // per ear
+  "siemens-signia-silk-x": 85990,              // per ear
+  "signia-motion-chargego-x": 104990,          // per ear
 
   // Phonak
-  "phonak-sky-lumity": 54500,
-  "phonak-naida-lumity": 175000,
-  "phonak-lumity-audeo": 124000,
-  "infinio-sphere": 416000,
-  "phonak-audeo-l30": 54500,
-  "phonak-naida-paradise": 175000,
-  "phonak-audeo-p90": 300000,
-  "phonak-lumity-l70": 175000,
-  "phonak-audeo-l50-rl": 150000,
-  "phonak-audeo-lumity-l30-r": 124000,
-  "phonak-audeo-p30-r": 85000,
-  "phonak-naida-paradisep90": 300000,
-  "phonak-naida-p-pr-bte": 175000,
-  "phonak-virto-p-ite": 175000,
-  "phonak-virto-m-312-itc": 140000,
-  "phonak-virto-v50-nano-iic": 175000,
-  "phonak-sky-b-ric": 54500,
+  "phonak-sky-lumity": 54500,                  // per ear
+  "phonak-naida-lumity": 175000,               // per ear
+  "phonak-lumity-audeo": 124000,               // per ear
+  "infinio-sphere": 590000,                    // per pair
+  "phonak-audeo-l30": 54500,                   // per ear
+  "phonak-naida-paradise": 175000,             // per ear
+  "phonak-audeo-p90": 300000,                  // per ear
+  "phonak-lumity-l70": 175000,                 // per ear
+  "phonak-audeo-l50-rl": 150000,               // per ear
+  "phonak-audeo-lumity-l30-r": 124000,         // per ear
+  "phonak-audeo-p30-r": 85000,                 // per ear
+  "phonak-naida-paradisep90": 300000,          // per ear
+  "phonak-naida-p-pr-bte": 175000,             // per ear
+  "phonak-virto-p-ite": 175000,                // per ear
+  "phonak-virto-m-312-itc": 140000,            // per ear
+  "phonak-virto-v50-nano-iic": 175000,         // per ear
+  "phonak-sky-b-ric": 54500,                   // per ear
 
   // Oticon
-  "oticon-ria": 35000,
-  "oticon-zircon": 55000,
-  "oticon-xceed": 45000,
-  "oticon-intent": 255000,
-  "oticon-intent-minirite-rechargeable": 255000,
-  "oticon-intent-1-minirite-rechargeable": 425000,
-  "oticon-intent-1-minirite-power-rechargeable": 425000,
-  "oticon-more-1-mini-hearing-aid": 300000,
-  "oticon-more-1-minirite-power-rechargeable": 300000,
-  "oticon-more-3-minirite-power-rechargeable": 175000,
-  "oticon-own-1-p-iic-bluetooth": 300000,
-  "oticon-own-ite": 175000,
-  "oticon-ria-2-pro-ric": 37000,
-  "oticon-alta-2-pro-power-bte": 55000,
+  "oticon-ria": 35000,                         // per ear
+  "oticon-zircon": 55000,                      // per ear
+  "oticon-xceed": 45000,                       // per ear
+  "oticon-intent": 80000,                      // per ear
+  "oticon-intent-minirite-rechargeable": 80000, // per ear
+  "oticon-intent-1-minirite-rechargeable": 425000, // per ear
+  "oticon-intent-1-minirite-power-rechargeable": 425000, // per ear
+  "oticon-more-1-mini-hearing-aid": 300000,     // per ear
+  "oticon-more-1-minirite-power-rechargeable": 300000, // per ear
+  "oticon-more-3-minirite-power-rechargeable": 175000, // per ear
+  "oticon-own-1-p-iic-bluetooth": 300000,       // per ear
+  "oticon-own-ite": 175000,                    // per ear
+  "oticon-ria-2-pro-ric": 37000,               // per ear
+  "oticon-alta-2-pro-power-bte": 55000,        // per ear
 
   // Widex
-  "widex-evoke": 65000,
-  "widex-magnify": 59990,
-  "widex-moment-sheer": 140000,
-  "smartric-widex": 59990,
-  "widex-moment-sheer-ric": 140000,
-  "widex-evoke-440-bte-hearing-aid": 200000,
-  "widex-enjoy-440-cic-hearing-aid": 140000,
-  "widex-enjoy-ite-hearing-aid": 80000,
-  "widex-m-xp-100-itc-hearing-aid": 48500,
+  "widex-evoke": 65000,                        // per ear
+  "widex-magnify": 59990,                      // per ear
+  "widex-moment-sheer": 140000,                // per ear
+  "smartric-widex": 155000,                    // per ear
+  "widex-moment-sheer-ric": 140000,            // per ear
+  "widex-evoke-440-bte-hearing-aid": 200000,   // per ear
+  "widex-enjoy-440-cic-hearing-aid": 140000,   // per ear
+  "widex-enjoy-ite-hearing-aid": 80000,        // per ear
+  "widex-m-xp-100-itc-hearing-aid": 48500,     // per ear
 };
