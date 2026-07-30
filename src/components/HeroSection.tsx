@@ -3,7 +3,7 @@ import Image from "next/image";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { ShieldCheck, EyeOff, FileText, Calendar, Users, MapPin, Stethoscope } from "lucide-react";
+import { ShieldCheck, EyeOff, FileText, Calendar, Users, MapPin, Stethoscope, ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function HeroSection() {
   const logos = [
@@ -17,19 +17,38 @@ export default function HeroSection() {
   const heroImages = [
     "/signia_bct2.png",
     "/hearwave/styletto.png",
-    "/hearwave/audeo-lumity.png",
     "/hearwave/oticon-intent.png",
     "/hero1.png",
     "/hero2.png",
     "/hero3.png",
   ];
 
+  const PrevArrow = ({ onClick }: { onClick?: () => void }) => (
+    <button
+      onClick={onClick}
+      className="absolute left-1 top-1/2 -translate-y-1/2 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-6 h-6 rounded-full bg-black/15 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-black/25 hover:border-white/40"
+    >
+      <ChevronLeft className="w-3 h-3 text-white/75" strokeWidth={1.5} />
+    </button>
+  );
+
+  const NextArrow = ({ onClick }: { onClick?: () => void }) => (
+    <button
+      onClick={onClick}
+      className="absolute right-1 top-1/2 -translate-y-1/2 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-6 h-6 rounded-full bg-black/15 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-black/25 hover:border-white/40"
+    >
+      <ChevronRight className="w-3 h-3 text-white/75" strokeWidth={1.5} />
+    </button>
+  );
+
   const sliderSettings = {
     dots: false,
-    arrows: false,
+    arrows: true,
+    prevArrow: <PrevArrow />,
+    nextArrow: <NextArrow />,
     infinite: true,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 2250,
     speed: 800,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -164,7 +183,7 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <Slider {...sliderSettings} className="w-full h-48 sm:h-72">
+        <Slider {...sliderSettings} className="group relative w-full h-48 sm:h-72">
           {heroImages.map((img, i) => (
             <div key={i} className="relative w-full h-48 sm:h-72">
               <Image src={img} alt={`Hearing aid ${i + 1}`} fill className="object-contain" />
@@ -260,7 +279,7 @@ export default function HeroSection() {
         </div>
 
         {/* Hero Image Slider */}
-        <div className="flex-1 relative max-w-3xs h-[420px]">
+        <div className="group flex-1 relative max-w-3xs h-[420px]">
           <Slider {...sliderSettings}>
             {heroImages.map((img, i) => (
               <div key={i} className="relative w-full h-[420px]">
