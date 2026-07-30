@@ -44,7 +44,7 @@ export const STATIC_PRODUCTS: StaticProduct[] = [
       }
     },
     mrp: 129990,
-    unit: "per ear"
+    unit: "per pair"
   },
   {
     id: "signia-3",
@@ -74,7 +74,7 @@ export const STATIC_PRODUCTS: StaticProduct[] = [
       }
     },
     mrp: 184990,
-    unit: "per ear"
+    unit: "per pair"
   },
   {
     id: "signia-5",
