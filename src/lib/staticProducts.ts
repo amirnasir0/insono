@@ -43,7 +43,7 @@ export const STATIC_PRODUCTS: StaticProduct[] = [
         sourceUrl: "/products/styletto-ix.png"
       }
     },
-    mrp: 129990,
+    mrp: 149990,
     unit: "per pair"
   },
   {
@@ -58,7 +58,7 @@ export const STATIC_PRODUCTS: StaticProduct[] = [
         sourceUrl: "/products/insio-ix.png"
       }
     },
-    mrp: 109990,
+    mrp: 77990,
     unit: "per ear"
   },
   {
@@ -73,7 +73,7 @@ export const STATIC_PRODUCTS: StaticProduct[] = [
         sourceUrl: "/products/signia-silk-charge-go-5ix-itc.png"
       }
     },
-    mrp: 184990,
+    mrp: 139990,
     unit: "per pair"
   },
   {
@@ -88,8 +88,7 @@ export const STATIC_PRODUCTS: StaticProduct[] = [
         sourceUrl: "/products/signia-motion-ix.png"
       }
     },
-    mrp: 104990,
-    unit: "per ear"
+    mrp: 72990
   },
 
   // Phonak
@@ -120,7 +119,8 @@ export const STATIC_PRODUCTS: StaticProduct[] = [
         sourceUrl: "/products/phonak-audeo-infinio.png"
       }
     },
-    mrp: null
+    mrp: 89000,
+    unit: "per ear"
   },
   {
     id: "phonak-3",
@@ -134,7 +134,8 @@ export const STATIC_PRODUCTS: StaticProduct[] = [
         sourceUrl: "/products/phonak-virto-infinio.png"
       }
     },
-    mrp: null
+    mrp: 84000,
+    unit: "per ear"
   },
   {
     id: "phonak-4",
@@ -148,7 +149,8 @@ export const STATIC_PRODUCTS: StaticProduct[] = [
         sourceUrl: "/products/phonak-cros-infinio.png"
       }
     },
-    mrp: null
+    mrp: 147000,
+    unit: "1 HA + 1CROS"
   },
   {
     id: "phonak-5",
@@ -162,7 +164,7 @@ export const STATIC_PRODUCTS: StaticProduct[] = [
         sourceUrl: "/products/phonak-naida-lumity.png"
       }
     },
-    mrp: 175000,
+    mrp: 63000,
     unit: "per ear"
   },
 
@@ -180,7 +182,7 @@ export const STATIC_PRODUCTS: StaticProduct[] = [
       }
     },
     mrp: 155000,
-    unit: "per ear"
+    unit: "per pair"
   },
   {
     id: "widex-2",
@@ -194,8 +196,8 @@ export const STATIC_PRODUCTS: StaticProduct[] = [
         sourceUrl: "/products/widex-moment-sheer.png"
       }
     },
-    mrp: 140000,
-    unit: "per ear"
+    mrp: 145000,
+    unit: "per pair"
   },
   {
     id: "widex-3",
@@ -209,8 +211,8 @@ export const STATIC_PRODUCTS: StaticProduct[] = [
         sourceUrl: "/products/widex-moment.png"
       }
     },
-    mrp: 140000,
-    unit: "per ear"
+    mrp: 145000,
+    unit: "per pair"
   },
   {
     id: "widex-4",
@@ -224,8 +226,8 @@ export const STATIC_PRODUCTS: StaticProduct[] = [
         sourceUrl: "/products/widex-magnify.png"
       }
     },
-    mrp: 59990,
-    unit: "per ear"
+    mrp: 87990,
+    unit: "per pair"
   },
   {
     id: "widex-5",
@@ -239,7 +241,8 @@ export const STATIC_PRODUCTS: StaticProduct[] = [
         sourceUrl: "/products/widex-allure.png"
       }
     },
-    mrp: null
+    mrp: 180000,
+    unit: "per pair"
   },
 
   // Oticon
@@ -255,8 +258,7 @@ export const STATIC_PRODUCTS: StaticProduct[] = [
         sourceUrl: "/products/oticon-intent.png"
       }
     },
-    mrp: 80000,
-    unit: "per ear"
+    mrp: null
   },
   {
     id: "oticon-2",
@@ -298,8 +300,7 @@ export const STATIC_PRODUCTS: StaticProduct[] = [
         sourceUrl: "/products/oticon-own.png"
       }
     },
-    mrp: 175000,
-    unit: "per ear"
+    mrp: null
   },
   {
     id: "oticon-5",

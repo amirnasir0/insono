@@ -1,16 +1,13 @@
 "use client";
 
-import { useState } from "react";
-
-const videoIds = ["Txf2pcFkEeU", "qO83ovMXinM", "wmLXMMS_Nrg", "rEr9EYpPpBo"];
+const localVideos = [
+  "/video/insono1.mp4",
+  "/video/insono3.mp4",
+  "/video/insono2.mp4",
+  "/video/insono4.mp4",
+];
 
 export default function Testimonials() {
-  const [activeVideos, setActiveVideos] = useState<Record<number, boolean>>({});
-
-  const handleCardClick = (index: number) => {
-    setActiveVideos((prev) => ({ ...prev, [index]: true }));
-  };
-
   return (
     <section className="relative text-center py-16 px-4 bg-[#f8f9fa] overflow-hidden">
       {/* Blue Gradient Overlay */}
@@ -36,41 +33,20 @@ export default function Testimonials() {
 
         {/* Video Grid */}
         <div className="reviews-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 max-w-6xl mx-auto">
-          {videoIds.map((id, index) => (
+          {localVideos.map((videoSrc, index) => (
             <div
-              key={id}
-              className="relative cursor-pointer rounded-lg overflow-hidden h-64 md:h-80 shadow-lg hover:scale-[1.02] transition-transform"
-              style={{
-                backgroundColor: "#000",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundImage: activeVideos[index]
-                  ? "none"
-                  : `url(https://img.youtube.com/vi/${id}/hqdefault.jpg)`,
-              }}
-              onClick={() => handleCardClick(index)}
+              key={index}
+              className="relative rounded-xl overflow-hidden h-[420px] xs:h-[480px] sm:h-auto sm:aspect-[9/16] w-full shadow-lg hover:scale-[1.02] transition-transform bg-black"
             >
-              {!activeVideos[index] && (
-                <span
-                  className="absolute top-1/2 left-1/2 flex items-center justify-center w-16 h-16 rounded-full bg-black/40 text-white animate-pulse"
-                  style={{
-                    transform: "translate(-50%, -50%)",
-                    fontSize: "28px",
-                  }}
-                >
-                  ▶
-                </span>
-              )}
-              {activeVideos[index] && (
-                <iframe
-                  className="w-full h-full"
-                  src={`https://www.youtube.com/embed/${id}?autoplay=1`}
-                  frameBorder={0}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                  title={`YouTube video ${index + 1}`}
-                />
-              )}
+              <video
+                src={videoSrc}
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                className="w-full h-full object-cover"
+              />
             </div>
           ))}
         </div>
