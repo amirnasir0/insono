@@ -634,3 +634,26 @@ button {
     @apply bg-background text-foreground;
   }
 }
+
+/* React Slick Mobile Overflow & Card Squish Fixes */
+.slick-slider {
+  width: 100%;
+  overflow: hidden;
+}
+.slick-list {
+  overflow: hidden !important;
+}
+.slick-track {
+  display: flex !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+.slick-slide {
+  height: auto !important;
+  flex-shrink: 0 !important;
+}
+.slick-slide > div {
+  height: 100%;
+  width: 100%;
+}
+

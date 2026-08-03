@@ -114,96 +114,106 @@ const testimonials = [
 
 const banners = { url: "https://www.youtube.com/embed/Gn3dkFJtCg8" };
 
+import { useState, useEffect } from "react";
+
 export default function TestimonialClient() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
-    <main className="bg-white text-gray-900 pt-24">
+    <main className="bg-white text-gray-900 pt-24 overflow-x-hidden">
       <section className="py-16 max-w-7xl mx-auto px-4">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold">Hear from Our Satisfied Clients</h2>
             <p className="mt-4 max-w-2xl mx-auto text-gray-700">Real Experiences from People Who Trust Us, Sharing Their Journeys to Better Hearing with Our Expert Care and Support.</p>
           </div>
-          <Slider
-            dots
-            infinite
-            speed={800}
-            slidesToShow={4}
-            slidesToScroll={1}
-            autoplay
-            autoplaySpeed={4000}
-            arrows={false}
-            responsive={[
-              {
-                breakpoint: 1280,
-                settings: {
-                  slidesToShow: 3,
-                  slidesToScroll: 1,
+          {mounted && (
+            <Slider
+              dots
+              infinite
+              speed={800}
+              slidesToShow={4}
+              slidesToScroll={1}
+              autoplay
+              autoplaySpeed={4000}
+              arrows={false}
+              responsive={[
+                {
+                  breakpoint: 1280,
+                  settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                  },
                 },
-              },
-              {
-                breakpoint: 1024,
-                settings: {
-                  slidesToShow: 2,
-                  slidesToScroll: 1,
+                {
+                  breakpoint: 1024,
+                  settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                  },
                 },
-              },
-              {
-                breakpoint: 768,
-                settings: {
-                  slidesToShow: 1,
-                  slidesToScroll: 1,
+                {
+                  breakpoint: 768,
+                  settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                  },
                 },
-              },
-            ]}
-          >
-            {reviewCards.map((item, idx) => (
-              <div key={idx} className="px-2 py-3">
-                <div className="bg-white rounded-2xl p-4 shadow-lg border border-gray-100 flex flex-col justify-between h-[360px] text-left transition-all hover:shadow-xl">
-                  
-                  {/* Top Bar: Small Photo + Name + Rating */}
-                  <div className="flex items-center gap-3 pb-3 border-b border-gray-100">
-                    <div className="relative w-14 h-14 rounded-full overflow-hidden shrink-0 border-2 border-[#184A99] shadow-sm bg-gray-100 flex items-center justify-center">
-                      <Image
-                        src={item.personImage}
-                        alt={item.name}
-                        width={56}
-                        height={56}
-                        className="w-full h-full object-cover object-top"
-                      />
-                    </div>
+              ]}
+            >
+              {reviewCards.map((item, idx) => (
+                <div key={idx} className="px-2 py-3">
+                  <div className="bg-white rounded-2xl p-4 shadow-lg border border-gray-100 flex flex-col justify-between h-[360px] text-left transition-all hover:shadow-xl">
+                    
+                    {/* Top Bar: Small Photo + Name + Rating */}
+                    <div className="flex items-center gap-3 pb-3 border-b border-gray-100">
+                      <div className="relative w-14 h-14 rounded-full overflow-hidden shrink-0 border-2 border-[#184A99] shadow-sm bg-gray-100 flex items-center justify-center">
+                        <Image
+                          src={item.personImage}
+                          alt={item.name}
+                          width={56}
+                          height={56}
+                          className="w-full h-full object-cover object-top"
+                        />
+                      </div>
 
-                    <div className="flex-1 min-w-0">
-                      <h5 className="font-bold text-sm text-gray-900 truncate">{item.name}</h5>
-                      <p className="text-[11px] font-bold text-[#e6005c] uppercase truncate">{item.brand} - {item.model}</p>
-                      <div className="flex gap-0.5 text-amber-400 text-xs mt-0.5">
-                        {[...Array(5)].map((_, i) => (
-                          <span key={i}>★</span>
-                        ))}
+                      <div className="flex-1 min-w-0">
+                        <h5 className="font-bold text-sm text-gray-900 truncate">{item.name}</h5>
+                        <p className="text-[11px] font-bold text-[#e6005c] uppercase truncate">{item.brand} - {item.model}</p>
+                        <div className="flex gap-0.5 text-amber-400 text-xs mt-0.5">
+                          {[...Array(5)].map((_, i) => (
+                            <span key={i}>★</span>
+                          ))}
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  {/* Middle Quote Text */}
-                  <div className="my-3 flex-1 flex flex-col justify-center relative">
-                    <span className="text-[#e6005c] text-2xl font-serif leading-none select-none -mb-1 block">“</span>
-                    <p className="text-gray-700 text-xs leading-relaxed font-medium line-clamp-4 px-1">
-                      {item.formattedQuote}
-                    </p>
-                    <span className="text-[#e6005c] text-2xl font-serif leading-none select-none text-right block -mt-1">”</span>
-                  </div>
+                    {/* Middle Quote Text */}
+                    <div className="my-3 flex-1 flex flex-col justify-center relative">
+                      <span className="text-[#e6005c] text-2xl font-serif leading-none select-none -mb-1 block">“</span>
+                      <p className="text-gray-700 text-xs leading-relaxed font-medium line-clamp-4 px-1">
+                        {item.formattedQuote}
+                      </p>
+                      <span className="text-[#e6005c] text-2xl font-serif leading-none select-none text-right block -mt-1">”</span>
+                    </div>
 
-                  {/* Bottom Footer Badge */}
-                  <div className="pt-2 border-t border-gray-100 flex items-center justify-between text-[11px]">
-                    <span className="bg-blue-50 text-[#184A99] font-semibold px-2.5 py-0.5 rounded-full">
-                      Verified Client
-                    </span>
-                    <span className="text-gray-500 font-medium text-[10px]">Insono Hearing</span>
-                  </div>
+                    {/* Bottom Footer Badge */}
+                    <div className="pt-2 border-t border-gray-100 flex items-center justify-between text-[11px]">
+                      <span className="bg-blue-50 text-[#184A99] font-semibold px-2.5 py-0.5 rounded-full">
+                        Verified Client
+                      </span>
+                      <span className="text-gray-500 font-medium text-[10px]">Insono Hearing</span>
+                    </div>
 
+                  </div>
                 </div>
-              </div>
-            ))}
-          </Slider>
+              ))}
+            </Slider>
+          )}
         </div>
       </section>
 
