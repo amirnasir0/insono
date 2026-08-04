@@ -4,7 +4,7 @@ import { signIn } from "next-auth/react";
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Eye, EyeOff, Loader2, LogIn } from "lucide-react";
+import { ArrowLeft, Eye, EyeOff, Loader2, LogIn } from "lucide-react";
 
 export default function LoginPage() {
     const router = useRouter();
@@ -36,7 +36,7 @@ export default function LoginPage() {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-[#0a1628] via-[#0d2350] to-[#023784] flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 overflow-y-auto bg-gradient-to-br from-[#0a1628] via-[#0d2350] to-[#023784] flex items-center justify-center p-4">
             {/* Background grid */}
             <div
                 className="absolute inset-0 opacity-10"
@@ -49,6 +49,10 @@ export default function LoginPage() {
             <div className="relative w-full max-w-md">
                 {/* Card */}
                 <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl p-8">
+                    <Link href="/" className="inline-flex items-center gap-1.5 text-blue-300 hover:text-white text-sm mb-6 transition">
+                        <ArrowLeft size={16} /> Back to Home
+                    </Link>
+
                     {/* Logo */}
                     <div className="flex flex-col items-center mb-8">
                         <div className="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur flex items-center justify-center mb-4 shadow-lg">

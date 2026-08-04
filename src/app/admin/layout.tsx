@@ -12,7 +12,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <SessionProvider>
             <div className="min-h-screen bg-gray-50 flex">
                 <AdminSidebar />
-                <main className="flex-1 overflow-auto lg:ml-0">
+                <main className="flex-1 overflow-auto lg:ml-64">
                     {children}
                 </main>
             </div>

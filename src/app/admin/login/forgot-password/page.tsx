@@ -32,7 +32,7 @@ export default function ForgotPasswordPage() {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-[#0a1628] via-[#0d2350] to-[#023784] flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 overflow-y-auto bg-gradient-to-br from-[#0a1628] via-[#0d2350] to-[#023784] flex items-center justify-center p-4">
             <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)", backgroundSize: "40px 40px" }} />
             <div className="relative w-full max-w-md">
                 <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl p-8">

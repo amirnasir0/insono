@@ -116,11 +116,23 @@ const banners = { url: "https://www.youtube.com/embed/Gn3dkFJtCg8" };
 
 import { useState, useEffect } from "react";
 
+function getSlidesToShow(width: number) {
+  if (width < 768) return 1;
+  if (width < 1024) return 2;
+  if (width < 1280) return 3;
+  return 4;
+}
+
 export default function TestimonialClient() {
   const [mounted, setMounted] = useState(false);
+  const [slidesToShow, setSlidesToShow] = useState(4);
 
   useEffect(() => {
     setMounted(true);
+    const updateSlides = () => setSlidesToShow(getSlidesToShow(window.innerWidth));
+    updateSlides();
+    window.addEventListener("resize", updateSlides);
+    return () => window.removeEventListener("resize", updateSlides);
   }, []);
 
   return (
@@ -133,10 +145,11 @@ export default function TestimonialClient() {
           </div>
           {mounted && (
             <Slider
+              key={slidesToShow}
               dots
               infinite
               speed={800}
-              slidesToShow={4}
+              slidesToShow={slidesToShow}
               slidesToScroll={1}
               autoplay
               autoplaySpeed={4000}
@@ -158,6 +171,13 @@ export default function TestimonialClient() {
                 },
                 {
                   breakpoint: 768,
+                  settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                  },
+                },
+                {
+                  breakpoint: 640,
                   settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,

@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import HearingAidTypes from "@/components/HearingaidType";
 import ImageShowcaseSection from "@/components/ImageShowcaseSection";
 import ProductContent from "./ProductContent";
+import ImageGallery from "./ImageGallery";
 
 import { prisma } from "@/lib/prisma";
 
@@ -26,6 +27,8 @@ type Product = {
   suitableFor: string[];
   technology: string[];
   shape: string[];
+  colors: string[];
+  youtubeUrl: string | null;
   images: string[];
 };
 
@@ -248,24 +251,22 @@ export default async function ProductPage({
       {/* Product top section */}
       <section className="flex flex-col lg:flex-row items-start gap-10 mb-16">
         {/* Image gallery */}
-        <div className="lg:w-1/2 w-full">
-          <div className="relative w-full max-w-md aspect-[4/3] rounded-xl overflow-hidden mx-auto">
-            <Image
-              src={imageSrc}
-              alt={product.title}
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              priority
-              className="object-contain rounded-xl"
-            />
-          </div>
-          {product.images.length > 1 && (
-            <div className="flex gap-2 mt-3 flex-wrap justify-center">
-              {product.images.slice(1, 5).map((img, i) => (
-                <div key={i} className="relative w-16 h-16 rounded-lg overflow-hidden border border-gray-100 shadow-sm">
-                  <Image src={img} alt={`${product.title} view ${i + 2}`} fill className="object-cover" />
-                </div>
-              ))}
+        <div className="lg:w-1/2 w-full flex flex-col">
+          <ImageGallery images={product.images} title={product.title} />
+          {/* YouTube Link */}
+          {product.youtubeUrl && (
+            <div className="mt-3 flex justify-center">
+              <a
+                href={product.youtubeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition shadow-sm"
+              >
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+                View on YouTube
+              </a>
             </div>
           )}
         </div>
@@ -312,6 +313,29 @@ export default async function ProductPage({
               <div className="flex flex-wrap gap-1.5">
                 {product.shape.map((s) => (
                   <span key={s} className="px-2.5 py-1 bg-purple-50 text-purple-700 text-xs rounded-full font-medium">{s}</span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {product.colors && product.colors.length > 0 && (
+            <div className="mb-3">
+              <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Available Colors</p>
+              <div className="flex flex-wrap gap-2">
+                {product.colors.map((color) => (
+                  <span key={color} className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-50 text-gray-700 text-xs rounded-full font-medium border border-gray-200">
+                    <span
+                      className="w-3 h-3 rounded-full border border-gray-300 flex-shrink-0"
+                      style={{ backgroundColor: {
+                        "Black": "#1a1a1a", "Graphite": "#4b4b4b", "Grey": "#9e9e9e", "Silver": "#c0c0c0",
+                        "Dark Champagne": "#c8a97e", "Pearl White": "#f5f0e8", "Fine Gold": "#d4af37",
+                        "Deep Brown": "#4e2c0e", "Sandy Brown": "#c2956c", "Rose Gold": "#e8b4a0",
+                        "Beige": "#e8dcc8", "Cosmic Blue": "#2a3f7e", "Snow White": "#f9f9f9",
+                        "Snow White Gloss": "#ffffff", "Black Gloss": "#0d0d0d", "Mocha": "#6b4226", "Brown": "#795548",
+                      }[color] ?? "#ccc" }}
+                    />
+                    {color}
+                  </span>
                 ))}
               </div>
             </div>

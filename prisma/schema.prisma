@@ -37,6 +37,8 @@ model Product {
   suitableFor String[]        @default([])
   technology  String[]        @default([])
   shape       String[]        @default([])
+  colors      String[]        @default([])
+  youtubeUrl  String?
   images      String[]        @default([])
   createdAt   DateTime        @default(now())
   updatedAt   DateTime        @updatedAt

@@ -16,6 +16,14 @@ export default function NavigationWrapper({
   const isLandingPage =
     pathname === "/landing" || pathname.startsWith("/landing/");
 
+  // Hide global nav & footer for all /admin/* pages
+  const isAdminPage =
+    pathname === "/admin" || pathname.startsWith("/admin/");
+
+  if (isAdminPage) {
+    return <>{children}</>;
+  }
+
   return (
     <>
       {isLandingPage ? <LandingNav /> : <Navigation />}

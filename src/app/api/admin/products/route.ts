@@ -34,7 +34,7 @@ export async function POST(req: NextRequest) {
         if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
         const body = await req.json();
-        const { title, category, mrp, description, isFeatured, suitableFor, technology, shape, images } = body;
+        const { title, category, mrp, description, isFeatured, suitableFor, technology, shape, colors, youtubeUrl, images } = body;
 
         if (!title || !category) {
             return NextResponse.json({ error: "Title and category are required" }, { status: 400 });
@@ -58,6 +58,8 @@ export async function POST(req: NextRequest) {
                 suitableFor: suitableFor ?? [],
                 technology: technology ?? [],
                 shape: shape ?? [],
+                colors: colors ?? [],
+                youtubeUrl: youtubeUrl || null,
                 images: images ?? [],
             },
         });

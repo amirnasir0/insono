@@ -29,6 +29,8 @@ export default function EditProductPage() {
                     suitableFor: data.suitableFor,
                     technology: data.technology,
                     shape: data.shape,
+                    colors: data.colors ?? [],
+                    youtubeUrl: data.youtubeUrl ?? "",
                     images: data.images,
                 });
                 setFetching(false);

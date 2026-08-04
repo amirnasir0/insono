@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  allowedDevOrigins: ["*.loca.lt", "*.ngrok-free.app", "*.ngrok.io", "localhost:3000"],
   images: {
     remotePatterns: [
       {
