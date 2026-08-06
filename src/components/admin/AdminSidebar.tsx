@@ -19,12 +19,14 @@ import {
     CornerDownRight,
     MapPin,
     BookOpen,
+    UserCheck,
 } from "lucide-react";
 
 const navLinks = [
     { href: "/admin", label: "Dashboard", icon: LayoutDashboard, exact: true },
     { href: "/admin/products", label: "Products", icon: Package },
     { href: "/admin/clinics", label: "Clinics", icon: MapPin },
+    { href: "/admin/audiologists", label: "Audiologists", icon: UserCheck },
     { href: "/admin/latest", label: "Stories", icon: BookOpen },
     { href: "/admin/orders", label: "Orders", icon: ShoppingBag },
     { href: "/admin/offers", label: "Offers", icon: Tag },

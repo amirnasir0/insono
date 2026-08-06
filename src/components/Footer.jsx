@@ -160,6 +160,11 @@ export default function Footer() {
                   Financing Options
                 </a>
               </li>
+              <li>
+                <a href="/our-experts" className="hover:text-white">
+                  Our Audiologists &amp; Experts
+                </a>
+              </li>
             </ul>
           </div>
         </div>

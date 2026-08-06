@@ -23,6 +23,7 @@ export default function EditClinicPage() {
         address: data.address,
         hours: data.hours,
         tag: data.tag,
+        isNew: data.isNew ?? false,
         placeId: data.placeId ?? "",
         images: data.images ?? [],
         faqs: data.faqs ?? [],

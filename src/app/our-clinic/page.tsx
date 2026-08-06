@@ -78,6 +78,7 @@ export default async function ClinicPage() {
       address: c.address,
       hours: c.hours,
       tag: c.tag,
+      isNew: c.isNew,
       placeId: c.placeId ?? undefined,
       images: c.images,
       faqs: (c.faqs as { question: string; answer: string }[]) ?? [],

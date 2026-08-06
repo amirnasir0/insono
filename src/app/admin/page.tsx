@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Package, Star, Tag, PlusCircle } from "lucide-react";
+import { Package, Star, Tag, PlusCircle, UserCheck } from "lucide-react";
 
 interface Product {
     id: string;
@@ -55,6 +55,18 @@ export default function AdminDashboard() {
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-8">
                 <h2 className="font-semibold text-gray-700 mb-4">Quick Actions</h2>
                 <div className="flex flex-wrap gap-3">
+                    <Link
+                        href="/admin/audiologists/new"
+                        className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 text-white text-sm font-medium hover:bg-emerald-700 transition shadow-md"
+                    >
+                        <UserCheck size={16} /> Add Audiologist Expert
+                    </Link>
+                    <Link
+                        href="/admin/audiologists"
+                        className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200 text-sm font-medium hover:bg-emerald-100 transition"
+                    >
+                        <UserCheck size={16} /> Manage Audiologists
+                    </Link>
                     <Link
                         href="/admin/products/new"
                         className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#023784] text-white text-sm font-medium hover:bg-[#012d66] transition shadow-md"

@@ -5,6 +5,7 @@ export interface Clinic {
   address: string;
   hours: string;
   tag?: string;
+  isNew?: boolean;
   catSlug?: string;
   placeId?: string;
   images: string[];
@@ -69,6 +70,9 @@ export const clinics: Clinic[] = [
     address: "Unit No: 111, Palmspring Apartment, Lokhandwala Complex, Andheri West, Mumbai, Maharashtra 400053",
     hours: "Open, Closes by 7 pm",
     tag: "Clinic",
+    isNew: true,
+    city: "Mumbai",
+    state: "Maharashtra",
     images: [
       "/clinics/mumbai1.jpeg",
       "/clinics/mumbai2.jpeg",

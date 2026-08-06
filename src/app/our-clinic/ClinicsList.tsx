@@ -18,14 +18,15 @@ import { type Clinic } from "./clinics-data";
 
 /* ---------- Region ---------- */
 function getRegion(id: string, locationLine: string, state?: string): string {
-  if (state) {
-    if (state === "Delhi" || state === "Uttar Pradesh" || state === "Haryana") return "Delhi NCR";
-    if (state === "Maharashtra") return "Maharashtra";
-    if (state === "Bihar") return "Bihar";
-    if (state === "Jharkhand") return "Jharkhand";
-    if (state === "West Bengal") return "West Bengal";
-    if (state === "Punjab" || state === "Chandigarh" || state === "Himachal Pradesh") return "Punjab";
-    return "Others";
+  if (state && state.trim()) {
+    const s = state.trim();
+    if (s === "Delhi" || s === "Uttar Pradesh" || s === "Haryana") return "Delhi NCR";
+    if (s === "Maharashtra") return "Maharashtra";
+    if (s === "Bihar") return "Bihar";
+    if (s === "Jharkhand") return "Jharkhand";
+    if (s === "West Bengal") return "West Bengal";
+    if (s === "Punjab" || s === "Chandigarh" || s === "Himachal Pradesh") return "Punjab";
+    return s;
   }
   const l = locationLine.toLowerCase();
   if (id === "andheri-mumbai") return "Maharashtra";
@@ -35,10 +36,11 @@ function getRegion(id: string, locationLine: string, state?: string): string {
   if (l.includes("west bengal") || l.includes("kolkata") || l.includes("garia") || l.includes("asansol")) return "West Bengal";
   if (l.includes("punjab") || l.includes("chandigarh") || l.includes("ludhiana") || l.includes("jalandhar") || l.includes("ambala")) return "Punjab";
   if (l.includes("maharashtra") || l.includes("mumbai")) return "Maharashtra";
-  return "Others";
+  if (l.includes("uttarakhand") || l.includes("dehradun")) return "Uttarakhand";
+  if (l.includes("jammu")) return "Jammu & Kashmir";
+  if (l.includes("telangana") || l.includes("hyderabad")) return "Telangana";
+  return "Pan-India";
 }
-
-const REGIONS = ["All", "Delhi NCR", "Maharashtra", "Bihar", "Jharkhand", "West Bengal", "Punjab", "Others"];
 
 /* ---------- Stats ---------- */
 const stats = [
@@ -89,8 +91,16 @@ export default function ClinicsList({ clinics }: { clinics: Clinic[] }) {
   const enriched = clinics.map((c) => ({
     ...c,
     region: getRegion(c.id, c.locationLine, c.state),
-    isNew: c.id === "andheri-mumbai",
+    isNew: Boolean(c.isNew),
   }));
+
+  const baseOrder = ["Delhi NCR", "Maharashtra", "Bihar", "Jharkhand", "West Bengal", "Punjab"];
+  const dynamicRegions = Array.from(new Set(enriched.map((c) => c.region)));
+  const orderedRegions = [
+    ...baseOrder.filter((r) => dynamicRegions.includes(r)),
+    ...dynamicRegions.filter((r) => !baseOrder.includes(r)),
+  ];
+  const regions = ["All", ...orderedRegions];
 
   const filtered =
     activeRegion === "All"
@@ -157,7 +167,7 @@ export default function ClinicsList({ clinics }: { clinics: Clinic[] }) {
       <section className="sticky top-[64px] z-20 bg-white border-b border-gray-200 shadow-sm">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex gap-1 overflow-x-auto py-3 scrollbar-hide">
-            {REGIONS.map((r) => (
+            {regions.map((r) => (
               <button
                 key={r}
                 onClick={() => setActiveRegion(r)}

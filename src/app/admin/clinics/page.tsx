@@ -11,6 +11,7 @@ interface ClinicRow {
   city: string;
   state: string;
   tag: string;
+  isNew?: boolean;
   isActive: boolean;
   images: string[];
   placeId: string | null;
@@ -90,7 +91,14 @@ export default function AdminClinicsPage() {
                         </div>
                       )}
                       <div>
-                        <p className="font-medium text-gray-800 leading-snug">{c.name}</p>
+                        <div className="flex items-center gap-2">
+                          <p className="font-medium text-gray-800 leading-snug">{c.name}</p>
+                          {c.isNew && (
+                            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
+                              New ✨
+                            </span>
+                          )}
+                        </div>
                         <p className="text-xs text-gray-400 mt-0.5">/our-clinic/{c.id}</p>
                       </div>
                     </div>
@@ -99,7 +107,9 @@ export default function AdminClinicsPage() {
                     {c.city}, {c.state}
                   </td>
                   <td className="px-6 py-4 hidden md:table-cell">
-                    <span className="px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-medium">{c.tag}</span>
+                    <div className="flex items-center gap-1.5">
+                      <span className="px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-medium">{c.tag}</span>
+                    </div>
                   </td>
                   <td className="px-6 py-4">
                     {c.isActive ? (

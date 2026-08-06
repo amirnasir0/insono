@@ -16,6 +16,7 @@ async function getClinic(id: string): Promise<Clinic | null> {
         address: row.address,
         hours: row.hours,
         tag: row.tag,
+        isNew: row.isNew,
         placeId: row.placeId ?? undefined,
         images: row.images,
         faqs: (row.faqs as { question: string; answer: string }[]) ?? [],

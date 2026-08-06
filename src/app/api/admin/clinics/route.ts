@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
     if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
     const body = await req.json();
-    const { name, city, state, locationLine, address, hours, tag, placeId, images, faqs, isActive, customId } = body;
+    const { name, city, state, locationLine, address, hours, tag, isNew, placeId, images, faqs, isActive, customId } = body;
 
     if (!name || !city || !state || !address) {
       return NextResponse.json({ error: "Name, city, state, and address are required" }, { status: 400 });
@@ -50,6 +50,7 @@ export async function POST(req: NextRequest) {
         address,
         hours: hours || "Open, Closes by 7 pm",
         tag: tag || "Clinic",
+        isNew: isNew ?? false,
         placeId: placeId || null,
         images: images ?? [],
         faqs: faqs ?? [],
@@ -60,6 +61,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(clinic, { status: 201 });
   } catch (error) {
     console.error("POST /api/admin/clinics error:", error);
-    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+    return NextResponse.json({ error: error instanceof Error ? error.message : "Internal server error" }, { status: 500 });
   }
 }

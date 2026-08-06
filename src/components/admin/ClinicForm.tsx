@@ -25,6 +25,7 @@ export interface ClinicFormData {
   address: string;
   hours: string;
   tag: string;
+  isNew: boolean;
   placeId: string;
   images: string[];
   faqs: { question: string; answer: string }[];
@@ -51,6 +52,7 @@ export default function ClinicForm({ initial, onSubmit, submitLabel, isEdit }: P
     address: initial?.address ?? "",
     hours: initial?.hours ?? "Open, Closes by 7 pm",
     tag: initial?.tag ?? "Clinic",
+    isNew: initial?.isNew ?? false,
     placeId: initial?.placeId ?? "",
     images: initial?.images ?? [],
     faqs: initial?.faqs ?? [],
@@ -259,15 +261,30 @@ export default function ClinicForm({ initial, onSubmit, submitLabel, isEdit }: P
           </div>
         )}
 
-        <div className="flex items-center gap-3">
-          <button
-            type="button"
-            onClick={() => set("isActive", !form.isActive)}
-            className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${form.isActive ? "bg-[#023784]" : "bg-gray-200"}`}
-          >
-            <span className={`inline-block h-4 w-4 transform rounded-full bg-white shadow transition-transform ${form.isActive ? "translate-x-6" : "translate-x-1"}`} />
-          </button>
-          <span className="text-sm font-medium text-gray-700">{form.isActive ? "Active (visible on site)" : "Inactive (hidden from site)"}</span>
+        <div className="flex flex-wrap items-center gap-6 pt-2">
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={() => set("isNew", !form.isNew)}
+              className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${form.isNew ? "bg-emerald-600" : "bg-gray-200"}`}
+            >
+              <span className={`inline-block h-4 w-4 transform rounded-full bg-white shadow transition-transform ${form.isNew ? "translate-x-6" : "translate-x-1"}`} />
+            </button>
+            <span className="text-sm font-medium text-gray-700">
+              {form.isNew ? "New Clinic (Shows 'New ✨' Badge)" : "Standard Clinic (No 'New' Badge)"}
+            </span>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={() => set("isActive", !form.isActive)}
+              className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${form.isActive ? "bg-[#023784]" : "bg-gray-200"}`}
+            >
+              <span className={`inline-block h-4 w-4 transform rounded-full bg-white shadow transition-transform ${form.isActive ? "translate-x-6" : "translate-x-1"}`} />
+            </button>
+            <span className="text-sm font-medium text-gray-700">{form.isActive ? "Active (visible on site)" : "Inactive (hidden from site)"}</span>
+          </div>
         </div>
       </section>
 
