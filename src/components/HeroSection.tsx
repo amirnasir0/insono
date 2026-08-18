@@ -203,7 +203,7 @@ export default function HeroSection() {
 
         <div>
           <p className="text-sm text-gray-500 mb-3">
-            Official partner of India's leading hearing aid brands
+            Trusted Provider of Hearing Aids from <span className="font-semibold text-gray-800">India's Leading Brands</span>
           </p>
           <div className="relative overflow-hidden w-full h-16 sm:h-20">
             <div
@@ -261,7 +261,7 @@ export default function HeroSection() {
 
           <div className="mt-6">
             <p className="text-sm text-gray-500 mb-3">
-              Official partner of India's leading hearing aid brands
+              Trusted Provider of Hearing Aids from <span className="font-semibold text-gray-800">India's Leading Brands</span>
             </p>
             <div className="relative overflow-hidden w-full h-20">
               <div
