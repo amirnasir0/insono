@@ -6,6 +6,7 @@ import HearingAidTypes from "@/components/HearingaidType";
 import ImageShowcaseSection from "@/components/ImageShowcaseSection";
 import ProductContent from "./ProductContent";
 import ImageGallery from "./ImageGallery";
+import { getSwatchColor } from "@/lib/colors";
 
 import { prisma } from "@/lib/prisma";
 
@@ -326,13 +327,7 @@ export default async function ProductPage({
                   <span key={color} className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-50 text-gray-700 text-xs rounded-full font-medium border border-gray-200">
                     <span
                       className="w-3 h-3 rounded-full border border-gray-300 flex-shrink-0"
-                      style={{ backgroundColor: {
-                        "Black": "#1a1a1a", "Graphite": "#4b4b4b", "Grey": "#9e9e9e", "Silver": "#c0c0c0",
-                        "Dark Champagne": "#c8a97e", "Pearl White": "#f5f0e8", "Fine Gold": "#d4af37",
-                        "Deep Brown": "#4e2c0e", "Sandy Brown": "#c2956c", "Rose Gold": "#e8b4a0",
-                        "Beige": "#e8dcc8", "Cosmic Blue": "#2a3f7e", "Snow White": "#f9f9f9",
-                        "Snow White Gloss": "#ffffff", "Black Gloss": "#0d0d0d", "Mocha": "#6b4226", "Brown": "#795548",
-                      }[color] ?? "#ccc" }}
+                      style={{ backgroundColor: getSwatchColor(color) }}
                     />
                     {color}
                   </span>

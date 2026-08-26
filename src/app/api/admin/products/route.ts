@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";
 
@@ -63,6 +64,10 @@ export async function POST(req: NextRequest) {
                 images: images ?? [],
             },
         });
+
+        revalidatePath("/all-hearing-aids");
+        revalidatePath("/hearing-aid-price");
+        revalidatePath("/admin/products");
 
         return NextResponse.json(product, { status: 201 });
     } catch (error) {

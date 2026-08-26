@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";
 
@@ -47,6 +48,9 @@ export async function PUT(req: NextRequest, { params }: Params) {
       },
     });
 
+    revalidatePath("/stories");
+    if (post.slug) revalidatePath(`/stories/${post.slug}`);
+
     return NextResponse.json(post);
   } catch (error) {
     console.error("PUT /api/admin/posts/[id] error:", error);
@@ -60,7 +64,12 @@ export async function DELETE(_req: NextRequest, { params }: Params) {
     if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
     const { id } = await params;
+    const postToDelete = await prisma.post.findUnique({ where: { id }, select: { slug: true } });
     await prisma.post.delete({ where: { id } });
+
+    revalidatePath("/stories");
+    if (postToDelete?.slug) revalidatePath(`/stories/${postToDelete.slug}`);
+
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("DELETE /api/admin/posts/[id] error:", error);

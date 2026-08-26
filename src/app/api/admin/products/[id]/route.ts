@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";
 
@@ -50,6 +51,11 @@ export async function PUT(
             },
         });
 
+        revalidatePath("/all-hearing-aids");
+        revalidatePath("/hearing-aid-price");
+        revalidatePath("/admin/products");
+        if (product.slug) revalidatePath(`/product/${product.slug}`);
+
         return NextResponse.json(product);
     } catch (error) {
         return NextResponse.json({ error: "Internal server error" }, { status: 500 });
@@ -66,7 +72,14 @@ export async function DELETE(
         if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
         const { id } = await params;
+        const productToDelete = await prisma.product.findUnique({ where: { id }, select: { slug: true } });
         await prisma.product.delete({ where: { id } });
+
+        revalidatePath("/all-hearing-aids");
+        revalidatePath("/hearing-aid-price");
+        revalidatePath("/admin/products");
+        if (productToDelete?.slug) revalidatePath(`/product/${productToDelete.slug}`);
+
         return NextResponse.json({ message: "Product deleted" });
     } catch (error) {
         return NextResponse.json({ error: "Internal server error" }, { status: 500 });

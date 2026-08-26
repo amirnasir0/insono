@@ -4,6 +4,8 @@ import { prisma } from "@/lib/prisma";
 import type { Metadata } from "next";
 import { Calendar, MapPin } from "lucide-react";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Insono Stories — Patient Stories, Team Updates & More",
   description:

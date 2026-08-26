@@ -5,6 +5,8 @@ import { prisma } from "@/lib/prisma";
 import type { Metadata } from "next";
 import { Calendar, MapPin, ArrowLeft } from "lucide-react";
 
+export const dynamic = "force-dynamic";
+
 type Params = { params: Promise<{ slug: string }> };
 
 const CATEGORY_STYLES: Record<string, string> = {

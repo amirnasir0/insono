@@ -3,6 +3,7 @@
 import { useEffect, useState, useCallback } from "react";
 import Image from "next/image";
 import { X, Upload, Loader2, Star } from "lucide-react";
+import { COLOR_SWATCH, getSwatchColor, findHexForName, findNameForHex } from "@/lib/colors";
 
 const CATEGORIES = ["signia", "phonak", "widex", "oticon", "starkey", "resound"];
 
@@ -14,15 +15,6 @@ const COLOR_OPTIONS = [
     "Fine Gold", "Deep Brown", "Sandy Brown", "Rose Gold", "Beige",
     "Cosmic Blue", "Snow White", "Snow White Gloss", "Black Gloss", "Mocha", "Brown",
 ];
-
-// Map color names to approximate CSS colors for swatches
-const COLOR_SWATCH: Record<string, string> = {
-    "Black": "#1a1a1a", "Graphite": "#4b4b4b", "Grey": "#9e9e9e", "Silver": "#c0c0c0",
-    "Dark Champagne": "#c8a97e", "Pearl White": "#f5f0e8", "Fine Gold": "#d4af37",
-    "Deep Brown": "#4e2c0e", "Sandy Brown": "#c2956c", "Rose Gold": "#e8b4a0",
-    "Beige": "#e8dcc8", "Cosmic Blue": "#2a3f7e", "Snow White": "#f9f9f9",
-    "Snow White Gloss": "#ffffff", "Black Gloss": "#0d0d0d", "Mocha": "#6b4226", "Brown": "#795548",
-};
 
 export interface ProductFormData {
     title: string;
@@ -47,6 +39,9 @@ interface Props {
 
 export default function ProductForm({ initialData, onSubmit, submitLabel, loading }: Props) {
     const [settings, setSettings] = useState<Settings>({});
+    const [customInputText, setCustomInputText] = useState("");
+    const [customHex, setCustomHex] = useState("#cccccc");
+
     const [form, setForm] = useState<ProductFormData>({
         title: initialData?.title ?? "",
         category: initialData?.category ?? "",
@@ -62,6 +57,24 @@ export default function ProductForm({ initialData, onSubmit, submitLabel, loadin
     });
     const [uploading, setUploading] = useState(false);
     const [uploadError, setUploadError] = useState("");
+
+    useEffect(() => {
+        if (initialData) {
+            setForm({
+                title: initialData.title ?? "",
+                category: initialData.category ?? "",
+                mrp: initialData.mrp ?? "",
+                description: initialData.description ?? "",
+                isFeatured: initialData.isFeatured ?? false,
+                suitableFor: initialData.suitableFor ?? [],
+                technology: initialData.technology ?? [],
+                shape: initialData.shape ?? [],
+                colors: initialData.colors ?? [],
+                youtubeUrl: initialData.youtubeUrl ?? "",
+                images: initialData.images ?? [],
+            });
+        }
+    }, [initialData]);
 
     useEffect(() => {
         fetch("/api/admin/settings")
@@ -113,9 +126,35 @@ export default function ProductForm({ initialData, onSubmit, submitLabel, loadin
         handleImageUpload(e.dataTransfer.files);
     };
 
+    const addCustomColors = useCallback((input: string, hex: string): string[] => {
+        if (!input.trim()) return form.colors;
+        const items = input
+            .split(",")
+            .map((c) => c.trim())
+            .filter(Boolean);
+
+        const newColors = [...form.colors];
+        items.forEach((item) => {
+            if (!newColors.includes(item)) {
+                newColors.push(item);
+            }
+            if (hex) {
+                COLOR_SWATCH[item] = hex;
+            }
+        });
+        return newColors;
+    }, [form.colors]);
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        await onSubmit(form);
+        let finalColors = form.colors;
+        if (customInputText.trim()) {
+            finalColors = addCustomColors(customInputText, customHex);
+            setCustomInputText("");
+        }
+        const finalForm = { ...form, colors: finalColors };
+        setForm(finalForm);
+        await onSubmit(finalForm);
     };
 
     return (
@@ -231,7 +270,7 @@ export default function ProductForm({ initialData, onSubmit, submitLabel, loadin
             {/* Colors */}
             <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
                 <h2 className="font-semibold text-gray-700 mb-1">Available Colors</h2>
-                <p className="text-xs text-gray-400 mb-4">Select from presets or add a custom color below.</p>
+                <p className="text-xs text-gray-400 mb-4">Select from presets or add custom colors below.</p>
 
                 {/* Preset color chips */}
                 <div className="flex flex-wrap gap-2 mb-5">
@@ -250,7 +289,7 @@ export default function ProductForm({ initialData, onSubmit, submitLabel, loadin
                             >
                                 <span
                                     className="w-3.5 h-3.5 rounded-full border border-gray-300 flex-shrink-0"
-                                    style={{ backgroundColor: COLOR_SWATCH[color] ?? "#ccc" }}
+                                    style={{ backgroundColor: getSwatchColor(color) }}
                                 />
                                 {color}
                             </button>
@@ -262,11 +301,29 @@ export default function ProductForm({ initialData, onSubmit, submitLabel, loadin
                 <div className="border-t border-gray-100 pt-4">
                     <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Add Custom Color</p>
                     <CustomColorInput
-                        onAdd={(colorName, hex) => {
-                            if (colorName && !form.colors.includes(colorName)) {
-                                setForm((p) => ({ ...p, colors: [...p.colors, colorName] }));
-                                // Store hex in swatch map for display
-                                COLOR_SWATCH[colorName] = hex;
+                        value={customInputText}
+                        onChangeText={(val) => {
+                            setCustomInputText(val);
+                            const matchedHex = findHexForName(val);
+                            if (matchedHex) {
+                                setCustomHex(matchedHex);
+                            }
+                        }}
+                        hex={customHex}
+                        onChangeHex={(hexVal) => {
+                            setCustomHex(hexVal);
+                            const matchedName = findNameForHex(hexVal);
+                            if (matchedName) {
+                                setCustomInputText(matchedName);
+                            } else if (!customInputText.trim() || customInputText.startsWith("#")) {
+                                setCustomInputText(hexVal.toUpperCase());
+                            }
+                        }}
+                        onAdd={() => {
+                            if (customInputText.trim()) {
+                                const updated = addCustomColors(customInputText, customHex);
+                                setForm((p) => ({ ...p, colors: updated }));
+                                setCustomInputText("");
                             }
                         }}
                     />
@@ -277,7 +334,7 @@ export default function ProductForm({ initialData, onSubmit, submitLabel, loadin
                                 <span key={color} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium bg-[#023784] text-white border border-[#023784]">
                                     <span
                                         className="w-3 h-3 rounded-full border border-white/40 flex-shrink-0"
-                                        style={{ backgroundColor: COLOR_SWATCH[color] ?? "#ccc" }}
+                                        style={{ backgroundColor: getSwatchColor(color) }}
                                     />
                                     {color}
                                     <button
@@ -373,18 +430,15 @@ export default function ProductForm({ initialData, onSubmit, submitLabel, loadin
 }
 
 // ── CustomColorInput ─────────────────────────────────────────────────────────
-function CustomColorInput({ onAdd }: { onAdd: (name: string, hex: string) => void }) {
-    const [name, setName] = useState("");
-    const [hex, setHex] = useState("#cccccc");
+interface CustomColorInputProps {
+    value: string;
+    onChangeText: (val: string) => void;
+    hex: string;
+    onChangeHex: (val: string) => void;
+    onAdd: () => void;
+}
 
-    const handleAdd = () => {
-        const trimmed = name.trim();
-        if (!trimmed) return;
-        onAdd(trimmed, hex);
-        setName("");
-        setHex("#cccccc");
-    };
-
+function CustomColorInput({ value, onChangeText, hex, onChangeHex, onAdd }: CustomColorInputProps) {
     return (
         <div className="flex items-center gap-2 flex-wrap">
             {/* Color picker */}
@@ -396,7 +450,7 @@ function CustomColorInput({ onAdd }: { onAdd: (name: string, hex: string) => voi
                 <input
                     type="color"
                     value={hex}
-                    onChange={(e) => setHex(e.target.value)}
+                    onChange={(e) => onChangeHex(e.target.value)}
                     className="absolute inset-0 opacity-0 w-full h-full cursor-pointer"
                     title="Pick a color"
                 />
@@ -405,18 +459,23 @@ function CustomColorInput({ onAdd }: { onAdd: (name: string, hex: string) => voi
             {/* Color name input */}
             <input
                 type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && (e.preventDefault(), handleAdd())}
-                placeholder="e.g. Midnight Blue"
-                className="flex-1 min-w-[160px] px-3.5 py-2 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#023784]/30 focus:border-[#023784] text-sm transition"
+                value={value}
+                onChange={(e) => onChangeText(e.target.value)}
+                onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                        e.preventDefault();
+                        onAdd();
+                    }
+                }}
+                placeholder="e.g. Midnight Blue, Champagne Silver"
+                className="flex-1 min-w-[200px] px-3.5 py-2 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#023784]/30 focus:border-[#023784] text-sm transition"
             />
 
             {/* Add button */}
             <button
                 type="button"
-                onClick={handleAdd}
-                disabled={!name.trim()}
+                onClick={onAdd}
+                disabled={!value.trim()}
                 className="px-4 py-2 rounded-xl bg-[#023784] text-white text-sm font-semibold hover:bg-[#012d66] transition disabled:opacity-40"
             >
                 + Add
