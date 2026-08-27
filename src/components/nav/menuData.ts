@@ -10,11 +10,11 @@ export const sections: MenuSection[] = [
   {
     label: "Hearing Aids by Brand",
     items: [
-      { label: "Signia Hearing Aids", href: "/hearing-aids/signia" },
       { label: "Phonak Hearing Aids", href: "/hearing-aids/phonak" },
       { label: "Widex Hearing Aids", href: "/hearing-aids/widex" },
       { label: "Oticon Hearing Aids", href: "/hearing-aids/oticon" },
       { label: "Starkey Hearing Aids", href: "/hearing-aids/starkey" },
+      { label: "Signia Hearing Aids", href: "/hearing-aids/signia" },
       { label: "ReSound Hearing Aids", href: "/hearing-aids/resound" },
     ],
   },

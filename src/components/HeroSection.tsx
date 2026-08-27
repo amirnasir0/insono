@@ -14,9 +14,9 @@ export default function HeroSection() {
   ];
 
   const heroImages = [
-    "/signia_bct2.png",
+    "/infinio-sphere.webp",
+    "/phonak-virto-infinio.png",
     "/hearwave/styletto.png",
-    "/hearwave/oticon-intent.png",
     "/hero1.png",
     "/hero2.png",
     "/hero3.png",
