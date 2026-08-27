@@ -10,7 +10,6 @@ export default function HeroSection() {
     "/brands/signia.svg",
     "/brands/widex.svg",
     "/brands/phonaklogo.svg",
-    "/brands/oticon.svg",
     "/brands/resound.svg",
   ];
 
