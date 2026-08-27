@@ -79,6 +79,11 @@ export default function RootLayout({
         />
 
         <Script
+          src="https://news.google.com/swg/js/v1/publisher.js"
+          strategy="afterInteractive"
+        />
+
+        <Script
           id="gtm-head"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{

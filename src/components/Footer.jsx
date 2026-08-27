@@ -45,6 +45,11 @@ export default function Footer() {
             >
               Contact us
             </a>
+
+            <div className="mt-4">
+              <p className="text-xs text-gray-500 mb-1.5">Follow us on Google Search</p>
+              <div google-add-preferred-source-btn data-theme="dark"></div>
+            </div>
           </div>
 
           {/* Company Links */}
