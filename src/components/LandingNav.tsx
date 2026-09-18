@@ -11,7 +11,7 @@ export default function LandingNav() {
     <>
       <div className="sticky top-0 z-50">
         {/* ── Scarcity Banner ── */}
-        <div className="bg-red-600 text-white py-2 px-4 text-center text-xs sm:text-sm font-bold shadow-md animate-pulse">
+        <div className="global-scarcity-banner bg-red-600 text-white py-2 px-4 text-center text-xs sm:text-sm font-bold shadow-md animate-pulse">
           ⚠️ Lowest Price Match offer — Limited Free Trial Slots Available This Month!
         </div>
 
