@@ -1,7 +1,7 @@
 "use client";
 
 const localVideos = [
-  "/video/insono1.mp4",
+  "/video/insono5.MP4",
   "/video/insono3.mp4",
   "/video/insono2.mp4",
   "/video/insono4.mp4",
