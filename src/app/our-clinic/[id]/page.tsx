@@ -187,6 +187,26 @@ export default async function ClinicDetailPage({ params }: ClinicPageParams) {
         <HearingAidTypes />
       </section>
 
+      {/* ✅ Location Map */}
+      {id === "andheri-mumbai" && (
+        <section className="mt-14">
+          <h2 className="text-2xl font-bold text-[#112f70] mb-4">
+            Our Location
+          </h2>
+          <div className="w-full h-auto overflow-hidden rounded-lg shadow-md border">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.1758933926644!2d72.81961239678957!3d19.143776400000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b796e27ec457%3A0xc1e05f71ce566852!2sInsono%20Hearing%20Solutions%20Pvt.Ltd.%20Andheri%20Mumbai!5e0!3m2!1sen!2sin!4v1791372239974!5m2!1sen!2sin"
+              width="100%"
+              height="300"
+              style={{ border: 0 }}
+              allowFullScreen={false}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </section>
+      )}
+
       {/* ✅ FAQs */}
       <section className="mt-14">
         <h2 className="text-2xl font-bold text-[#112f70] mb-4">
