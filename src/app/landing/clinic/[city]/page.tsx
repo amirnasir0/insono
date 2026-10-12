@@ -205,10 +205,6 @@ export default async function ClinicCityLandingPage({
 
       {/* ── CUSTOM MOBILE HEADER ── */}
       <div className="block md:hidden sticky top-0 z-50 bg-white border-b border-slate-100">
-        <div className="bg-[#0D2240] text-white py-2.5 px-4 text-center text-[10px] font-bold uppercase tracking-[0.2em]">
-          <span className="inline-block w-2 h-2 bg-rose-500 rounded-full animate-pulse mr-2" />
-          Certified Audiologist · Same-Day Fitting · {cityName}
-        </div>
         <div className="px-4 py-3 flex items-center justify-between">
           <Link href="/">
             <Image src="/logo.webp" alt="Insono Hearing" width={100} height={32} className="h-8 w-auto object-contain" />

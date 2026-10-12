@@ -193,11 +193,6 @@ export default function Top5LandingPage() {
       ──────────────────────────────────────────────────────────── */}
       <div className="block md:hidden pb-20">
 
-        {/* Urgency bar */}
-        <div className="bg-[#0D2240] text-white py-2.5 px-4 text-center text-[10px] font-bold uppercase tracking-[0.2em] relative z-[60]">
-          <span className="inline-block w-2 h-2 bg-rose-500 rounded-full animate-pulse mr-2" />
-          Only 12 free trial slots left this week — Claim yours now
-        </div>
 
         {/* Header */}
         <div className="sticky top-0 z-50 t5-mobile-header-wrapper">

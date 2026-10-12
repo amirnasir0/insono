@@ -152,11 +152,6 @@ export default function LucknowHindiLandingPage() {
       ──────────────────────────────────────────────────────────── */}
       <div className="block md:hidden pb-20">
 
-        {/* Top Announcement Bar */}
-        <div className="bg-[#0D2240] text-white py-2.5 px-4 text-center text-[10px] font-bold uppercase tracking-[0.15em] relative z-[60]">
-          <span className="inline-block w-2 h-2 bg-rose-500 rounded-full animate-pulse mr-2" />
-          लखनऊ में नवीनतम हियरिंग एड टेक्नोलॉजी
-        </div>
 
         {/* Header */}
         <div className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-slate-100 custom-mobile-header-wrapper">
