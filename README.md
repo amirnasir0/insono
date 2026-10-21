@@ -4,7 +4,7 @@ fb-landnnn
 First, run the development server
 ```b
 npm run dev
-# 
+#
 yarn de
 # o
 pnpm d
