@@ -54,6 +54,22 @@ const awards = [
     title: "Signia Authorised Channel Partner",
     img: "/images/certifications/signia.jpg",
   },
+  {
+    title: "Insono Hearing Solutions Recognition",
+    img: "/NewAwards/new1.jpeg",
+  },
+  {
+    title: "Insono Hearing Solutions Recognition",
+    img: "/NewAwards/new2.jpeg",
+  },
+  {
+    title: "Insono Hearing Solutions Recognition",
+    img: "/NewAwards/new3.jpeg",
+  },
+  {
+    title: "Insono Hearing Solutions Recognition",
+    img: "/NewAwards/new4.jpeg",
+  },
 ];
 
 const certifications = [

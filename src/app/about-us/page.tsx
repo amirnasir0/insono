@@ -196,6 +196,9 @@ Driven by a patient-first approach, Mr. Manoj Kumar ensures every individual rec
               "signia.jpg",
               "phonak.jpeg",
               "images/certifications/widex.png",
+              "NewAwards/new1.jpeg",
+              "NewAwards/new2.jpeg",
+              "NewAwards/new3.jpeg",
             ].map((img) => (
               <div
                 key={img}
