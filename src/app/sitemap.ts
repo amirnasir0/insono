@@ -2,7 +2,8 @@ import type { MetadataRoute } from "next";
 import { prisma } from "@/lib/prisma";
 import { graphQLClient, GET_POSTS } from "@/lib/graphql";
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://insonohearing.com";
+// Canonical host: the non-www domain 301-redirects here, so sitemap URLs must use www
+const BASE_URL = "https://www.insonohearing.com";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const routes: MetadataRoute.Sitemap = [
@@ -46,6 +47,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Fetch dynamic products from Prisma
     try {
         const products = await prisma.product.findMany({
+            // Slugs below 301-redirect (see next.config.ts), so they are not final URLs
+            where: {
+                slug: {
+                    notIn: ["signia-orion-cg-75-1775113556904", "signia-orion-cg-200-1775112354026"],
+                },
+            },
             select: { slug: true, updatedAt: true },
         });
 

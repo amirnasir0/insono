@@ -41,6 +41,16 @@ const nextConfig: NextConfig = {
         destination: "/hearing-aid-price",
         permanent: true, // 301 redirect (SEO-friendly)
       },
+      {
+        source: "/product/signia-orion-cg-75-1775113556904",
+        destination: "/product/signia-orion-cg-75",
+        permanent: true, // 301 redirect (SEO-friendly)
+      },
+      {
+        source: "/product/signia-orion-cg-200-1775112354026",
+        destination: "/product/signia-orion-cg-200",
+        permanent: true, // 301 redirect (SEO-friendly)
+      },
     ];
   },
 };

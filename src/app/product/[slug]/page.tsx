@@ -35,6 +35,28 @@ type Product = {
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.insonohearing.com";
 
+// Unique meta descriptions for products whose descriptions start with the same text
+const SEO_DESCRIPTIONS: Record<string, string> = {
+  "terra-ric-r": "Phonak Terra RIC-R receiver-in-canal hearing aid with universal connectivity. Free 3-day trial & expert fitting at Insono Hearing.",
+  "terra-ric-312": "Phonak TERRA+ RIC-312 receiver-in-canal hearing aid with universal connectivity. Genuine product with manufacturer warranty & expert fitting at Insono.",
+  "terra-ric": "Phonak Kit Terra RIC-R receiver-in-canal hearing aid with universal connectivity. Check price, features & book a free 3-day trial at Insono Hearing.",
+  "terra-bte": "Phonak Terra+ BTE behind-the-ear hearing aid with universal connectivity. 100% genuine, expert fitting & free 3-day trial available at Insono Hearing.",
+  "signia-orion-psp-75": "Signia Orion P/SP 75 rechargeable BTE hearing aid for moderate to severe-to-profound hearing loss. Free 3-day trial & expert fitting at Insono Hearing.",
+  "signia-orion-cg-psp-50": "Signia Orion C&G P/SP 50 rechargeable behind-the-ear hearing aid. 100% genuine with manufacturer warranty, expert fitting & free 3-day trial at Insono.",
+  "go-pro-power-d-bte": "Oticon Go Pro Power D behind-the-ear hearing aid. 100% genuine with manufacturer warranty, expert fitting & free 3-day trial at Insono Hearing.",
+  "go-pro-d-vc-bte-go-pro-d-bte": "Oticon Go Pro D VC / Go Pro D BTE hearing aid. Check price, features & book a free 3-day trial with expert fitting at Insono Hearing.",
+};
+
+// Unique titles for products listed twice with the same name
+const SEO_TITLES: Record<string, string> = {
+  "signia-orion-cg-75": "Signia Orion Charge&Go 75 RIC Rechargeable Hearing Aid | Insono",
+  "signia-orion-cg-200": "Signia Orion Charge&Go 200 RIC Rechargeable Hearing Aid | Insono",
+  "virto-p70-312": "Phonak Virto P70-312 Custom-Made ITC Hearing Aid | Insono",
+  "virto-p70-312-1774343488971": "Phonak Virto P70-312 Premium Custom Hearing Aid | Insono",
+  "cic-220": "Widex MOMENT CIC 220 Completely-in-Canal Hearing Aid | Insono",
+  "cic-m-220": "Widex CIC-M 220 Hearing Aid Price & Review | Insono",
+};
+
 async function getProduct(slug: string): Promise<Product | null> {
   try {
     const product = await prisma.product.findUnique({
@@ -145,6 +167,7 @@ export async function generateMetadata({
   const techStr = product.technology.slice(0, 2).join(" & ");
   const priceStr = product.mrp ? ` at ₹${product.mrp.toLocaleString()}` : "";
   const description =
+    SEO_DESCRIPTIONS[product.slug] ||
     (product.description?.replace(/<[^>]+>/g, "").trim().slice(0, 155)) ||
     `${product.title} — ${techStr ? `${techStr} hearing aid` : `${brandName} hearing aid`}${priceStr}. Free 3-day trial & expert fitting available at Insono Hearing. 100% genuine with manufacturer warranty.`;
 
@@ -152,7 +175,9 @@ export async function generateMetadata({
   const canonicalUrl = `https://www.insonohearing.com/product/${product.slug}`;
 
   return {
-    title: `${product.title} | ${brandName} Hearing Aid Price & Review | Insono`,
+    title: SEO_TITLES[product.slug]
+      ? { absolute: SEO_TITLES[product.slug] }
+      : `${product.title} | ${brandName} Hearing Aid Price & Review | Insono`,
     description,
     alternates: {
       canonical: canonicalUrl,

@@ -140,7 +140,7 @@ export default function TestimonialClient() {
       <section className="py-16 max-w-7xl mx-auto px-4">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold">Hear from Our Satisfied Clients</h2>
+            <h1 className="text-3xl md:text-4xl font-bold">Customer Testimonials: Hear from Our Satisfied Clients</h1>
             <p className="mt-4 max-w-2xl mx-auto text-gray-700">Real Experiences from People Who Trust Us, Sharing Their Journeys to Better Hearing with Our Expert Care and Support.</p>
           </div>
           {mounted && (
