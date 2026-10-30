@@ -35,9 +35,9 @@ export default function FaqClient() {
   return (
     <section className="min-h-screen flex flex-col items-center justify-center bg-white py-16 px-4 pt-24">
       <div className="max-w-4xl w-full text-black">
-        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">
-          Frequency And Questions We Can Provide
-        </h2>
+        <h1 className="text-3xl sm:text-4xl font-bold text-center mb-12">
+          Frequently Asked Questions About Hearing Aids
+        </h1>
         <div className="space-y-6">
           {faqs.map((faq, idx) => (
             <div key={idx} className="border-b border-black/80">
