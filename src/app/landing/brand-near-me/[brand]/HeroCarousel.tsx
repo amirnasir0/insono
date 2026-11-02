@@ -36,6 +36,7 @@ export default function HeroCarousel({ images }: { images: ImageItem[] }) {
               alt={img.alt}
               fill
               priority={i === 0}
+              sizes="(min-width: 1024px) 360px, 300px"
               className="object-contain drop-shadow-xl lg:drop-shadow-[0_20px_50px_rgba(24,74,153,0.15)] lg:mix-blend-multiply"
             />
           </div>

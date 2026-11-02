@@ -122,6 +122,7 @@ export default function HeroSection({
                     alt="Hearing Aid"
                     fill
                     priority={i === 0}
+                    sizes="(min-width: 1024px) 30vw, 100vw"
                     className="object-contain drop-shadow-xl px-4"
                   />
                 </div>
