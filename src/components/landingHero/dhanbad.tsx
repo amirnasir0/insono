@@ -60,6 +60,8 @@ export default function HeroSection() {
                 src={img}
                 alt={`Doctor ${i + 1}`}
                 fill
+                priority={i === 0}
+                sizes="(min-width: 1024px) 33vw, 100vw"
                 className="object-contain"
               />
             </div>
@@ -307,6 +309,8 @@ export default function HeroSection() {
                   src={img}
                   alt={`Doctor ${i + 1}`}
                   fill
+                  priority={i === 0}
+                  sizes="(min-width: 1024px) 33vw, 100vw"
                   className="object-contain"
                 />
               </div>

@@ -80,12 +80,12 @@ export default function RootLayout({
 
         <Script
           src="https://news.google.com/swg/js/v1/publisher.js"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
 
         <Script
           id="gtm-head"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
               (function(w,d,s,l,i){w[l]=w[l]||[];

@@ -185,7 +185,7 @@ export default function HeroSection() {
         <Slider {...sliderSettings} className="group relative w-full h-48 sm:h-72">
           {heroImages.map((img, i) => (
             <div key={i} className="relative w-full h-48 sm:h-72">
-              <Image src={img} alt={`Hearing aid ${i + 1}`} fill className="object-contain" />
+              <Image src={img} alt={`Hearing aid ${i + 1}`} fill priority={i === 0} sizes="(min-width: 1024px) 33vw, 100vw" className="object-contain" />
             </div>
           ))}
         </Slider>
@@ -282,7 +282,7 @@ export default function HeroSection() {
           <Slider {...sliderSettings}>
             {heroImages.map((img, i) => (
               <div key={i} className="relative w-full h-[420px]">
-                <Image src={img} alt={`Hearing aid ${i + 1}`} fill className="object-contain" />
+                <Image src={img} alt={`Hearing aid ${i + 1}`} fill priority={i === 0} sizes="(min-width: 1024px) 33vw, 100vw" className="object-contain" />
               </div>
             ))}
           </Slider>
