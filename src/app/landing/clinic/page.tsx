@@ -400,16 +400,16 @@ export default function ClinicListingPage() {
           
           {/* Social Links */}
           <div className="flex space-x-6 mb-6 text-slate-400">
-            <a href="https://youtube.com/@insonohearing" target="_blank" rel="noopener noreferrer" className="hover:text-[#184A99] transition-colors">
+            <a href="https://youtube.com/@insonohearing" aria-label="Insono Hearing on YouTube" target="_blank" rel="noopener noreferrer" className="hover:text-[#184A99] transition-colors">
               <FaYoutube size={20} />
             </a>
-            <a href="https://www.instagram.com/insono_hearing_solutions" target="_blank" rel="noopener noreferrer" className="hover:text-[#184A99] transition-colors">
+            <a href="https://www.instagram.com/insono_hearing_solutions" aria-label="Insono Hearing on Instagram" target="_blank" rel="noopener noreferrer" className="hover:text-[#184A99] transition-colors">
               <FaInstagram size={20} />
             </a>
-            <a href="https://www.facebook.com/insonohearingsolution" target="_blank" rel="noopener noreferrer" className="hover:text-[#184A99] transition-colors">
+            <a href="https://www.facebook.com/insonohearingsolution" aria-label="Insono Hearing on Facebook" target="_blank" rel="noopener noreferrer" className="hover:text-[#184A99] transition-colors">
               <FaFacebook size={20} />
             </a>
-            <a href="https://www.linkedin.com/company/insonohearing" target="_blank" rel="noopener noreferrer" className="hover:text-[#184A99] transition-colors">
+            <a href="https://www.linkedin.com/company/insonohearing" aria-label="Insono Hearing on LinkedIn" target="_blank" rel="noopener noreferrer" className="hover:text-[#184A99] transition-colors">
               <FaLinkedin size={20} />
             </a>
           </div>

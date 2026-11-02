@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -11,10 +11,8 @@ interface Product {
   category: string;
   mrp: number | null;
   isFeatured: boolean;
-  images: string[];
+  image: string | null;
   technology: string[];
-  shape: string[];
-  suitableFor: string[];
 }
 
 const CATEGORY_COLORS: Record<string, string> = {
@@ -25,42 +23,11 @@ const CATEGORY_COLORS: Record<string, string> = {
   starkey: "bg-green-50 text-green-700",
 };
 
-export default function ProductsClient() {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
+export default function ProductsClient({ products }: { products: Product[] }) {
   const [filter, setFilter] = useState("all");
-
-  useEffect(() => {
-    fetch("/api/products")
-      .then((r) => r.json())
-      .then((data) => { setProducts(data); setLoading(false); })
-      .catch(() => setLoading(false));
-  }, []);
 
   const categories = ["all", ...Array.from(new Set(products.map((p) => p.category)))];
   const filtered = filter === "all" ? products : products.filter((p) => p.category === filter);
-
-  if (loading) {
-    return (
-      <main className="max-w-7xl mx-auto px-6 py-16 mt-10">
-        <h1 className="text-3xl sm:text-4xl font-bold text-center text-[#023784] mb-4">Our Hearing Aids</h1>
-        <p className="text-center text-gray-500 mb-8 max-w-2xl mx-auto text-sm">
-          Explore our full range of premium hearing solutions from world-leading brands.
-        </p>
-        <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {[...Array(8)].map((_, i) => (
-            <div key={i} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden animate-pulse">
-              <div className="h-52 bg-gray-100" />
-              <div className="p-5 space-y-3">
-                <div className="h-4 bg-gray-100 rounded w-3/4" />
-                <div className="h-3 bg-gray-100 rounded w-1/2" />
-              </div>
-            </div>
-          ))}
-        </div>
-      </main>
-    );
-  }
 
   return (
     <main className="max-w-7xl mx-auto px-6 py-16 mt-10">
@@ -88,15 +55,22 @@ export default function ProductsClient() {
         <p className="text-center text-gray-500 py-16">No products found.</p>
       ) : (
         <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {filtered.map((product) => (
+          {filtered.map((product, index) => (
             <Link
               key={product.id}
               href={`/product/${product.slug}`}
               className="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col border border-gray-100 hover:-translate-y-1"
             >
               <div className="relative w-full h-52 bg-gray-50">
-                {product.images[0] ? (
-                  <Image src={product.images[0]} alt={product.title} fill className="object-contain p-3 group-hover:scale-105 transition-transform duration-300" />
+                {product.image ? (
+                  <Image
+                    src={product.image}
+                    alt={product.title}
+                    fill
+                    priority={index < 4}
+                    sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    className="object-contain p-3 group-hover:scale-105 transition-transform duration-300"
+                  />
                 ) : (
                   <div className="flex items-center justify-center w-full h-full text-gray-300 text-sm font-medium">No Image</div>
                 )}

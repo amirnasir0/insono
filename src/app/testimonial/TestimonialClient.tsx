@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Slider from "react-slick";
+import LazyVideo from "@/components/LazyVideo";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -143,6 +144,8 @@ export default function TestimonialClient() {
             <h1 className="text-3xl md:text-4xl font-bold">Customer Testimonials: Hear from Our Satisfied Clients</h1>
             <p className="mt-4 max-w-2xl mx-auto text-gray-700">Real Experiences from People Who Trust Us, Sharing Their Journeys to Better Hearing with Our Expert Care and Support.</p>
           </div>
+          {/* Reserve the slider's height (card + padding + dots) so the page below doesn't jump when it mounts */}
+          <div className="min-h-[414px]">
           {mounted && (
             <Slider
               key={slidesToShow}
@@ -234,6 +237,7 @@ export default function TestimonialClient() {
               ))}
             </Slider>
           )}
+          </div>
         </div>
       </section>
 
@@ -241,14 +245,9 @@ export default function TestimonialClient() {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-8">Real Stories from Real People</h2>
           <div className="relative w-full md:w-3/4 mx-auto aspect-video">
-            <video
+            <LazyVideo
               src="/insono-video.mp4"
               controls
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
               className="w-full h-full rounded-lg shadow-lg object-cover"
             />
           </div>
