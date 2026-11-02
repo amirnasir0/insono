@@ -76,7 +76,7 @@ export default function BlogCard({
             href={`/blog/${slug}`}
             className="text-xs font-medium bg-gray-200 px-2 py-2 rounded-md hover:bg-black hover:text-white transition-colors duration-300 ease-in-out"
           >
-            Read More
+            Read More<span className="sr-only"> about {decodeHtml(title)}</span>
           </Link>
         </div>
       </div>

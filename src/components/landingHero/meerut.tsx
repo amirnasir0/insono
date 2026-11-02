@@ -1,8 +1,6 @@
 "use client";
 import Image from "next/image";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import HeroFadeSlider from "@/components/HeroFadeSlider";
 import {
   ShieldCheck,
   EyeOff,
@@ -29,17 +27,6 @@ export default function HeroSectionMeerut() {
     "/hero3.png",
   ];
 
-  const sliderSettings = {
-    dots: false,
-    arrows: false,
-    infinite: true,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    speed: 800,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    fade: true,
-  };
 
   return (
     <section className="overflow-x-hidden w-full mt-0">
@@ -52,20 +39,7 @@ export default function HeroSectionMeerut() {
         </h1>
 
         {/* Hero Slider */}
-        <Slider {...sliderSettings} className="w-full h-48 sm:h-72">
-          {heroImages.map((img, i) => (
-            <div key={i} className="relative w-full h-48 sm:h-72">
-              <Image
-                src={img}
-                alt={`Doctor ${i + 1}`}
-                fill
-                priority={i === 0}
-                sizes="(min-width: 1024px) 33vw, 100vw"
-                className="object-contain"
-              />
-            </div>
-          ))}
-        </Slider>
+        <HeroFadeSlider images={heroImages} altPrefix="Doctor" className="w-full h-48 sm:h-72" interval={3000} />
 
         <p className="text-base md:text-lg text-gray-700">
           Download the full price list with transparent pricing and exclusive
@@ -323,20 +297,7 @@ export default function HeroSectionMeerut() {
 
         {/* CENTER SLIDER */}
         <div className="flex-1 min-w-[350px] relative h-[420px]">
-          <Slider {...sliderSettings}>
-            {heroImages.map((img, i) => (
-              <div key={i} className="relative w-full h-[420px]">
-                <Image
-                  src={img}
-                  alt={`Doctor ${i + 1}`}
-                  fill
-                  priority={i === 0}
-                  sizes="(min-width: 1024px) 33vw, 100vw"
-                  className="object-contain"
-                />
-              </div>
-            ))}
-          </Slider>
+          <HeroFadeSlider images={heroImages} altPrefix="Doctor" className="w-full h-[420px]" interval={3000} />
         </div>
 
         {/* FORM SECTION */}

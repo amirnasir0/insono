@@ -1,32 +1,24 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import { graphQLClient, GET_POSTS } from "@/lib/graphql";
 import { Post } from "@/lib/types/post";
 
-export default function BlogPage() {
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [loading, setLoading] = useState(true);
+export const revalidate = 60;
 
-  useEffect(() => {
-    async function fetchPosts() {
-      try {
-        const data = await graphQLClient.request<{ posts: { nodes: Post[] } }>(
-          GET_POSTS
-        );
-        setPosts(data.posts.nodes);
-      } catch (error) {
-        console.error("Error fetching posts:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
+// Fetched on the server so the post grid, and its first images, are in the
+// initial HTML instead of appearing after a client-side request.
+async function getPosts(): Promise<Post[]> {
+  try {
+    const data = await graphQLClient.request<{ posts: { nodes: Post[] } }>(GET_POSTS);
+    return data.posts.nodes;
+  } catch (error) {
+    console.error("Error fetching posts:", error);
+    return [];
+  }
+}
 
-    // Start fetching immediately after paint
-    requestAnimationFrame(fetchPosts);
-  }, []);
+export default async function BlogPage() {
+  const posts = await getPosts();
 
   return (
     <main className="max-w-6xl mx-auto px-6 py-16 mt-6">
@@ -34,13 +26,11 @@ export default function BlogPage() {
         Our Blog
       </h1>
 
-      {loading ? (
-        <SkeletonGrid />
-      ) : posts.length === 0 ? (
+      {posts.length === 0 ? (
         <p className="text-center text-gray-600">No blogs found.</p>
       ) : (
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {posts.map((post) => (
+          {posts.map((post, index) => (
             <Link href={`/blog/${post.slug}`} key={post.id}>
               <div className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden cursor-pointer">
                 <div className="relative w-full h-48">
@@ -49,6 +39,8 @@ export default function BlogPage() {
                       src={post.featuredImage.node.sourceUrl}
                       alt={post.title}
                       fill
+                      priority={index < 3}
+                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                       className="object-cover"
                     />
                   )}
@@ -74,38 +66,5 @@ export default function BlogPage() {
         </div>
       )}
     </main>
-  );
-}
-
-/* ------------------------------
-   💀 Skeleton Loader Components
---------------------------------*/
-
-function SkeletonCard() {
-  return (
-    <div className="bg-white rounded-2xl shadow-md overflow-hidden animate-pulse">
-      <div className="h-48 bg-gray-200 w-full"></div>
-
-      <div className="p-5 space-y-3">
-        <div className="h-5 bg-gray-200 rounded w-3/4"></div>
-        <div className="h-4 bg-gray-200 rounded w-full"></div>
-        <div className="h-4 bg-gray-200 rounded w-5/6"></div>
-
-        <div className="flex items-center justify-between pt-2">
-          <div className="h-3 bg-gray-200 rounded w-1/3"></div>
-          <div className="h-3 bg-gray-200 rounded w-1/4"></div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function SkeletonGrid() {
-  return (
-    <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-      {Array.from({ length: 6 }).map((_, i) => (
-        <SkeletonCard key={i} />
-      ))}
-    </div>
   );
 }

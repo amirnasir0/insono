@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import LazyVideo from "@/components/LazyVideo";
 
 const localVideos = [
   "/video/insono5.MP4",
@@ -8,43 +8,6 @@ const localVideos = [
   "/video/insono2.mp4",
   "/video/insono4.mp4",
 ];
-
-// Downloads and plays a video only while it is on screen, so the
-// testimonial videos don't compete with the hero for bandwidth.
-function LazyVideo({ src }: { src: string }) {
-  const ref = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    const video = ref.current;
-    if (!video) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          if (!video.getAttribute("src")) video.src = src;
-          video.play().catch(() => {});
-        } else {
-          video.pause();
-        }
-      },
-      { rootMargin: "200px" }
-    );
-
-    observer.observe(video);
-    return () => observer.disconnect();
-  }, [src]);
-
-  return (
-    <video
-      ref={ref}
-      loop
-      muted
-      playsInline
-      preload="none"
-      className="w-full h-full object-cover"
-    />
-  );
-}
 
 export default function Testimonials() {
   return (

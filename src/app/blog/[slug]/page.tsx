@@ -202,7 +202,8 @@ async function BlogContent({ slug }: { slug: string }) {
       </p>
       <div
         className="prose max-w-full"
-        dangerouslySetInnerHTML={{ __html: post.content }}
+        // The first content image is usually the largest paint, so don't lazy-load it
+        dangerouslySetInnerHTML={{ __html: post.content.replace(' loading="lazy"', ' fetchpriority="high"') }}
       />
     </>
   );
