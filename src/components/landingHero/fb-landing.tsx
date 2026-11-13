@@ -1,8 +1,6 @@
 "use client";
 import Image from "next/image";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import HeroFadeSlider from "@/components/HeroFadeSlider";
 import { Users, MapPin, Stethoscope } from "lucide-react";
 
 export default function HearingAidLandingPage() {
@@ -21,17 +19,6 @@ export default function HearingAidLandingPage() {
     "/hero3.png",
   ];
 
-  const sliderSettings = {
-    dots: false,
-    arrows: false,
-    infinite: true,
-    autoplay: true,
-    autoplaySpeed: 2500,
-    speed: 800,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    fade: true,
-  };
 
   return (
     <section className="w-full overflow-x-hidden mt-0">
@@ -45,20 +32,7 @@ export default function HearingAidLandingPage() {
         </h1>
 
         {/* HERO SLIDER */}
-        <Slider {...sliderSettings} className="w-full h-52 sm:h-72">
-          {heroImages.map((img, i) => (
-            <div key={i} className="relative w-full h-52 sm:h-72">
-              <Image
-                src={img}
-                alt={`Hero ${i + 1}`}
-                fill
-                priority={i === 0}
-                sizes="(min-width: 1024px) 33vw, 100vw"
-                className="object-contain"
-              />
-            </div>
-          ))}
-        </Slider>
+        <HeroFadeSlider images={heroImages} altPrefix="Hero" className="w-full h-52 sm:h-72" interval={2500} />
 
         {/* MOBILE DESCRIPTION */}
         <p className="text-base text-gray-700 mt-3">
@@ -179,20 +153,7 @@ export default function HearingAidLandingPage() {
 
         {/* RIGHT SIDE SLIDER */}
         <div className="flex-1 max-w-md h-[430px]">
-          <Slider {...sliderSettings}>
-            {heroImages.map((img, i) => (
-              <div key={i} className="relative h-[430px] w-full">
-                <Image
-                  src={img}
-                  alt={`Hero ${i}`}
-                  fill
-                  priority={i === 0}
-                  sizes="(min-width: 1024px) 33vw, 100vw"
-                  className="object-contain"
-                />
-              </div>
-            ))}
-          </Slider>
+          <HeroFadeSlider images={heroImages} altPrefix="Hero" className="h-[430px] w-full" interval={2500} />
         </div>
       </div>
     </section>

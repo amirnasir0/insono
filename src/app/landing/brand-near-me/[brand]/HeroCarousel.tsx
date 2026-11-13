@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { START_EVENTS } from "@/components/HeroFadeSlider";
 
 interface ImageItem {
   src: string;
@@ -10,21 +11,31 @@ interface ImageItem {
 
 export default function HeroCarousel({ images }: { images: ImageItem[] }) {
   const [currentIdx, setCurrentIdx] = useState(0);
+  // Rotation waits for the first interaction so a later slide never becomes
+  // the page's Largest Contentful Paint; until then only slide 1 is rendered.
+  const [started, setStarted] = useState(false);
 
   useEffect(() => {
-    if (!images || images.length <= 1) return;
+    if (started || !images || images.length <= 1) return;
+    const start = () => setStarted(true);
+    START_EVENTS.forEach((e) => window.addEventListener(e, start, { once: true, passive: true }));
+    return () => START_EVENTS.forEach((e) => window.removeEventListener(e, start));
+  }, [started, images]);
+
+  useEffect(() => {
+    if (!started || !images || images.length <= 1) return;
     const timer = setInterval(() => {
       setCurrentIdx((prev) => (prev + 1) % images.length);
     }, 3500);
     return () => clearInterval(timer);
-  }, [images]);
+  }, [started, images]);
 
   if (!images || images.length === 0) return null;
 
   return (
     <div className="-mx-4 lg:mx-0 order-first lg:order-2 lg:col-start-2 flex flex-col justify-center items-center w-full bnm-scale">
       <div className="relative w-full max-w-[300px] lg:max-w-[360px] h-[240px] lg:h-[310px] mx-auto flex items-center justify-center">
-        {images.map((img, i) => (
+        {images.map((img, i) => (i === 0 || started) && (
           <div
             key={i}
             className={`absolute inset-0 flex items-center justify-center transition-opacity duration-700 ease-in-out ${
@@ -49,7 +60,10 @@ export default function HeroCarousel({ images }: { images: ImageItem[] }) {
             <button
               key={i}
               type="button"
-              onClick={() => setCurrentIdx(i)}
+              onClick={() => {
+                setStarted(true);
+                setCurrentIdx(i);
+              }}
               aria-label={`Go to slide ${i + 1}`}
               className={`h-2 rounded-full transition-all duration-300 ${
                 i === currentIdx ? "w-6 bg-[#184A99]" : "w-2 bg-slate-300 hover:bg-slate-400"

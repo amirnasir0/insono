@@ -11,9 +11,11 @@ import "./clinic-slider.css";
 export default function ClinicSlider({
   images,
   name,
+  alts,
 }: {
   images: string[];
   name: string;
+  alts?: string[];
 }) {
   return (
     <div className="relative w-full  mt-2">
@@ -35,7 +37,7 @@ export default function ClinicSlider({
           <SwiperSlide key={index}>
             <Image
               src={img}
-              alt={`${name} image ${index + 1}`}
+              alt={alts?.[index] ?? `${name} image ${index + 1}`}
               width={1200}
               height={600}
               className="rounded-xl w-full object-fit max-h-[350px]"

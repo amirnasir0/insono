@@ -91,7 +91,7 @@ export default function HearingAidDhanbadPage() {
             {/* Social Icons */}
             <div className="flex space-x-4">
               <a
-                href="https://youtube.com/@insonohearing"
+                href="https://youtube.com/@insonohearing" aria-label="Insono Hearing on YouTube"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-white"
@@ -99,7 +99,7 @@ export default function HearingAidDhanbadPage() {
                 <FaYoutube size={18} />
               </a>
               <a
-                href="https://www.instagram.com/insono_hearing_solutions"
+                href="https://www.instagram.com/insono_hearing_solutions" aria-label="Insono Hearing on Instagram"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-white"
@@ -107,7 +107,7 @@ export default function HearingAidDhanbadPage() {
                 <FaInstagram size={18} />
               </a>
               <a
-                href="https://www.facebook.com/insonohearingsolution"
+                href="https://www.facebook.com/insonohearingsolution" aria-label="Insono Hearing on Facebook"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-white"
@@ -115,7 +115,7 @@ export default function HearingAidDhanbadPage() {
                 <FaFacebook size={18} />
               </a>
               <a
-                href="https://www.linkedin.com/company/insonohearing"
+                href="https://www.linkedin.com/company/insonohearing" aria-label="Insono Hearing on LinkedIn"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-white"
