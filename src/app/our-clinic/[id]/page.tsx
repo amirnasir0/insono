@@ -4,6 +4,8 @@ import HearingAidTypes from "@/components/HearingaidType";
 import type { Metadata } from "next";
 import ClinicSlider from "@/components/slider/ClinicSlider";
 import { prisma } from "@/lib/prisma";
+import { clinicContent } from "../clinic-content";
+import RichClinicPage from "./RichClinicPage";
 
 async function getClinic(id: string): Promise<Clinic | null> {
   try {
@@ -39,6 +41,30 @@ export async function generateMetadata({
   const clinic = await getClinic(id);
   if (!clinic) return {};
 
+  const rich = clinicContent[id];
+  if (rich) {
+    const url = `https://www.insonohearing.com/our-clinic/${id}`;
+    return {
+      title: { absolute: rich.metaTitle },
+      description: rich.metaDescription,
+      alternates: { canonical: url },
+      openGraph: {
+        title: rich.metaTitle,
+        description: rich.metaDescription,
+        url,
+        siteName: "Insono Hearing Solutions",
+        locale: "en_IN",
+        type: "website",
+        images: [{ url: rich.images[0].src, alt: rich.images[0].alt }],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: rich.metaTitle,
+        description: rich.metaDescription,
+      },
+    };
+  }
+
   const title = `${clinic.name} | Insono Hearing Solutions`;
   const description = `Visit ${clinic.name} — certified audiologists, free hearing test, and top brands like Signia, Phonak & Widex. Address: ${clinic.address}. Open Mon–Sun, 10 AM–7 PM.`;
   const url = `https://www.insonohearing.com/our-clinic/${id}`;
@@ -68,6 +94,9 @@ export default async function ClinicDetailPage({ params }: ClinicPageParams) {
   const clinic = await getClinic(id);
 
   if (!clinic) return notFound();
+
+  const rich = clinicContent[id];
+  if (rich) return <RichClinicPage id={id} name={clinic.name} content={rich} />;
 
   const generatedFaqs = defaultFaqs.map((f) => {
     const q = f.question(clinic.name, clinic.address);
