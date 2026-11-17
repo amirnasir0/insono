@@ -1,9 +1,13 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
-import Navigation from "./Navigation";
-import LandingNav from "./LandingNav";
-import Footer from "./Footer";
+
+// Split per site section so landing pages don't download the main-site nav
+// (which pulls in framer-motion) and footer, and vice versa. SSR stays on.
+const Navigation = dynamic(() => import("./Navigation"));
+const LandingNav = dynamic(() => import("./LandingNav"));
+const Footer = dynamic(() => import("./Footer"));
 
 export default function NavigationWrapper({
   children,

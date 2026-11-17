@@ -238,15 +238,15 @@ export default function CGHSLandingPage() {
           /* Removed padding-top override so navbar works */
           /* Restored header for mobile and desktop */
           @keyframes t5-up {
-            from { opacity: 0; transform: translateY(20px); }
+            from { transform: translateY(20px); }
             to   { opacity: 1; transform: translateY(0); }
           }
           @keyframes t5-left {
-            from { opacity: 0; transform: translateX(-20px); }
+            from { transform: translateX(-20px); }
             to   { opacity: 1; transform: translateX(0); }
           }
           @keyframes t5-scale {
-            from { opacity: 0; transform: scale(0.9); }
+            from { transform: scale(0.9); }
             to   { opacity: 1; transform: scale(1); }
           }
           .t5-up            { animation: t5-up    0.5s ease both; }
@@ -852,8 +852,6 @@ export default function CGHSLandingPage() {
                   width={420}
                   height={420}
                   className="object-contain drop-shadow-[0_20px_60px_rgba(0,0,0,0.15)] relative z-10 hover:scale-105 transition-transform duration-700"
-                  priority
-                  fetchPriority="high"
                 />
               </div>
 

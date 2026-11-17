@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
 import LeadForm from "./LeadForm";
 
 export default function PopupModal() {
@@ -15,21 +14,17 @@ export default function PopupModal() {
   }, []);
 
   return (
-    <AnimatePresence>
+    <>
       {isOpen && (
         <div className="fixed inset-0 z-[10000] flex items-center justify-center px-4">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+          <div
+            data-anim="fade"
             onClick={() => setIsOpen(false)}
             className="absolute inset-0 bg-[#0D2240]/80 backdrop-blur-sm"
           />
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+          <div
+            data-anim="pop"
             className="relative w-full max-w-[420px] bg-white rounded-3xl shadow-[0_30px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden"
           >
             <div className="h-1.5 w-full bg-gradient-to-r from-[#184A99] via-[#1A7F5C] to-[#184A99]" />
@@ -119,9 +114,9 @@ export default function PopupModal() {
                 </span>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       )}
-    </AnimatePresence>
+    </>
   );
 }

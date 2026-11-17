@@ -163,11 +163,11 @@ export default function ChandigarhLandingPage() {
           body { padding-top: 0 !important; }
         }
         @keyframes wx-fadeUp {
-          from { opacity: 0; transform: translateY(15px); }
+          from { transform: translateY(15px); }
           to { opacity: 1; transform: translateY(0); }
         }
         @keyframes wx-scaleIn {
-          from { opacity: 0; transform: scale(0.95); }
+          from { transform: scale(0.95); }
           to { opacity: 1; transform: scale(1); }
         }
         .wx-fade-up    { animation: wx-fadeUp  0.5s ease both; }
@@ -495,8 +495,6 @@ export default function ChandigarhLandingPage() {
                   width={500}
                   height={500}
                   className="object-contain drop-shadow-[0_20px_60px_rgba(0,0,0,0.15)] relative z-10 hover:scale-105 transition-transform duration-700 rounded-3xl"
-                  priority
-                  fetchPriority="high"
                 />
               </div>
 

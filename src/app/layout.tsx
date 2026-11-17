@@ -1,6 +1,7 @@
 // app/layout.tsx
 import NavigationWrapper from "@/components/NavigationWrapper";
 import ChatWidgetLoader from "@/components/ChatWidgetLoader";
+import NewsPublisherScript from "@/components/NewsPublisherScript";
 import "./globals.css";
 import type { Metadata } from "next";
 import Script from "next/script";
@@ -79,11 +80,6 @@ export default function RootLayout({
         />
 
         <Script
-          src="https://news.google.com/swg/js/v1/publisher.js"
-          strategy="lazyOnload"
-        />
-
-        <Script
           id="gtm-head"
           strategy="lazyOnload"
           dangerouslySetInnerHTML={{
@@ -114,6 +110,7 @@ export default function RootLayout({
 
         {/* ✅ Global chat widget – loads once, after hydration */}
         <ChatWidgetLoader />
+        <NewsPublisherScript />
       </body>
     </html>
   );

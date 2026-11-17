@@ -250,15 +250,15 @@ export default async function BrandNearMePage({ params }: { params: Promise<{ br
           div.fixed.bottom-0.left-0.right-0:not(.bnm-bottom-bar) { display: none !important; }
           body { padding-top: 0 !important; }
           @keyframes bnm-up {
-            from { opacity: 0; transform: translateY(18px); }
+            from { transform: translateY(18px); }
             to   { opacity: 1; transform: translateY(0); }
           }
           @keyframes bnm-left {
-            from { opacity: 0; transform: translateX(-18px); }
+            from { transform: translateX(-18px); }
             to   { opacity: 1; transform: translateX(0); }
           }
           @keyframes bnm-scale {
-            from { opacity: 0; transform: scale(0.95); }
+            from { transform: scale(0.95); }
             to   { opacity: 1; transform: scale(1); }
           }
           .bnm-up    { animation: bnm-up    0.55s ease both; }

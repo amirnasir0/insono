@@ -647,3 +647,18 @@ button {
 
 
 
+
+/* Landing popup entrance animations (replaces framer-motion to keep it out of the landing bundle) */
+@keyframes lp-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes lp-pop-in {
+  from { opacity: 0; transform: translateY(20px) scale(0.9); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+[data-anim="fade"] { animation: lp-fade-in 0.2s ease-out both; }
+[data-anim="pop"]  { animation: lp-pop-in 0.25s cubic-bezier(0.16, 1, 0.3, 1) both; }
+@media (prefers-reduced-motion: reduce) {
+  [data-anim="fade"], [data-anim="pop"] { animation: none; }
+}

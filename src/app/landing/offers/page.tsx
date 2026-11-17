@@ -114,11 +114,11 @@ export default async function OffersLandingPage() {
             body { padding-top: 0 !important; }
           }
           @keyframes of-up {
-            from { opacity: 0; transform: translateY(20px); }
+            from { transform: translateY(20px); }
             to   { opacity: 1; transform: translateY(0); }
           }
           @keyframes of-scale {
-            from { opacity: 0; transform: scale(0.9); }
+            from { transform: scale(0.9); }
             to   { opacity: 1; transform: scale(1); }
           }
           @keyframes of-pulse-dot {

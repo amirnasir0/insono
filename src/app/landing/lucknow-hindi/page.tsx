@@ -126,15 +126,15 @@ export default function LucknowHindiLandingPage() {
             body { padding-top: 0 !important; }
           }
           @keyframes lk-up {
-            from { opacity: 0; transform: translateY(20px); }
+            from { transform: translateY(20px); }
             to   { opacity: 1; transform: translateY(0); }
           }
           @keyframes lk-left {
-            from { opacity: 0; transform: translateX(-20px); }
+            from { transform: translateX(-20px); }
             to   { opacity: 1; transform: translateX(0); }
           }
           @keyframes lk-scale {
-            from { opacity: 0; transform: scale(0.9); }
+            from { transform: scale(0.9); }
             to   { opacity: 1; transform: scale(1); }
           }
           .lk-up            { animation: lk-up    0.5s ease both; }

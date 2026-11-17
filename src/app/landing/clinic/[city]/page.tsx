@@ -173,7 +173,7 @@ export default async function ClinicCityLandingPage({
           }
           body { padding-top: 0 !important; }
           @keyframes fade-up {
-            from { opacity: 0; transform: translateY(24px); }
+            from { transform: translateY(24px); }
             to   { opacity: 1; transform: translateY(0); }
           }
           .fade-up { animation: fade-up 0.6s ease both; }

@@ -149,15 +149,15 @@ export default async function OticonCityPage({
             body { padding-top: 0 !important; }
           }
           @keyframes ot-up {
-            from { opacity: 0; transform: translateY(20px); }
+            from { transform: translateY(20px); }
             to   { opacity: 1; transform: translateY(0); }
           }
           @keyframes ot-left {
-            from { opacity: 0; transform: translateX(-20px); }
+            from { transform: translateX(-20px); }
             to   { opacity: 1; transform: translateX(0); }
           }
           @keyframes ot-scale {
-            from { opacity: 0; transform: scale(0.9); }
+            from { transform: scale(0.9); }
             to   { opacity: 1; transform: scale(1); }
           }
           .ot-up            { animation: ot-up    0.5s ease both; }
@@ -462,8 +462,6 @@ export default async function OticonCityPage({
                   height={500}
                   sizes="500px"
                   className="object-contain drop-shadow-[0_20px_60px_rgba(0,0,0,0.15)] relative z-10 hover:scale-105 transition-transform duration-700 rounded-3xl"
-                  priority
-                  fetchPriority="high"
                 />
               </div>
 
